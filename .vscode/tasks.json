@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake: build",
+            "type": "cmake",
+            "command": "build",
+            "targets": [
+                "all"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "CMake: test",
+            "type": "cmake",
+            "command": "test",
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake: configure",
+            "type": "cmake",
+            "command": "configure",
+            "problemMatcher": []
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+# Visual Studio Code.
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# Build results.
+build
