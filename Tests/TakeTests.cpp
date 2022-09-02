@@ -3,12 +3,41 @@
 
 using namespace CppLinq;
 
-TEST(Take, First3)
+TEST(Take, ReturnsExpectedValues_CountIsZero)
 {
-    const int values[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    const int expected[]{ 1, 2, 3 };
+    const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    const auto actual = From(values).Take(3U);
+    const auto actual = From(source).Take(0U);
 
-    ExpectSequencesAreEqual(actual, expected);
+    ExpectSequenceIsEmpty(actual);
+}
+
+TEST(Take, ReturnsExpectedValues_CountIsLessThanSourceLength)
+{
+    const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    const int expected[]{ 1, 2, 3 , 4, 5 };
+
+    const auto actual = From(source).Take(5U);
+
+    ExpectSequencesAreEquivalent(actual, expected);
+}
+
+TEST(Take, ReturnsExpectedValues_CountIsEqualToSourceLength)
+{
+    const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    const int expected[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    const auto actual = From(source).Take(10U);
+
+    ExpectSequencesAreEquivalent(actual, expected);
+}
+
+TEST(Take, ReturnsExpectedValues_CountIsGreaterThanSourceLength)
+{
+    const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    const int expected[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    const auto actual = From(source).Take(15U);
+
+    ExpectSequencesAreEquivalent(actual, expected);
 }

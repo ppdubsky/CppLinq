@@ -1,14 +1,43 @@
+#include <cstdint>
+#include <functional>
+
 #include "Common/Assertions.hpp"
 #include "CppLinq.hpp"
 
 using namespace CppLinq;
+using namespace std;
 
-TEST(StaticCast, DoubleToInteger)
+struct ConvertibleToInt final
 {
-    const double values[]{ 1.1, 2.2, 3.3, 4.4, 5.5 };
+    explicit operator int() const
+    {
+        ++castCount;
+
+        return 0;
+    }
+
+    static uint32_t castCount;
+};
+
+uint32_t ConvertibleToInt::castCount = 0U;
+
+TEST(StaticCast, ExecutionIsDeferred)
+{
+    ConvertibleToInt::castCount = 0U;
+
+    const ConvertibleToInt source[] { {} };
+
+    const auto actual = From(source).StaticCast<int>();
+
+    EXPECT_EQ(ConvertibleToInt::castCount, 0U);
+}
+
+TEST(StaticCast, ReturnsExpectedValues_DoubleToInt)
+{
+    const double source[]{ 1.1, 2.2, 3.3, 4.4, 5.5 };
     const int expected[]{ 1, 2, 3, 4, 5 };
 
-    const auto actual = From(values).StaticCast<int>();
+    const auto actual = From(source).StaticCast<int>();
 
-    ExpectSequencesAreEqual(actual, expected);
+    ExpectSequencesAreEquivalent(actual, expected);
 }
