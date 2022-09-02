@@ -8,6 +8,7 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/ConcatenationTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/ForEachTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/Main.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/ReverseTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/SelectTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/SkipTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/StaticCastTests.cpp

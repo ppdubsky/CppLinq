@@ -5,6 +5,8 @@
 
 #include "Enumerators/ConcatenationEnumerator.hpp"
 #include "Enumerators/ForEachEnumerator.hpp"
+#include "Enumerators/IteratorEnumerator.hpp"
+#include "Enumerators/ReverseEnumerator.hpp"
 #include "Enumerators/SelectEnumerator.hpp"
 #include "Enumerators/SkipEnumerator.hpp"
 #include "Enumerators/StaticCastEnumerator.hpp"
@@ -50,6 +52,11 @@ namespace CppLinq::Details
         auto ForEach(const TFunction function) -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>
         {
             return { { enumerator, function } };
+        }
+
+        auto Reverse() -> Query<Enumerators::ReverseEnumerator<std::vector<ValueType>>>
+        {
+            return { { ToVector() } };
         }
 
         template <typename TSelector>
