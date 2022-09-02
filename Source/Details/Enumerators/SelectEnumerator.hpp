@@ -2,36 +2,28 @@
 
 #include <type_traits>
 
+#include "EnumeratorWrapper.hpp"
+
 namespace CppLinq::Details::Enumerators
 {
     template <typename TEnumerator, typename TSelector>
-    struct SelectEnumerator final
+    struct SelectEnumerator final : EnumeratorWrapper<TEnumerator>
     {
+        using Base = EnumeratorWrapper<TEnumerator>;
         using ValueType = decltype(std::declval<TSelector>()(std::declval<typename TEnumerator::ValueType>()));
 
         SelectEnumerator(const TEnumerator enumerator, const TSelector selector) :
-            enumerator(enumerator),
+            Base(enumerator),
             selector(selector)
         {
         }
 
         auto GetCurrent() -> ValueType
         {
-            return selector(enumerator.GetCurrent());
-        }
-
-        auto IsFinished() -> bool
-        {
-            return enumerator.IsFinished();
-        }
-
-        void MoveNext()
-        {
-            enumerator.MoveNext();
+            return selector(Base::GetCurrent());
         }
 
     private:
-        TEnumerator enumerator;
         TSelector selector;
     };
 }

@@ -2,34 +2,31 @@
 
 #include <cstdint>
 
+#include "EnumeratorWrapper.hpp"
+
 namespace CppLinq::Details::Enumerators
 {
     template <typename TEnumerator>
-    struct TakeEnumerator final
+    struct TakeEnumerator final : EnumeratorWrapper<TEnumerator>
     {
-        using ValueType = typename TEnumerator::ValueType;
+        using Base = EnumeratorWrapper<TEnumerator>;
 
         TakeEnumerator(const TEnumerator enumerator, const std::uint32_t count) :
-            count(count),
-            enumerator(enumerator)
+            Base(enumerator),
+            count(count)
         {
-        }
-
-        auto GetCurrent() -> ValueType
-        {
-            return enumerator.GetCurrent();
         }
 
         auto IsFinished() -> bool
         {
-            return count == 0U || enumerator.IsFinished();
+            return count == 0U || Base::IsFinished();
         }
 
         void MoveNext()
         {
             if (count > 0U)
             {
-                enumerator.MoveNext();
+                Base::MoveNext();
 
                 --count;
             }
@@ -37,6 +34,5 @@ namespace CppLinq::Details::Enumerators
 
     private:
         std::uint32_t count;
-        TEnumerator enumerator;
     };
 }

@@ -1,37 +1,39 @@
 #pragma once
 
+#include "EnumeratorWrapper.hpp"
+
 namespace CppLinq::Details::Enumerators
 {
     template <typename TEnumerator, typename TPredicate>
-    struct WhereEnumerator final
+    struct WhereEnumerator final : EnumeratorWrapper<TEnumerator>
     {
-        using ValueType = typename TEnumerator::ValueType;
+        using Base = EnumeratorWrapper<TEnumerator>;
 
         WhereEnumerator(const TEnumerator enumerator, const TPredicate predicate) :
-            enumerator(enumerator),
+            Base(enumerator),
             predicate(predicate)
         {
         }
 
-        auto GetCurrent() -> ValueType
+        auto GetCurrent() -> Base::ValueType
         {
             EnsureEnumeratorIsReady();
 
-            return enumerator.GetCurrent();
+            return Base::GetCurrent();
         }
 
         auto IsFinished() -> bool
         {
             EnsureEnumeratorIsReady();
 
-            return enumerator.IsFinished();
+            return Base::IsFinished();
         }
 
         void MoveNext()
         {
             EnsureEnumeratorIsReady();
 
-            enumerator.MoveNext();
+            Base::MoveNext();
 
             isReady = false;
         }
@@ -41,15 +43,15 @@ namespace CppLinq::Details::Enumerators
         {
             if (!isReady)
             {
-                while (!enumerator.IsFinished())
+                while (!Base::IsFinished())
                 {
-                    if (predicate(enumerator.GetCurrent()))
+                    if (predicate(Base::GetCurrent()))
                     {
                         break;
                     }
                     else
                     {
-                        enumerator.MoveNext();
+                        Base::MoveNext();
                     }
                 }
 
@@ -57,7 +59,6 @@ namespace CppLinq::Details::Enumerators
             }
         }
 
-        TEnumerator enumerator;
         bool isReady{ false };
         TPredicate predicate;
     };

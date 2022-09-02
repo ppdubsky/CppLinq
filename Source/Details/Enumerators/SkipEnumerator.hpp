@@ -2,38 +2,40 @@
 
 #include <cstdint>
 
+#include "EnumeratorWrapper.hpp"
+
 namespace CppLinq::Details::Enumerators
 {
     template <typename TEnumerator>
-    struct SkipEnumerator final
+    struct SkipEnumerator final : EnumeratorWrapper<TEnumerator>
     {
-        using ValueType = typename TEnumerator::ValueType;
+        using Base = EnumeratorWrapper<TEnumerator>;
 
         SkipEnumerator(const TEnumerator enumerator, const std::uint32_t count) :
-            count(count),
-            enumerator(enumerator)
+            Base(enumerator),
+            count(count)
         {
         }
 
-        auto GetCurrent() -> ValueType
+        auto GetCurrent() -> Base::ValueType
         {
             EnsureEnumeratorIsReady();
 
-            return enumerator.GetCurrent();
+            return Base::GetCurrent();
         }
 
         auto IsFinished() -> bool
         {
             EnsureEnumeratorIsReady();
 
-            return enumerator.IsFinished();
+            return Base::IsFinished();
         }
 
         void MoveNext()
         {
             EnsureEnumeratorIsReady();
 
-            enumerator.MoveNext();
+            Base::MoveNext();
         }
 
     private:
@@ -41,9 +43,9 @@ namespace CppLinq::Details::Enumerators
         {
             if (!isReady)
             {
-                while (count > 0U && !enumerator.IsFinished())
+                while (count > 0U && !Base::IsFinished())
                 {
-                    enumerator.MoveNext();
+                    Base::MoveNext();
 
                     --count;
                 }
@@ -54,6 +56,5 @@ namespace CppLinq::Details::Enumerators
 
         std::uint32_t count;
         bool isReady{ false };
-        TEnumerator enumerator;
     };
 }
