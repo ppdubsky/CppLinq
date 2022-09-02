@@ -26,9 +26,14 @@ namespace CppLinq::Details::Loops
             return enumerator.GetCurrent();
         }
 
-        auto operator!=(const LoopIteratorSentinel /*right*/) -> bool
+        auto operator==(const LoopIteratorSentinel /*right*/) -> bool
         {
-            return !enumerator.IsFinished();
+            return enumerator.IsFinished();
+        }
+
+        auto operator!=(const LoopIteratorSentinel right) -> bool
+        {
+            return !operator==(right);
         }
 
     private:
