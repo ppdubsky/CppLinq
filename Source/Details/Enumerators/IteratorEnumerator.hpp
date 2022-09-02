@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../TypeTraits/ValueTypeProvider.hpp"
+#include "Details/TypeTraits/ValueTypeProvider.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
