@@ -2,6 +2,7 @@
 
 #include <cstdint>
 
+#include "Enumerators/ConcatenationEnumerator.hpp"
 #include "Enumerators/SelectEnumerator.hpp"
 #include "Enumerators/SkipEnumerator.hpp"
 #include "Enumerators/StaticCastEnumerator.hpp"
@@ -33,6 +34,12 @@ namespace CppLinq::Details
         auto GetEnumerator() -> TEnumerator&
         {
             return enumerator;
+        }
+
+        template <typename TNextEnumerator>
+        auto Concatenate(const Query<TNextEnumerator>& nextQuery) -> Query<Enumerators::ConcatenationEnumerator<TEnumerator, TNextEnumerator>>
+        {
+            return { { enumerator, nextQuery } };
         }
 
         template <typename TSelector>
