@@ -30,6 +30,11 @@ namespace CppLinq::Details
             return {};
         }
 
+        auto GetEnumerator() -> TEnumerator&
+        {
+            return enumerator;
+        }
+
         template <typename TSelector>
         auto Select(const TSelector selector) -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>
         {
