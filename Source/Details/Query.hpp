@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Enumerators/SelectEnumerator.hpp"
+#include "Enumerators/StaticCastEnumerator.hpp"
 #include "Enumerators/WhereEnumerator.hpp"
 #include "Loops/LoopIterator.hpp"
 #include "Loops/LoopIteratorSentinel.hpp"
@@ -29,6 +30,12 @@ namespace CppLinq::Details
         auto Select(const TSelector selector) -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>
         {
             return { { enumerator, selector } };
+        }
+
+        template <typename TNewType>
+        auto StaticCast() -> Query<Enumerators::StaticCastEnumerator<TEnumerator, TNewType>>
+        {
+            return { { enumerator } };
         }
 
         template <typename TPredicate>
