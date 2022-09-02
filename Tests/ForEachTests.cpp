@@ -18,6 +18,18 @@ TEST(ForEach, ReturnsExpectedValues)
     EXPECT_EQ(sum, 55);
 }
 
+TEST(ForEach, ReturnsSameResults)
+{
+    const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    auto query = From(source);
+
+    const auto actual1 = query.ForEach([](const int /*value*/){});
+    const auto actual2 = query.ForEach([](const int /*value*/){});
+
+    ExpectSequencesAreEquivalent(actual1, actual2);
+}
+
 TEST(ForEach, SourceThrowsOnMoveNext)
 {
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };

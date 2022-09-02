@@ -43,6 +43,18 @@ TEST(StaticCast, ReturnsExpectedValues_DoubleToInt)
     ExpectSequencesAreEquivalent(actual, expected);
 }
 
+TEST(StaticCast, ReturnsSameResults)
+{
+    const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    auto query = From(source);
+
+    const auto actual1 = query.StaticCast<int>();
+    const auto actual2 = query.StaticCast<int>();
+
+    ExpectSequencesAreEquivalent(actual1, actual2);
+}
+
 TEST(StaticCast, SourceThrowsOnMoveNext)
 {
     const double source[]{ 1.1, 2.2, 3.3, 4.4, 5.5 };

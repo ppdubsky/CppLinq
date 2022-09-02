@@ -42,6 +42,18 @@ TEST(Skip, ReturnsExpectedValues_CountIsGreaterThanSourceLength)
     ExpectSequenceIsEmpty(actual);
 }
 
+TEST(Skip, ReturnsSameResults)
+{
+    const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    auto query = From(source);
+
+    const auto actual1 = query.Skip(5U);
+    const auto actual2 = query.Skip(5U);
+
+    ExpectSequencesAreEquivalent(actual1, actual2);
+}
+
 TEST(Skip, SourceThrowsOnMoveNext)
 {
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };

@@ -43,6 +43,18 @@ TEST(Take, ReturnsExpectedValues_CountIsGreaterThanSourceLength)
     ExpectSequencesAreEquivalent(actual, expected);
 }
 
+TEST(Take, ReturnsSameResults)
+{
+    const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    auto query = From(source);
+
+    const auto actual1 = query.Take(5U);
+    const auto actual2 = query.Take(5U);
+
+    ExpectSequencesAreEquivalent(actual1, actual2);
+}
+
 TEST(Take, SourceThrowsOnMoveNext)
 {
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
