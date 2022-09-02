@@ -3,6 +3,7 @@
 #include <cstdint>
 
 #include "EnumeratorWrapper.hpp"
+#include "Exceptions/FinishedEnumeratorException.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
@@ -17,6 +18,16 @@ namespace CppLinq::Details::Enumerators
         {
         }
 
+        auto GetCurrent() -> Base::ValueType
+        {
+            if (IsFinished())
+            {
+                throw Exceptions::FinishedEnumeratorException();
+            }
+
+            return Base::GetCurrent();
+        }
+
         auto IsFinished() -> bool
         {
             return count == 0U || Base::IsFinished();
@@ -24,12 +35,14 @@ namespace CppLinq::Details::Enumerators
 
         void MoveNext()
         {
-            if (count > 0U)
+            if (count == 0U)
             {
-                Base::MoveNext();
-
-                --count;
+                throw Exceptions::FinishedEnumeratorException();
             }
+
+            Base::MoveNext();
+
+            --count;
         }
 
     private:

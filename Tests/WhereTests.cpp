@@ -4,6 +4,7 @@
 #include "CppLinq.hpp"
 
 using namespace CppLinq;
+using namespace CppLinq::Exceptions;
 using namespace std;
 
 TEST(Where, ExecutionIsDeferred)
@@ -59,4 +60,34 @@ TEST(Where, ReturnsSameResults)
     const auto actual2 = query.Where([](const int value){ return value % 2 == 0; });
 
     ExpectSequencesAreEquivalent(actual1, actual2);
+}
+
+TEST(Where, SourceThrowsOnMoveNext)
+{
+    const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    auto query = From(source).Where([](const int value){ return value % 2 == 0; });
+
+    auto& enumerator = query.GetEnumerator();
+    while (!enumerator.IsFinished())
+    {
+        enumerator.MoveNext();
+    }
+
+    EXPECT_THROW(enumerator.MoveNext(), FinishedEnumeratorException);
+}
+
+TEST(Where, SourceThrowsOnGetCurrent)
+{
+    const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    auto query = From(source).Where([](const int value){ return value % 2 == 0; });
+
+    auto& enumerator = query.GetEnumerator();
+    while (!enumerator.IsFinished())
+    {
+        enumerator.MoveNext();
+    }
+
+    EXPECT_THROW(enumerator.GetCurrent(), FinishedEnumeratorException);
 }

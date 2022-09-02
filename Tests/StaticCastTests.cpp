@@ -5,6 +5,7 @@
 #include "CppLinq.hpp"
 
 using namespace CppLinq;
+using namespace CppLinq::Exceptions;
 using namespace std;
 
 struct ConvertibleToInt final
@@ -40,4 +41,34 @@ TEST(StaticCast, ReturnsExpectedValues_DoubleToInt)
     const auto actual = From(source).StaticCast<int>();
 
     ExpectSequencesAreEquivalent(actual, expected);
+}
+
+TEST(StaticCast, SourceThrowsOnMoveNext)
+{
+    const double source[]{ 1.1, 2.2, 3.3, 4.4, 5.5 };
+
+    auto query = From(source).StaticCast<int>();
+
+    auto& enumerator = query.GetEnumerator();
+    while (!enumerator.IsFinished())
+    {
+        enumerator.MoveNext();
+    }
+
+    EXPECT_THROW(enumerator.MoveNext(), FinishedEnumeratorException);
+}
+
+TEST(StaticCast, SourceThrowsOnGetCurrent)
+{
+    const double source[]{ 1.1, 2.2, 3.3, 4.4, 5.5 };
+
+    auto query = From(source).StaticCast<int>();
+
+    auto& enumerator = query.GetEnumerator();
+    while (!enumerator.IsFinished())
+    {
+        enumerator.MoveNext();
+    }
+
+    EXPECT_THROW(enumerator.GetCurrent(), FinishedEnumeratorException);
 }

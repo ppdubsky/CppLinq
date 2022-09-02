@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Details/TypeTraits/ValueTypeProvider.hpp"
+#include "Exceptions/FinishedEnumeratorException.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
@@ -17,6 +18,11 @@ namespace CppLinq::Details::Enumerators
 
         auto GetCurrent() -> const ValueType&
         {
+            if (IsFinished())
+            {
+                throw Exceptions::FinishedEnumeratorException();
+            }
+
             return *begin;
         }
 
@@ -27,6 +33,11 @@ namespace CppLinq::Details::Enumerators
 
         void MoveNext()
         {
+            if (IsFinished())
+            {
+                throw Exceptions::FinishedEnumeratorException();
+            }
+
             ++begin;
         }
 
