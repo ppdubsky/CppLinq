@@ -11,7 +11,7 @@ namespace CppLinq
         return { { container.cbegin(), container.cend() } };
     }
 
-    template <typename T, int SIZE>
+    template <typename T, std::uint32_t SIZE>
     auto From(const T (&array)[SIZE]) -> Details::Query<Details::Enumerators::IteratorEnumerator<const T*>>
     {
         return { { reinterpret_cast<const T*>(&array), reinterpret_cast<const T*>(&array) + SIZE } };
