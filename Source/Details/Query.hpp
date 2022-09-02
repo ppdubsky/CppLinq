@@ -3,6 +3,7 @@
 #include <cstdint>
 
 #include "Enumerators/SelectEnumerator.hpp"
+#include "Enumerators/SkipEnumerator.hpp"
 #include "Enumerators/StaticCastEnumerator.hpp"
 #include "Enumerators/TakeEnumerator.hpp"
 #include "Enumerators/WhereEnumerator.hpp"
@@ -33,6 +34,11 @@ namespace CppLinq::Details
         auto Select(const TSelector selector) -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>
         {
             return { { enumerator, selector } };
+        }
+
+        auto Skip(const std::uint32_t count) -> Query<Enumerators::SkipEnumerator<TEnumerator>>
+        {
+            return { { enumerator, count } };
         }
 
         template <typename TNewType>
