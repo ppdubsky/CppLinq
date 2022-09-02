@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <vector>
 
 #include "Enumerators/ConcatenationEnumerator.hpp"
 #include "Enumerators/ForEachEnumerator.hpp"
@@ -17,6 +18,8 @@ namespace CppLinq::Details
     template <typename TEnumerator>
     struct Query final
     {
+        using ValueType = typename TEnumerator::ValueType;
+
         Query(const TEnumerator enumerator) :
             enumerator(enumerator)
         {
@@ -69,6 +72,21 @@ namespace CppLinq::Details
         auto Take(const std::uint32_t count) -> Query<Enumerators::TakeEnumerator<TEnumerator>>
         {
             return { { enumerator, count } };
+        }
+
+        auto ToVector() -> std::vector<ValueType>
+        {
+            std::vector<ValueType> items;
+
+            TEnumerator enumeratorCopy = enumerator;
+            while (!enumeratorCopy.IsFinished())
+            {
+                items.push_back(enumeratorCopy.GetCurrent());
+
+                enumeratorCopy.MoveNext();
+            }
+
+            return items;
         }
 
         template <typename TPredicate>

@@ -12,6 +12,7 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/SkipTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/StaticCastTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/TakeTests.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/ToVectorTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/WhereTests.cpp
 )
 
