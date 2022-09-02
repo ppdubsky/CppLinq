@@ -8,6 +8,7 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/Main.cpp
     ${PROJECT_SOURCE_DIR}/Tests/SelectTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/StaticCastTests.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/TakeTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/WhereTests.cpp
 )
 

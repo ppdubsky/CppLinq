@@ -1,7 +1,10 @@
 #pragma once
 
+#include <cstdint>
+
 #include "Enumerators/SelectEnumerator.hpp"
 #include "Enumerators/StaticCastEnumerator.hpp"
+#include "Enumerators/TakeEnumerator.hpp"
 #include "Enumerators/WhereEnumerator.hpp"
 #include "Loops/LoopIterator.hpp"
 #include "Loops/LoopIteratorSentinel.hpp"
@@ -36,6 +39,11 @@ namespace CppLinq::Details
         auto StaticCast() -> Query<Enumerators::StaticCastEnumerator<TEnumerator, TNewType>>
         {
             return { { enumerator } };
+        }
+
+        auto Take(const std::uint32_t count) -> Query<Enumerators::TakeEnumerator<TEnumerator>>
+        {
+            return { { enumerator, count } };
         }
 
         template <typename TPredicate>
