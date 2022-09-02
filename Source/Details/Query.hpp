@@ -3,6 +3,7 @@
 #include <cstdint>
 
 #include "Enumerators/ConcatenationEnumerator.hpp"
+#include "Enumerators/ForEachEnumerator.hpp"
 #include "Enumerators/SelectEnumerator.hpp"
 #include "Enumerators/SkipEnumerator.hpp"
 #include "Enumerators/StaticCastEnumerator.hpp"
@@ -40,6 +41,12 @@ namespace CppLinq::Details
         auto Concatenate(const Query<TNextEnumerator>& nextQuery) -> Query<Enumerators::ConcatenationEnumerator<TEnumerator, TNextEnumerator>>
         {
             return { { enumerator, nextQuery } };
+        }
+
+        template <typename TFunction>
+        auto ForEach(const TFunction function) -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>
+        {
+            return { { enumerator, function } };
         }
 
         template <typename TSelector>
