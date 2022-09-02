@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Enumerators/SelectEnumerator.hpp"
 #include "Enumerators/WhereEnumerator.hpp"
 #include "Loops/LoopIterator.hpp"
 #include "Loops/LoopIteratorSentinel.hpp"
@@ -22,6 +23,12 @@ namespace CppLinq::Details
         auto end() const -> Loops::LoopIteratorSentinel
         {
             return {};
+        }
+
+        template <typename TSelector>
+        auto Select(const TSelector selector) -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>
+        {
+            return { { enumerator, selector } };
         }
 
         template <typename TPredicate>

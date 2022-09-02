@@ -6,6 +6,7 @@ include_directories(${PROJECT_SOURCE_DIR}/Source)
 add_executable(
     ${TESTS_PROJECT_NAME}
     ${PROJECT_SOURCE_DIR}/Tests/Main.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/SelectTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/WhereTests.cpp
 )
 
