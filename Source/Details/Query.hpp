@@ -11,9 +11,9 @@ namespace CppLinq::Details::Enumerators
     struct ForEachEnumerator;
     template <typename TIterator>
     struct IteratorEnumerator;
-    template <typename TContainer, typename TIterator = typename TContainer::const_iterator>
+    template <typename TContainer>
     struct OrderEnumerator;
-    template <typename TContainer, typename TIterator = typename TContainer::const_reverse_iterator>
+    template <typename TContainer>
     struct ReverseEnumerator;
     template <typename TEnumerator, typename TSelector>
     struct SelectEnumerator;

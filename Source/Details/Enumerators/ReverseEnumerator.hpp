@@ -5,10 +5,10 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TContainer, typename TIterator>
-    struct ReverseEnumerator final : EnumeratorWrapper<IteratorEnumerator<TIterator>>
+    template <typename TContainer>
+    struct ReverseEnumerator final : EnumeratorWrapper<IteratorEnumerator<typename TContainer::const_reverse_iterator>>
     {
-        using Base = EnumeratorWrapper<IteratorEnumerator<TIterator>>;
+        using Base = EnumeratorWrapper<IteratorEnumerator<typename TContainer::const_reverse_iterator>>;
 
         ReverseEnumerator(const TContainer& container) ;
 

@@ -6,15 +6,15 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TContainer, typename TIterator>
-    OrderEnumerator<TContainer, TIterator>::OrderEnumerator(const TContainer& container) :
+    template <typename TContainer>
+    OrderEnumerator<TContainer>::OrderEnumerator(const TContainer& container) :
         container(container)
     {
         SortContainer();
     }
 
-    template <typename TContainer, typename TIterator>
-    auto OrderEnumerator<TContainer, TIterator>::GetCurrent() -> const ValueType&
+    template <typename TContainer>
+    auto OrderEnumerator<TContainer>::GetCurrent() -> const ValueType&
     {
         if (IsFinished())
         {
@@ -24,14 +24,14 @@ namespace CppLinq::Details::Enumerators
         return *begin;
     }
 
-    template <typename TContainer, typename TIterator>
-    auto OrderEnumerator<TContainer, TIterator>::IsFinished() -> bool
+    template <typename TContainer>
+    auto OrderEnumerator<TContainer>::IsFinished() -> bool
     {
         return begin == end;
     }
 
-    template <typename TContainer, typename TIterator>
-    void OrderEnumerator<TContainer, TIterator>::MoveNext()
+    template <typename TContainer>
+    void OrderEnumerator<TContainer>::MoveNext()
     {
         if (IsFinished())
         {
@@ -41,8 +41,8 @@ namespace CppLinq::Details::Enumerators
         ++begin;
     }
 
-    template <typename TContainer, typename TIterator>
-    void OrderEnumerator<TContainer, TIterator>::SortContainer()
+    template <typename TContainer>
+    void OrderEnumerator<TContainer>::SortContainer()
     {
         std::sort(container.begin(), container.end());
 

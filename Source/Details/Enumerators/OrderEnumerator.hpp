@@ -4,9 +4,10 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TContainer, typename TIterator>
+    template <typename TContainer>
     struct OrderEnumerator final
     {
+        using IteratorType = typename TContainer::const_iterator;
         using ValueType = typename TContainer::value_type;
 
         OrderEnumerator(const TContainer& container);
@@ -18,8 +19,8 @@ namespace CppLinq::Details::Enumerators
     private:
         void SortContainer();
 
-        TIterator begin;
+        IteratorType begin;
         TContainer container;
-        TIterator end;
+        IteratorType end;
     };
 }
