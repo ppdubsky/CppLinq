@@ -43,58 +43,58 @@ namespace CppLinq::Details
 
     template <typename TEnumerator>
     template <typename TNextEnumerator>
-    auto Query<TEnumerator>::Concatenate(const Query<TNextEnumerator>& nextQuery) -> Query<Enumerators::ConcatenationEnumerator<TEnumerator, TNextEnumerator>>
+    auto Query<TEnumerator>::Concatenate(const Query<TNextEnumerator>& nextQuery) const -> Query<Enumerators::ConcatenationEnumerator<TEnumerator, TNextEnumerator>>
     {
         return { { enumerator, nextQuery } };
     }
 
     template <typename TEnumerator>
     template <typename TFunction>
-    auto Query<TEnumerator>::ForEach(const TFunction function) -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>
+    auto Query<TEnumerator>::ForEach(const TFunction function) const -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>
     {
         return { { enumerator, function } };
     }
 
     template <typename TEnumerator>
-    auto Query<TEnumerator>::OrderBy() -> Query<Enumerators::OrderEnumerator<TEnumerator>>
+    auto Query<TEnumerator>::OrderBy() const -> Query<Enumerators::OrderEnumerator<TEnumerator>>
     {
         return { { *this } };
     }
 
     template <typename TEnumerator>
-    auto Query<TEnumerator>::Reverse() -> Query<Enumerators::ReverseEnumerator<TEnumerator>>
+    auto Query<TEnumerator>::Reverse() const -> Query<Enumerators::ReverseEnumerator<TEnumerator>>
     {
         return { { *this } };
     }
 
     template <typename TEnumerator>
     template <typename TSelector>
-    auto Query<TEnumerator>::Select(const TSelector selector) -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>
+    auto Query<TEnumerator>::Select(const TSelector selector) const -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>
     {
         return { { enumerator, selector } };
     }
 
     template <typename TEnumerator>
-    auto Query<TEnumerator>::Skip(const std::uint32_t count) -> Query<Enumerators::SkipEnumerator<TEnumerator>>
+    auto Query<TEnumerator>::Skip(const std::uint32_t count) const -> Query<Enumerators::SkipEnumerator<TEnumerator>>
     {
         return { { enumerator, count } };
     }
 
     template <typename TEnumerator>
     template <typename TNewType>
-    auto Query<TEnumerator>::StaticCast() -> Query<Enumerators::StaticCastEnumerator<TEnumerator, TNewType>>
+    auto Query<TEnumerator>::StaticCast() const -> Query<Enumerators::StaticCastEnumerator<TEnumerator, TNewType>>
     {
         return { { enumerator } };
     }
 
     template <typename TEnumerator>
-    auto Query<TEnumerator>::Take(const std::uint32_t count) -> Query<Enumerators::TakeEnumerator<TEnumerator>>
+    auto Query<TEnumerator>::Take(const std::uint32_t count) const -> Query<Enumerators::TakeEnumerator<TEnumerator>>
     {
         return { { enumerator, count } };
     }
 
     template <typename TEnumerator>
-    auto Query<TEnumerator>::ToVector() -> std::vector<ValueType>
+    auto Query<TEnumerator>::ToVector() const -> std::vector<ValueType>
     {
         std::vector<ValueType> items;
 
@@ -111,7 +111,7 @@ namespace CppLinq::Details
 
     template <typename TEnumerator>
     template <typename TPredicate>
-    auto Query<TEnumerator>::Where(const TPredicate predicate) -> Query<Enumerators::WhereEnumerator<TEnumerator, TPredicate>>
+    auto Query<TEnumerator>::Where(const TPredicate predicate) const -> Query<Enumerators::WhereEnumerator<TEnumerator, TPredicate>>
     {
         return { { enumerator, predicate } };
     }
