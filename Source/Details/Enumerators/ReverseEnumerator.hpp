@@ -1,7 +1,7 @@
 #pragma once
 
-#include "EnumeratorWrapper.hpp"
-#include "IteratorEnumerator.hpp"
+#include "Details/Enumerators/EnumeratorWrapper.hpp"
+#include "Details/Enumerators/IteratorEnumerator.hpp"
 
 namespace CppLinq::Details::Enumerators
 {

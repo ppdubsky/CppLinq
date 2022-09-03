@@ -18,6 +18,7 @@ target_include_directories(
     ${TESTS_PROJECT_NAME}
     PRIVATE
         ${CMAKE_BINARY_DIR}/googletest-src/googletest/include
+        ${PROJECT_SOURCE_DIR}/Tests
 )
 
 target_link_libraries(

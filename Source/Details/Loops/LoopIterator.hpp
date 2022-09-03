@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LoopIteratorSentinel.hpp"
+#include "Details/Loops/LoopIteratorSentinel.hpp"
 
 namespace CppLinq::Details::Loops
 {

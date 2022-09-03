@@ -3,17 +3,17 @@
 #include <cstdint>
 #include <vector>
 
-#include "Enumerators/ConcatenationEnumerator.hpp"
-#include "Enumerators/ForEachEnumerator.hpp"
-#include "Enumerators/IteratorEnumerator.hpp"
-#include "Enumerators/ReverseEnumerator.hpp"
-#include "Enumerators/SelectEnumerator.hpp"
-#include "Enumerators/SkipEnumerator.hpp"
-#include "Enumerators/StaticCastEnumerator.hpp"
-#include "Enumerators/TakeEnumerator.hpp"
-#include "Enumerators/WhereEnumerator.hpp"
-#include "Loops/LoopIterator.hpp"
-#include "Loops/LoopIteratorSentinel.hpp"
+#include "Details/Enumerators/ConcatenationEnumerator.hpp"
+#include "Details/Enumerators/ForEachEnumerator.hpp"
+#include "Details/Enumerators/IteratorEnumerator.hpp"
+#include "Details/Enumerators/ReverseEnumerator.hpp"
+#include "Details/Enumerators/SelectEnumerator.hpp"
+#include "Details/Enumerators/SkipEnumerator.hpp"
+#include "Details/Enumerators/StaticCastEnumerator.hpp"
+#include "Details/Enumerators/TakeEnumerator.hpp"
+#include "Details/Enumerators/WhereEnumerator.hpp"
+#include "Details/Loops/LoopIterator.hpp"
+#include "Details/Loops/LoopIteratorSentinel.hpp"
 
 namespace CppLinq::Details
 {

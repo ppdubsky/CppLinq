@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-#include "EnumeratorWrapper.hpp"
+#include "Details/Enumerators/EnumeratorWrapper.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
