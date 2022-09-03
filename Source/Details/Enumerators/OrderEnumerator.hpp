@@ -1,26 +1,31 @@
 #pragma once
 
-#include "Exceptions/FinishedEnumeratorException.hpp"
+#include <type_traits>
+
+#include "Details/Query.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TContainer>
+    template <typename TEnumerator>
     struct OrderEnumerator final
     {
-        using IteratorType = typename TContainer::const_iterator;
-        using ValueType = typename TContainer::value_type;
+        using ContainerType = decltype(std::declval<Query<TEnumerator>>().ToVector());
+        using IteratorType = typename ContainerType::const_iterator;
+        using ValueType = typename Query<TEnumerator>::ValueType;
 
-        OrderEnumerator(const TContainer& container);
+        OrderEnumerator(const Query<TEnumerator>& query);
 
         auto GetCurrent() -> const ValueType&;
         auto IsFinished() -> bool;
         void MoveNext();
 
     private:
-        void SortContainer();
+        void EnsureEnumeratorIsReady();
 
         IteratorType begin;
-        TContainer container;
+        ContainerType container;
         IteratorType end;
+        bool isReady{ false };
+        Query<TEnumerator> query;
     };
 }

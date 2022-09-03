@@ -7,6 +7,33 @@ using namespace CppLinq;
 using namespace CppLinq::Exceptions;
 using namespace std;
 
+struct Sortable final
+{
+    auto operator<(const Sortable right) const -> bool
+    {
+        ++comparisonCount;
+
+        return value < right.value;
+    }
+
+    static uint32_t comparisonCount;
+
+    uint32_t value;
+};
+
+uint32_t Sortable::comparisonCount = 0U;
+
+TEST(OrderBy, ExecutionIsDeferred)
+{
+    Sortable::comparisonCount = 0U;
+
+    const Sortable source[] { 1, 3, 5, 7, 9, 10, 8, 6, 4, 2 };
+
+    const auto actual = From(source).OrderBy();
+
+    EXPECT_EQ(Sortable::comparisonCount, 0U);
+}
+
 TEST(OrderBy, ReturnsExpectedValues_SourceIsEmpty)
 {
     const vector<int> source;

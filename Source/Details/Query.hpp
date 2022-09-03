@@ -11,9 +11,9 @@ namespace CppLinq::Details::Enumerators
     struct ForEachEnumerator;
     template <typename TIterator>
     struct IteratorEnumerator;
-    template <typename TContainer>
+    template <typename TEnumerator>
     struct OrderEnumerator;
-    template <typename TContainer>
+    template <typename TEnumerator>
     struct ReverseEnumerator;
     template <typename TEnumerator, typename TSelector>
     struct SelectEnumerator;
@@ -52,8 +52,8 @@ namespace CppLinq::Details
         auto Concatenate(const Query<TNextEnumerator>& nextQuery) -> Query<Enumerators::ConcatenationEnumerator<TEnumerator, TNextEnumerator>>;
         template <typename TFunction>
         auto ForEach(const TFunction function) -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>;
-        auto OrderBy() -> Query<Enumerators::OrderEnumerator<std::vector<ValueType>>>;
-        auto Reverse() -> Query<Enumerators::ReverseEnumerator<std::vector<ValueType>>>;
+        auto OrderBy() -> Query<Enumerators::OrderEnumerator<TEnumerator>>;
+        auto Reverse() -> Query<Enumerators::ReverseEnumerator<TEnumerator>>;
         template <typename TSelector>
         auto Select(const TSelector selector) -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>;
         auto Skip(const std::uint32_t count) -> Query<Enumerators::SkipEnumerator<TEnumerator>>;

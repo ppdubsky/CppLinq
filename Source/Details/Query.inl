@@ -56,15 +56,15 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
-    auto Query<TEnumerator>::OrderBy() -> Query<Enumerators::OrderEnumerator<std::vector<ValueType>>>
+    auto Query<TEnumerator>::OrderBy() -> Query<Enumerators::OrderEnumerator<TEnumerator>>
     {
-        return { { ToVector() } };
+        return { { *this } };
     }
 
     template <typename TEnumerator>
-    auto Query<TEnumerator>::Reverse() -> Query<Enumerators::ReverseEnumerator<std::vector<ValueType>>>
+    auto Query<TEnumerator>::Reverse() -> Query<Enumerators::ReverseEnumerator<TEnumerator>>
     {
-        return { { ToVector() } };
+        return { { *this } };
     }
 
     template <typename TEnumerator>
