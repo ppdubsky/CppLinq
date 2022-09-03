@@ -10,14 +10,8 @@ namespace CppLinq::Details::Enumerators
         using Base = EnumeratorWrapper<TEnumerator>;
         using ValueType = TNewType;
 
-        StaticCastEnumerator(const TEnumerator enumerator) :
-            Base(enumerator)
-        {
-        }
+        StaticCastEnumerator(const TEnumerator enumerator);
 
-        auto GetCurrent() -> ValueType
-        {
-            return static_cast<TNewType>(Base::GetCurrent());
-        }
+        auto GetCurrent() -> ValueType;
     };
 }

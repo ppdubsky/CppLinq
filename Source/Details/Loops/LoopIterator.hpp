@@ -9,32 +9,12 @@ namespace CppLinq::Details::Loops
     {
         using ValueType = typename TEnumerator::ValueType;
 
-        LoopIterator(const TEnumerator enumerator) :
-            enumerator(enumerator)
-        {
-        }
+        LoopIterator(const TEnumerator enumerator);
 
-        auto operator++() -> LoopIterator&
-        {
-            enumerator.MoveNext();
-
-            return *this;
-        }
-
-        auto operator*() -> ValueType
-        {
-            return enumerator.GetCurrent();
-        }
-
-        auto operator==(const LoopIteratorSentinel /*right*/) -> bool
-        {
-            return enumerator.IsFinished();
-        }
-
-        auto operator!=(const LoopIteratorSentinel right) -> bool
-        {
-            return !operator==(right);
-        }
+        auto operator++() -> LoopIterator&;
+        auto operator*() -> ValueType;
+        auto operator==(const LoopIteratorSentinel right) -> bool;
+        auto operator!=(const LoopIteratorSentinel right) -> bool;
 
     private:
         TEnumerator enumerator;

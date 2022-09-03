@@ -23,90 +23,28 @@ namespace CppLinq::Details
     {
         using ValueType = typename TEnumerator::ValueType;
 
-        Query(const TEnumerator enumerator) :
-            enumerator(enumerator)
-        {
-        }
+        Query(const TEnumerator enumerator);
 
-        auto begin() const -> Loops::LoopIterator<TEnumerator>
-        {
-            return { enumerator };
-        }
+        auto begin() const -> Loops::LoopIterator<TEnumerator>;
+        auto end() const -> Loops::LoopIteratorSentinel;
 
-        auto end() const -> Loops::LoopIteratorSentinel
-        {
-            return {};
-        }
-
-        auto GetEnumerator() -> TEnumerator&
-        {
-            return enumerator;
-        }
+        auto GetEnumerator() -> TEnumerator&;
 
         template <typename TNextEnumerator>
-        auto Concatenate(const Query<TNextEnumerator>& nextQuery) -> Query<Enumerators::ConcatenationEnumerator<TEnumerator, TNextEnumerator>>
-        {
-            return { { enumerator, nextQuery } };
-        }
-
+        auto Concatenate(const Query<TNextEnumerator>& nextQuery) -> Query<Enumerators::ConcatenationEnumerator<TEnumerator, TNextEnumerator>>;
         template <typename TFunction>
-        auto ForEach(const TFunction function) -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>
-        {
-            return { { enumerator, function } };
-        }
-
-        auto OrderBy() -> Query<Enumerators::OrderEnumerator<std::vector<ValueType>>>
-        {
-            return { { ToVector() } };
-        }
-
-        auto Reverse() -> Query<Enumerators::ReverseEnumerator<std::vector<ValueType>>>
-        {
-            return { { ToVector() } };
-        }
-
+        auto ForEach(const TFunction function) -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>;
+        auto OrderBy() -> Query<Enumerators::OrderEnumerator<std::vector<ValueType>>>;
+        auto Reverse() -> Query<Enumerators::ReverseEnumerator<std::vector<ValueType>>>;
         template <typename TSelector>
-        auto Select(const TSelector selector) -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>
-        {
-            return { { enumerator, selector } };
-        }
-
-        auto Skip(const std::uint32_t count) -> Query<Enumerators::SkipEnumerator<TEnumerator>>
-        {
-            return { { enumerator, count } };
-        }
-
+        auto Select(const TSelector selector) -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>;
+        auto Skip(const std::uint32_t count) -> Query<Enumerators::SkipEnumerator<TEnumerator>>;
         template <typename TNewType>
-        auto StaticCast() -> Query<Enumerators::StaticCastEnumerator<TEnumerator, TNewType>>
-        {
-            return { { enumerator } };
-        }
-
-        auto Take(const std::uint32_t count) -> Query<Enumerators::TakeEnumerator<TEnumerator>>
-        {
-            return { { enumerator, count } };
-        }
-
-        auto ToVector() -> std::vector<ValueType>
-        {
-            std::vector<ValueType> items;
-
-            TEnumerator enumeratorCopy = enumerator;
-            while (!enumeratorCopy.IsFinished())
-            {
-                items.push_back(enumeratorCopy.GetCurrent());
-
-                enumeratorCopy.MoveNext();
-            }
-
-            return items;
-        }
-
+        auto StaticCast() -> Query<Enumerators::StaticCastEnumerator<TEnumerator, TNewType>>;
+        auto Take(const std::uint32_t count) -> Query<Enumerators::TakeEnumerator<TEnumerator>>;
+        auto ToVector() -> std::vector<ValueType>;
         template <typename TPredicate>
-        auto Where(const TPredicate predicate) -> Query<Enumerators::WhereEnumerator<TEnumerator, TPredicate>>
-        {
-            return { { enumerator, predicate } };
-        }
+        auto Where(const TPredicate predicate) -> Query<Enumerators::WhereEnumerator<TEnumerator, TPredicate>>;
 
     private:
         TEnumerator enumerator;

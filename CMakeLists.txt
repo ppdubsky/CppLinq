@@ -24,19 +24,32 @@ target_sources(
     PRIVATE
         ${PROJECT_SOURCE_DIR}/Source/CppLinq.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/EnumeratorWrapper.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/EnumeratorWrapper.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ForEachEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ForEachEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ReverseEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ReverseEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SelectEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SelectEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/StaticCastEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/StaticCastEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/WhereEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/WhereEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Loops/LoopIterator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Loops/LoopIterator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Loops/LoopIteratorSentinel.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Query.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/ValueTypeProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/FinishedEnumeratorException.hpp
 )

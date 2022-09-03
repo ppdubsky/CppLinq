@@ -9,20 +9,9 @@ namespace CppLinq::Details::Enumerators
     {
         using Base = EnumeratorWrapper<TEnumerator>;
 
-        ForEachEnumerator(const TEnumerator enumerator, const TFunction function) :
-            Base(enumerator),
-            function(function)
-        {
-        }
+        ForEachEnumerator(const TEnumerator enumerator, const TFunction function);
 
-        auto GetCurrent() -> Base::ValueType
-        {
-            const Base::ValueType value = Base::GetCurrent();
-
-            function(value);
-
-            return value;
-        }
+        auto GetCurrent() -> Base::ValueType;
 
     private:
         TFunction function;

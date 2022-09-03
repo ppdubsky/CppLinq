@@ -1,7 +1,18 @@
 #pragma once
 
-#include "Details/Enumerators/IteratorEnumerator.hpp"
-#include "Details/Query.hpp"
+#include "Details/Enumerators/ConcatenationEnumerator.inl"
+#include "Details/Enumerators/EnumeratorWrapper.inl"
+#include "Details/Enumerators/ForEachEnumerator.inl"
+#include "Details/Enumerators/IteratorEnumerator.inl"
+#include "Details/Enumerators/OrderEnumerator.inl"
+#include "Details/Enumerators/ReverseEnumerator.inl"
+#include "Details/Enumerators/SelectEnumerator.inl"
+#include "Details/Enumerators/SkipEnumerator.inl"
+#include "Details/Enumerators/StaticCastEnumerator.inl"
+#include "Details/Enumerators/TakeEnumerator.inl"
+#include "Details/Enumerators/WhereEnumerator.inl"
+#include "Details/Loops/LoopIterator.inl"
+#include "Details/Query.inl"
 
 namespace CppLinq
 {

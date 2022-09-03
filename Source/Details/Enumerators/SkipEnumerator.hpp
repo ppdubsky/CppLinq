@@ -11,48 +11,14 @@ namespace CppLinq::Details::Enumerators
     {
         using Base = EnumeratorWrapper<TEnumerator>;
 
-        SkipEnumerator(const TEnumerator enumerator, const std::uint32_t count) :
-            Base(enumerator),
-            count(count)
-        {
-        }
+        SkipEnumerator(const TEnumerator enumerator, const std::uint32_t count);
 
-        auto GetCurrent() -> Base::ValueType
-        {
-            EnsureEnumeratorIsReady();
-
-            return Base::GetCurrent();
-        }
-
-        auto IsFinished() -> bool
-        {
-            EnsureEnumeratorIsReady();
-
-            return Base::IsFinished();
-        }
-
-        void MoveNext()
-        {
-            EnsureEnumeratorIsReady();
-
-            Base::MoveNext();
-        }
+        auto GetCurrent() -> Base::ValueType;
+        auto IsFinished() -> bool;
+        void MoveNext();
 
     private:
-        void EnsureEnumeratorIsReady()
-        {
-            if (!isReady)
-            {
-                while (count > 0U && !Base::IsFinished())
-                {
-                    Base::MoveNext();
-
-                    --count;
-                }
-
-                isReady = true;
-            }
-        }
+        void EnsureEnumeratorIsReady();
 
         std::uint32_t count;
         bool isReady{ false };

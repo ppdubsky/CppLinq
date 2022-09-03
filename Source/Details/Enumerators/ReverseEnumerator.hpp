@@ -10,11 +10,7 @@ namespace CppLinq::Details::Enumerators
     {
         using Base = EnumeratorWrapper<IteratorEnumerator<TIterator>>;
 
-        ReverseEnumerator(const TContainer& container) :
-            Base({ container.crbegin(), container.crend() }),
-            container(container)
-        {
-        }
+        ReverseEnumerator(const TContainer& container) ;
 
     private:
         TContainer container;

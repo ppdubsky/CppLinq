@@ -12,16 +12,9 @@ namespace CppLinq::Details::Enumerators
         using Base = EnumeratorWrapper<TEnumerator>;
         using ValueType = decltype(std::declval<TSelector>()(std::declval<typename TEnumerator::ValueType>()));
 
-        SelectEnumerator(const TEnumerator enumerator, const TSelector selector) :
-            Base(enumerator),
-            selector(selector)
-        {
-        }
+        SelectEnumerator(const TEnumerator enumerator, const TSelector selector);
 
-        auto GetCurrent() -> ValueType
-        {
-            return selector(Base::GetCurrent());
-        }
+        auto GetCurrent() -> ValueType;
 
     private:
         TSelector selector;

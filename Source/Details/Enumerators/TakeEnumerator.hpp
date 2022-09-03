@@ -3,7 +3,6 @@
 #include <cstdint>
 
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
-#include "Exceptions/FinishedEnumeratorException.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
@@ -12,38 +11,11 @@ namespace CppLinq::Details::Enumerators
     {
         using Base = EnumeratorWrapper<TEnumerator>;
 
-        TakeEnumerator(const TEnumerator enumerator, const std::uint32_t count) :
-            Base(enumerator),
-            count(count)
-        {
-        }
+        TakeEnumerator(const TEnumerator enumerator, const std::uint32_t count);
 
-        auto GetCurrent() -> Base::ValueType
-        {
-            if (IsFinished())
-            {
-                throw Exceptions::FinishedEnumeratorException();
-            }
-
-            return Base::GetCurrent();
-        }
-
-        auto IsFinished() -> bool
-        {
-            return count == 0U || Base::IsFinished();
-        }
-
-        void MoveNext()
-        {
-            if (count == 0U)
-            {
-                throw Exceptions::FinishedEnumeratorException();
-            }
-
-            Base::MoveNext();
-
-            --count;
-        }
+        auto GetCurrent() -> Base::ValueType;
+        auto IsFinished() -> bool;
+        void MoveNext();
 
     private:
         std::uint32_t count;

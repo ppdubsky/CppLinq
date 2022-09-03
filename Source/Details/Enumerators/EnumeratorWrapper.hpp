@@ -7,26 +7,12 @@ namespace CppLinq::Details::Enumerators
     {
         using ValueType = typename TEnumerator::ValueType;
 
-        auto GetCurrent() -> ValueType
-        {
-            return enumerator.GetCurrent();
-        }
-
-        auto IsFinished() -> bool
-        {
-            return enumerator.IsFinished();
-        }
-
-        void MoveNext()
-        {
-            enumerator.MoveNext();
-        }
+        auto GetCurrent() -> ValueType;
+        auto IsFinished() -> bool;
+        void MoveNext();
 
     protected:
-        EnumeratorWrapper(const TEnumerator enumerator) :
-            enumerator(enumerator)
-        {
-        }
+        EnumeratorWrapper(const TEnumerator enumerator);
 
     private:
         TEnumerator enumerator;

@@ -15,33 +15,11 @@ namespace CppLinq::Details::Enumerators
     {
         using Base = EnumeratorWrapper<TEnumerator>;
 
-        ConcatenationEnumerator(const TEnumerator enumerator, const Query<TNextEnumerator>& nextQuery) :
-            Base(enumerator),
-            nextQuery(nextQuery)
-        {
-        }
+        ConcatenationEnumerator(const TEnumerator enumerator, const Query<TNextEnumerator>& nextQuery);
 
-        auto GetCurrent() -> Base::ValueType
-        {
-            return Base::IsFinished() ? nextQuery.GetEnumerator().GetCurrent() : Base::GetCurrent();
-        }
-
-        auto IsFinished() -> bool
-        {
-            return Base::IsFinished() && nextQuery.GetEnumerator().IsFinished();
-        }
-
-        void MoveNext()
-        {
-            if (Base::IsFinished())
-            {
-                nextQuery.GetEnumerator().MoveNext();
-            }
-            else
-            {
-                Base::MoveNext();
-            }
-        }
+        auto GetCurrent() -> Base::ValueType;
+        auto IsFinished() -> bool;
+        void MoveNext();
 
     private:
         Query<TNextEnumerator> nextQuery;

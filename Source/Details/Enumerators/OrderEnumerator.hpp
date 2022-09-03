@@ -1,7 +1,5 @@
 #pragma once
 
-#include <algorithm>
-
 #include "Exceptions/FinishedEnumeratorException.hpp"
 
 namespace CppLinq::Details::Enumerators
@@ -11,45 +9,14 @@ namespace CppLinq::Details::Enumerators
     {
         using ValueType = typename TContainer::value_type;
 
-        OrderEnumerator(const TContainer& container) :
-            container(container)
-        {
-            SortContainer();
-        }
+        OrderEnumerator(const TContainer& container);
 
-        auto GetCurrent() -> const ValueType&
-        {
-            if (IsFinished())
-            {
-                throw Exceptions::FinishedEnumeratorException();
-            }
-
-            return *begin;
-        }
-
-        auto IsFinished() -> bool
-        {
-            return begin == end;
-        }
-
-        void MoveNext()
-        {
-            if (IsFinished())
-            {
-                throw Exceptions::FinishedEnumeratorException();
-            }
-
-            ++begin;
-        }
+        auto GetCurrent() -> const ValueType&;
+        auto IsFinished() -> bool;
+        void MoveNext();
 
     private:
-        void SortContainer()
-        {
-            std::sort(container.begin(), container.end());
-
-            begin = container.cbegin();
-            end = container.cend();
-        }
+        void SortContainer();
 
         TIterator begin;
         TContainer container;

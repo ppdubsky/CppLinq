@@ -9,55 +9,14 @@ namespace CppLinq::Details::Enumerators
     {
         using Base = EnumeratorWrapper<TEnumerator>;
 
-        WhereEnumerator(const TEnumerator enumerator, const TPredicate predicate) :
-            Base(enumerator),
-            predicate(predicate)
-        {
-        }
+        WhereEnumerator(const TEnumerator enumerator, const TPredicate predicate);
 
-        auto GetCurrent() -> Base::ValueType
-        {
-            EnsureEnumeratorIsReady();
-
-            return Base::GetCurrent();
-        }
-
-        auto IsFinished() -> bool
-        {
-            EnsureEnumeratorIsReady();
-
-            return Base::IsFinished();
-        }
-
-        void MoveNext()
-        {
-            EnsureEnumeratorIsReady();
-
-            Base::MoveNext();
-
-            isReady = false;
-        }
+        auto GetCurrent() -> Base::ValueType;
+        auto IsFinished() -> bool;
+        void MoveNext();
 
     private:
-        void EnsureEnumeratorIsReady()
-        {
-            if (!isReady)
-            {
-                while (!Base::IsFinished())
-                {
-                    if (predicate(Base::GetCurrent()))
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Base::MoveNext();
-                    }
-                }
-
-                isReady = true;
-            }
-        }
+        void EnsureEnumeratorIsReady();
 
         bool isReady{ false };
         TPredicate predicate;
