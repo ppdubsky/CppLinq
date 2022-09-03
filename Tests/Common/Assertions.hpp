@@ -24,6 +24,8 @@ void ExpectSequencesAreEquivalent(const TActualIteratorBegin actualBegin, const 
 
         ++actualSequenceCurrent;
         ++expectedSequenceCurrent;
+
+        ++index;
     }
 
     const bool isActualSequenceFinished = actualSequenceCurrent == actualEnd;
