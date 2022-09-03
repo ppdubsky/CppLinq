@@ -1,7 +1,6 @@
 set(TESTS_PROJECT_NAME "${PROJECT_NAME}Tests")
 
 include_directories(${CMAKE_BINARY_DIR}/googletest-src/googletest/include)
-include_directories(${PROJECT_SOURCE_DIR}/Source)
 
 add_executable(
     ${TESTS_PROJECT_NAME}
@@ -19,6 +18,7 @@ add_executable(
 
 target_link_libraries(
     ${TESTS_PROJECT_NAME}
+    ${PROJECT_NAME}
     gtest
     gtest_main
 )
