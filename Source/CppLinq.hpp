@@ -1,15 +1,15 @@
 #pragma once
 
+#include "Details/Collections/ConstIteratorProvider.inl"
+#include "Details/Collections/ConstReverseIteratorProvider.inl"
+#include "Details/Collections/DoNothingCollectionStrategy.inl"
+#include "Details/Collections/SortCollectionStrategy.inl"
+#include "Details/Collections/VectorCollectionProvider.inl"
+#include "Details/Enumerators/CollectionEnumerator.inl"
 #include "Details/Enumerators/ConcatenationEnumerator.inl"
-#include "Details/Enumerators/ContainerEnumerator.inl"
-#include "Details/Enumerators/ContainerProviders/VectorContainerProvider.inl"
-#include "Details/Enumerators/ContainerStrategies/DoNothingContainerStrategy.inl"
-#include "Details/Enumerators/ContainerStrategies/SortContainerStrategy.inl"
 #include "Details/Enumerators/EnumeratorWrapper.inl"
 #include "Details/Enumerators/ForEachEnumerator.inl"
 #include "Details/Enumerators/IteratorEnumerator.inl"
-#include "Details/Enumerators/IteratorProviders/ConstIteratorProvider.inl"
-#include "Details/Enumerators/IteratorProviders/ConstReverseIteratorProvider.inl"
 #include "Details/Enumerators/OrderEnumerator.inl"
 #include "Details/Enumerators/ReverseEnumerator.inl"
 #include "Details/Enumerators/SelectEnumerator.inl"
@@ -22,10 +22,10 @@
 
 namespace CppLinq
 {
-    template <typename TContainer>
-    auto From(const TContainer& container) -> Details::Query<Details::Enumerators::IteratorEnumerator<typename TContainer::const_iterator>>
+    template <typename TCollection>
+    auto From(const TCollection& collection) -> Details::Query<Details::Enumerators::IteratorEnumerator<typename TCollection::const_iterator>>
     {
-        return { { container.cbegin(), container.cend() } };
+        return { { collection.cbegin(), collection.cend() } };
     }
 
     template <typename T, std::uint32_t TLength>

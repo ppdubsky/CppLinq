@@ -23,17 +23,21 @@ target_sources(
     ${PROJECT_NAME}
     PRIVATE
         ${PROJECT_SOURCE_DIR}/Source/CppLinq.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/ConstIteratorProvider.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/ConstIteratorProvider.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/ConstReverseIteratorProvider.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/ConstReverseIteratorProvider.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/DoNothingCollectionStrategy.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/DoNothingCollectionStrategy.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/SortCollectionStrategy.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/SortCollectionStrategy.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/VectorCollectionProvider.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/VectorCollectionProvider.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/CollectionEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/CollectionEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ContainerEnumerator.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ContainerEnumerator.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ContainerProviders/VectorContainerProvider.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ContainerProviders/VectorContainerProvider.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ContainerStrategies/DoNothingContainerStrategy.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ContainerStrategies/DoNothingContainerStrategy.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ContainerStrategies/SortContainerStrategy.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ContainerStrategies/SortContainerStrategy.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/EnumeratorWrapper.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/EnumeratorWrapper.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ForEachEnumerator.Forward.hpp
@@ -42,10 +46,6 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorEnumerator.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorProviders/ConstIteratorProvider.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorProviders/ConstIteratorProvider.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorProviders/ConstReverseIteratorProvider.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorProviders/ConstReverseIteratorProvider.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.inl
