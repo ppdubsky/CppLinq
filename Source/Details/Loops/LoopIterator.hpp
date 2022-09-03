@@ -1,6 +1,9 @@
 #pragma once
 
-#include "Details/Loops/LoopIteratorSentinel.hpp"
+namespace CppLinq::Details::Loops
+{
+    struct LoopIteratorSentinel;
+}
 
 namespace CppLinq::Details::Loops
 {

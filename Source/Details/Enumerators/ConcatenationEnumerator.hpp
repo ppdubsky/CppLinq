@@ -1,12 +1,7 @@
 #pragma once
 
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
-
-namespace CppLinq::Details
-{
-    template <typename TEnumerator>
-    struct Query;
-}
+#include "Details/Query.hpp"
 
 namespace CppLinq::Details::Enumerators
 {

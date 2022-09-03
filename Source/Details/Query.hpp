@@ -3,18 +3,36 @@
 #include <cstdint>
 #include <vector>
 
-#include "Details/Enumerators/ConcatenationEnumerator.hpp"
-#include "Details/Enumerators/ForEachEnumerator.hpp"
-#include "Details/Enumerators/IteratorEnumerator.hpp"
-#include "Details/Enumerators/OrderEnumerator.hpp"
-#include "Details/Enumerators/ReverseEnumerator.hpp"
-#include "Details/Enumerators/SelectEnumerator.hpp"
-#include "Details/Enumerators/SkipEnumerator.hpp"
-#include "Details/Enumerators/StaticCastEnumerator.hpp"
-#include "Details/Enumerators/TakeEnumerator.hpp"
-#include "Details/Enumerators/WhereEnumerator.hpp"
-#include "Details/Loops/LoopIterator.hpp"
-#include "Details/Loops/LoopIteratorSentinel.hpp"
+namespace CppLinq::Details::Enumerators
+{
+    template <typename TEnumerator, typename TNextEnumerator>
+    struct ConcatenationEnumerator;
+    template <typename TEnumerator, typename TFunction>
+    struct ForEachEnumerator;
+    template <typename TIterator>
+    struct IteratorEnumerator;
+    template <typename TContainer, typename TIterator = typename TContainer::const_iterator>
+    struct OrderEnumerator;
+    template <typename TContainer, typename TIterator = typename TContainer::const_reverse_iterator>
+    struct ReverseEnumerator;
+    template <typename TEnumerator, typename TSelector>
+    struct SelectEnumerator;
+    template <typename TEnumerator>
+    struct SkipEnumerator;
+    template <typename TEnumerator, typename TNewType>
+    struct StaticCastEnumerator;
+    template <typename TEnumerator>
+    struct TakeEnumerator;
+    template <typename TEnumerator, typename TPredicate>
+    struct WhereEnumerator;
+}
+
+namespace CppLinq::Details::Loops
+{
+    template <typename TEnumerator>
+    struct LoopIterator;
+    struct LoopIteratorSentinel;
+}
 
 namespace CppLinq::Details
 {

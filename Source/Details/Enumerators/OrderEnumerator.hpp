@@ -4,7 +4,7 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TContainer, typename TIterator = typename TContainer::const_iterator>
+    template <typename TContainer, typename TIterator>
     struct OrderEnumerator final
     {
         using ValueType = typename TContainer::value_type;

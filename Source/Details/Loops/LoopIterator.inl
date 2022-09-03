@@ -2,6 +2,8 @@
 
 #include "Details/Loops/LoopIterator.hpp"
 
+#include "Details/Loops/LoopIteratorSentinel.hpp"
+
 namespace CppLinq::Details::Loops
 {
     template <typename TEnumerator>
