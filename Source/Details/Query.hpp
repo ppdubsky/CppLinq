@@ -6,6 +6,7 @@
 #include "Details/Enumerators/ConcatenationEnumerator.hpp"
 #include "Details/Enumerators/ForEachEnumerator.hpp"
 #include "Details/Enumerators/IteratorEnumerator.hpp"
+#include "Details/Enumerators/OrderEnumerator.hpp"
 #include "Details/Enumerators/ReverseEnumerator.hpp"
 #include "Details/Enumerators/SelectEnumerator.hpp"
 #include "Details/Enumerators/SkipEnumerator.hpp"
@@ -52,6 +53,11 @@ namespace CppLinq::Details
         auto ForEach(const TFunction function) -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>
         {
             return { { enumerator, function } };
+        }
+
+        auto OrderBy() -> Query<Enumerators::OrderEnumerator<std::vector<ValueType>>>
+        {
+            return { { ToVector() } };
         }
 
         auto Reverse() -> Query<Enumerators::ReverseEnumerator<std::vector<ValueType>>>

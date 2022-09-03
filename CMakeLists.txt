@@ -27,6 +27,7 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/EnumeratorWrapper.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ForEachEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ReverseEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SelectEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipEnumerator.hpp
