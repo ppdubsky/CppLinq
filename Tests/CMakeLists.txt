@@ -1,7 +1,5 @@
 set(TESTS_PROJECT_NAME "${PROJECT_NAME}Tests")
 
-include_directories(${CMAKE_BINARY_DIR}/googletest-src/googletest/include)
-
 add_executable(
     ${TESTS_PROJECT_NAME}
     ${PROJECT_SOURCE_DIR}/Tests/ConcatenationTests.cpp
@@ -14,6 +12,12 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/TakeTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/ToVectorTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/WhereTests.cpp
+)
+
+target_include_directories(
+    ${TESTS_PROJECT_NAME}
+    PRIVATE
+        ${CMAKE_BINARY_DIR}/googletest-src/googletest/include
 )
 
 target_link_libraries(
