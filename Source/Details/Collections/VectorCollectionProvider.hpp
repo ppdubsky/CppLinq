@@ -11,6 +11,6 @@ namespace CppLinq::Details::Collections
     {
         using CollectionType = decltype(std::declval<Query<TEnumerator>>().ToVector());
 
-        static auto GetCollection(Query<TEnumerator>& query) -> CollectionType;
+        static auto GetCollection(const Query<TEnumerator>& query) -> CollectionType;
     };
 }
