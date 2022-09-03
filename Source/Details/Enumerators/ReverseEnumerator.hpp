@@ -1,31 +1,16 @@
 #pragma once
 
-#include <type_traits>
-
-#include "Details/Query.hpp"
+#include "Details/Enumerators/ContainerEnumerator.hpp"
+#include "Details/Enumerators/ContainerProviders/VectorContainerProvider.hpp"
+#include "Details/Enumerators/IteratorProviders/ConstReverseIteratorProvider.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
     template <typename TEnumerator>
-    struct ReverseEnumerator final
+    struct ReverseEnumerator final : ContainerEnumerator<TEnumerator, ContainerProviders::VectorContainerProvider, IteratorProviders::ConstReverseIteratorProvider>
     {
-        using ContainerType = decltype(std::declval<Query<TEnumerator>>().ToVector());
-        using IteratorType = typename ContainerType::const_reverse_iterator;
-        using ValueType = typename Query<TEnumerator>::ValueType;
+        using Base = ContainerEnumerator<TEnumerator, ContainerProviders::VectorContainerProvider, IteratorProviders::ConstReverseIteratorProvider>;
 
         ReverseEnumerator(const Query<TEnumerator>& query);
-
-        auto GetCurrent() -> const ValueType&;
-        auto IsFinished() -> bool;
-        void MoveNext();
-
-    private:
-        void EnsureEnumeratorIsReady();
-
-        IteratorType begin;
-        ContainerType container;
-        IteratorType end;
-        bool isReady{ false };
-        Query<TEnumerator> query;
     };
 }

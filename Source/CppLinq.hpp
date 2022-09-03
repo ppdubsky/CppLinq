@@ -1,9 +1,15 @@
 #pragma once
 
 #include "Details/Enumerators/ConcatenationEnumerator.inl"
+#include "Details/Enumerators/ContainerEnumerator.inl"
+#include "Details/Enumerators/ContainerProviders/VectorContainerProvider.inl"
+#include "Details/Enumerators/ContainerStrategies/DoNothingContainerStrategy.inl"
+#include "Details/Enumerators/ContainerStrategies/SortContainerStrategy.inl"
 #include "Details/Enumerators/EnumeratorWrapper.inl"
 #include "Details/Enumerators/ForEachEnumerator.inl"
 #include "Details/Enumerators/IteratorEnumerator.inl"
+#include "Details/Enumerators/IteratorProviders/ConstIteratorProvider.inl"
+#include "Details/Enumerators/IteratorProviders/ConstReverseIteratorProvider.inl"
 #include "Details/Enumerators/OrderEnumerator.inl"
 #include "Details/Enumerators/ReverseEnumerator.inl"
 #include "Details/Enumerators/SelectEnumerator.inl"

@@ -1,31 +1,17 @@
 #pragma once
 
-#include <type_traits>
-
-#include "Details/Query.hpp"
+#include "Details/Enumerators/ContainerEnumerator.hpp"
+#include "Details/Enumerators/ContainerProviders/VectorContainerProvider.hpp"
+#include "Details/Enumerators/ContainerStrategies/SortContainerStrategy.hpp"
+#include "Details/Enumerators/IteratorProviders/ConstIteratorProvider.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
     template <typename TEnumerator>
-    struct OrderEnumerator final
+    struct OrderEnumerator final : ContainerEnumerator<TEnumerator, ContainerProviders::VectorContainerProvider, IteratorProviders::ConstIteratorProvider, ContainerStrategies::SortContainerStrategy>
     {
-        using ContainerType = decltype(std::declval<Query<TEnumerator>>().ToVector());
-        using IteratorType = typename ContainerType::const_iterator;
-        using ValueType = typename Query<TEnumerator>::ValueType;
+        using Base = ContainerEnumerator<TEnumerator, ContainerProviders::VectorContainerProvider, IteratorProviders::ConstIteratorProvider, ContainerStrategies::SortContainerStrategy>;
 
         OrderEnumerator(const Query<TEnumerator>& query);
-
-        auto GetCurrent() -> const ValueType&;
-        auto IsFinished() -> bool;
-        void MoveNext();
-
-    private:
-        void EnsureEnumeratorIsReady();
-
-        IteratorType begin;
-        ContainerType container;
-        IteratorType end;
-        bool isReady{ false };
-        Query<TEnumerator> query;
     };
 }
