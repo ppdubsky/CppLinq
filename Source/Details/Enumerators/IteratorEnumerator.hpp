@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Details/Enumerators/IteratorEnumerator.Forward.hpp"
+
 #include "Details/TypeTraits/ValueTypeProvider.hpp"
 
 namespace CppLinq::Details::Enumerators

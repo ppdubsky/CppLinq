@@ -1,38 +1,22 @@
 #pragma once
 
+#include "Details/Query.Forward.hpp"
+
 #include <cstdint>
 #include <vector>
 
-namespace CppLinq::Details::Enumerators
-{
-    template <typename TEnumerator, typename TNextEnumerator>
-    struct ConcatenationEnumerator;
-    template <typename TEnumerator, typename TFunction>
-    struct ForEachEnumerator;
-    template <typename TIterator>
-    struct IteratorEnumerator;
-    template <typename TEnumerator>
-    struct OrderEnumerator;
-    template <typename TEnumerator>
-    struct ReverseEnumerator;
-    template <typename TEnumerator, typename TSelector>
-    struct SelectEnumerator;
-    template <typename TEnumerator>
-    struct SkipEnumerator;
-    template <typename TEnumerator, typename TNewType>
-    struct StaticCastEnumerator;
-    template <typename TEnumerator>
-    struct TakeEnumerator;
-    template <typename TEnumerator, typename TPredicate>
-    struct WhereEnumerator;
-}
-
-namespace CppLinq::Details::Loops
-{
-    template <typename TEnumerator>
-    struct LoopIterator;
-    struct LoopIteratorSentinel;
-}
+#include "Details/Enumerators/ConcatenationEnumerator.Forward.hpp"
+#include "Details/Enumerators/ForEachEnumerator.Forward.hpp"
+#include "Details/Enumerators/IteratorEnumerator.Forward.hpp"
+#include "Details/Enumerators/OrderEnumerator.Forward.hpp"
+#include "Details/Enumerators/ReverseEnumerator.Forward.hpp"
+#include "Details/Enumerators/SelectEnumerator.Forward.hpp"
+#include "Details/Enumerators/SkipEnumerator.Forward.hpp"
+#include "Details/Enumerators/StaticCastEnumerator.Forward.hpp"
+#include "Details/Enumerators/TakeEnumerator.Forward.hpp"
+#include "Details/Enumerators/WhereEnumerator.Forward.hpp"
+#include "Details/Loops/LoopIterator.Forward.hpp"
+#include "Details/Loops/LoopIteratorSentinel.Forward.hpp"
 
 namespace CppLinq::Details
 {

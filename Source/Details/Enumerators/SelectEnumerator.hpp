@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Details/Enumerators/SelectEnumerator.Forward.hpp"
+
 #include <type_traits>
 
 #include "Details/Enumerators/EnumeratorWrapper.hpp"

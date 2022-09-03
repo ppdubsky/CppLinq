@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Details/Enumerators/ConcatenationEnumerator.Forward.hpp"
+
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
 #include "Details/Query.hpp"
 

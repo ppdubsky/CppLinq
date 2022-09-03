@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Details/Enumerators/ForEachEnumerator.Forward.hpp"
+
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
 
 namespace CppLinq::Details::Enumerators

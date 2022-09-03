@@ -2,11 +2,7 @@
 
 #include <type_traits>
 
-namespace CppLinq::Details
-{
-    template <typename TEnumerator>
-    struct Query;
-}
+#include "Details/Query.Forward.hpp"
 
 namespace CppLinq::Details::Enumerators::ContainerProviders
 {

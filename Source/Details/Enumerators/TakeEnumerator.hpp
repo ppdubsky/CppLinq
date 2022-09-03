@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Details/Enumerators/TakeEnumerator.Forward.hpp"
+
 #include <cstdint>
 
 #include "Details/Enumerators/EnumeratorWrapper.hpp"

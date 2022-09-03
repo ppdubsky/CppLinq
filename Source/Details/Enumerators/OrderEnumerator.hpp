@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Details/Enumerators/OrderEnumerator.Forward.hpp"
+
 #include "Details/Enumerators/ContainerEnumerator.hpp"
 #include "Details/Enumerators/ContainerProviders/VectorContainerProvider.hpp"
 #include "Details/Enumerators/ContainerStrategies/SortContainerStrategy.hpp"
