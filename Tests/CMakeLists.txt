@@ -3,6 +3,7 @@ set(TESTS_PROJECT_NAME "${PROJECT_NAME}Tests")
 add_executable(
     ${TESTS_PROJECT_NAME}
     ${PROJECT_SOURCE_DIR}/Tests/AllTests.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/AnyTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/AppendTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/ConcatenationTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/ForEachTests.cpp
