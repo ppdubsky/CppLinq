@@ -11,6 +11,7 @@
 #include "Details/Enumerators/SkipEnumerator.hpp"
 #include "Details/Enumerators/StaticCastEnumerator.hpp"
 #include "Details/Enumerators/TakeEnumerator.hpp"
+#include "Details/Enumerators/TakeWhileEnumerator.hpp"
 #include "Details/Enumerators/WhereEnumerator.hpp"
 #include "Details/Loops/LoopIterator.hpp"
 #include "Details/Loops/LoopIteratorSentinel.hpp"
@@ -91,6 +92,13 @@ namespace CppLinq::Details
     auto Query<TEnumerator>::Take(const std::uint32_t count) const -> Query<Enumerators::TakeEnumerator<TEnumerator>>
     {
         return { { enumerator, count } };
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::TakeWhile(const TPredicate predicate) const -> Query<Enumerators::TakeWhileEnumerator<TEnumerator, TPredicate>>
+    {
+        return { { enumerator, predicate } };
     }
 
     template <typename TEnumerator>

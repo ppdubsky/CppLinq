@@ -14,6 +14,7 @@
 #include "Details/Enumerators/SkipEnumerator.Forward.hpp"
 #include "Details/Enumerators/StaticCastEnumerator.Forward.hpp"
 #include "Details/Enumerators/TakeEnumerator.Forward.hpp"
+#include "Details/Enumerators/TakeWhileEnumerator.Forward.hpp"
 #include "Details/Enumerators/WhereEnumerator.Forward.hpp"
 #include "Details/Loops/LoopIterator.Forward.hpp"
 #include "Details/Loops/LoopIteratorSentinel.Forward.hpp"
@@ -44,6 +45,8 @@ namespace CppLinq::Details
         template <typename TNewType>
         auto StaticCast() const -> Query<Enumerators::StaticCastEnumerator<TEnumerator, TNewType>>;
         auto Take(const std::uint32_t count) const -> Query<Enumerators::TakeEnumerator<TEnumerator>>;
+        template <typename TPredicate>
+        auto TakeWhile(const TPredicate predicate) const -> Query<Enumerators::TakeWhileEnumerator<TEnumerator, TPredicate>>;
         auto ToVector() const -> std::vector<ValueType>;
         template <typename TPredicate>
         auto Where(const TPredicate predicate) const -> Query<Enumerators::WhereEnumerator<TEnumerator, TPredicate>>;
