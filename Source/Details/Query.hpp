@@ -12,6 +12,7 @@
 #include "Details/Enumerators/ReverseEnumerator.Forward.hpp"
 #include "Details/Enumerators/SelectEnumerator.Forward.hpp"
 #include "Details/Enumerators/SkipEnumerator.Forward.hpp"
+#include "Details/Enumerators/SkipWhileEnumerator.Forward.hpp"
 #include "Details/Enumerators/StaticCastEnumerator.Forward.hpp"
 #include "Details/Enumerators/TakeEnumerator.Forward.hpp"
 #include "Details/Enumerators/TakeWhileEnumerator.Forward.hpp"
@@ -42,6 +43,8 @@ namespace CppLinq::Details
         template <typename TSelector>
         auto Select(const TSelector selector) const -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>;
         auto Skip(const std::uint32_t count) const -> Query<Enumerators::SkipEnumerator<TEnumerator>>;
+        template <typename TPredicate>
+        auto SkipWhile(const TPredicate predicate) const -> Query<Enumerators::SkipWhileEnumerator<TEnumerator, TPredicate>>;
         template <typename TNewType>
         auto StaticCast() const -> Query<Enumerators::StaticCastEnumerator<TEnumerator, TNewType>>;
         auto Take(const std::uint32_t count) const -> Query<Enumerators::TakeEnumerator<TEnumerator>>;

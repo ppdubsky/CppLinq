@@ -58,6 +58,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipWhileEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipWhileEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipWhileEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/StaticCastEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/StaticCastEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/StaticCastEnumerator.inl

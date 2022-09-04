@@ -9,6 +9,7 @@
 #include "Details/Enumerators/ReverseEnumerator.hpp"
 #include "Details/Enumerators/SelectEnumerator.hpp"
 #include "Details/Enumerators/SkipEnumerator.hpp"
+#include "Details/Enumerators/SkipWhileEnumerator.hpp"
 #include "Details/Enumerators/StaticCastEnumerator.hpp"
 #include "Details/Enumerators/TakeEnumerator.hpp"
 #include "Details/Enumerators/TakeWhileEnumerator.hpp"
@@ -79,6 +80,13 @@ namespace CppLinq::Details
     auto Query<TEnumerator>::Skip(const std::uint32_t count) const -> Query<Enumerators::SkipEnumerator<TEnumerator>>
     {
         return { { enumerator, count } };
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::SkipWhile(const TPredicate predicate) const -> Query<Enumerators::SkipWhileEnumerator<TEnumerator, TPredicate>>
+    {
+        return { { enumerator, predicate } };
     }
 
     template <typename TEnumerator>

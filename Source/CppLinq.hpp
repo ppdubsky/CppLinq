@@ -14,6 +14,7 @@
 #include "Details/Enumerators/ReverseEnumerator.inl"
 #include "Details/Enumerators/SelectEnumerator.inl"
 #include "Details/Enumerators/SkipEnumerator.inl"
+#include "Details/Enumerators/SkipWhileEnumerator.inl"
 #include "Details/Enumerators/StaticCastEnumerator.inl"
 #include "Details/Enumerators/TakeEnumerator.inl"
 #include "Details/Enumerators/TakeWhileEnumerator.inl"
