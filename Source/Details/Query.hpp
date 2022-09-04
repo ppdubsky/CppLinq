@@ -7,6 +7,7 @@
 
 #include "Details/Enumerators/AppendEnumerator.Forward.hpp"
 #include "Details/Enumerators/ConcatenationEnumerator.Forward.hpp"
+#include "Details/Enumerators/DefaultIfEmptyEnumerator.Forward.hpp"
 #include "Details/Enumerators/ForEachEnumerator.Forward.hpp"
 #include "Details/Enumerators/IteratorEnumerator.Forward.hpp"
 #include "Details/Enumerators/OrderEnumerator.Forward.hpp"
@@ -47,6 +48,8 @@ namespace CppLinq::Details
         auto Count() const -> std::uint32_t;
         template <typename TPredicate>
         auto Count(const TPredicate predicate) const -> std::uint32_t;
+        auto DefaultIfEmpty() const -> Query<Enumerators::DefaultIfEmptyEnumerator<TEnumerator>>;
+        auto DefaultIfEmpty(const ValueType& defaultValue) const -> Query<Enumerators::DefaultIfEmptyEnumerator<TEnumerator>>;
         auto First() const -> ValueType;
         template <typename TPredicate>
         auto First(const TPredicate predicate) const -> ValueType;

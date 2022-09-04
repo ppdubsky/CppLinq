@@ -8,6 +8,7 @@
 #include "Details/Enumerators/AppendEnumerator.inl"
 #include "Details/Enumerators/CollectionEnumerator.inl"
 #include "Details/Enumerators/ConcatenationEnumerator.inl"
+#include "Details/Enumerators/DefaultIfEmptyEnumerator.inl"
 #include "Details/Enumerators/EnumeratorWrapper.inl"
 #include "Details/Enumerators/ForEachEnumerator.inl"
 #include "Details/Enumerators/IteratorEnumerator.inl"

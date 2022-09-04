@@ -41,6 +41,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DefaultIfEmptyEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DefaultIfEmptyEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DefaultIfEmptyEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/EnumeratorWrapper.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/EnumeratorWrapper.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ForEachEnumerator.Forward.hpp

@@ -4,6 +4,7 @@
 
 #include "Details/Enumerators/AppendEnumerator.hpp"
 #include "Details/Enumerators/ConcatenationEnumerator.hpp"
+#include "Details/Enumerators/DefaultIfEmptyEnumerator.hpp"
 #include "Details/Enumerators/ForEachEnumerator.hpp"
 #include "Details/Enumerators/IteratorEnumerator.hpp"
 #include "Details/Enumerators/OrderEnumerator.hpp"
@@ -149,6 +150,17 @@ namespace CppLinq::Details
         }
 
         return count;
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::DefaultIfEmpty() const -> Query<Enumerators::DefaultIfEmptyEnumerator<TEnumerator>>
+    {
+        return DefaultIfEmpty(ValueType());
+    }
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::DefaultIfEmpty(const ValueType& defaultValue) const -> Query<Enumerators::DefaultIfEmptyEnumerator<TEnumerator>>
+    {
+        return { { enumerator, defaultValue } };
     }
 
     template <typename TEnumerator>
