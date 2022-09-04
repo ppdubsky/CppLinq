@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Details/Enumerators/CollectionEnumerator.hpp"
+
 #include "Exceptions/FinishedEnumeratorException.hpp"
 
 namespace CppLinq::Details::Enumerators
