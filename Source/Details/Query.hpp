@@ -52,6 +52,9 @@ namespace CppLinq::Details
         auto First(const TPredicate predicate) const -> ValueType;
         template <typename TFunction>
         auto ForEach(const TFunction function) const -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>;
+        auto Last() const -> ValueType;
+        template <typename TPredicate>
+        auto Last(const TPredicate predicate) const -> ValueType;
         auto Maximum() const -> ValueType;
         auto Minimum() const -> ValueType;
         auto OrderBy() const -> Query<Enumerators::OrderEnumerator<TEnumerator>>;

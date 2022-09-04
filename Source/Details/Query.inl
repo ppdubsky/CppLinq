@@ -213,6 +213,49 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
+    auto Query<TEnumerator>::Last() const -> ValueType
+    {
+        return Last([](const ValueType& /*value*/){ return true; });
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::Last(const TPredicate predicate) const -> ValueType
+    {
+        TEnumerator enumeratorCopy = enumerator;
+
+        while (!enumeratorCopy.IsFinished())
+        {
+            if (predicate(enumeratorCopy.GetCurrent()))
+            {
+                break;
+            }
+
+            enumeratorCopy.MoveNext();
+        }
+
+        if (enumeratorCopy.IsFinished())
+        {
+            throw Exceptions::EmptyCollectionException();
+        }
+
+        ValueType last = enumeratorCopy.GetCurrent();
+
+        while (!enumeratorCopy.IsFinished())
+        {
+            const ValueType current = enumeratorCopy.GetCurrent();
+            if (predicate(current))
+            {
+                last = current;
+            }
+
+            enumeratorCopy.MoveNext();
+        }
+
+        return last;
+    }
+
+    template <typename TEnumerator>
     auto Query<TEnumerator>::Maximum() const -> ValueType
     {
         return GetBound(true);
