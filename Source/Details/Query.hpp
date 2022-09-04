@@ -47,6 +47,9 @@ namespace CppLinq::Details
         auto Count() const -> std::uint32_t;
         template <typename TPredicate>
         auto Count(const TPredicate predicate) const -> std::uint32_t;
+        auto First() const -> ValueType;
+        template <typename TPredicate>
+        auto First(const TPredicate predicate) const -> ValueType;
         template <typename TFunction>
         auto ForEach(const TFunction function) const -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>;
         auto Maximum() const -> ValueType;

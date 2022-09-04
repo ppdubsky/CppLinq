@@ -152,6 +152,32 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
+    auto Query<TEnumerator>::First() const -> ValueType
+    {
+        return First([](const ValueType& /*value*/){ return true; });
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::First(const TPredicate predicate) const -> ValueType
+    {
+        TEnumerator enumeratorCopy = enumerator;
+
+        while (!enumeratorCopy.IsFinished())
+        {
+            const ValueType current = enumeratorCopy.GetCurrent();
+            if (predicate(current))
+            {
+                return current;
+            }
+
+            enumeratorCopy.MoveNext();
+        }
+
+        throw Exceptions::EmptyCollectionException();
+    }
+
+    template <typename TEnumerator>
     template <typename TFunction>
     auto Query<TEnumerator>::ForEach(const TFunction function) const -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>
     {
