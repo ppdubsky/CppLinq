@@ -51,7 +51,7 @@ TEST(First, ReturnsSameResults_FirstByPredicate)
     EXPECT_EQ(actual1, actual2);
 }
 
-TEST(First, ThrowsOnFirst_FirstFromAll_EmptySource)
+TEST(First, ThrowsOnFirst_FirstFromAll_SourceIsEmpty)
 {
     vector<int> source;
 
@@ -60,7 +60,7 @@ TEST(First, ThrowsOnFirst_FirstFromAll_EmptySource)
     EXPECT_THROW(query.First(), EmptyCollectionException);
 }
 
-TEST(First, ThrowsOnFirst_FirstByPredicate_EmptySource)
+TEST(First, ThrowsOnFirst_FirstByPredicate_SourceIsEmpty)
 {
     vector<int> source;
 
@@ -69,7 +69,7 @@ TEST(First, ThrowsOnFirst_FirstByPredicate_EmptySource)
     EXPECT_THROW(query.First([](const int value){ return value % 2 == 0; }), EmptyCollectionException);
 }
 
-TEST(First, ThrowsOnFirst_FirstByPredicate_NotEmptySource)
+TEST(First, ThrowsOnFirst_FirstByPredicate_SourceIsNotEmpty)
 {
     const int source[]{ 1, 3, 5, 7, 9 };
 

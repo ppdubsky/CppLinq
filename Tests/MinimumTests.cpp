@@ -29,7 +29,7 @@ TEST(Minimum, ReturnsSameResults)
     EXPECT_EQ(actual1, actual2);
 }
 
-TEST(Minimum, ThrowsOnMinimum_EmptySource)
+TEST(Minimum, ThrowsOnMinimum_SourceIsEmpty)
 {
     vector<int> source;
 

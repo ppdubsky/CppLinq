@@ -29,7 +29,7 @@ TEST(Maximum, ReturnsSameResults)
     EXPECT_EQ(actual1, actual2);
 }
 
-TEST(Maximum, ThrowsOnMaximum_EmptySource)
+TEST(Maximum, ThrowsOnMaximum_SourceIsEmpty)
 {
     vector<int> source;
 

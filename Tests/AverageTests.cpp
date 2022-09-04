@@ -29,7 +29,7 @@ TEST(Average, ReturnsSameResults)
     EXPECT_EQ(actual1, actual2);
 }
 
-TEST(Average, ThrowsOnAverage_EmptySource)
+TEST(Average, ThrowsOnAverage_SourceIsEmpty)
 {
     vector<int> source;
 
