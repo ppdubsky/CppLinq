@@ -179,6 +179,22 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
+    auto Query<TEnumerator>::Sum() const -> ValueType
+    {
+        auto sum = static_cast<ValueType>(0);
+
+        TEnumerator enumeratorCopy = enumerator;
+        while (!enumeratorCopy.IsFinished())
+        {
+            sum += enumeratorCopy.GetCurrent();
+
+            enumeratorCopy.MoveNext();
+        }
+
+        return sum;
+    }
+
+    template <typename TEnumerator>
     auto Query<TEnumerator>::Take(const std::uint32_t count) const -> Query<Enumerators::TakeEnumerator<TEnumerator>>
     {
         return { { enumerator, count } };

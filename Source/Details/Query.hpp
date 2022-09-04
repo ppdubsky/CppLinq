@@ -58,6 +58,7 @@ namespace CppLinq::Details
         auto SkipWhile(const TPredicate predicate) const -> Query<Enumerators::SkipWhileEnumerator<TEnumerator, TPredicate>>;
         template <typename TNewType>
         auto StaticCast() const -> Query<Enumerators::StaticCastEnumerator<TEnumerator, TNewType>>;
+        auto Sum() const -> ValueType;
         auto Take(const std::uint32_t count) const -> Query<Enumerators::TakeEnumerator<TEnumerator>>;
         template <typename TPredicate>
         auto TakeWhile(const TPredicate predicate) const -> Query<Enumerators::TakeWhileEnumerator<TEnumerator, TPredicate>>;
