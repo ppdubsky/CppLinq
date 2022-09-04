@@ -11,6 +11,7 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/ForEachTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/Main.cpp
     ${PROJECT_SOURCE_DIR}/Tests/MaximumTests.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/MinimumTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/OrderByTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/PrependTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/ReverseTests.cpp

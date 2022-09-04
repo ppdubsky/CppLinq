@@ -159,7 +159,7 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
-    auto Query<TEnumerator>::Maximum() const -> ValueType
+    auto Query<TEnumerator>::GetBound(const bool isMaximum) const -> ValueType
     {
         TEnumerator enumeratorCopy = enumerator;
 
@@ -168,22 +168,34 @@ namespace CppLinq::Details
             throw Exceptions::EmptyCollectionException();
         }
 
-        ValueType maximum = enumeratorCopy.GetCurrent();
+        ValueType bound = enumeratorCopy.GetCurrent();
 
         enumeratorCopy.MoveNext();
 
         while (!enumeratorCopy.IsFinished())
         {
             const ValueType current = enumeratorCopy.GetCurrent();
-            if (current > maximum)
+            if (isMaximum ? current > bound : current < bound)
             {
-                maximum = current;
+                bound = current;
             }
 
             enumeratorCopy.MoveNext();
         }
 
-        return maximum;
+        return bound;
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::Maximum() const -> ValueType
+    {
+        return GetBound(true);
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::Minimum() const -> ValueType
+    {
+        return GetBound(false);
     }
 
     template <typename TEnumerator>

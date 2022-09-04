@@ -50,6 +50,7 @@ namespace CppLinq::Details
         template <typename TFunction>
         auto ForEach(const TFunction function) const -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>;
         auto Maximum() const -> ValueType;
+        auto Minimum() const -> ValueType;
         auto OrderBy() const -> Query<Enumerators::OrderEnumerator<TEnumerator>>;
         auto Prepend(const ValueType& value) const -> Query<Enumerators::PrependEnumerator<TEnumerator>>;
         auto Reverse() const -> Query<Enumerators::ReverseEnumerator<TEnumerator>>;
@@ -69,6 +70,8 @@ namespace CppLinq::Details
         auto Where(const TPredicate predicate) const -> Query<Enumerators::WhereEnumerator<TEnumerator, TPredicate>>;
 
     private:
+        auto GetBound(const bool isMaximum) const -> ValueType;
+
         TEnumerator enumerator;
     };
 }
