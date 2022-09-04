@@ -33,6 +33,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Collections/SortCollectionStrategy.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Collections/VectorCollectionProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Collections/VectorCollectionProvider.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/AppendEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/AppendEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/AppendEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/CollectionEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/CollectionEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.Forward.hpp

@@ -2,6 +2,7 @@
 
 #include "Details/Query.hpp"
 
+#include "Details/Enumerators/AppendEnumerator.hpp"
 #include "Details/Enumerators/ConcatenationEnumerator.hpp"
 #include "Details/Enumerators/ForEachEnumerator.hpp"
 #include "Details/Enumerators/IteratorEnumerator.hpp"
@@ -41,6 +42,12 @@ namespace CppLinq::Details
     auto Query<TEnumerator>::GetEnumerator() -> TEnumerator&
     {
         return enumerator;
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::Append(const ValueType& value) const -> Query<Enumerators::AppendEnumerator<TEnumerator>>
+    {
+        return { { enumerator, value } };
     }
 
     template <typename TEnumerator>

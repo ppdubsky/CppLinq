@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <vector>
 
+#include "Details/Enumerators/AppendEnumerator.Forward.hpp"
 #include "Details/Enumerators/ConcatenationEnumerator.Forward.hpp"
 #include "Details/Enumerators/ForEachEnumerator.Forward.hpp"
 #include "Details/Enumerators/IteratorEnumerator.Forward.hpp"
@@ -34,6 +35,7 @@ namespace CppLinq::Details
 
         auto GetEnumerator() -> TEnumerator&;
 
+        auto Append(const ValueType& value) const -> Query<Enumerators::AppendEnumerator<TEnumerator>>;
         template <typename TNextEnumerator>
         auto Concatenate(const Query<TNextEnumerator>& nextQuery) const -> Query<Enumerators::ConcatenationEnumerator<TEnumerator, TNextEnumerator>>;
         template <typename TFunction>
