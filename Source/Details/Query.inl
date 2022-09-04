@@ -159,6 +159,34 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
+    auto Query<TEnumerator>::Maximum() const -> ValueType
+    {
+        TEnumerator enumeratorCopy = enumerator;
+
+        if (enumeratorCopy.IsFinished())
+        {
+            throw Exceptions::EmptyCollectionException();
+        }
+
+        ValueType maximum = enumeratorCopy.GetCurrent();
+
+        enumeratorCopy.MoveNext();
+
+        while (!enumeratorCopy.IsFinished())
+        {
+            const ValueType current = enumeratorCopy.GetCurrent();
+            if (current > maximum)
+            {
+                maximum = current;
+            }
+
+            enumeratorCopy.MoveNext();
+        }
+
+        return maximum;
+    }
+
+    template <typename TEnumerator>
     auto Query<TEnumerator>::OrderBy() const -> Query<Enumerators::OrderEnumerator<TEnumerator>>
     {
         return { { *this } };

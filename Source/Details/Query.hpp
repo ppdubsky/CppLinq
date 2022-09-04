@@ -49,6 +49,7 @@ namespace CppLinq::Details
         auto Count(const TPredicate predicate) const -> std::uint32_t;
         template <typename TFunction>
         auto ForEach(const TFunction function) const -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>;
+        auto Maximum() const -> ValueType;
         auto OrderBy() const -> Query<Enumerators::OrderEnumerator<TEnumerator>>;
         auto Prepend(const ValueType& value) const -> Query<Enumerators::PrependEnumerator<TEnumerator>>;
         auto Reverse() const -> Query<Enumerators::ReverseEnumerator<TEnumerator>>;
