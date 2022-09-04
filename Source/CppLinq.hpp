@@ -12,6 +12,7 @@
 #include "Details/Enumerators/ForEachEnumerator.inl"
 #include "Details/Enumerators/IteratorEnumerator.inl"
 #include "Details/Enumerators/OrderEnumerator.inl"
+#include "Details/Enumerators/PrependEnumerator.inl"
 #include "Details/Enumerators/ReverseEnumerator.inl"
 #include "Details/Enumerators/SelectEnumerator.inl"
 #include "Details/Enumerators/SkipEnumerator.inl"

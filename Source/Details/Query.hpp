@@ -10,6 +10,7 @@
 #include "Details/Enumerators/ForEachEnumerator.Forward.hpp"
 #include "Details/Enumerators/IteratorEnumerator.Forward.hpp"
 #include "Details/Enumerators/OrderEnumerator.Forward.hpp"
+#include "Details/Enumerators/PrependEnumerator.Forward.hpp"
 #include "Details/Enumerators/ReverseEnumerator.Forward.hpp"
 #include "Details/Enumerators/SelectEnumerator.Forward.hpp"
 #include "Details/Enumerators/SkipEnumerator.Forward.hpp"
@@ -41,6 +42,7 @@ namespace CppLinq::Details
         template <typename TFunction>
         auto ForEach(const TFunction function) const -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>;
         auto OrderBy() const -> Query<Enumerators::OrderEnumerator<TEnumerator>>;
+        auto Prepend(const ValueType& value) const -> Query<Enumerators::PrependEnumerator<TEnumerator>>;
         auto Reverse() const -> Query<Enumerators::ReverseEnumerator<TEnumerator>>;
         template <typename TSelector>
         auto Select(const TSelector selector) const -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>;

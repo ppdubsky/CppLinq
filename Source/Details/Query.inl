@@ -7,6 +7,7 @@
 #include "Details/Enumerators/ForEachEnumerator.hpp"
 #include "Details/Enumerators/IteratorEnumerator.hpp"
 #include "Details/Enumerators/OrderEnumerator.hpp"
+#include "Details/Enumerators/PrependEnumerator.hpp"
 #include "Details/Enumerators/ReverseEnumerator.hpp"
 #include "Details/Enumerators/SelectEnumerator.hpp"
 #include "Details/Enumerators/SkipEnumerator.hpp"
@@ -68,6 +69,12 @@ namespace CppLinq::Details
     auto Query<TEnumerator>::OrderBy() const -> Query<Enumerators::OrderEnumerator<TEnumerator>>
     {
         return { { *this } };
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::Prepend(const ValueType& value) const -> Query<Enumerators::PrependEnumerator<TEnumerator>>
+    {
+        return { { enumerator, value } };
     }
 
     template <typename TEnumerator>

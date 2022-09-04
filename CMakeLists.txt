@@ -52,6 +52,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/PrependEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/PrependEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/PrependEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ReverseEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ReverseEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ReverseEnumerator.inl
