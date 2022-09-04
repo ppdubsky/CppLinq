@@ -27,13 +27,13 @@ namespace CppLinq::Details::Enumerators
     template <typename TEnumerator>
     auto TakeEnumerator<TEnumerator>::IsFinished() -> bool
     {
-        return count == 0U || Base::IsFinished();
+        return Base::IsFinished() || count == 0U;
     }
 
     template <typename TEnumerator>
     void TakeEnumerator<TEnumerator>::MoveNext()
     {
-        if (count == 0U)
+        if (IsFinished())
         {
             throw Exceptions::FinishedEnumeratorException();
         }
