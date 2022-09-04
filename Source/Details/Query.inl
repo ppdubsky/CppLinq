@@ -101,6 +101,32 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
+    auto Query<TEnumerator>::Count() const -> std::uint32_t
+    {
+        return Count([](const ValueType& /*value*/){ return true; });
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::Count(const TPredicate predicate) const -> std::uint32_t
+    {
+        auto count = 0U;
+
+        TEnumerator enumeratorCopy = enumerator;
+        while (!enumeratorCopy.IsFinished())
+        {
+            if (predicate(enumeratorCopy.GetCurrent()))
+            {
+                ++count;
+            }
+
+            enumeratorCopy.MoveNext();
+        }
+
+        return count;
+    }
+
+    template <typename TEnumerator>
     template <typename TFunction>
     auto Query<TEnumerator>::ForEach(const TFunction function) const -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>
     {
