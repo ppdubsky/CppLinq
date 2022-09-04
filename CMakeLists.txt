@@ -88,6 +88,7 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/ValueTypeProvider.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Exceptions/EmptyCollectionException.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/FinishedEnumeratorException.hpp
 )
 

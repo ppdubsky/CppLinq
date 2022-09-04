@@ -18,6 +18,7 @@
 #include "Details/Enumerators/WhereEnumerator.hpp"
 #include "Details/Loops/LoopIterator.hpp"
 #include "Details/Loops/LoopIteratorSentinel.hpp"
+#include "Exceptions/EmptyCollectionException.hpp"
 
 namespace CppLinq::Details
 {
@@ -91,6 +92,30 @@ namespace CppLinq::Details
     auto Query<TEnumerator>::Append(const ValueType& value) const -> Query<Enumerators::AppendEnumerator<TEnumerator>>
     {
         return { { enumerator, value } };
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::Average() const -> ValueType
+    {
+        auto sum = static_cast<ValueType>(0);
+        auto count = 0U;
+
+        TEnumerator enumeratorCopy = enumerator;
+        while (!enumeratorCopy.IsFinished())
+        {
+            sum += enumeratorCopy.GetCurrent();
+
+            ++count;
+
+            enumeratorCopy.MoveNext();
+        }
+
+        if (count == 0U)
+        {
+            throw Exceptions::EmptyCollectionException();
+        }
+
+        return sum / count;
     }
 
     template <typename TEnumerator>

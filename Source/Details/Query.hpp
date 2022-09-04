@@ -41,6 +41,7 @@ namespace CppLinq::Details
         template <typename TPredicate>
         auto Any(const TPredicate predicate) const -> bool;
         auto Append(const ValueType& value) const -> Query<Enumerators::AppendEnumerator<TEnumerator>>;
+        auto Average() const -> ValueType;
         template <typename TNextEnumerator>
         auto Concatenate(const Query<TNextEnumerator>& nextQuery) const -> Query<Enumerators::ConcatenationEnumerator<TEnumerator, TNextEnumerator>>;
         auto Count() const -> std::uint32_t;
