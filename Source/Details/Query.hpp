@@ -36,6 +36,8 @@ namespace CppLinq::Details
 
         auto GetEnumerator() -> TEnumerator&;
 
+        template <typename TPredicate>
+        auto All(const TPredicate predicate) const -> bool;
         auto Append(const ValueType& value) const -> Query<Enumerators::AppendEnumerator<TEnumerator>>;
         template <typename TNextEnumerator>
         auto Concatenate(const Query<TNextEnumerator>& nextQuery) const -> Query<Enumerators::ConcatenationEnumerator<TEnumerator, TNextEnumerator>>;

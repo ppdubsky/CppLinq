@@ -46,6 +46,27 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::All(const TPredicate predicate) const -> bool
+    {
+        auto isValid = true;
+
+        TEnumerator enumeratorCopy = enumerator;
+        while (!enumeratorCopy.IsFinished())
+        {
+            if (!predicate(enumeratorCopy.GetCurrent()))
+            {
+                isValid = false;
+                break;
+            }
+
+            enumeratorCopy.MoveNext();
+        }
+
+        return isValid;
+    }
+
+    template <typename TEnumerator>
     auto Query<TEnumerator>::Append(const ValueType& value) const -> Query<Enumerators::AppendEnumerator<TEnumerator>>
     {
         return { { enumerator, value } };
