@@ -15,6 +15,14 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/WhereTests.cpp
 )
 
+if (MSVC)
+    target_compile_options(
+        ${TESTS_PROJECT_NAME}
+        PRIVATE
+            /W4 /WX
+    )
+endif()
+
 target_include_directories(
     ${TESTS_PROJECT_NAME}
     PRIVATE

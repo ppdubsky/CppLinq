@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if (MSVC)
-    add_compile_options(/MD /W4 /WX)
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 endif()
 
 add_library(${PROJECT_NAME} INTERFACE)
