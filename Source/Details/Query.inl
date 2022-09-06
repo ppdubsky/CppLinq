@@ -49,6 +49,54 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
+    template <typename TAccumulator>
+    auto Query<TEnumerator>::Aggregate(const TAccumulator accumulator) const -> ValueType
+    {
+        TEnumerator enumeratorCopy = enumerator;
+        if (enumeratorCopy.IsFinished())
+        {
+            throw Exceptions::EmptyCollectionException();
+        }
+
+        ValueType aggregatedValue = enumeratorCopy.GetCurrent();
+
+        do
+        {
+            enumeratorCopy.MoveNext();
+
+            if (enumeratorCopy.IsFinished())
+            {
+                break;
+            }
+
+            aggregatedValue = accumulator(aggregatedValue, enumeratorCopy.GetCurrent());
+        } while (true);
+
+        return aggregatedValue;
+    }
+
+    template <typename TEnumerator>
+    template <typename TAccumulator, typename TAccumulatorValue>
+    auto Query<TEnumerator>::Aggregate(const TAccumulatorValue seed, const TAccumulator accumulator) const -> TAccumulatorValue
+    {
+        TAccumulatorValue aggregatedValue = seed;
+
+        for (const ValueType& value : *this)
+        {
+            aggregatedValue = accumulator(aggregatedValue, value);
+        }
+
+        return aggregatedValue;
+    }
+
+    template <typename TEnumerator>
+    template <typename TAccumulator, typename TAccumulatorValue, typename TResultSelector, typename TResultType>
+    auto Query<TEnumerator>::Aggregate(const TAccumulatorValue seed, const TAccumulator accumulator, const TResultSelector resultSelector) const -> TResultType
+    {
+        return resultSelector(Aggregate(seed, accumulator));
+    }
+
+    template <typename TEnumerator>
     template <typename TPredicate>
     auto Query<TEnumerator>::All(const TPredicate predicate) const -> bool
     {
@@ -196,7 +244,6 @@ namespace CppLinq::Details
         std::optional<ValueType> value;
 
         TEnumerator enumeratorCopy = enumerator;
-
         while (!enumeratorCopy.IsFinished())
         {
             const ValueType current = enumeratorCopy.GetCurrent();
@@ -249,7 +296,6 @@ namespace CppLinq::Details
     auto Query<TEnumerator>::GetBound(const bool isMaximum) const -> ValueType
     {
         TEnumerator enumeratorCopy = enumerator;
-
         if (enumeratorCopy.IsFinished())
         {
             throw Exceptions::EmptyCollectionException();
@@ -305,7 +351,6 @@ namespace CppLinq::Details
         std::optional<ValueType> value;
 
         TEnumerator enumeratorCopy = enumerator;
-
         while (!enumeratorCopy.IsFinished())
         {
             const ValueType current = enumeratorCopy.GetCurrent();
@@ -415,7 +460,6 @@ namespace CppLinq::Details
         std::optional<ValueType> value;
 
         TEnumerator enumeratorCopy = enumerator;
-
         while (!enumeratorCopy.IsFinished())
         {
             const ValueType current = enumeratorCopy.GetCurrent();
