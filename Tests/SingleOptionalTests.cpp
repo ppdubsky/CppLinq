@@ -38,7 +38,7 @@ TEST(SingleOptional, ReturnsEmpty_SingleByPredicate_SourceIsEmpty)
     EXPECT_EQ(actual, expected);
 }
 
-TEST(SingleOptional, ThrowsOnSingle_SingleByPredicate_SourceContainsSingleElementThatDoesNotSatisfyPredicate)
+TEST(SingleOptional, ReturnsEmpty_SingleByPredicate_SourceContainsSingleElementThatDoesNotSatisfyPredicate)
 {
     const int source[]{ 1 };
     optional<int> expected;
@@ -82,7 +82,7 @@ TEST(SingleOptional, ReturnsSameResults_SingleByPredicate)
     EXPECT_EQ(actual1, actual2);
 }
 
-TEST(SingleOptional, ThrowsOnSingle_SingleFromAll_SourceContainsMoreThanOneElement)
+TEST(SingleOptional, ThrowsOnSingleOptional_SingleFromAll_SourceContainsMoreThanOneElement)
 {
     const int source[]{ 1, 2 };
 
@@ -91,7 +91,7 @@ TEST(SingleOptional, ThrowsOnSingle_SingleFromAll_SourceContainsMoreThanOneEleme
     EXPECT_THROW(query.SingleOptional(), MoreThanOneElementException);
 }
 
-TEST(SingleOptional, ThrowsOnSingle_SingleByPredicate_SourceContainsMultipleElementsThatSatisfyPredicate)
+TEST(SingleOptional, ThrowsOnSingleOptional_SingleByPredicate_SourceContainsMultipleElementsThatSatisfyPredicate)
 {
     const int source[]{ 1, 2, 3, 4, 5 };
 
