@@ -9,38 +9,48 @@ using namespace std;
 
 TEST(Prepend, ReturnsExpectedValues_SourceIsEmpty)
 {
+    // Arrange.
     vector<int> source;
     const int expected[]{ 11 };
 
+    // Act.
     const auto actual = From(source).Prepend(11);
 
+    // Assert.
     ExpectSequencesAreEquivalent(actual, expected);
 }
 
 TEST(Prepend, ReturnsExpectedValues_SourceIsNotEmpty)
 {
+    // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     const int expected[]{ 11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
+    // Act.
     const auto actual = From(source).Prepend(11);
 
+    // Assert.
     ExpectSequencesAreEquivalent(actual, expected);
 }
 
 TEST(Prepend, ReturnsSameResults)
 {
+    // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     auto query = From(source);
 
+    // Act.
     const auto actual1 = query.Prepend(11);
     const auto actual2 = query.Prepend(11);
 
+    // Assert.
     ExpectSequencesAreEquivalent(actual1, actual2);
 }
 
 TEST(Prepend, SourceThrowsOnMoveNext)
 {
+    // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     auto query = From(source).Prepend(11);
@@ -51,11 +61,14 @@ TEST(Prepend, SourceThrowsOnMoveNext)
         enumerator.MoveNext();
     }
 
+    // Act.
+    // Assert.
     EXPECT_THROW(enumerator.MoveNext(), FinishedEnumeratorException);
 }
 
 TEST(Prepend, SourceThrowsOnGetCurrent)
 {
+    // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     auto query = From(source).Prepend(11);
@@ -66,5 +79,7 @@ TEST(Prepend, SourceThrowsOnGetCurrent)
         enumerator.MoveNext();
     }
 
+    // Act.
+    // Assert.
     EXPECT_THROW(enumerator.GetCurrent(), FinishedEnumeratorException);
 }
