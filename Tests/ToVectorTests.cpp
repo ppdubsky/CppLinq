@@ -23,7 +23,7 @@ TEST(ToVector, ReturnsSameResults)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source).Where([](const int value){ return value % 2 == 0; });
+    const auto query = From(source).Where([](const int value){ return value % 2 == 0; });
 
     // Act.
     const auto actual1 = query.ToVector();

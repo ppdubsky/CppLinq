@@ -10,7 +10,7 @@ using namespace std;
 TEST(DefaultIfEmpty, ReturnsDefault_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
     const int expected[]{ 11 };
 
     // Act.
@@ -36,9 +36,9 @@ TEST(DefaultIfEmpty, ReturnsSource_SourceIsNotEmpty)
 TEST(DefaultIfEmpty, ReturnsSameResults_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.DefaultIfEmpty(11);
@@ -53,7 +53,7 @@ TEST(DefaultIfEmpty, ReturnsSameResults_SourceIsNotEmpty)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.DefaultIfEmpty(11);
@@ -66,7 +66,7 @@ TEST(DefaultIfEmpty, ReturnsSameResults_SourceIsNotEmpty)
 TEST(DefaultIfEmpty, SourceThrowsOnMoveNext)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
 
     auto query = From(source).DefaultIfEmpty(11);
 
@@ -84,7 +84,7 @@ TEST(DefaultIfEmpty, SourceThrowsOnMoveNext)
 TEST(DefaultIfEmpty, SourceThrowsOnGetCurrent)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
 
     auto query = From(source).DefaultIfEmpty(11);
 

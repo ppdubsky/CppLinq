@@ -67,7 +67,7 @@ TEST(OrderBy, ReturnsSameResults)
     // Arrange.
     const int source[]{ 1, 3, 5, 7, 9, 10, 8, 6, 4, 2 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.OrderBy();

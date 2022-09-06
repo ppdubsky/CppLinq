@@ -38,7 +38,7 @@ TEST(Single, ReturnsSameResults_SingleFromAll)
     // Arrange.
     const int source[]{ 1 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.Single();
@@ -53,7 +53,7 @@ TEST(Single, ReturnsSameResults_SingleByPredicate)
     // Arrange.
     const int source[]{ 1, 2, 3 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.Single([](const int value){ return value % 2 == 0; });
@@ -66,9 +66,9 @@ TEST(Single, ReturnsSameResults_SingleByPredicate)
 TEST(Single, ThrowsOnSingle_SingleFromAll_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.
@@ -80,7 +80,7 @@ TEST(Single, ThrowsOnSingle_SingleFromAll_SourceContainsMoreThanOneElement)
     // Arrange.
     const int source[]{ 1, 2 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.
@@ -90,9 +90,9 @@ TEST(Single, ThrowsOnSingle_SingleFromAll_SourceContainsMoreThanOneElement)
 TEST(Single, ThrowsOnSingle_SingleByPredicate_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.
@@ -104,7 +104,7 @@ TEST(Single, ThrowsOnSingle_SingleByPredicate_SourceContainsSingleElementThatDoe
     // Arrange.
     const int source[]{ 1 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.
@@ -116,7 +116,7 @@ TEST(Single, ThrowsOnSingle_SingleByPredicate_SourceContainsMultipleElementsThat
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.

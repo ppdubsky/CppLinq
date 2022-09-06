@@ -10,7 +10,7 @@ using namespace std;
 TEST(Count, ReturnsCount_CountAll_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
     const auto expected = 0U;
 
     // Act.
@@ -36,7 +36,7 @@ TEST(Count, ReturnsCount_CountAll_SourceIsNotEmpty)
 TEST(Count, ReturnsCount_CountByPredicate_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
     const auto expected = 0U;
 
     // Act.
@@ -90,7 +90,7 @@ TEST(Count, ReturnsSameResults_CountAll)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.Count();
@@ -105,7 +105,7 @@ TEST(Count, ReturnsSameResults_CountByPredicate)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.Count([](const int value){ return value % 2 == 0; });

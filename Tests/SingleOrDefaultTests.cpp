@@ -10,7 +10,7 @@ using namespace std;
 TEST(SingleOrDefault, ReturnsDefault_SingleFromAll_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
     const int expected = 11;
 
     // Act.
@@ -36,7 +36,7 @@ TEST(SingleOrDefault, ReturnsSingle_SingleFromAll_SourceContainsSingleElement)
 TEST(SingleOrDefault, ReturnsDefault_SingleByPredicate_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
     const int expected = 11;
 
     // Act.
@@ -77,7 +77,7 @@ TEST(SingleOrDefault, ReturnsSameResults_SingleFromAll)
     // Arrange.
     const int source[]{ 1 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.SingleOrDefault(11);
@@ -92,7 +92,7 @@ TEST(SingleOrDefault, ReturnsSameResults_SingleByPredicate)
     // Arrange.
     const int source[]{ 1, 2, 3 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.SingleOrDefault([](const int value){ return value % 2 == 0; }, 11);
@@ -107,7 +107,7 @@ TEST(SingleOrDefault, ThrowsOnSingleOrDefault_SingleFromAll_SourceContainsMoreTh
     // Arrange.
     const int source[]{ 1, 2 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.
@@ -119,7 +119,7 @@ TEST(SingleOrDefault, ThrowsOnSingleOrDefault_SingleByPredicate_SourceContainsMu
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.

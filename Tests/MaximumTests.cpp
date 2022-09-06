@@ -25,7 +25,7 @@ TEST(Maximum, ReturnsSameResults)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.Maximum();
@@ -38,9 +38,9 @@ TEST(Maximum, ReturnsSameResults)
 TEST(Maximum, ThrowsOnMaximum_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.

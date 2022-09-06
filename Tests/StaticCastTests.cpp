@@ -54,7 +54,7 @@ TEST(StaticCast, ReturnsSameResults)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.StaticCast<int>();

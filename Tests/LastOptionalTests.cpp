@@ -11,8 +11,8 @@ using namespace std;
 TEST(LastOptional, ReturnsEmpty_LastFromAll_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
-    optional<int> expected;
+    const vector<int> source;
+    const optional<int> expected;
 
     // Act.
     const auto actual = From(source).LastOptional();
@@ -37,8 +37,8 @@ TEST(LastOptional, ReturnsLast_LastFromAll_SourceIsNotEmpty)
 TEST(LastOptional, ReturnsEmpty_LastByPredicate_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
-    optional<int> expected;
+    const vector<int> source;
+    const optional<int> expected;
 
     // Act.
     const auto actual = From(source).LastOptional([](const int value){ return value % 2 != 0; });
@@ -64,7 +64,7 @@ TEST(LastOptional, ReturnsEmpty_LastByPredicate_SourceIsNotEmpty)
 {
     // Arrange.
     const int source[]{ 2, 4, 6, 8, 10 };
-    optional<int> expected;
+    const optional<int> expected;
 
     // Act.
     const auto actual = From(source).LastOptional([](const int value){ return value % 2 != 0; });
@@ -78,7 +78,7 @@ TEST(LastOptional, ReturnsSameResults_LastFromAll)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.LastOptional();
@@ -93,7 +93,7 @@ TEST(LastOptional, ReturnsSameResults_LastByPredicate)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.LastOptional([](const int value){ return value % 2 != 0; });

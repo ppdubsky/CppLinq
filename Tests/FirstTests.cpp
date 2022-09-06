@@ -38,7 +38,7 @@ TEST(First, ReturnsSameResults_FirstFromAll)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.First();
@@ -53,7 +53,7 @@ TEST(First, ReturnsSameResults_FirstByPredicate)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.First([](const int value){ return value % 2 == 0; });
@@ -66,9 +66,9 @@ TEST(First, ReturnsSameResults_FirstByPredicate)
 TEST(First, ThrowsOnFirst_FirstFromAll_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.
@@ -78,9 +78,9 @@ TEST(First, ThrowsOnFirst_FirstFromAll_SourceIsEmpty)
 TEST(First, ThrowsOnFirst_FirstByPredicate_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.
@@ -92,7 +92,7 @@ TEST(First, ThrowsOnFirst_FirstByPredicate_SourceIsNotEmpty)
     // Arrange.
     const int source[]{ 1, 3, 5, 7, 9 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.

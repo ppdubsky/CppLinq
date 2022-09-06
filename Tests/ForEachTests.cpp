@@ -27,7 +27,7 @@ TEST(ForEach, ReturnsExpectedValues)
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     const int expected[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    int sum = 0;
+    auto sum = 0;
 
     // Act.
     const auto actual = From(source).ForEach([&sum](const int value){ sum += value; });
@@ -43,7 +43,7 @@ TEST(ForEach, ReturnsSameResults)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.ForEach([](const int /*value*/){});

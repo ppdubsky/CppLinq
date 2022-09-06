@@ -10,7 +10,7 @@ using namespace std;
 TEST(All, ReturnsTrue_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
 
     // Act.
     const auto actual = From(source).All([](const int value){ return value > 0; });
@@ -60,7 +60,7 @@ TEST(All, ReturnsSameResults)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.All([](const int value){ return value > 0; });

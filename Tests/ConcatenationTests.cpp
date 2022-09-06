@@ -9,10 +9,10 @@ TEST(Concatenate, ReturnsExpectedValues_BothQueriesAreEmpty)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
-    auto subquery1 = query.Where([](const int /*value*/){ return false; });
-    auto subquery2 = query.Where([](const int /*value*/){ return false; });
+    const auto subquery1 = query.Where([](const int /*value*/){ return false; });
+    const auto subquery2 = query.Where([](const int /*value*/){ return false; });
 
     // Act.
     const auto actual = subquery1.Concatenate(subquery2);
@@ -27,10 +27,10 @@ TEST(Concatenate, ReturnsExpectedValues_BothQueriesAreNotEmpty)
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     const int expected[]{ 2, 4, 6, 8, 10, 1, 3, 5, 7, 9 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
-    auto subquery1 = query.Where([](const int value){ return value % 2 == 0; });
-    auto subquery2 = query.Where([](const int value){ return value % 2 != 0; });
+    const auto subquery1 = query.Where([](const int value){ return value % 2 == 0; });
+    const auto subquery2 = query.Where([](const int value){ return value % 2 != 0; });
 
     // Act.
     const auto actual = subquery1.Concatenate(subquery2);
@@ -45,10 +45,10 @@ TEST(Concatenate, ReturnsExpectedValues_OnlyFirstQueryIsEmpty)
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     const int expected[]{ 1, 3, 5, 7, 9 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
-    auto subquery1 = query.Where([](const int /*value*/){ return false; });
-    auto subquery2 = query.Where([](const int value){ return value % 2 != 0; });
+    const auto subquery1 = query.Where([](const int /*value*/){ return false; });
+    const auto subquery2 = query.Where([](const int value){ return value % 2 != 0; });
 
     // Act.
     const auto actual = subquery1.Concatenate(subquery2);
@@ -63,10 +63,10 @@ TEST(Concatenate, ReturnsExpectedValues_OnlySecondQueryIsEmpty)
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     const int expected[]{ 2, 4, 6, 8, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
-    auto subquery1 = query.Where([](const int value){ return value % 2 == 0; });
-    auto subquery2 = query.Where([](const int /*value*/){ return false; });
+    const auto subquery1 = query.Where([](const int value){ return value % 2 == 0; });
+    const auto subquery2 = query.Where([](const int /*value*/){ return false; });
 
     // Act.
     const auto actual = subquery1.Concatenate(subquery2);
@@ -80,10 +80,10 @@ TEST(Concatenate, ReturnsSameResults)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
-    auto subquery1 = query.Where([](const int value){ return value % 2 == 0; });
-    auto subquery2 = query.Where([](const int value){ return value % 2 != 0; });
+    const auto subquery1 = query.Where([](const int value){ return value % 2 == 0; });
+    const auto subquery2 = query.Where([](const int value){ return value % 2 != 0; });
 
     // Act.
     const auto actual1 = subquery1.Concatenate(subquery2);

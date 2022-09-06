@@ -10,7 +10,7 @@ using namespace std;
 TEST(LastOrDefault, ReturnsDefault_LastFromAll_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
     const int expected = 11;
 
     // Act.
@@ -36,7 +36,7 @@ TEST(LastOrDefault, ReturnsLast_LastFromAll_SourceIsNotEmpty)
 TEST(LastOrDefault, ReturnsDefault_LastByPredicate_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
+    const vector<int> source;
     const int expected = 11;
 
     // Act.
@@ -77,7 +77,7 @@ TEST(LastOrDefault, ReturnsSameResults_LastFromAll)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.LastOrDefault(11);
@@ -92,7 +92,7 @@ TEST(LastOrDefault, ReturnsSameResults_LastByPredicate)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.LastOrDefault([](const int value){ return value % 2 != 0; }, 11);

@@ -11,8 +11,8 @@ using namespace std;
 TEST(SingleOptional, ReturnsEmpty_SingleFromAll_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
-    optional<int> expected;
+    const vector<int> source;
+    const optional<int> expected;
 
     // Act.
     const auto actual = From(source).SingleOptional();
@@ -37,8 +37,8 @@ TEST(SingleOptional, ReturnsSingle_SingleFromAll_SourceContainsSingleElement)
 TEST(SingleOptional, ReturnsEmpty_SingleByPredicate_SourceIsEmpty)
 {
     // Arrange.
-    vector<int> source;
-    optional<int> expected;
+    const vector<int> source;
+    const optional<int> expected;
 
     // Act.
     const auto actual = From(source).SingleOptional([](const int value){ return value % 2 == 0; });
@@ -51,7 +51,7 @@ TEST(SingleOptional, ReturnsEmpty_SingleByPredicate_SourceContainsSingleElementT
 {
     // Arrange.
     const int source[]{ 1 };
-    optional<int> expected;
+    const optional<int> expected;
 
     // Act.
     const auto actual = From(source).SingleOptional([](const int value){ return value % 2 == 0; });
@@ -78,7 +78,7 @@ TEST(SingleOptional, ReturnsSameResults_SingleFromAll)
     // Arrange.
     const int source[]{ 1 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.SingleOptional();
@@ -93,7 +93,7 @@ TEST(SingleOptional, ReturnsSameResults_SingleByPredicate)
     // Arrange.
     const int source[]{ 1, 2, 3 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     const auto actual1 = query.SingleOptional([](const int value){ return value % 2 == 0; });
@@ -108,7 +108,7 @@ TEST(SingleOptional, ThrowsOnSingleOptional_SingleFromAll_SourceContainsMoreThan
     // Arrange.
     const int source[]{ 1, 2 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.
@@ -120,7 +120,7 @@ TEST(SingleOptional, ThrowsOnSingleOptional_SingleByPredicate_SourceContainsMult
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5 };
 
-    auto query = From(source);
+    const auto query = From(source);
 
     // Act.
     // Assert.
