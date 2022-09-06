@@ -257,37 +257,41 @@ namespace CppLinq::Details
     template <typename TPredicate>
     auto Query<TEnumerator>::Last(const TPredicate predicate) const -> ValueType
     {
-        TEnumerator enumeratorCopy = enumerator;
-
-        while (!enumeratorCopy.IsFinished())
-        {
-            if (predicate(enumeratorCopy.GetCurrent()))
-            {
-                break;
-            }
-
-            enumeratorCopy.MoveNext();
-        }
-
-        if (enumeratorCopy.IsFinished())
+        const std::optional<ValueType> value = LastOptional(predicate);
+        if (!value)
         {
             throw Exceptions::EmptyCollectionException();
         }
 
-        ValueType last = enumeratorCopy.GetCurrent();
+        return *value;
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::LastOptional() const -> std::optional<ValueType>
+    {
+        return LastOptional([](const ValueType& /*value*/){ return true; });
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::LastOptional(const TPredicate predicate) const -> std::optional<ValueType>
+    {
+        std::optional<ValueType> value;
+
+        TEnumerator enumeratorCopy = enumerator;
 
         while (!enumeratorCopy.IsFinished())
         {
             const ValueType current = enumeratorCopy.GetCurrent();
             if (predicate(current))
             {
-                last = current;
+                value = current;
             }
 
             enumeratorCopy.MoveNext();
         }
 
-        return last;
+        return value;
     }
 
     template <typename TEnumerator>
