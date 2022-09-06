@@ -19,6 +19,7 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/PrependTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/ReverseTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/SelectTests.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/SingleTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/SkipTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/SkipWhileTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/StaticCastTests.cpp

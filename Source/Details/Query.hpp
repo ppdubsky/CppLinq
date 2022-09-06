@@ -65,6 +65,9 @@ namespace CppLinq::Details
         auto Reverse() const -> Query<Enumerators::ReverseEnumerator<TEnumerator>>;
         template <typename TSelector>
         auto Select(const TSelector selector) const -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>;
+        auto Single() const -> ValueType;
+        template <typename TPredicate>
+        auto Single(const TPredicate predicate) const -> ValueType;
         auto Skip(const std::uint32_t count) const -> Query<Enumerators::SkipEnumerator<TEnumerator>>;
         template <typename TPredicate>
         auto SkipWhile(const TPredicate predicate) const -> Query<Enumerators::SkipWhileEnumerator<TEnumerator, TPredicate>>;

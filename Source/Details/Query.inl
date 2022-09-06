@@ -20,6 +20,7 @@
 #include "Details/Loops/LoopIterator.hpp"
 #include "Details/Loops/LoopIteratorSentinel.hpp"
 #include "Exceptions/EmptyCollectionException.hpp"
+#include "Exceptions/MoreThanOneElementException.hpp"
 
 namespace CppLinq::Details
 {
@@ -302,6 +303,52 @@ namespace CppLinq::Details
     auto Query<TEnumerator>::Select(const TSelector selector) const -> Query<Enumerators::SelectEnumerator<TEnumerator, TSelector>>
     {
         return { { enumerator, selector } };
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::Single() const -> ValueType
+    {
+        return Single([](const ValueType& /*value*/){ return true; });
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::Single(const TPredicate predicate) const -> ValueType
+    {
+        TEnumerator enumeratorCopy = enumerator;
+
+        while (!enumeratorCopy.IsFinished())
+        {
+            if (predicate(enumeratorCopy.GetCurrent()))
+            {
+                break;
+            }
+
+            enumeratorCopy.MoveNext();
+        }
+
+        if (enumeratorCopy.IsFinished())
+        {
+            throw Exceptions::EmptyCollectionException();
+        }
+
+        const ValueType current = enumeratorCopy.GetCurrent();
+
+        do
+        {
+            enumeratorCopy.MoveNext();
+            if (enumeratorCopy.IsFinished())
+            {
+                break;
+            }
+
+            if (predicate(enumeratorCopy.GetCurrent()))
+            {
+                throw Exceptions::MoreThanOneElementException();
+            }
+        } while (true);
+
+        return current;
     }
 
     template <typename TEnumerator>
