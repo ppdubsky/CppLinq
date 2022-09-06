@@ -213,6 +213,32 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
+    auto Query<TEnumerator>::FirstOrDefault() const -> ValueType
+    {
+        return FirstOrDefault(ValueType());
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::FirstOrDefault(const ValueType& defaultValue) const -> ValueType
+    {
+        return FirstOrDefault([](const ValueType /*value*/){ return true; }, defaultValue);
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::FirstOrDefault(const TPredicate predicate) const -> ValueType
+    {
+        return FirstOrDefault(predicate, ValueType());
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::FirstOrDefault(const TPredicate predicate, const ValueType& defaultValue) const -> ValueType
+    {
+        return FirstOptional(predicate).value_or(defaultValue);
+    }
+
+    template <typename TEnumerator>
     template <typename TFunction>
     auto Query<TEnumerator>::ForEach(const TFunction function) const -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>
     {

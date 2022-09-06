@@ -57,6 +57,12 @@ namespace CppLinq::Details
         auto FirstOptional() const -> std::optional<ValueType>;
         template <typename TPredicate>
         auto FirstOptional(const TPredicate predicate) const -> std::optional<ValueType>;
+        auto FirstOrDefault() const -> ValueType;
+        auto FirstOrDefault(const ValueType& defaultValue) const -> ValueType;
+        template <typename TPredicate>
+        auto FirstOrDefault(const TPredicate predicate) const -> ValueType;
+        template <typename TPredicate>
+        auto FirstOrDefault(const TPredicate predicate, const ValueType& defaultValue) const -> ValueType;
         template <typename TFunction>
         auto ForEach(const TFunction function) const -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>;
         auto Last() const -> ValueType;
