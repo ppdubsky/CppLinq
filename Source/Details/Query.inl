@@ -174,6 +174,27 @@ namespace CppLinq::Details
     template <typename TPredicate>
     auto Query<TEnumerator>::First(const TPredicate predicate) const -> ValueType
     {
+        const std::optional<ValueType> value = FirstOptional(predicate);
+        if (!value)
+        {
+            throw Exceptions::EmptyCollectionException();
+        }
+
+        return *value;
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::FirstOptional() const -> std::optional<ValueType>
+    {
+        return FirstOptional([](const ValueType& /*value*/){ return true; });
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::FirstOptional(const TPredicate predicate) const -> std::optional<ValueType>
+    {
+        std::optional<ValueType> value;
+
         TEnumerator enumeratorCopy = enumerator;
 
         while (!enumeratorCopy.IsFinished())
@@ -181,13 +202,14 @@ namespace CppLinq::Details
             const ValueType current = enumeratorCopy.GetCurrent();
             if (predicate(current))
             {
-                return current;
+                value = current;
+                break;
             }
 
             enumeratorCopy.MoveNext();
         }
 
-        throw Exceptions::EmptyCollectionException();
+        return value;
     }
 
     template <typename TEnumerator>

@@ -9,6 +9,7 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/ConcatenationTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/CountTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/DefaultIfEmptyTests.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/FirstOptionalTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/FirstTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/ForEachTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/LastTests.cpp

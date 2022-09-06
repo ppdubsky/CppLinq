@@ -3,6 +3,7 @@
 #include "Details/Query.Forward.hpp"
 
 #include <cstdint>
+#include <optional>
 #include <vector>
 
 #include "Details/Enumerators/AppendEnumerator.Forward.hpp"
@@ -53,6 +54,9 @@ namespace CppLinq::Details
         auto First() const -> ValueType;
         template <typename TPredicate>
         auto First(const TPredicate predicate) const -> ValueType;
+        auto FirstOptional() const -> std::optional<ValueType>;
+        template <typename TPredicate>
+        auto FirstOptional(const TPredicate predicate) const -> std::optional<ValueType>;
         template <typename TFunction>
         auto ForEach(const TFunction function) const -> Query<Enumerators::ForEachEnumerator<TEnumerator, TFunction>>;
         auto Last() const -> ValueType;
