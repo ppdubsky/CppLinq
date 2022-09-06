@@ -1,0 +1,100 @@
+#include <vector>
+
+#include "Common/Assertions.hpp"
+#include "CppLinq.hpp"
+
+using namespace CppLinq;
+using namespace CppLinq::Exceptions;
+using namespace std;
+
+TEST(SingleOrDefault, ReturnsDefault_SingleFromAll_SourceIsEmpty)
+{
+    vector<int> source;
+    const int expected = 11;
+
+    const auto actual = From(source).SingleOrDefault(11);
+
+    EXPECT_EQ(actual, expected);
+}
+
+TEST(SingleOrDefault, ReturnsSingle_SingleFromAll_SourceContainsSingleElement)
+{
+    const int source[]{ 1 };
+    const auto expected = 1;
+
+    const auto actual = From(source).SingleOrDefault(11);
+
+    EXPECT_EQ(actual, expected);
+}
+
+TEST(SingleOrDefault, ReturnsDefault_SingleByPredicate_SourceIsEmpty)
+{
+    vector<int> source;
+    const int expected = 11;
+
+    const auto actual = From(source).SingleOrDefault([](const int value){ return value % 2 == 0; }, 11);
+
+    EXPECT_EQ(actual, expected);
+}
+
+TEST(SingleOrDefault, ReturnsDefault_SingleByPredicate_SourceContainsSingleElementThatDoesNotSatisfyPredicate)
+{
+    const int source[]{ 1 };
+    const int expected = 11;
+
+    const auto actual = From(source).SingleOrDefault([](const int value){ return value % 2 == 0; }, 11);
+
+    EXPECT_EQ(actual, expected);
+}
+
+TEST(SingleOrDefault, ReturnsSingle_SingleByPredicate_SourceContainsSingleElement)
+{
+    const int source[]{ 1, 2, 3 };
+    const auto expected = 2;
+
+    const auto actual = From(source).SingleOrDefault([](const int value){ return value % 2 == 0; }, 11);
+
+    EXPECT_EQ(actual, expected);
+}
+
+TEST(SingleOrDefault, ReturnsSameResults_SingleFromAll)
+{
+    const int source[]{ 1 };
+
+    auto query = From(source);
+
+    const auto actual1 = query.SingleOrDefault(11);
+    const auto actual2 = query.SingleOrDefault(11);
+
+    EXPECT_EQ(actual1, actual2);
+}
+
+TEST(SingleOrDefault, ReturnsSameResults_SingleByPredicate)
+{
+    const int source[]{ 1, 2, 3 };
+
+    auto query = From(source);
+
+    const auto actual1 = query.SingleOrDefault([](const int value){ return value % 2 == 0; }, 11);
+    const auto actual2 = query.SingleOrDefault([](const int value){ return value % 2 == 0; }, 11);
+
+    EXPECT_EQ(actual1, actual2);
+}
+
+TEST(SingleOrDefault, ThrowsOnSingleOrDefault_SingleFromAll_SourceContainsMoreThanOneElement)
+{
+    const int source[]{ 1, 2 };
+
+    auto query = From(source);
+
+    EXPECT_THROW(query.SingleOrDefault(11), MoreThanOneElementException);
+}
+
+TEST(SingleOrDefault, ThrowsOnSingleOrDefault_SingleByPredicate_SourceContainsMultipleElementsThatSatisfyPredicate)
+{
+    const int source[]{ 1, 2, 3, 4, 5 };
+
+    auto query = From(source);
+
+    EXPECT_THROW(query.SingleOrDefault([](const int value){ return value % 2 == 0; }, 11), MoreThanOneElementException);
+}

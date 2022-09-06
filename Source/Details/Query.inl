@@ -436,6 +436,32 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
+    auto Query<TEnumerator>::SingleOrDefault() const -> ValueType
+    {
+        return SingleOrDefault(ValueType());
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::SingleOrDefault(const ValueType& defaultValue) const -> ValueType
+    {
+        return SingleOrDefault([](const ValueType /*value*/){ return true; }, defaultValue);
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::SingleOrDefault(const TPredicate predicate) const -> ValueType
+    {
+        return SingleOrDefault(predicate, ValueType());
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::SingleOrDefault(const TPredicate predicate, const ValueType& defaultValue) const -> ValueType
+    {
+        return SingleOptional(predicate).value_or(defaultValue);
+    }
+
+    template <typename TEnumerator>
     auto Query<TEnumerator>::Skip(const std::uint32_t count) const -> Query<Enumerators::SkipEnumerator<TEnumerator>>
     {
         return { { enumerator, count } };
