@@ -321,6 +321,32 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
+    auto Query<TEnumerator>::LastOrDefault() const -> ValueType
+    {
+        return LastOrDefault(ValueType());
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::LastOrDefault(const ValueType& defaultValue) const -> ValueType
+    {
+        return LastOrDefault([](const ValueType /*value*/){ return true; }, defaultValue);
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::LastOrDefault(const TPredicate predicate) const -> ValueType
+    {
+        return LastOrDefault(predicate, ValueType());
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::LastOrDefault(const TPredicate predicate, const ValueType& defaultValue) const -> ValueType
+    {
+        return LastOptional(predicate).value_or(defaultValue);
+    }
+
+    template <typename TEnumerator>
     auto Query<TEnumerator>::Maximum() const -> ValueType
     {
         return GetBound(true);

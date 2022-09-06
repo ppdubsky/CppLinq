@@ -71,6 +71,12 @@ namespace CppLinq::Details
         auto LastOptional() const -> std::optional<ValueType>;
         template <typename TPredicate>
         auto LastOptional(const TPredicate predicate) const -> std::optional<ValueType>;
+        auto LastOrDefault() const -> ValueType;
+        auto LastOrDefault(const ValueType& defaultValue) const -> ValueType;
+        template <typename TPredicate>
+        auto LastOrDefault(const TPredicate predicate) const -> ValueType;
+        template <typename TPredicate>
+        auto LastOrDefault(const TPredicate predicate, const ValueType& defaultValue) const -> ValueType;
         auto Maximum() const -> ValueType;
         auto Minimum() const -> ValueType;
         auto OrderBy() const -> Query<Enumerators::OrderEnumerator<TEnumerator>>;
