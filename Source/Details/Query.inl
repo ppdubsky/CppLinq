@@ -341,40 +341,46 @@ namespace CppLinq::Details
     template <typename TPredicate>
     auto Query<TEnumerator>::Single(const TPredicate predicate) const -> ValueType
     {
-        TEnumerator enumeratorCopy = enumerator;
-
-        while (!enumeratorCopy.IsFinished())
-        {
-            if (predicate(enumeratorCopy.GetCurrent()))
-            {
-                break;
-            }
-
-            enumeratorCopy.MoveNext();
-        }
-
-        if (enumeratorCopy.IsFinished())
+        const std::optional<ValueType> value = SingleOptional(predicate);
+        if (!value)
         {
             throw Exceptions::EmptyCollectionException();
         }
 
-        const ValueType current = enumeratorCopy.GetCurrent();
+        return *value;
+    }
 
-        do
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::SingleOptional() const -> std::optional<ValueType>
+    {
+        return SingleOptional([](const ValueType& /*value*/){ return true; });
+    }
+
+    template <typename TEnumerator>
+    template <typename TPredicate>
+    auto Query<TEnumerator>::SingleOptional(const TPredicate predicate) const -> std::optional<ValueType>
+    {
+        std::optional<ValueType> value;
+
+        TEnumerator enumeratorCopy = enumerator;
+
+        while (!enumeratorCopy.IsFinished())
         {
+            const ValueType current = enumeratorCopy.GetCurrent();
+            if (predicate(current))
+            {
+                if (value)
+                {
+                    throw Exceptions::MoreThanOneElementException();
+                }
+
+                value = current;
+            }
+
             enumeratorCopy.MoveNext();
-            if (enumeratorCopy.IsFinished())
-            {
-                break;
-            }
+        }
 
-            if (predicate(enumeratorCopy.GetCurrent()))
-            {
-                throw Exceptions::MoreThanOneElementException();
-            }
-        } while (true);
-
-        return current;
+        return value;
     }
 
     template <typename TEnumerator>

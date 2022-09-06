@@ -75,6 +75,9 @@ namespace CppLinq::Details
         auto Single() const -> ValueType;
         template <typename TPredicate>
         auto Single(const TPredicate predicate) const -> ValueType;
+        auto SingleOptional() const -> std::optional<ValueType>;
+        template <typename TPredicate>
+        auto SingleOptional(const TPredicate predicate) const -> std::optional<ValueType>;
         auto Skip(const std::uint32_t count) const -> Query<Enumerators::SkipEnumerator<TEnumerator>>;
         template <typename TPredicate>
         auto SkipWhile(const TPredicate predicate) const -> Query<Enumerators::SkipWhileEnumerator<TEnumerator, TPredicate>>;
