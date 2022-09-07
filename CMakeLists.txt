@@ -36,6 +36,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/AppendEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/AppendEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/AppendEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ChunkEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ChunkEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ChunkEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/CollectionEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/CollectionEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.Forward.hpp
@@ -91,6 +94,7 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/ValueTypeProvider.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Exceptions/ArgumentOutOfRangeException.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/EmptyCollectionException.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/FinishedEnumeratorException.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/MoreThanOneElementException.hpp

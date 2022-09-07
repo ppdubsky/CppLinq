@@ -7,6 +7,7 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/AnyTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/AppendTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/AverageTests.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/ChunkTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/ConcatenationTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/CountTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/DefaultIfEmptyTests.cpp

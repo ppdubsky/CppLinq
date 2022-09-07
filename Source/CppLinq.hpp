@@ -6,6 +6,7 @@
 #include "Details/Collections/SortCollectionStrategy.inl"
 #include "Details/Collections/VectorCollectionProvider.inl"
 #include "Details/Enumerators/AppendEnumerator.inl"
+#include "Details/Enumerators/ChunkEnumerator.inl"
 #include "Details/Enumerators/CollectionEnumerator.inl"
 #include "Details/Enumerators/ConcatenationEnumerator.inl"
 #include "Details/Enumerators/DefaultIfEmptyEnumerator.inl"

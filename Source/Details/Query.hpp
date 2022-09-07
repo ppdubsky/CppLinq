@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "Details/Enumerators/AppendEnumerator.Forward.hpp"
+#include "Details/Enumerators/ChunkEnumerator.Forward.hpp"
 #include "Details/Enumerators/ConcatenationEnumerator.Forward.hpp"
 #include "Details/Enumerators/DefaultIfEmptyEnumerator.Forward.hpp"
 #include "Details/Enumerators/ForEachEnumerator.Forward.hpp"
@@ -51,6 +52,7 @@ namespace CppLinq::Details
         auto Any(const TPredicate predicate) const -> bool;
         auto Append(const ValueType& value) const -> Query<Enumerators::AppendEnumerator<TEnumerator>>;
         auto Average() const -> ValueType;
+        auto Chunk(const std::uint32_t size) const -> Query<Enumerators::ChunkEnumerator<TEnumerator>>;
         template <typename TNextEnumerator>
         auto Concatenate(const Query<TNextEnumerator>& nextQuery) const -> Query<Enumerators::ConcatenationEnumerator<TEnumerator, TNextEnumerator>>;
         auto Count() const -> std::uint32_t;

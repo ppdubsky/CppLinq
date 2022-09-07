@@ -3,6 +3,7 @@
 #include "Details/Query.hpp"
 
 #include "Details/Enumerators/AppendEnumerator.hpp"
+#include "Details/Enumerators/ChunkEnumerator.hpp"
 #include "Details/Enumerators/ConcatenationEnumerator.hpp"
 #include "Details/Enumerators/DefaultIfEmptyEnumerator.hpp"
 #include "Details/Enumerators/ForEachEnumerator.hpp"
@@ -166,6 +167,12 @@ namespace CppLinq::Details
         }
 
         return sum / count;
+    }
+
+    template <typename TEnumerator>
+    auto Query<TEnumerator>::Chunk(const std::uint32_t size) const -> Query<Enumerators::ChunkEnumerator<TEnumerator>>
+    {
+        return { { enumerator, size } };
     }
 
     template <typename TEnumerator>
