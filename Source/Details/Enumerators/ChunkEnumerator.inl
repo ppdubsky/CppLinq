@@ -27,7 +27,7 @@ namespace CppLinq::Details::Enumerators
 
             auto index = 0U;
 
-            while (!Base::IsFinished())
+            while (Base::HasCurrent())
             {
                 collection.push_back(Base::GetCurrent());
 
@@ -59,11 +59,11 @@ namespace CppLinq::Details::Enumerators
     }
 
     template <typename TEnumerator>
-    auto ChunkEnumerator<TEnumerator>::IsFinished() -> bool
+    auto ChunkEnumerator<TEnumerator>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
-        return collection.empty();
+        return !collection.empty();
     }
 
     template <typename TEnumerator>
@@ -74,7 +74,7 @@ namespace CppLinq::Details::Enumerators
             throw Exceptions::FinishedEnumeratorException();
         }
 
-        isBaseFinished = Base::IsFinished();
+        isBaseFinished = !Base::HasCurrent();
         isReady = false;
     }
 }

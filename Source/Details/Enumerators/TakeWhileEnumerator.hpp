@@ -14,7 +14,7 @@ namespace CppLinq::Details::Enumerators
         TakeWhileEnumerator(const TEnumerator enumerator, const TPredicate predicate);
 
         auto GetCurrent() -> Base::ValueType;
-        auto IsFinished() -> bool;
+        auto HasCurrent() -> bool;
         void MoveNext();
 
     private:

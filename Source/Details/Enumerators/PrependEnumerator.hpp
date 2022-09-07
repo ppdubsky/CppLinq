@@ -14,7 +14,7 @@ namespace CppLinq::Details::Enumerators
         PrependEnumerator(const TEnumerator enumerator, const Base::ValueType& value);
 
         auto GetCurrent() -> Base::ValueType;
-        auto IsFinished() -> bool;
+        auto HasCurrent() -> bool;
         void MoveNext();
 
     private:

@@ -79,7 +79,7 @@ TEST(TakeWhile, SourceThrowsOnMoveNext)
     auto query = From(source).TakeWhile([](const int value){ return value < 5; });
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }
@@ -97,7 +97,7 @@ TEST(TakeWhile, SourceThrowsOnGetCurrent)
     auto query = From(source).TakeWhile([](const int value){ return value < 5; });
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }

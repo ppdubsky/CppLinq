@@ -16,7 +16,7 @@ namespace CppLinq::Details::Enumerators
         SkipEnumerator(const TEnumerator enumerator, const std::uint32_t count);
 
         auto GetCurrent() -> Base::ValueType;
-        auto IsFinished() -> bool;
+        auto HasCurrent() -> bool;
         void MoveNext();
 
     private:

@@ -27,14 +27,14 @@ namespace CppLinq::Details::Loops
     }
 
     template <typename TEnumerator>
-    auto LoopIterator<TEnumerator>::operator==(const LoopIteratorSentinel /*right*/) -> bool
+    auto LoopIterator<TEnumerator>::operator==(const LoopIteratorSentinel right) -> bool
     {
-        return enumerator.IsFinished();
+        return !operator!=(right);
     }
 
     template <typename TEnumerator>
-    auto LoopIterator<TEnumerator>::operator!=(const LoopIteratorSentinel right) -> bool
+    auto LoopIterator<TEnumerator>::operator!=(const LoopIteratorSentinel /*right*/) -> bool
     {
-        return !operator==(right);
+        return enumerator.HasCurrent();
     }
 }

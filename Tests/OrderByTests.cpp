@@ -85,7 +85,7 @@ TEST(OrderBy, SourceThrowsOnMoveNext)
     auto query = From(source).OrderBy();
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }
@@ -103,7 +103,7 @@ TEST(OrderBy, SourceThrowsOnGetCurrent)
     auto query = From(source).OrderBy();
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }

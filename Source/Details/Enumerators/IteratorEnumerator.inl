@@ -16,7 +16,7 @@ namespace CppLinq::Details::Enumerators
     template <typename TIterator>
     auto IteratorEnumerator<TIterator>::GetCurrent() -> const ValueType&
     {
-        if (IsFinished())
+        if (!HasCurrent())
         {
             throw Exceptions::FinishedEnumeratorException();
         }
@@ -25,15 +25,15 @@ namespace CppLinq::Details::Enumerators
     }
 
     template <typename TIterator>
-    auto IteratorEnumerator<TIterator>::IsFinished() -> bool
+    auto IteratorEnumerator<TIterator>::HasCurrent() -> bool
     {
-        return begin == end;
+        return begin != end;
     }
 
     template <typename TIterator>
     void IteratorEnumerator<TIterator>::MoveNext()
     {
-        if (IsFinished())
+        if (!HasCurrent())
         {
             throw Exceptions::FinishedEnumeratorException();
         }

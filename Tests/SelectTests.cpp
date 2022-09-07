@@ -123,7 +123,7 @@ TEST(Select, SourceThrowsOnMoveNext)
     auto query = From(source).Select([](const int value){ return value % 2 == 0; });
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }
@@ -141,7 +141,7 @@ TEST(Select, SourceThrowsOnGetCurrent)
     auto query = From(source).Select([](const int value){ return value % 2 == 0; });
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }

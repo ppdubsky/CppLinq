@@ -16,7 +16,7 @@ namespace CppLinq::Details::Enumerators
     template <typename TEnumerator>
     auto TakeEnumerator<TEnumerator>::GetCurrent() -> Base::ValueType
     {
-        if (IsFinished())
+        if (!HasCurrent())
         {
             throw Exceptions::FinishedEnumeratorException();
         }
@@ -25,15 +25,15 @@ namespace CppLinq::Details::Enumerators
     }
 
     template <typename TEnumerator>
-    auto TakeEnumerator<TEnumerator>::IsFinished() -> bool
+    auto TakeEnumerator<TEnumerator>::HasCurrent() -> bool
     {
-        return Base::IsFinished() || count == 0U;
+        return Base::HasCurrent() && count > 0U;
     }
 
     template <typename TEnumerator>
     void TakeEnumerator<TEnumerator>::MoveNext()
     {
-        if (IsFinished())
+        if (!HasCurrent())
         {
             throw Exceptions::FinishedEnumeratorException();
         }

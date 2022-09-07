@@ -55,7 +55,7 @@ TEST(Reverse, SourceThrowsOnMoveNext)
     auto query = From(source).Reverse();
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }
@@ -73,7 +73,7 @@ TEST(Reverse, SourceThrowsOnGetCurrent)
     auto query = From(source).Reverse();
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }

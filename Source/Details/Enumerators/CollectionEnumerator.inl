@@ -33,7 +33,7 @@ namespace CppLinq::Details::Enumerators
     {
         EnsureEnumeratorIsReady();
 
-        if (IsFinished())
+        if (!HasCurrent())
         {
             throw Exceptions::FinishedEnumeratorException();
         }
@@ -42,11 +42,11 @@ namespace CppLinq::Details::Enumerators
     }
 
     template <typename TEnumerator, template <typename> typename TCollectionProvider, template <typename> typename TIteratorProvider, template <typename> typename TCollectionStrategy>
-    auto CollectionEnumerator<TEnumerator, TCollectionProvider, TIteratorProvider, TCollectionStrategy>::IsFinished() -> bool
+    auto CollectionEnumerator<TEnumerator, TCollectionProvider, TIteratorProvider, TCollectionStrategy>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
-        return begin == end;
+        return begin != end;
     }
 
     template <typename TEnumerator, template <typename> typename TCollectionProvider, template <typename> typename TIteratorProvider, template <typename> typename TCollectionStrategy>
@@ -54,7 +54,7 @@ namespace CppLinq::Details::Enumerators
     {
         EnsureEnumeratorIsReady();
 
-        if (IsFinished())
+        if (!HasCurrent())
         {
             throw Exceptions::FinishedEnumeratorException();
         }

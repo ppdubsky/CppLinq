@@ -72,7 +72,7 @@ TEST(StaticCast, SourceThrowsOnMoveNext)
     auto query = From(source).StaticCast<int>();
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }
@@ -90,7 +90,7 @@ TEST(StaticCast, SourceThrowsOnGetCurrent)
     auto query = From(source).StaticCast<int>();
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }

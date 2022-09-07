@@ -14,25 +14,25 @@ namespace CppLinq::Details::Enumerators
     template <typename TEnumerator, typename TNextEnumerator>
     auto ConcatenationEnumerator<TEnumerator, TNextEnumerator>::GetCurrent() -> Base::ValueType
     {
-        return Base::IsFinished() ? nextQuery.GetEnumerator().GetCurrent() : Base::GetCurrent();
+        return Base::HasCurrent() ? Base::GetCurrent() : nextQuery.GetEnumerator().GetCurrent();
     }
 
     template <typename TEnumerator, typename TNextEnumerator>
-    auto ConcatenationEnumerator<TEnumerator, TNextEnumerator>::IsFinished() -> bool
+    auto ConcatenationEnumerator<TEnumerator, TNextEnumerator>::HasCurrent() -> bool
     {
-        return Base::IsFinished() && nextQuery.GetEnumerator().IsFinished();
+        return Base::HasCurrent() || nextQuery.GetEnumerator().HasCurrent();
     }
 
     template <typename TEnumerator, typename TNextEnumerator>
     void ConcatenationEnumerator<TEnumerator, TNextEnumerator>::MoveNext()
     {
-        if (Base::IsFinished())
+        if (Base::HasCurrent())
         {
-            nextQuery.GetEnumerator().MoveNext();
+            Base::MoveNext();
         }
         else
         {
-            Base::MoveNext();
+            nextQuery.GetEnumerator().MoveNext();
         }
     }
 }

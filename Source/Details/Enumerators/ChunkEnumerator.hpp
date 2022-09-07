@@ -18,7 +18,7 @@ namespace CppLinq::Details::Enumerators
         ChunkEnumerator(const TEnumerator enumerator, const std::uint32_t size);
 
         auto GetCurrent() -> const ValueType&;
-        auto IsFinished() -> bool;
+        auto HasCurrent() -> bool;
         void MoveNext();
 
     private:

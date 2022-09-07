@@ -16,7 +16,7 @@ namespace CppLinq::Details::Enumerators
     template <typename TEnumerator, typename TPredicate>
     auto TakeWhileEnumerator<TEnumerator, TPredicate>::GetCurrent() -> Base::ValueType
     {
-        if (IsFinished())
+        if (!HasCurrent())
         {
             throw Exceptions::FinishedEnumeratorException();
         }
@@ -25,15 +25,15 @@ namespace CppLinq::Details::Enumerators
     }
 
     template <typename TEnumerator, typename TPredicate>
-    auto TakeWhileEnumerator<TEnumerator, TPredicate>::IsFinished() -> bool
+    auto TakeWhileEnumerator<TEnumerator, TPredicate>::HasCurrent() -> bool
     {
-        return Base::IsFinished() || !predicate(Base::GetCurrent());
+        return Base::HasCurrent() && predicate(Base::GetCurrent());
     }
 
     template <typename TEnumerator, typename TPredicate>
     void TakeWhileEnumerator<TEnumerator, TPredicate>::MoveNext()
     {
-        if (IsFinished())
+        if (!HasCurrent())
         {
             throw Exceptions::FinishedEnumeratorException();
         }

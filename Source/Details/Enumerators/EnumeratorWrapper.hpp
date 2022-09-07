@@ -8,7 +8,7 @@ namespace CppLinq::Details::Enumerators
         using ValueType = typename TEnumerator::ValueType;
 
         auto GetCurrent() -> ValueType;
-        auto IsFinished() -> bool;
+        auto HasCurrent() -> bool;
         void MoveNext();
 
     protected:

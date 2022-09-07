@@ -17,9 +17,9 @@ namespace CppLinq::Details::Enumerators
     }
 
     template <typename TEnumerator>
-    auto EnumeratorWrapper<TEnumerator>::IsFinished() -> bool
+    auto EnumeratorWrapper<TEnumerator>::HasCurrent() -> bool
     {
-        return enumerator.IsFinished();
+        return enumerator.HasCurrent();
     }
 
     template <typename TEnumerator>

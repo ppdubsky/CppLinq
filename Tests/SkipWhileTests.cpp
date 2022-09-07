@@ -79,7 +79,7 @@ TEST(SkipWhile, SourceThrowsOnMoveNext)
     auto query = From(source).SkipWhile([](const int value){ return value < 5; });
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }
@@ -97,7 +97,7 @@ TEST(SkipWhile, SourceThrowsOnGetCurrent)
     auto query = From(source).SkipWhile([](const int value){ return value < 5; });
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }

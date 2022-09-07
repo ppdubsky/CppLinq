@@ -172,7 +172,7 @@ TEST(Chunk, SourceThrowsOnMoveNext)
     auto query = From(source).Chunk(3U);
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }
@@ -190,7 +190,7 @@ TEST(Chunk, SourceThrowsOnGetCurrent)
     auto query = From(source).Chunk(3U);
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }

@@ -13,7 +13,7 @@ namespace CppLinq::Details::Enumerators
         using ValueType = typename Query<TEnumerator>::ValueType;
 
         auto GetCurrent() -> const ValueType&;
-        auto IsFinished() -> bool;
+        auto HasCurrent() -> bool;
         void MoveNext();
 
     protected:

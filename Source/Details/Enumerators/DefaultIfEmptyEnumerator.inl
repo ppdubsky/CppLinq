@@ -23,15 +23,15 @@ namespace CppLinq::Details::Enumerators
 
         return isMovedNext
             ? Base::GetCurrent()
-            : Base::IsFinished()
-                ? value
-                : Base::GetCurrent();
+            : Base::HasCurrent()
+                ? Base::GetCurrent()
+                : value;
     }
 
     template <typename TEnumerator>
-    auto DefaultIfEmptyEnumerator<TEnumerator>::IsFinished() -> bool
+    auto DefaultIfEmptyEnumerator<TEnumerator>::HasCurrent() -> bool
     {
-        return isMovedNext ? Base::IsFinished() : false;
+        return Base::HasCurrent() || !isMovedNext;
     }
 
     template <typename TEnumerator>
@@ -48,7 +48,7 @@ namespace CppLinq::Details::Enumerators
         }
         else
         {
-            if (!Base::IsFinished())
+            if (Base::HasCurrent())
             {
                 Base::MoveNext();
 

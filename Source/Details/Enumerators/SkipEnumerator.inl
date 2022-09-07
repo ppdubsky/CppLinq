@@ -16,7 +16,7 @@ namespace CppLinq::Details::Enumerators
     {
         if (!isReady)
         {
-            while (count > 0U && !Base::IsFinished())
+            while (count > 0U && Base::HasCurrent())
             {
                 Base::MoveNext();
 
@@ -36,11 +36,11 @@ namespace CppLinq::Details::Enumerators
     }
 
     template <typename TEnumerator>
-    auto SkipEnumerator<TEnumerator>::IsFinished() -> bool
+    auto SkipEnumerator<TEnumerator>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
-        return Base::IsFinished();
+        return Base::HasCurrent();
     }
 
     template <typename TEnumerator>

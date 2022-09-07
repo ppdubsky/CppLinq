@@ -14,7 +14,7 @@ namespace CppLinq::Details::Enumerators
         IteratorEnumerator(const TIterator begin, const TIterator end);
 
         auto GetCurrent() -> const ValueType&;
-        auto IsFinished() -> bool;
+        auto HasCurrent() -> bool;
         void MoveNext();
 
     private:

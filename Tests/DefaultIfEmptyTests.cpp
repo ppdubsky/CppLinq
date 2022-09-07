@@ -71,7 +71,7 @@ TEST(DefaultIfEmpty, SourceThrowsOnMoveNext)
     auto query = From(source).DefaultIfEmpty(11);
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }
@@ -89,7 +89,7 @@ TEST(DefaultIfEmpty, SourceThrowsOnGetCurrent)
     auto query = From(source).DefaultIfEmpty(11);
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }

@@ -16,7 +16,7 @@ namespace CppLinq::Details::Enumerators
     {
         if (!isReady)
         {
-            while (!Base::IsFinished())
+            while (Base::HasCurrent())
             {
                 if (predicate(Base::GetCurrent()))
                 {
@@ -41,11 +41,11 @@ namespace CppLinq::Details::Enumerators
     }
 
     template <typename TEnumerator, typename TPredicate>
-    auto WhereEnumerator<TEnumerator, TPredicate>::IsFinished() -> bool
+    auto WhereEnumerator<TEnumerator, TPredicate>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
-        return Base::IsFinished();
+        return Base::HasCurrent();
     }
 
     template <typename TEnumerator, typename TPredicate>

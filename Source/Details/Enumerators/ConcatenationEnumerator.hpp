@@ -15,7 +15,7 @@ namespace CppLinq::Details::Enumerators
         ConcatenationEnumerator(const TEnumerator enumerator, const Query<TNextEnumerator>& nextQuery);
 
         auto GetCurrent() -> Base::ValueType;
-        auto IsFinished() -> bool;
+        auto HasCurrent() -> bool;
         void MoveNext();
 
     private:

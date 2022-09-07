@@ -56,7 +56,7 @@ TEST(Prepend, SourceThrowsOnMoveNext)
     auto query = From(source).Prepend(11);
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }
@@ -74,7 +74,7 @@ TEST(Prepend, SourceThrowsOnGetCurrent)
     auto query = From(source).Prepend(11);
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }

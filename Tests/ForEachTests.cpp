@@ -61,7 +61,7 @@ TEST(ForEach, SourceThrowsOnMoveNext)
     auto query = From(source).ForEach([](const int /*value*/){});
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }
@@ -79,7 +79,7 @@ TEST(ForEach, SourceThrowsOnGetCurrent)
     auto query = From(source).ForEach([](const int /*value*/){});
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }

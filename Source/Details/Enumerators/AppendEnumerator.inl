@@ -16,46 +16,46 @@ namespace CppLinq::Details::Enumerators
     template <typename TEnumerator>
     auto AppendEnumerator<TEnumerator>::GetCurrent() -> Base::ValueType
     {
-        if (IsFinished())
+        if (!HasCurrent())
         {
             throw Exceptions::FinishedEnumeratorException();
         }
 
         typename Base::ValueType current;
 
-        if (Base::IsFinished())
+        if (Base::HasCurrent())
         {
-            current = value;
+            current = Base::GetCurrent();
         }
         else
         {
-            current = Base::GetCurrent();
+            current = value;
         }
 
         return current;
     }
 
     template <typename TEnumerator>
-    auto AppendEnumerator<TEnumerator>::IsFinished() -> bool
+    auto AppendEnumerator<TEnumerator>::HasCurrent() -> bool
     {
-        return Base::IsFinished() && isAppended;
+        return Base::HasCurrent() || !isAppended;
     }
 
     template <typename TEnumerator>
     void AppendEnumerator<TEnumerator>::MoveNext()
     {
-        if (IsFinished())
+        if (!HasCurrent())
         {
             throw Exceptions::FinishedEnumeratorException();
         }
 
-        if (Base::IsFinished())
+        if (Base::HasCurrent())
         {
-            isAppended = true;
+            Base::MoveNext();
         }
         else
         {
-            Base::MoveNext();
+            isAppended = true;
         }
     }
 }

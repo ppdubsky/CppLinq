@@ -54,7 +54,7 @@ namespace CppLinq::Details
     auto Query<TEnumerator>::Aggregate(const TAccumulator accumulator) const -> ValueType
     {
         TEnumerator enumeratorCopy = enumerator;
-        if (enumeratorCopy.IsFinished())
+        if (!enumeratorCopy.HasCurrent())
         {
             throw Exceptions::EmptyCollectionException();
         }
@@ -65,7 +65,7 @@ namespace CppLinq::Details
         {
             enumeratorCopy.MoveNext();
 
-            if (enumeratorCopy.IsFinished())
+            if (!enumeratorCopy.HasCurrent())
             {
                 break;
             }
@@ -104,7 +104,7 @@ namespace CppLinq::Details
         auto isValid = true;
 
         TEnumerator enumeratorCopy = enumerator;
-        while (!enumeratorCopy.IsFinished())
+        while (enumeratorCopy.HasCurrent())
         {
             if (!predicate(enumeratorCopy.GetCurrent()))
             {
@@ -125,7 +125,7 @@ namespace CppLinq::Details
         auto isValid = false;
 
         TEnumerator enumeratorCopy = enumerator;
-        while (!enumeratorCopy.IsFinished())
+        while (enumeratorCopy.HasCurrent())
         {
             if (predicate(enumeratorCopy.GetCurrent()))
             {
@@ -152,7 +152,7 @@ namespace CppLinq::Details
         auto count = 0U;
 
         TEnumerator enumeratorCopy = enumerator;
-        while (!enumeratorCopy.IsFinished())
+        while (enumeratorCopy.HasCurrent())
         {
             sum += enumeratorCopy.GetCurrent();
 
@@ -195,7 +195,7 @@ namespace CppLinq::Details
         auto count = 0U;
 
         TEnumerator enumeratorCopy = enumerator;
-        while (!enumeratorCopy.IsFinished())
+        while (enumeratorCopy.HasCurrent())
         {
             if (predicate(enumeratorCopy.GetCurrent()))
             {
@@ -251,7 +251,7 @@ namespace CppLinq::Details
         std::optional<ValueType> value;
 
         TEnumerator enumeratorCopy = enumerator;
-        while (!enumeratorCopy.IsFinished())
+        while (enumeratorCopy.HasCurrent())
         {
             const ValueType current = enumeratorCopy.GetCurrent();
             if (predicate(current))
@@ -303,7 +303,7 @@ namespace CppLinq::Details
     auto Query<TEnumerator>::GetBound(const bool isMaximum) const -> ValueType
     {
         TEnumerator enumeratorCopy = enumerator;
-        if (enumeratorCopy.IsFinished())
+        if (!enumeratorCopy.HasCurrent())
         {
             throw Exceptions::EmptyCollectionException();
         }
@@ -312,7 +312,7 @@ namespace CppLinq::Details
 
         enumeratorCopy.MoveNext();
 
-        while (!enumeratorCopy.IsFinished())
+        while (enumeratorCopy.HasCurrent())
         {
             const ValueType current = enumeratorCopy.GetCurrent();
             if (isMaximum ? current > bound : current < bound)
@@ -358,7 +358,7 @@ namespace CppLinq::Details
         std::optional<ValueType> value;
 
         TEnumerator enumeratorCopy = enumerator;
-        while (!enumeratorCopy.IsFinished())
+        while (enumeratorCopy.HasCurrent())
         {
             const ValueType current = enumeratorCopy.GetCurrent();
             if (predicate(current))
@@ -467,7 +467,7 @@ namespace CppLinq::Details
         std::optional<ValueType> value;
 
         TEnumerator enumeratorCopy = enumerator;
-        while (!enumeratorCopy.IsFinished())
+        while (enumeratorCopy.HasCurrent())
         {
             const ValueType current = enumeratorCopy.GetCurrent();
             if (predicate(current))
@@ -538,7 +538,7 @@ namespace CppLinq::Details
         auto sum = static_cast<ValueType>(0);
 
         TEnumerator enumeratorCopy = enumerator;
-        while (!enumeratorCopy.IsFinished())
+        while (enumeratorCopy.HasCurrent())
         {
             sum += enumeratorCopy.GetCurrent();
 
@@ -567,7 +567,7 @@ namespace CppLinq::Details
         std::vector<ValueType> items;
 
         TEnumerator enumeratorCopy = enumerator;
-        while (!enumeratorCopy.IsFinished())
+        while (enumeratorCopy.HasCurrent())
         {
             items.push_back(enumeratorCopy.GetCurrent());
 

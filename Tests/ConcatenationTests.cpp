@@ -101,7 +101,7 @@ TEST(Concatenate, SourceThrowsOnMoveNext)
     auto query = From(source).Concatenate(From(source));
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }
@@ -119,7 +119,7 @@ TEST(Concatenate, SourceThrowsOnGetCurrent)
     auto query = From(source).Concatenate(From(source));
 
     auto& enumerator = query.GetEnumerator();
-    while (!enumerator.IsFinished())
+    while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
     }
