@@ -6,7 +6,7 @@
 
 #include "Details/Mixins/MixinUtilities.hpp"
 #include "Details/Predicates/TruePredicate.hpp"
-#include "Exceptions/EmptyCollectionException.hpp"
+#include "Exceptions/EmptyContainerException.hpp"
 
 namespace CppLinq::Details::Mixins
 {
@@ -23,7 +23,7 @@ namespace CppLinq::Details::Mixins
         const std::optional<ValueType> value = MixinUtilities::GetQuery<TQuery>(*this).LastOptional(predicate);
         if (!value)
         {
-            throw Exceptions::EmptyCollectionException();
+            throw Exceptions::EmptyContainerException();
         }
 
         return *value;

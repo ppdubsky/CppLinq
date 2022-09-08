@@ -3,7 +3,7 @@
 #include "Details/Mixins/AverageMixin.hpp"
 
 #include "Details/Mixins/MixinUtilities.hpp"
-#include "Exceptions/EmptyCollectionException.hpp"
+#include "Exceptions/EmptyContainerException.hpp"
 
 namespace CppLinq::Details::Mixins
 {
@@ -25,7 +25,7 @@ namespace CppLinq::Details::Mixins
 
         if (count == 0U)
         {
-            throw Exceptions::EmptyCollectionException();
+            throw Exceptions::EmptyContainerException();
         }
 
         return sum / count;

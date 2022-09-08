@@ -3,7 +3,7 @@
 #include "Details/Mixins/AggregateMixin.hpp"
 
 #include "Details/Mixins/MixinUtilities.hpp"
-#include "Exceptions/EmptyCollectionException.hpp"
+#include "Exceptions/EmptyContainerException.hpp"
 
 namespace CppLinq::Details::Mixins
 {
@@ -14,7 +14,7 @@ namespace CppLinq::Details::Mixins
         EnumeratorType enumerator = MixinUtilities::GetEnumerator<TQuery>(*this);
         if (!enumerator.HasCurrent())
         {
-            throw Exceptions::EmptyCollectionException();
+            throw Exceptions::EmptyContainerException();
         }
 
         ValueType aggregatedValue = enumerator.GetCurrent();

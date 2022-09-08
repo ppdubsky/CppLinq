@@ -44,5 +44,5 @@ TEST(Minimum, ThrowsOnMinimum_SourceIsEmpty)
 
     // Act.
     // Assert.
-    EXPECT_THROW(query.Minimum(), EmptyCollectionException);
+    EXPECT_THROW(query.Minimum(), EmptyContainerException);
 }

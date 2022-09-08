@@ -44,5 +44,5 @@ TEST(Maximum, ThrowsOnMaximum_SourceIsEmpty)
 
     // Act.
     // Assert.
-    EXPECT_THROW(query.Maximum(), EmptyCollectionException);
+    EXPECT_THROW(query.Maximum(), EmptyContainerException);
 }

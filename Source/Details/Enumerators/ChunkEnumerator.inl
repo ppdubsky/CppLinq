@@ -23,13 +23,13 @@ namespace CppLinq::Details::Enumerators
     {
         if (!isReady)
         {
-            collection.clear();
+            container.clear();
 
             auto index = 0U;
 
             while (Base::HasCurrent())
             {
-                collection.push_back(Base::GetCurrent());
+                container.push_back(Base::GetCurrent());
 
                 Base::MoveNext();
 
@@ -55,7 +55,7 @@ namespace CppLinq::Details::Enumerators
 
         EnsureEnumeratorIsReady();
 
-        return collection;
+        return container;
     }
 
     template <typename TEnumerator>
@@ -63,7 +63,7 @@ namespace CppLinq::Details::Enumerators
     {
         EnsureEnumeratorIsReady();
 
-        return !collection.empty();
+        return !container.empty();
     }
 
     template <typename TEnumerator>

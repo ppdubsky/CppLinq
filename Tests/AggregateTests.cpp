@@ -205,5 +205,5 @@ TEST(Aggregate, ThrowsOnMaximum_NoSeed_SourceIsEmpty)
 
     // Act.
     // Assert.
-    EXPECT_THROW(query.Aggregate([](const int x, const int y){ return x + y; }), EmptyCollectionException);
+    EXPECT_THROW(query.Aggregate([](const int x, const int y){ return x + y; }), EmptyContainerException);
 }

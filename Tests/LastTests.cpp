@@ -72,7 +72,7 @@ TEST(Last, ThrowsOnLast_LastFromAll_SourceIsEmpty)
 
     // Act.
     // Assert.
-    EXPECT_THROW(query.Last(), EmptyCollectionException);
+    EXPECT_THROW(query.Last(), EmptyContainerException);
 }
 
 TEST(Last, ThrowsOnLast_LastByPredicate_SourceIsEmpty)
@@ -84,7 +84,7 @@ TEST(Last, ThrowsOnLast_LastByPredicate_SourceIsEmpty)
 
     // Act.
     // Assert.
-    EXPECT_THROW(query.Last([](const int value){ return value % 2 != 0; }), EmptyCollectionException);
+    EXPECT_THROW(query.Last([](const int value){ return value % 2 != 0; }), EmptyContainerException);
 }
 
 TEST(Last, ThrowsOnLast_LastByPredicate_SourceIsNotEmpty)
@@ -96,5 +96,5 @@ TEST(Last, ThrowsOnLast_LastByPredicate_SourceIsNotEmpty)
 
     // Act.
     // Assert.
-    EXPECT_THROW(query.Last([](const int value){ return value % 2 != 0; }), EmptyCollectionException);
+    EXPECT_THROW(query.Last([](const int value){ return value % 2 != 0; }), EmptyContainerException);
 }

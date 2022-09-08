@@ -2,16 +2,16 @@
 
 #include "Details/Enumerators/ReverseEnumerator.Forward.hpp"
 
-#include "Details/Collections/ConstReverseIteratorProvider.hpp"
-#include "Details/Collections/VectorCollectionProvider.hpp"
-#include "Details/Enumerators/CollectionEnumerator.hpp"
+#include "Details/Containers/ConstReverseIteratorProvider.hpp"
+#include "Details/Containers/VectorContainerProvider.hpp"
+#include "Details/Enumerators/ContainerEnumerator.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
     template <typename TEnumerator>
-    struct ReverseEnumerator final : CollectionEnumerator<TEnumerator, Collections::VectorCollectionProvider, Collections::ConstReverseIteratorProvider>
+    struct ReverseEnumerator final : ContainerEnumerator<TEnumerator, Containers::VectorContainerProvider, Containers::ConstReverseIteratorProvider>
     {
-        using Base = CollectionEnumerator<TEnumerator, Collections::VectorCollectionProvider, Collections::ConstReverseIteratorProvider>;
+        using Base = ContainerEnumerator<TEnumerator, Containers::VectorContainerProvider, Containers::ConstReverseIteratorProvider>;
 
         ReverseEnumerator(const Query<TEnumerator>& query);
     };

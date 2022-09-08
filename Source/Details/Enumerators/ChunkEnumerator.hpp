@@ -24,7 +24,7 @@ namespace CppLinq::Details::Enumerators
     private:
         void EnsureEnumeratorIsReady();
 
-        ValueType collection;
+        ValueType container;
         bool isBaseFinished{ false };
         bool isReady{ false };
         std::uint32_t size;

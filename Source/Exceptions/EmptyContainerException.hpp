@@ -2,7 +2,7 @@
 
 namespace CppLinq::Exceptions
 {
-    struct EmptyCollectionException final
+    struct EmptyContainerException final
     {
     };
 }

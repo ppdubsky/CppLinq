@@ -23,27 +23,27 @@ target_sources(
     ${PROJECT_NAME}
     PRIVATE
         ${PROJECT_SOURCE_DIR}/Source/CppLinq.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/ConstIteratorProvider.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/ConstIteratorProvider.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/ConstReverseIteratorProvider.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/ConstReverseIteratorProvider.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/DoNothingCollectionStrategy.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/DoNothingCollectionStrategy.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/SortCollectionStrategy.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/SortCollectionStrategy.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/VectorCollectionProvider.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Collections/VectorCollectionProvider.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/ConstIteratorProvider.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/ConstIteratorProvider.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/ConstReverseIteratorProvider.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/ConstReverseIteratorProvider.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingContainerStrategy.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingContainerStrategy.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/SortContainerStrategy.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/SortContainerStrategy.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/VectorContainerProvider.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/VectorContainerProvider.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/AppendEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/AppendEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/AppendEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ChunkEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ChunkEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ChunkEnumerator.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/CollectionEnumerator.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/CollectionEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ContainerEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ContainerEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DefaultIfEmptyEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DefaultIfEmptyEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DefaultIfEmptyEnumerator.inl
@@ -167,7 +167,7 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/EnumeratorTypeProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/ValueTypeProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/ArgumentOutOfRangeException.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Exceptions/EmptyCollectionException.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Exceptions/EmptyContainerException.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/FinishedEnumeratorException.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/MoreThanOneElementException.hpp
 )

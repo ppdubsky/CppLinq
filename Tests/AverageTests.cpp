@@ -44,5 +44,5 @@ TEST(Average, ThrowsOnAverage_SourceIsEmpty)
 
     // Act.
     // Assert.
-    EXPECT_THROW(query.Average(), EmptyCollectionException);
+    EXPECT_THROW(query.Average(), EmptyContainerException);
 }

@@ -2,7 +2,7 @@
 
 #include "Details/Mixins/MaximumMixin.hpp"
 
-#include "Exceptions/EmptyCollectionException.hpp"
+#include "Exceptions/EmptyContainerException.hpp"
 #include "Details/Mixins/MixinUtilities.hpp"
 
 namespace CppLinq::Details::Mixins
@@ -13,7 +13,7 @@ namespace CppLinq::Details::Mixins
         EnumeratorType enumerator = MixinUtilities::GetEnumerator<TQuery>(*this);
         if (!enumerator.HasCurrent())
         {
-            throw Exceptions::EmptyCollectionException();
+            throw Exceptions::EmptyContainerException();
         }
 
         ValueType bound = enumerator.GetCurrent();

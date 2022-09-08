@@ -72,7 +72,7 @@ TEST(Single, ThrowsOnSingle_SingleFromAll_SourceIsEmpty)
 
     // Act.
     // Assert.
-    EXPECT_THROW(query.Single(), EmptyCollectionException);
+    EXPECT_THROW(query.Single(), EmptyContainerException);
 }
 
 TEST(Single, ThrowsOnSingle_SingleFromAll_SourceContainsMoreThanOneElement)
@@ -96,7 +96,7 @@ TEST(Single, ThrowsOnSingle_SingleByPredicate_SourceIsEmpty)
 
     // Act.
     // Assert.
-    EXPECT_THROW(query.Single([](const int value){ return value % 2 == 0; }), EmptyCollectionException);
+    EXPECT_THROW(query.Single([](const int value){ return value % 2 == 0; }), EmptyContainerException);
 }
 
 TEST(Single, ThrowsOnSingle_SingleByPredicate_SourceContainsSingleElementThatDoesNotSatisfyPredicate)
@@ -108,7 +108,7 @@ TEST(Single, ThrowsOnSingle_SingleByPredicate_SourceContainsSingleElementThatDoe
 
     // Act.
     // Assert.
-    EXPECT_THROW(query.Single([](const int value){ return value % 2 == 0; }), EmptyCollectionException);
+    EXPECT_THROW(query.Single([](const int value){ return value % 2 == 0; }), EmptyContainerException);
 }
 
 TEST(Single, ThrowsOnSingle_SingleByPredicate_SourceContainsMultipleElementsThatSatisfyPredicate)
