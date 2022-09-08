@@ -3,6 +3,7 @@
 #include "Details/Mixins/FirstOrDefaultMixin.hpp"
 
 #include "Details/Mixins/MixinUtilities.hpp"
+#include "Details/Predicates/TruePredicate.hpp"
 
 namespace CppLinq::Details::Mixins
 {
@@ -15,7 +16,7 @@ namespace CppLinq::Details::Mixins
     template <typename TQuery>
     auto FirstOrDefaultMixin<TQuery>::FirstOrDefault(const ValueType& defaultValue) const -> ValueType
     {
-        return FirstOrDefault([](const ValueType /*value*/){ return true; }, defaultValue);
+        return FirstOrDefault(Predicates::TruePredicate<ValueType>(), defaultValue);
     }
 
     template <typename TQuery>

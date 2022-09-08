@@ -3,6 +3,7 @@
 #include "Details/Mixins/SingleOptionalMixin.hpp"
 
 #include "Details/Mixins/MixinUtilities.hpp"
+#include "Details/Predicates/TruePredicate.hpp"
 #include "Exceptions/MoreThanOneElementException.hpp"
 
 namespace CppLinq::Details::Mixins
@@ -10,7 +11,7 @@ namespace CppLinq::Details::Mixins
     template <typename TQuery>
     auto SingleOptionalMixin<TQuery>::SingleOptional() const -> std::optional<ValueType>
     {
-        return SingleOptional([](const ValueType& /*value*/){ return true; });
+        return SingleOptional(Predicates::TruePredicate<ValueType>());
     }
 
     template <typename TQuery>

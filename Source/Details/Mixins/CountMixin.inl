@@ -3,13 +3,14 @@
 #include "Details/Mixins/CountMixin.hpp"
 
 #include "Details/Mixins/MixinUtilities.hpp"
+#include "Details/Predicates/TruePredicate.hpp"
 
 namespace CppLinq::Details::Mixins
 {
     template <typename TQuery>
     auto CountMixin<TQuery>::Count() const -> std::uint32_t
     {
-        return Count([](const ValueType& /*value*/){ return true; });
+        return Count(Predicates::TruePredicate<ValueType>());
     }
 
     template <typename TQuery>

@@ -3,6 +3,7 @@
 #include "Details/Mixins/SingleOrDefaultMixin.hpp"
 
 #include "Details/Mixins/MixinUtilities.hpp"
+#include "Details/Predicates/TruePredicate.hpp"
 
 namespace CppLinq::Details::Mixins
 {
@@ -15,7 +16,7 @@ namespace CppLinq::Details::Mixins
     template <typename TQuery>
     auto SingleOrDefaultMixin<TQuery>::SingleOrDefault(const ValueType& defaultValue) const -> ValueType
     {
-        return SingleOrDefault([](const ValueType /*value*/){ return true; }, defaultValue);
+        return SingleOrDefault(Predicates::TruePredicate<ValueType>(), defaultValue);
     }
 
     template <typename TQuery>

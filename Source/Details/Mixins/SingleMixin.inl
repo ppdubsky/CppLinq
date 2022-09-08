@@ -5,6 +5,7 @@
 #include <optional>
 
 #include "Details/Mixins/MixinUtilities.hpp"
+#include "Details/Predicates/TruePredicate.hpp"
 #include "Exceptions/EmptyCollectionException.hpp"
 
 namespace CppLinq::Details::Mixins
@@ -12,7 +13,7 @@ namespace CppLinq::Details::Mixins
     template <typename TQuery>
     auto SingleMixin<TQuery>::Single() const -> ValueType
     {
-        return Single([](const ValueType& /*value*/){ return true; });
+        return Single(Predicates::TruePredicate<ValueType>());
     }
 
     template <typename TQuery>

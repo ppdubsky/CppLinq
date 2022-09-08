@@ -5,6 +5,7 @@
 #include <optional>
 
 #include "Details/Mixins/MixinUtilities.hpp"
+#include "Details/Predicates/TruePredicate.hpp"
 #include "Exceptions/EmptyCollectionException.hpp"
 
 namespace CppLinq::Details::Mixins
@@ -12,7 +13,7 @@ namespace CppLinq::Details::Mixins
     template <typename TQuery>
     auto LastMixin<TQuery>::Last() const -> ValueType
     {
-        return Last([](const ValueType& /*value*/){ return true; });
+        return Last(Predicates::TruePredicate<ValueType>());
     }
 
     template <typename TQuery>

@@ -3,6 +3,7 @@
 #include "Details/Mixins/LastOrDefaultMixin.hpp"
 
 #include "Details/Mixins/MixinUtilities.hpp"
+#include "Details/Predicates/TruePredicate.hpp"
 
 namespace CppLinq::Details::Mixins
 {
@@ -15,7 +16,7 @@ namespace CppLinq::Details::Mixins
     template <typename TQuery>
     auto LastOrDefaultMixin<TQuery>::LastOrDefault(const ValueType& defaultValue) const -> ValueType
     {
-        return LastOrDefault([](const ValueType /*value*/){ return true; }, defaultValue);
+        return LastOrDefault(Predicates::TruePredicate<ValueType>(), defaultValue);
     }
 
     template <typename TQuery>

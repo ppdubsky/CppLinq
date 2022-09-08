@@ -159,6 +159,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ToVectorMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/WhereMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/WhereMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Predicates/TruePredicate.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Predicates/TruePredicate.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.inl
