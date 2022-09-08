@@ -90,9 +90,79 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Loops/LoopIterator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Loops/LoopIteratorSentinel.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Loops/LoopIteratorSentinel.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/AggregateMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/AggregateMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/AllMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/AllMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/AnyMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/AnyMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/AppendMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/AppendMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/AverageMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/AverageMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ChunkMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ChunkMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ConcatenateMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ConcatenateMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/CountMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/CountMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DefaultIfEmptyMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DefaultIfEmptyMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstOptionalMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstOptionalMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstOrDefaultMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstOrDefaultMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ForEachMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ForEachMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LastMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LastMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LastOptionalMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LastOptionalMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LastOrDefaultMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LastOrDefaultMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MaximumMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MaximumMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MinimumMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MinimumMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MixinUtilities.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MixinUtilities.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/OrderByMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/OrderByMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/PrependMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/PrependMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/QueryMixins.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ReverseMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ReverseMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SelectMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SelectMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SingleMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SingleMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SingleOptionalMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SingleOptionalMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SingleOrDefaultMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SingleOrDefaultMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SkipMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SkipMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SkipWhileMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SkipWhileMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/StaticCastMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/StaticCastMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SumMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SumMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/TakeMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/TakeMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/TakeWhileMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/TakeWhileMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ToVectorMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ToVectorMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/WhereMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/WhereMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/EnumeratorTypeProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/ValueTypeProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/ArgumentOutOfRangeException.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/EmptyCollectionException.hpp

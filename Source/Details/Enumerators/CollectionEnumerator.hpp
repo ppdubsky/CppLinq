@@ -10,7 +10,7 @@ namespace CppLinq::Details::Enumerators
     {
         using CollectionType = typename TCollectionProvider<TEnumerator>::CollectionType;
         using IteratorType = typename TIteratorProvider<CollectionType>::IteratorType;
-        using ValueType = typename Query<TEnumerator>::ValueType;
+        using ValueType = typename TEnumerator::ValueType;
 
         auto GetCurrent() -> const ValueType&;
         auto HasCurrent() -> bool;
