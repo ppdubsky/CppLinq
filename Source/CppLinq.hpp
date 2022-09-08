@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iterator>
+
 #include "Details/Collections/ConstIteratorProvider.inl"
 #include "Details/Collections/ConstReverseIteratorProvider.inl"
 #include "Details/Collections/DoNothingCollectionStrategy.inl"
@@ -65,12 +67,12 @@ namespace CppLinq
     template <typename TCollection>
     auto From(const TCollection& collection) -> Details::Query<Details::Enumerators::IteratorEnumerator<typename TCollection::const_iterator>>
     {
-        return { { collection.cbegin(), collection.cend() } };
+        return { { std::cbegin(collection), std::cend(collection) } };
     }
 
     template <typename T, std::uint32_t TLength>
     auto From(const T (&array)[TLength]) -> Details::Query<Details::Enumerators::IteratorEnumerator<const T*>>
     {
-        return { { reinterpret_cast<const T*>(&array), reinterpret_cast<const T*>(&array) + TLength } };
+        return { { std::cbegin(array), std::cend(array) } };
     }
 }

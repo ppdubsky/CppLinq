@@ -83,12 +83,14 @@ namespace CppLinq::Details
     {
         Query(const TEnumerator enumerator);
 
-        auto begin() const -> Loops::LoopIterator<TEnumerator>;
-        auto end() const -> Loops::LoopIteratorSentinel;
-
         auto GetEnumerator() const -> const TEnumerator&;
 
     private:
         TEnumerator enumerator;
     };
+
+    template <typename TEnumerator>
+    auto begin(const Query<TEnumerator>& query) -> Loops::LoopIterator<TEnumerator>;
+    template <typename TEnumerator>
+    auto end(const Query<TEnumerator>& query) -> Loops::LoopIteratorSentinel;
 }

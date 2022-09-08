@@ -38,28 +38,28 @@ void ExpectSequencesAreEquivalent(const TActualIteratorBegin actualBegin, const 
 template <typename TActualQuery, typename TExpectedIteratorBegin, typename TExpectedIteratorEnd>
 void ExpectSequencesAreEquivalent(const TActualQuery& actual, const TExpectedIteratorBegin expectedBegin, const TExpectedIteratorEnd expectedEnd)
 {
-    ExpectSequencesAreEquivalent(actual.begin(), actual.end(), expectedBegin, expectedEnd);
+    ExpectSequencesAreEquivalent(begin(actual), end(actual), expectedBegin, expectedEnd);
 }
 
 template <typename TActualQuery, typename TExpectedQuery>
 void ExpectSequencesAreEquivalent(const TActualQuery& actual, const TExpectedQuery expected)
 {
-    ExpectSequencesAreEquivalent(actual.begin(), actual.end(), expected.begin(), expected.end());
+    ExpectSequencesAreEquivalent(begin(actual), end(actual), begin(expected), end(expected));
 }
 
 template <typename TActualQuery, typename T, std::uint32_t TLength>
 void ExpectSequencesAreEquivalent(const TActualQuery& actual, const T (&expected)[TLength])
 {
-    ExpectSequencesAreEquivalent(actual, reinterpret_cast<const T*>(&expected), reinterpret_cast<const T*>(&expected) + TLength);
+    ExpectSequencesAreEquivalent(actual, std::cbegin(expected), std::cend(expected));
 }
 
 template <typename TActualQuery, typename T>
 void ExpectSequencesAreEquivalent(const TActualQuery& actual, const std::vector<T>& expected)
 {
-    ExpectSequencesAreEquivalent(actual, expected.cbegin(), expected.cend());
+    ExpectSequencesAreEquivalent(actual, std::cbegin(expected), std::cend(expected));
 }
 
-template <typename TActualQuery, typename T = decltype(std::declval<TActualQuery>().begin().operator*())>
+template <typename TActualQuery, typename T = decltype(*begin(std::declval<TActualQuery>()))>
 void ExpectSequenceIsEmpty(const TActualQuery& actual)
 {
     ExpectSequencesAreEquivalent(actual, std::vector<T>());
