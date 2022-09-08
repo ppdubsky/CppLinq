@@ -68,9 +68,9 @@ TEST(DefaultIfEmpty, SourceThrowsOnMoveNext)
     // Arrange.
     const vector<int> source;
 
-    auto query = From(source).DefaultIfEmpty(11);
+    const auto query = From(source).DefaultIfEmpty(11);
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
@@ -86,9 +86,9 @@ TEST(DefaultIfEmpty, SourceThrowsOnGetCurrent)
     // Arrange.
     const vector<int> source;
 
-    auto query = From(source).DefaultIfEmpty(11);
+    const auto query = From(source).DefaultIfEmpty(11);
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();

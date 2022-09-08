@@ -169,9 +169,9 @@ TEST(Chunk, SourceThrowsOnMoveNext)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source).Chunk(3U);
+    const auto query = From(source).Chunk(3U);
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
@@ -187,9 +187,9 @@ TEST(Chunk, SourceThrowsOnGetCurrent)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source).Chunk(3U);
+    const auto query = From(source).Chunk(3U);
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();

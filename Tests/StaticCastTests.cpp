@@ -69,9 +69,9 @@ TEST(StaticCast, SourceThrowsOnMoveNext)
     // Arrange.
     const double source[]{ 1.1, 2.2, 3.3, 4.4, 5.5 };
 
-    auto query = From(source).StaticCast<int>();
+    const auto query = From(source).StaticCast<int>();
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
@@ -87,9 +87,9 @@ TEST(StaticCast, SourceThrowsOnGetCurrent)
     // Arrange.
     const double source[]{ 1.1, 2.2, 3.3, 4.4, 5.5 };
 
-    auto query = From(source).StaticCast<int>();
+    const auto query = From(source).StaticCast<int>();
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();

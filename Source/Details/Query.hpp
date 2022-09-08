@@ -86,7 +86,6 @@ namespace CppLinq::Details
         auto begin() const -> Loops::LoopIterator<TEnumerator>;
         auto end() const -> Loops::LoopIteratorSentinel;
 
-        auto GetEnumerator() -> TEnumerator&;
         auto GetEnumerator() const -> const TEnumerator&;
 
     private:

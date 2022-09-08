@@ -58,9 +58,9 @@ TEST(ForEach, SourceThrowsOnMoveNext)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source).ForEach([](const int /*value*/){});
+    const auto query = From(source).ForEach([](const int /*value*/){});
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
@@ -76,9 +76,9 @@ TEST(ForEach, SourceThrowsOnGetCurrent)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source).ForEach([](const int /*value*/){});
+    const auto query = From(source).ForEach([](const int /*value*/){});
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();

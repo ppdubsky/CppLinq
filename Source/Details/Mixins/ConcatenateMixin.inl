@@ -12,6 +12,6 @@ namespace CppLinq::Details::Mixins
     template <typename TNextEnumerator>
     auto ConcatenateMixin<TQuery>::Concatenate(const Query<TNextEnumerator>& nextQuery) const -> Query<Enumerators::ConcatenationEnumerator<EnumeratorType, TNextEnumerator>>
     {
-        return { { MixinUtilities::GetEnumerator<TQuery>(*this), nextQuery } };
+        return { { MixinUtilities::GetEnumerator<TQuery>(*this), nextQuery.GetEnumerator() } };
     }
 }

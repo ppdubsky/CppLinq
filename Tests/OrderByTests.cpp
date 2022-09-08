@@ -82,9 +82,9 @@ TEST(OrderBy, SourceThrowsOnMoveNext)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source).OrderBy();
+    const auto query = From(source).OrderBy();
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
@@ -100,9 +100,9 @@ TEST(OrderBy, SourceThrowsOnGetCurrent)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source).OrderBy();
+    const auto query = From(source).OrderBy();
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();

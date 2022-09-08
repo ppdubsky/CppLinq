@@ -98,9 +98,9 @@ TEST(Concatenate, SourceThrowsOnMoveNext)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source).Concatenate(From(source));
+    const auto query = From(source).Concatenate(From(source));
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
@@ -116,9 +116,9 @@ TEST(Concatenate, SourceThrowsOnGetCurrent)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source).Concatenate(From(source));
+    const auto query = From(source).Concatenate(From(source));
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();

@@ -5,22 +5,22 @@
 namespace CppLinq::Details::Enumerators
 {
     template <typename TEnumerator, typename TNextEnumerator>
-    ConcatenationEnumerator<TEnumerator, TNextEnumerator>::ConcatenationEnumerator(const TEnumerator enumerator, const Query<TNextEnumerator>& nextQuery) :
+    ConcatenationEnumerator<TEnumerator, TNextEnumerator>::ConcatenationEnumerator(const TEnumerator enumerator, const TNextEnumerator& nextEnumerator) :
         Base(enumerator),
-        nextQuery(nextQuery)
+        nextEnumerator(nextEnumerator)
     {
     }
 
     template <typename TEnumerator, typename TNextEnumerator>
     auto ConcatenationEnumerator<TEnumerator, TNextEnumerator>::GetCurrent() -> Base::ValueType
     {
-        return Base::HasCurrent() ? Base::GetCurrent() : nextQuery.GetEnumerator().GetCurrent();
+        return Base::HasCurrent() ? Base::GetCurrent() : nextEnumerator.GetCurrent();
     }
 
     template <typename TEnumerator, typename TNextEnumerator>
     auto ConcatenationEnumerator<TEnumerator, TNextEnumerator>::HasCurrent() -> bool
     {
-        return Base::HasCurrent() || nextQuery.GetEnumerator().HasCurrent();
+        return Base::HasCurrent() || nextEnumerator.HasCurrent();
     }
 
     template <typename TEnumerator, typename TNextEnumerator>
@@ -32,7 +32,7 @@ namespace CppLinq::Details::Enumerators
         }
         else
         {
-            nextQuery.GetEnumerator().MoveNext();
+            nextEnumerator.MoveNext();
         }
     }
 }

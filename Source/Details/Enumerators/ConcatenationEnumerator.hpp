@@ -3,7 +3,6 @@
 #include "Details/Enumerators/ConcatenationEnumerator.Forward.hpp"
 
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
-#include "Details/Query.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
@@ -12,13 +11,13 @@ namespace CppLinq::Details::Enumerators
     {
         using Base = EnumeratorWrapper<TEnumerator>;
 
-        ConcatenationEnumerator(const TEnumerator enumerator, const Query<TNextEnumerator>& nextQuery);
+        ConcatenationEnumerator(const TEnumerator enumerator, const TNextEnumerator& nextEnumerator);
 
         auto GetCurrent() -> Base::ValueType;
         auto HasCurrent() -> bool;
         void MoveNext();
 
     private:
-        Query<TNextEnumerator> nextQuery;
+        TNextEnumerator nextEnumerator;
     };
 }

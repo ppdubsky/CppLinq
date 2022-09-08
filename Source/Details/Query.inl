@@ -26,12 +26,6 @@ namespace CppLinq::Details
     }
 
     template <typename TEnumerator>
-    auto Query<TEnumerator>::GetEnumerator() -> TEnumerator&
-    {
-        return enumerator;
-    }
-
-    template <typename TEnumerator>
     auto Query<TEnumerator>::GetEnumerator() const -> const TEnumerator&
     {
         return enumerator;

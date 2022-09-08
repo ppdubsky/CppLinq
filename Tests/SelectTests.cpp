@@ -120,9 +120,9 @@ TEST(Select, SourceThrowsOnMoveNext)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source).Select([](const int value){ return value % 2 == 0; });
+    const auto query = From(source).Select([](const int value){ return value % 2 == 0; });
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
@@ -138,9 +138,9 @@ TEST(Select, SourceThrowsOnGetCurrent)
     // Arrange.
     const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    auto query = From(source).Select([](const int value){ return value % 2 == 0; });
+    const auto query = From(source).Select([](const int value){ return value % 2 == 0; });
 
-    auto& enumerator = query.GetEnumerator();
+    auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
     {
         enumerator.MoveNext();
