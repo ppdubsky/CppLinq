@@ -2,31 +2,30 @@
 
 #include "Details/Enumerators/DistinctEnumerator.Forward.hpp"
 
-#include <unordered_set>
+#include <vector>
 
-#include "Details/Containers/DoNothingHasher.hpp"
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TComparer>
+    template <typename TEnumerator, typename TSelector, typename TComparer>
     struct DistinctEnumerator final : EnumeratorWrapper<TEnumerator>
     {
         using Base = EnumeratorWrapper<TEnumerator>;
-        using ContainerType = std::unordered_set<Base::ValueType, Containers::DoNothingHasher<typename Base::ValueType>, TComparer>;
-        using IteratorType = typename ContainerType::const_iterator;
+        using KeyType = decltype(std::declval<TSelector>()(std::declval<Base::ValueType>()));
+        using ContainerType = std::vector<KeyType>;
 
-        DistinctEnumerator(const TEnumerator enumerator, const TComparer comparer);
+        DistinctEnumerator(const TEnumerator enumerator, const TSelector selector, const TComparer comparer);
 
-        auto GetCurrent() -> const Base::ValueType&;
+        auto GetCurrent() -> Base::ValueType;
         void MoveNext();
 
     private:
         void EnsureEnumeratorIsReady();
 
         TComparer comparer;
-        ContainerType container;
-        IteratorType current;
         bool isReady{ false };
+        ContainerType keys;
+        TSelector selector;
     };
 }

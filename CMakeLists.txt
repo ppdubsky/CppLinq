@@ -32,8 +32,6 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/ConstReverseIteratorProvider.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingContainerStrategy.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingContainerStrategy.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingHasher.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingHasher.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/SortContainerStrategy.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/SortContainerStrategy.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/VectorContainerProvider.hpp
@@ -118,6 +116,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/CountMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DefaultIfEmptyMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DefaultIfEmptyMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DistinctByMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DistinctByMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DistinctMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DistinctMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstMixin.hpp
@@ -176,6 +176,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Selectors/SelfSelector.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Selectors/SelfSelector.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/EnumeratorTypeProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/ValueTypeProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/ArgumentOutOfRangeException.hpp

@@ -2,31 +2,38 @@
 
 #include "Details/Enumerators/DistinctEnumerator.hpp"
 
-#include "Exceptions/FinishedEnumeratorException.hpp"
+#include <algorithm>
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TComparer>
-    DistinctEnumerator<TEnumerator, TComparer>::DistinctEnumerator(const TEnumerator enumerator, const TComparer comparer) :
+    template <typename TEnumerator, typename TSelector, typename TComparer>
+    DistinctEnumerator<TEnumerator, TSelector, TComparer>::DistinctEnumerator(const TEnumerator enumerator, const TSelector selector, const TComparer comparer) :
         Base(enumerator),
-        comparer(comparer)
+        comparer(comparer),
+        selector(selector)
     {
     }
 
-    template <typename TEnumerator, typename TComparer>
-    void DistinctEnumerator<TEnumerator, TComparer>::EnsureEnumeratorIsReady()
+    template <typename TEnumerator, typename TSelector, typename TComparer>
+    void DistinctEnumerator<TEnumerator, TSelector, TComparer>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
-            current = container.cend();
-
             while (Base::HasCurrent())
             {
-                const auto result = container.insert(Base::GetCurrent());
+                const KeyType currentKey = selector(Base::GetCurrent());
 
-                if (result.second)
+                const auto keyIterator = std::find_if(
+                    keys.cbegin(),
+                    keys.cend(),
+                    [this, &currentKey](const KeyType& key)
+                    {
+                        return comparer.operator()(key, currentKey);
+                    }
+                );
+                if (keyIterator == keys.cend())
                 {
-                    current = result.first;
+                    keys.push_back(currentKey);
                     break;
                 }
 
@@ -37,21 +44,16 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TComparer>
-    auto DistinctEnumerator<TEnumerator, TComparer>::GetCurrent() -> const Base::ValueType&
+    template <typename TEnumerator, typename TSelector, typename TComparer>
+    auto DistinctEnumerator<TEnumerator, TSelector, TComparer>::GetCurrent() -> Base::ValueType
     {
         EnsureEnumeratorIsReady();
 
-        if (!Base::HasCurrent() || current == container.cend())
-        {
-            throw Exceptions::FinishedEnumeratorException();
-        }
-
-        return *current;
+        return Base::GetCurrent();
     }
 
-    template <typename TEnumerator, typename TComparer>
-    void DistinctEnumerator<TEnumerator, TComparer>::MoveNext()
+    template <typename TEnumerator, typename TSelector, typename TComparer>
+    void DistinctEnumerator<TEnumerator, TSelector, TComparer>::MoveNext()
     {
         Base::MoveNext();
 

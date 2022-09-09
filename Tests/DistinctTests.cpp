@@ -7,16 +7,16 @@ using namespace CppLinq;
 using namespace CppLinq::Exceptions;
 using namespace std;
 
-struct Equatable final
+struct DistinctEquatable final
 {
-    auto EqualTo(const Equatable other) const -> bool
+    auto EqualTo(const DistinctEquatable other) const -> bool
     {
         ++equalityCount;
 
         return value == other.value;
     }
 
-    auto operator==(const Equatable right) const -> bool
+    auto operator==(const DistinctEquatable right) const -> bool
     {
         return EqualTo(right);
     }
@@ -26,34 +26,34 @@ struct Equatable final
     uint32_t value;
 };
 
-uint32_t Equatable::equalityCount = 0U;
+uint32_t DistinctEquatable::equalityCount = 0U;
 
 TEST(Distinct, ExecutionIsDeferred_DefaultComparer)
 {
     // Arrange.
-    Equatable::equalityCount = 0U;
+    DistinctEquatable::equalityCount = 0U;
 
-    const Equatable source[]{ 'a', 'b', 'c', 'd', 'e' };
+    const DistinctEquatable source[]{ 'a', 'b', 'c', 'd', 'e' };
 
     // Act.
     const auto actual = From(source).Distinct();
 
     // Assert.
-    EXPECT_EQ(Equatable::equalityCount, 0U);
+    EXPECT_EQ(DistinctEquatable::equalityCount, 0U);
 }
 
 TEST(Distinct, ExecutionIsDeferred_CustomComparer)
 {
     // Arrange.
-    Equatable::equalityCount = 0U;
+    DistinctEquatable::equalityCount = 0U;
 
-    const Equatable source[]{ 'a', 'b', 'c', 'd', 'e' };
+    const DistinctEquatable source[]{ 'a', 'b', 'c', 'd', 'e' };
 
     // Act.
-    const auto actual = From(source).Distinct([](const Equatable value1, const Equatable value2){ return value1.EqualTo(value2); });
+    const auto actual = From(source).Distinct([](const DistinctEquatable value1, const DistinctEquatable value2){ return value1.EqualTo(value2); });
 
     // Assert.
-    EXPECT_EQ(Equatable::equalityCount, 0U);
+    EXPECT_EQ(DistinctEquatable::equalityCount, 0U);
 }
 
 TEST(Distinct, ReturnsExpectedValues_DefaultComparer_SourceContainsDistinctElements)

@@ -6,19 +6,20 @@
 #include "Details/Enumerators/DistinctEnumerator.hpp"
 #include "Details/Mixins/ContainsMixin.hpp"
 #include "Details/Query.hpp"
+#include "Details/Selectors/SelfSelector.hpp"
 
 namespace CppLinq::Details::Mixins
 {
     template <typename TQuery>
-    auto DistinctMixin<TQuery>::Distinct() const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, Comparers::DefaultEqualityComparer<ValueType>>>
+    auto DistinctMixin<TQuery>::Distinct() const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, Selectors::SelfSelector<ValueType>, Comparers::DefaultEqualityComparer<ValueType>>>
     {
         return Distinct(Comparers::DefaultEqualityComparer<ValueType>());
     }
 
     template <typename TQuery>
     template <typename TComparer>
-    auto DistinctMixin<TQuery>::Distinct(const TComparer comparer) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TComparer>>
+    auto DistinctMixin<TQuery>::Distinct(const TComparer comparer) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, Selectors::SelfSelector<ValueType>, TComparer>>
     {
-        return { { MixinUtilities::GetEnumerator<TQuery>(*this), comparer } };
+        return MixinUtilities::GetQuery<TQuery>(*this).DistinctBy(Selectors::SelfSelector<ValueType>(), comparer);
     }
 }
