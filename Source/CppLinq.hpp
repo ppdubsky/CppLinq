@@ -33,6 +33,7 @@
 #include "Details/Mixins/AverageMixin.inl"
 #include "Details/Mixins/ChunkMixin.inl"
 #include "Details/Mixins/ConcatenateMixin.inl"
+#include "Details/Mixins/ContainsMixin.inl"
 #include "Details/Mixins/CountMixin.inl"
 #include "Details/Mixins/DefaultIfEmptyMixin.inl"
 #include "Details/Mixins/FirstMixin.inl"

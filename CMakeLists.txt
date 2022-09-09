@@ -104,6 +104,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ChunkMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ConcatenateMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ConcatenateMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ContainsMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ContainsMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/CountMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/CountMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DefaultIfEmptyMixin.hpp

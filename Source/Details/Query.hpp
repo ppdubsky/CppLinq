@@ -12,6 +12,7 @@
 #include "Details/Mixins/AverageMixin.hpp"
 #include "Details/Mixins/ChunkMixin.hpp"
 #include "Details/Mixins/ConcatenateMixin.hpp"
+#include "Details/Mixins/ContainsMixin.hpp"
 #include "Details/Mixins/CountMixin.hpp"
 #include "Details/Mixins/DefaultIfEmptyMixin.hpp"
 #include "Details/Mixins/FirstMixin.hpp"
@@ -53,6 +54,7 @@ namespace CppLinq::Details
             Mixins::AverageMixin,
             Mixins::ChunkMixin,
             Mixins::ConcatenateMixin,
+            Mixins::ContainsMixin,
             Mixins::CountMixin,
             Mixins::DefaultIfEmptyMixin,
             Mixins::FirstMixin,
