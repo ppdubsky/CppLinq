@@ -2,9 +2,11 @@
 
 #include <iterator>
 
+#include "Details/Comparers/DefaultEqualityComparer.inl"
 #include "Details/Containers/ConstIteratorProvider.inl"
 #include "Details/Containers/ConstReverseIteratorProvider.inl"
 #include "Details/Containers/DoNothingContainerStrategy.inl"
+#include "Details/Containers/DoNothingHasher.inl"
 #include "Details/Containers/SortContainerStrategy.inl"
 #include "Details/Containers/VectorContainerProvider.inl"
 #include "Details/Enumerators/AppendEnumerator.inl"
@@ -12,6 +14,7 @@
 #include "Details/Enumerators/ConcatenationEnumerator.inl"
 #include "Details/Enumerators/ContainerEnumerator.inl"
 #include "Details/Enumerators/DefaultIfEmptyEnumerator.inl"
+#include "Details/Enumerators/DistinctEnumerator.inl"
 #include "Details/Enumerators/EnumeratorWrapper.inl"
 #include "Details/Enumerators/ForEachEnumerator.inl"
 #include "Details/Enumerators/IteratorEnumerator.inl"
@@ -36,6 +39,7 @@
 #include "Details/Mixins/ContainsMixin.inl"
 #include "Details/Mixins/CountMixin.inl"
 #include "Details/Mixins/DefaultIfEmptyMixin.inl"
+#include "Details/Mixins/DistinctMixin.inl"
 #include "Details/Mixins/FirstMixin.inl"
 #include "Details/Mixins/FirstOptionalMixin.inl"
 #include "Details/Mixins/FirstOrDefaultMixin.inl"

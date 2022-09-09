@@ -28,7 +28,7 @@ TEST(OrderBy, ExecutionIsDeferred)
     // Arrange.
     Sortable::comparisonCount = 0U;
 
-    const Sortable source[] { 1, 3, 5, 7, 9, 10, 8, 6, 4, 2 };
+    const Sortable source[]{ 1, 3, 5, 7, 9, 10, 8, 6, 4, 2 };
 
     // Act.
     const auto actual = From(source).OrderBy();

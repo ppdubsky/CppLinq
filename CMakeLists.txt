@@ -23,12 +23,17 @@ target_sources(
     ${PROJECT_NAME}
     PRIVATE
         ${PROJECT_SOURCE_DIR}/Source/CppLinq.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Comparers/DefaultEqualityComparer.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Comparers/DefaultEqualityComparer.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Comparers/DefaultEqualityComparer.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/ConstIteratorProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/ConstIteratorProvider.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/ConstReverseIteratorProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/ConstReverseIteratorProvider.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingContainerStrategy.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingContainerStrategy.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingHasher.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingHasher.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/SortContainerStrategy.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/SortContainerStrategy.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/VectorContainerProvider.hpp
@@ -47,6 +52,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DefaultIfEmptyEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DefaultIfEmptyEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DefaultIfEmptyEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DistinctEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DistinctEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DistinctEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/EnumeratorWrapper.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/EnumeratorWrapper.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ForEachEnumerator.Forward.hpp
@@ -110,6 +118,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/CountMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DefaultIfEmptyMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DefaultIfEmptyMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DistinctMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DistinctMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstOptionalMixin.hpp
