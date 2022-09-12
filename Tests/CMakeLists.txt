@@ -14,6 +14,7 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/DefaultIfEmptyTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/DistinctByTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/DistinctTests.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/ElementAtOptionalTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/FirstOptionalTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/FirstOrDefaultTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/FirstTests.cpp
