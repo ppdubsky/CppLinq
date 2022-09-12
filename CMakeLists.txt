@@ -32,6 +32,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/ConstReverseIteratorProvider.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingContainerStrategy.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingContainerStrategy.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingHasher.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Containers/DoNothingHasher.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/SortContainerStrategy.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/SortContainerStrategy.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Containers/VectorContainerProvider.hpp

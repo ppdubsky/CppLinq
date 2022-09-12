@@ -9,7 +9,7 @@ namespace CppLinq::Details::Enumerators
     template <typename TEnumerator, typename TSelector, typename TComparer>
     DistinctEnumerator<TEnumerator, TSelector, TComparer>::DistinctEnumerator(const TEnumerator enumerator, const TSelector selector, const TComparer comparer) :
         Base(enumerator),
-        comparer(comparer),
+        container(bucketCount, HasherType(), comparer),
         selector(selector)
     {
     }
@@ -23,17 +23,9 @@ namespace CppLinq::Details::Enumerators
             {
                 const KeyType currentKey = selector(Base::GetCurrent());
 
-                const auto keyIterator = std::find_if(
-                    keys.cbegin(),
-                    keys.cend(),
-                    [this, &currentKey](const KeyType& key)
-                    {
-                        return comparer.operator()(key, currentKey);
-                    }
-                );
-                if (keyIterator == keys.cend())
+                const auto result = container.insert(currentKey);
+                if (result.second)
                 {
-                    keys.push_back(currentKey);
                     break;
                 }
 

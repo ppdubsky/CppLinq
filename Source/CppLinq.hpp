@@ -6,6 +6,7 @@
 #include "Details/Containers/ConstIteratorProvider.inl"
 #include "Details/Containers/ConstReverseIteratorProvider.inl"
 #include "Details/Containers/DoNothingContainerStrategy.inl"
+#include "Details/Containers/DoNothingHasher.inl"
 #include "Details/Containers/SortContainerStrategy.inl"
 #include "Details/Containers/VectorContainerProvider.inl"
 #include "Details/Enumerators/AppendEnumerator.inl"

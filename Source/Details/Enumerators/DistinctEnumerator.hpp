@@ -2,8 +2,10 @@
 
 #include "Details/Enumerators/DistinctEnumerator.Forward.hpp"
 
-#include <vector>
+#include <cstdint>
+#include <unordered_set>
 
+#include "Details/Containers/DoNothingHasher.hpp"
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
 
 namespace CppLinq::Details::Enumerators
@@ -13,7 +15,8 @@ namespace CppLinq::Details::Enumerators
     {
         using Base = EnumeratorWrapper<TEnumerator>;
         using KeyType = decltype(std::declval<TSelector>()(std::declval<Base::ValueType>()));
-        using ContainerType = std::vector<KeyType>;
+        using HasherType = Containers::DoNothingHasher<KeyType>;
+        using ContainerType = std::unordered_set<KeyType, HasherType, TComparer>;
 
         DistinctEnumerator(const TEnumerator enumerator, const TSelector selector, const TComparer comparer);
 
@@ -23,9 +26,10 @@ namespace CppLinq::Details::Enumerators
     private:
         void EnsureEnumeratorIsReady();
 
-        TComparer comparer;
+        static constexpr std::uint32_t bucketCount = 1U;
+
+        ContainerType container;
         bool isReady{ false };
-        ContainerType keys;
         TSelector selector;
     };
 }
