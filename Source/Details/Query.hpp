@@ -17,6 +17,7 @@
 #include "Details/Mixins/DefaultIfEmptyMixin.hpp"
 #include "Details/Mixins/DistinctByMixin.hpp"
 #include "Details/Mixins/DistinctMixin.hpp"
+#include "Details/Mixins/ElementAtMixin.hpp"
 #include "Details/Mixins/ElementAtOptionalMixin.hpp"
 #include "Details/Mixins/ElementAtOrDefaultMixin.hpp"
 #include "Details/Mixins/FirstMixin.hpp"
@@ -63,6 +64,7 @@ namespace CppLinq::Details
             Mixins::DefaultIfEmptyMixin,
             Mixins::DistinctByMixin,
             Mixins::DistinctMixin,
+            Mixins::ElementAtMixin,
             Mixins::ElementAtOptionalMixin,
             Mixins::ElementAtOrDefaultMixin,
             Mixins::FirstMixin,

@@ -120,6 +120,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DistinctByMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DistinctMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/DistinctMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ElementAtMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ElementAtMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ElementAtOptionalMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ElementAtOptionalMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ElementAtOrDefaultMixin.hpp

@@ -40,6 +40,7 @@
 #include "Details/Mixins/DefaultIfEmptyMixin.inl"
 #include "Details/Mixins/DistinctByMixin.inl"
 #include "Details/Mixins/DistinctMixin.inl"
+#include "Details/Mixins/ElementAtMixin.inl"
 #include "Details/Mixins/ElementAtOptionalMixin.inl"
 #include "Details/Mixins/ElementAtOrDefaultMixin.inl"
 #include "Details/Mixins/FirstMixin.inl"
