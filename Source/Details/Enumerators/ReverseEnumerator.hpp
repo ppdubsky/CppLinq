@@ -4,14 +4,14 @@
 
 #include "Details/Containers/ConstReverseIteratorProvider.hpp"
 #include "Details/Containers/VectorContainerProvider.hpp"
-#include "Details/Enumerators/ContainerEnumerator.hpp"
+#include "Details/Enumerators/QueryEnumerator.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
     template <typename TEnumerator>
-    struct ReverseEnumerator final : ContainerEnumerator<TEnumerator, Containers::VectorContainerProvider, Containers::ConstReverseIteratorProvider>
+    struct ReverseEnumerator final : QueryEnumerator<TEnumerator, Containers::VectorContainerProvider, Containers::ConstReverseIteratorProvider>
     {
-        using Base = ContainerEnumerator<TEnumerator, Containers::VectorContainerProvider, Containers::ConstReverseIteratorProvider>;
+        using Base = QueryEnumerator<TEnumerator, Containers::VectorContainerProvider, Containers::ConstReverseIteratorProvider>;
 
         ReverseEnumerator(const Query<TEnumerator>& query);
     };

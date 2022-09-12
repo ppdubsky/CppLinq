@@ -45,8 +45,6 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ConcatenationEnumerator.inl
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ContainerEnumerator.hpp
-        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ContainerEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DefaultIfEmptyEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DefaultIfEmptyEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DefaultIfEmptyEnumerator.inl
@@ -67,6 +65,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/PrependEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/PrependEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/PrependEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/QueryEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/QueryEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ReverseEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ReverseEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ReverseEnumerator.inl

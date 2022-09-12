@@ -1,19 +1,19 @@
 #pragma once
 
-#include "Details/Enumerators/ContainerEnumerator.hpp"
+#include "Details/Enumerators/QueryEnumerator.hpp"
 
 #include "Exceptions/FinishedEnumeratorException.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
     template <typename TEnumerator, template <typename> typename TContainerProvider, template <typename> typename TIteratorProvider, template <typename> typename TContainerStrategy>
-    ContainerEnumerator<TEnumerator, TContainerProvider, TIteratorProvider, TContainerStrategy>::ContainerEnumerator(const Query<TEnumerator>& query) :
+    QueryEnumerator<TEnumerator, TContainerProvider, TIteratorProvider, TContainerStrategy>::QueryEnumerator(const Query<TEnumerator>& query) :
         query(query)
     {
     }
 
     template <typename TEnumerator, template <typename> typename TContainerProvider, template <typename> typename TIteratorProvider, template <typename> typename TContainerStrategy>
-    void ContainerEnumerator<TEnumerator, TContainerProvider, TIteratorProvider, TContainerStrategy>::EnsureEnumeratorIsReady()
+    void QueryEnumerator<TEnumerator, TContainerProvider, TIteratorProvider, TContainerStrategy>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
@@ -29,7 +29,7 @@ namespace CppLinq::Details::Enumerators
     }
 
     template <typename TEnumerator, template <typename> typename TContainerProvider, template <typename> typename TIteratorProvider, template <typename> typename TContainerStrategy>
-    auto ContainerEnumerator<TEnumerator, TContainerProvider, TIteratorProvider, TContainerStrategy>::GetCurrent() -> const ValueType&
+    auto QueryEnumerator<TEnumerator, TContainerProvider, TIteratorProvider, TContainerStrategy>::GetCurrent() -> const ValueType&
     {
         EnsureEnumeratorIsReady();
 
@@ -42,7 +42,7 @@ namespace CppLinq::Details::Enumerators
     }
 
     template <typename TEnumerator, template <typename> typename TContainerProvider, template <typename> typename TIteratorProvider, template <typename> typename TContainerStrategy>
-    auto ContainerEnumerator<TEnumerator, TContainerProvider, TIteratorProvider, TContainerStrategy>::HasCurrent() -> bool
+    auto QueryEnumerator<TEnumerator, TContainerProvider, TIteratorProvider, TContainerStrategy>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
@@ -50,7 +50,7 @@ namespace CppLinq::Details::Enumerators
     }
 
     template <typename TEnumerator, template <typename> typename TContainerProvider, template <typename> typename TIteratorProvider, template <typename> typename TContainerStrategy>
-    void ContainerEnumerator<TEnumerator, TContainerProvider, TIteratorProvider, TContainerStrategy>::MoveNext()
+    void QueryEnumerator<TEnumerator, TContainerProvider, TIteratorProvider, TContainerStrategy>::MoveNext()
     {
         EnsureEnumeratorIsReady();
 

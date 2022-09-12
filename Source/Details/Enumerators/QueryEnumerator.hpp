@@ -6,7 +6,7 @@
 namespace CppLinq::Details::Enumerators
 {
     template <typename TEnumerator, template <typename> typename TContainerProvider, template <typename> typename TIteratorProvider, template <typename> typename TContainerStrategy = Containers::DoNothingContainerStrategy>
-    struct ContainerEnumerator
+    struct QueryEnumerator
     {
         using ContainerType = typename TContainerProvider<TEnumerator>::ContainerType;
         using IteratorType = typename TIteratorProvider<ContainerType>::IteratorType;
@@ -17,7 +17,7 @@ namespace CppLinq::Details::Enumerators
         void MoveNext();
 
     protected:
-        ContainerEnumerator(const Query<TEnumerator>& query);
+        QueryEnumerator(const Query<TEnumerator>& query);
 
     private:
         void EnsureEnumeratorIsReady();
