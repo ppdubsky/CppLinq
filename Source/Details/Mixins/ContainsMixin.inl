@@ -2,6 +2,8 @@
 
 #include "Details/Mixins/ContainsMixin.hpp"
 
+#include "Details/Mixins/MixinUtilities.hpp"
+
 namespace CppLinq::Details::Mixins
 {
     template <typename TQuery>

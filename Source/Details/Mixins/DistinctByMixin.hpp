@@ -6,7 +6,7 @@
 
 #include <type_traits>
 
-#include "Details/Mixins/MixinUtilities.hpp"
+#include "Details/TypeTraits/EnumeratorTypeProvider.hpp"
 
 namespace CppLinq::Details::Mixins
 {

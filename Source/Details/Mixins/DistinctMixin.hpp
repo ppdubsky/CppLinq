@@ -5,7 +5,7 @@
 #include "Details/Query.Forward.hpp"
 #include "Details/Selectors/SelfSelector.Forward.hpp"
 
-#include "Details/Mixins/MixinUtilities.hpp"
+#include "Details/TypeTraits/EnumeratorTypeProvider.hpp"
 
 namespace CppLinq::Details::Mixins
 {

@@ -4,7 +4,7 @@
 
 #include "Details/Comparers/DefaultEqualityComparer.hpp"
 #include "Details/Enumerators/DistinctEnumerator.hpp"
-#include "Details/Mixins/ContainsMixin.hpp"
+#include "Details/Mixins/MixinUtilities.hpp"
 #include "Details/Query.hpp"
 #include "Details/Selectors/SelfSelector.hpp"
 

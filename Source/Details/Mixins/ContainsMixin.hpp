@@ -2,8 +2,6 @@
 
 #include "Details/TypeTraits/EnumeratorTypeProvider.hpp"
 
-#include "Details/Mixins/MixinUtilities.hpp"
-
 namespace CppLinq::Details::Mixins
 {
     template <typename TQuery>
