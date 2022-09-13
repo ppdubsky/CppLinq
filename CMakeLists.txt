@@ -55,6 +55,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/DistinctEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/EnumeratorWrapper.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/EnumeratorWrapper.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ExceptEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ExceptEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ExceptEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ForEachEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ForEachEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ForEachEnumerator.inl
@@ -128,6 +131,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ElementAtOptionalMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ElementAtOrDefaultMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ElementAtOrDefaultMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ExceptByMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ExceptByMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstOptionalMixin.hpp
