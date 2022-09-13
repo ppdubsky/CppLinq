@@ -46,6 +46,7 @@
 #include "Details/Mixins/ElementAtOptionalMixin.inl"
 #include "Details/Mixins/ElementAtOrDefaultMixin.inl"
 #include "Details/Mixins/ExceptByMixin.inl"
+#include "Details/Mixins/ExceptMixin.inl"
 #include "Details/Mixins/FirstMixin.inl"
 #include "Details/Mixins/FirstOptionalMixin.inl"
 #include "Details/Mixins/FirstOrDefaultMixin.inl"

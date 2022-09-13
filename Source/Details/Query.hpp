@@ -21,6 +21,7 @@
 #include "Details/Mixins/ElementAtOptionalMixin.hpp"
 #include "Details/Mixins/ElementAtOrDefaultMixin.hpp"
 #include "Details/Mixins/ExceptByMixin.hpp"
+#include "Details/Mixins/ExceptMixin.hpp"
 #include "Details/Mixins/FirstMixin.hpp"
 #include "Details/Mixins/FirstOptionalMixin.hpp"
 #include "Details/Mixins/FirstOrDefaultMixin.hpp"
@@ -69,6 +70,7 @@ namespace CppLinq::Details
             Mixins::ElementAtOptionalMixin,
             Mixins::ElementAtOrDefaultMixin,
             Mixins::ExceptByMixin,
+            Mixins::ExceptMixin,
             Mixins::FirstMixin,
             Mixins::FirstOptionalMixin,
             Mixins::FirstOrDefaultMixin,

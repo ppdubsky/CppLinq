@@ -133,6 +133,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ElementAtOrDefaultMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ExceptByMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ExceptByMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ExceptMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ExceptMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstOptionalMixin.hpp
