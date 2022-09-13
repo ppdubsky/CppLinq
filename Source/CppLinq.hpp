@@ -53,6 +53,7 @@
 #include "Details/Mixins/FirstOrDefaultMixin.inl"
 #include "Details/Mixins/ForEachMixin.inl"
 #include "Details/Mixins/IntersectByMixin.inl"
+#include "Details/Mixins/IntersectMixin.inl"
 #include "Details/Mixins/LastMixin.inl"
 #include "Details/Mixins/LastOptionalMixin.inl"
 #include "Details/Mixins/LastOrDefaultMixin.inl"

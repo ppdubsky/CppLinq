@@ -148,6 +148,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ForEachMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/IntersectByMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/IntersectByMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/IntersectMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/IntersectMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LastMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LastMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LastOptionalMixin.hpp
