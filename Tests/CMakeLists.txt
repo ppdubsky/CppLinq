@@ -48,6 +48,7 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/UnionByTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/UnionTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/WhereTests.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/ZipTests.cpp
 )
 
 if (MSVC)

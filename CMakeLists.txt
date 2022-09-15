@@ -102,6 +102,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/WhereEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/WhereEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/WhereEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ZipEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ZipEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ZipEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Loops/LoopIterator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Loops/LoopIterator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Loops/LoopIterator.inl
@@ -200,6 +203,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/UnionMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/WhereMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/WhereMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ZipMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ZipMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Predicates/TruePredicate.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Predicates/TruePredicate.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.Forward.hpp

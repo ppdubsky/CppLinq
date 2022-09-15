@@ -51,6 +51,7 @@
 #include "Details/Mixins/UnionByMixin.hpp"
 #include "Details/Mixins/UnionMixin.hpp"
 #include "Details/Mixins/WhereMixin.hpp"
+#include "Details/Mixins/ZipMixin.hpp"
 
 namespace CppLinq::Details
 {
@@ -102,7 +103,8 @@ namespace CppLinq::Details
             Mixins::ToVectorMixin,
             Mixins::UnionByMixin,
             Mixins::UnionMixin,
-            Mixins::WhereMixin
+            Mixins::WhereMixin,
+            Mixins::ZipMixin
         >
     {
         Query(const TEnumerator enumerator);
