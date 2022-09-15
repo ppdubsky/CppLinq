@@ -76,6 +76,7 @@
 #include "Details/Mixins/TakeWhileMixin.inl"
 #include "Details/Mixins/ToVectorMixin.inl"
 #include "Details/Mixins/UnionByMixin.inl"
+#include "Details/Mixins/UnionMixin.inl"
 #include "Details/Mixins/WhereMixin.inl"
 #include "Details/Predicates/TruePredicate.inl"
 #include "Details/Query.inl"

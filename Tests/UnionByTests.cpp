@@ -202,7 +202,7 @@ TEST(UnionBy, SourceThrowsOnMoveNext_DefaultComparer)
         { 14U, "Michael" }
     };
 
-    const auto query = From(source1).UnionBy(From(source1), [](const Customer& customer){ return customer.name; });
+    const auto query = From(source1).UnionBy(From(source2), [](const Customer& customer){ return customer.name; });
 
     auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
@@ -239,7 +239,7 @@ TEST(UnionBy, SourceThrowsOnGetCurrent_DefaultComparer)
         { 14U, "Michael" }
     };
 
-    const auto query = From(source1).UnionBy(From(source1), [](const Customer& customer){ return customer.name; });
+    const auto query = From(source1).UnionBy(From(source2), [](const Customer& customer){ return customer.name; });
 
     auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
@@ -276,7 +276,7 @@ TEST(UnionBy, SourceThrowsOnMoveNext_CustomComparer)
         { 14U, "Michael" }
     };
 
-    const auto query = From(source1).UnionBy(From(source1), [](const Customer& customer){ return customer.name; }, [](const string& value1, const string& value2){ return tolower(value1.front()) == tolower(value2.front()); });
+    const auto query = From(source1).UnionBy(From(source2), [](const Customer& customer){ return customer.name; }, [](const string& value1, const string& value2){ return tolower(value1.front()) == tolower(value2.front()); });
 
     auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())
@@ -313,7 +313,7 @@ TEST(UnionBy, SourceThrowsOnGetCurrent_CustomComparer)
         { 14U, "Michael" }
     };
 
-    const auto query = From(source1).UnionBy(From(source1), [](const Customer& customer){ return customer.name; }, [](const string& value1, const string& value2){ return tolower(value1.front()) == tolower(value2.front()); });
+    const auto query = From(source1).UnionBy(From(source2), [](const Customer& customer){ return customer.name; }, [](const string& value1, const string& value2){ return tolower(value1.front()) == tolower(value2.front()); });
 
     auto enumerator = query.GetEnumerator();
     while (enumerator.HasCurrent())

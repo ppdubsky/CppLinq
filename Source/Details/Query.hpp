@@ -49,6 +49,7 @@
 #include "Details/Mixins/TakeWhileMixin.hpp"
 #include "Details/Mixins/ToVectorMixin.hpp"
 #include "Details/Mixins/UnionByMixin.hpp"
+#include "Details/Mixins/UnionMixin.hpp"
 #include "Details/Mixins/WhereMixin.hpp"
 
 namespace CppLinq::Details
@@ -100,6 +101,7 @@ namespace CppLinq::Details
             Mixins::TakeWhileMixin,
             Mixins::ToVectorMixin,
             Mixins::UnionByMixin,
+            Mixins::UnionMixin,
             Mixins::WhereMixin
         >
     {

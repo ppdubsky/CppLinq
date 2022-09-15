@@ -196,6 +196,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ToVectorMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/UnionByMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/UnionByMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/UnionMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/UnionMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/WhereMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/WhereMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Predicates/TruePredicate.hpp
