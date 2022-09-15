@@ -96,6 +96,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeWhileEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeWhileEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeWhileEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/UnionEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/UnionEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/UnionEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/WhereEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/WhereEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/WhereEnumerator.inl
@@ -191,6 +194,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/TakeWhileMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ToVectorMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ToVectorMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/UnionByMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/UnionByMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/WhereMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/WhereMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Predicates/TruePredicate.hpp

@@ -45,6 +45,7 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/TakeTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/TakeWhileTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/ToVectorTests.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/UnionByTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/WhereTests.cpp
 )
 
