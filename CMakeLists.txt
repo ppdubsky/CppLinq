@@ -96,6 +96,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeLastEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeLastEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeLastEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeWhileEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeWhileEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/TakeWhileEnumerator.inl
@@ -196,6 +199,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/StaticCastMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SumMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SumMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/TakeLastMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/TakeLastMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/TakeMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/TakeMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/TakeWhileMixin.hpp

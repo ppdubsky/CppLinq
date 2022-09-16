@@ -46,6 +46,7 @@
 #include "Details/Mixins/SkipWhileMixin.hpp"
 #include "Details/Mixins/StaticCastMixin.hpp"
 #include "Details/Mixins/SumMixin.hpp"
+#include "Details/Mixins/TakeLastMixin.hpp"
 #include "Details/Mixins/TakeMixin.hpp"
 #include "Details/Mixins/TakeWhileMixin.hpp"
 #include "Details/Mixins/ToVectorMixin.hpp"
@@ -100,6 +101,7 @@ namespace CppLinq::Details
             Mixins::SkipWhileMixin,
             Mixins::StaticCastMixin,
             Mixins::SumMixin,
+            Mixins::TakeLastMixin,
             Mixins::TakeMixin,
             Mixins::TakeWhileMixin,
             Mixins::ToVectorMixin,
