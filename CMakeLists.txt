@@ -189,6 +189,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ReverseMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SelectMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SelectMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SequenceEqualMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SequenceEqualMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SingleMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SingleMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SingleOptionalMixin.hpp

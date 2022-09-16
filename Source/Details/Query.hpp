@@ -38,6 +38,7 @@
 #include "Details/Mixins/QueryMixins.hpp"
 #include "Details/Mixins/ReverseMixin.hpp"
 #include "Details/Mixins/SelectMixin.hpp"
+#include "Details/Mixins/SequenceEqualMixin.hpp"
 #include "Details/Mixins/SingleMixin.hpp"
 #include "Details/Mixins/SingleOptionalMixin.hpp"
 #include "Details/Mixins/SingleOrDefaultMixin.hpp"
@@ -95,6 +96,7 @@ namespace CppLinq::Details
             Mixins::PrependMixin,
             Mixins::ReverseMixin,
             Mixins::SelectMixin,
+            Mixins::SequenceEqualMixin,
             Mixins::SingleMixin,
             Mixins::SingleOptionalMixin,
             Mixins::SingleOrDefaultMixin,

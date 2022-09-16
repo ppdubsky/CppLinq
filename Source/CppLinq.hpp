@@ -70,6 +70,7 @@
 #include "Details/Mixins/PrependMixin.inl"
 #include "Details/Mixins/ReverseMixin.inl"
 #include "Details/Mixins/SelectMixin.inl"
+#include "Details/Mixins/SequenceEqualMixin.inl"
 #include "Details/Mixins/SingleMixin.inl"
 #include "Details/Mixins/SingleOptionalMixin.inl"
 #include "Details/Mixins/SingleOrDefaultMixin.inl"
