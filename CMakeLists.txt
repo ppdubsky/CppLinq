@@ -84,6 +84,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipLastEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipLastEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipLastEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipWhileEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipWhileEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SkipWhileEnumerator.inl
@@ -183,6 +186,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SingleOptionalMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SingleOrDefaultMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SingleOrDefaultMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SkipLastMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SkipLastMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SkipMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SkipMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SkipWhileMixin.hpp

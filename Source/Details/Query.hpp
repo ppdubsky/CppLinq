@@ -41,6 +41,7 @@
 #include "Details/Mixins/SingleMixin.hpp"
 #include "Details/Mixins/SingleOptionalMixin.hpp"
 #include "Details/Mixins/SingleOrDefaultMixin.hpp"
+#include "Details/Mixins/SkipLastMixin.hpp"
 #include "Details/Mixins/SkipMixin.hpp"
 #include "Details/Mixins/SkipWhileMixin.hpp"
 #include "Details/Mixins/StaticCastMixin.hpp"
@@ -94,6 +95,7 @@ namespace CppLinq::Details
             Mixins::SingleMixin,
             Mixins::SingleOptionalMixin,
             Mixins::SingleOrDefaultMixin,
+            Mixins::SkipLastMixin,
             Mixins::SkipMixin,
             Mixins::SkipWhileMixin,
             Mixins::StaticCastMixin,
