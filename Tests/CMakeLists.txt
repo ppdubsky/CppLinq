@@ -34,6 +34,7 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/OrderByTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/PrependTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/ReverseTests.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/SelectManyTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/SelectTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/SequenceEqualTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/SingleOptionalTests.cpp
