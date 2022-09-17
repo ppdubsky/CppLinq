@@ -66,6 +66,7 @@
 #include "Details/Mixins/LastOrDefaultMixin.inl"
 #include "Details/Mixins/MaximumByMixin.inl"
 #include "Details/Mixins/MaximumMixin.inl"
+#include "Details/Mixins/MinimumByMixin.inl"
 #include "Details/Mixins/MinimumMixin.inl"
 #include "Details/Mixins/MixinUtilities.inl"
 #include "Details/Mixins/OrderByMixin.inl"

@@ -181,6 +181,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MaximumByMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MaximumMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MaximumMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MinimumByMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MinimumByMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MinimumMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MinimumMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MixinUtilities.hpp
