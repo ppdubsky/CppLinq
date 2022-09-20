@@ -23,6 +23,7 @@ add_executable(
     ${PROJECT_SOURCE_DIR}/Tests/FirstOrDefaultTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/FirstTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/ForEachTests.cpp
+    ${PROJECT_SOURCE_DIR}/Tests/InnerJoinTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/IntersectByTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/IntersectTests.cpp
     ${PROJECT_SOURCE_DIR}/Tests/LastOptionalTests.cpp

@@ -61,6 +61,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ForEachEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ForEachEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ForEachEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/InnerJoinEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/InnerJoinEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/InnerJoinEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IntersectEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IntersectEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IntersectEnumerator.inl
@@ -167,6 +170,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/FirstOrDefaultMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ForEachMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ForEachMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/InnerJoinMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/InnerJoinMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/IntersectByMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/IntersectByMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/IntersectMixin.hpp
