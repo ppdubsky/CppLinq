@@ -1,0 +1,10 @@
+add_unit_test(
+    NAME
+        DistinctBy
+    SOURCES
+        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Customer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Customer.hpp
+        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/DistinctByTests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Equatable.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Equatable.hpp
+)

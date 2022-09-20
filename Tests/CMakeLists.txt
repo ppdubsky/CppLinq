@@ -1,85 +1,107 @@
-set(TESTS_PROJECT_NAME "${PROJECT_NAME}Tests")
+function(add_unit_test)
+    set(OPTIONS)
+    set(ONE_VALUE_ARGUMENTS NAME)
+    set(MULTI_VALUE_ARGUMENTS SOURCES)
+    cmake_parse_arguments(PARSED_ARGUMENT "${OPTIONS}" "${ONE_VALUE_ARGUMENTS}" "${MULTI_VALUE_ARGUMENTS}" ${ARGN})
 
-add_executable(
-    ${TESTS_PROJECT_NAME}
-    ${PROJECT_SOURCE_DIR}/Tests/AggregateTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/AllTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/AnyTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/AppendTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/AverageTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/ChunkTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/ConcatenationTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/ContainsTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/CountTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/DefaultIfEmptyTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/DistinctByTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/DistinctTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/ElementAtOptionalTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/ElementAtOrDefaultTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/ElementAtTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/ExceptByTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/ExceptTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/FirstOptionalTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/FirstOrDefaultTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/FirstTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/ForEachTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/InnerJoinTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/IntersectByTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/IntersectTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/LastOptionalTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/LastOrDefaultTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/LastTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/Main.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/MaximumByTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/MaximumTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/MinimumByTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/MinimumTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/OrderByTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/PrependTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/ReverseTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/SelectManyTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/SelectTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/SequenceEqualTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/SingleOptionalTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/SingleOrDefaultTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/SingleTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/SkipLastTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/SkipLastWhileTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/SkipTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/SkipWhileTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/StaticCastTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/SumTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/TakeLastTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/TakeLastWhileTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/TakeTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/TakeWhileTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/ToVectorTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/UnionByTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/UnionTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/WhereTests.cpp
-    ${PROJECT_SOURCE_DIR}/Tests/ZipTests.cpp
-)
+    if(NOT PARSED_ARGUMENT_NAME)
+        message(FATAL_ERROR "Test name is not specified.")
+    endif()
 
-if (MSVC)
-    target_compile_options(
+    if(NOT PARSED_ARGUMENT_SOURCES)
+        message(FATAL_ERROR "Test sources are not specified.")
+    endif()
+
+    set(TESTS_PROJECT_NAME "${PARSED_ARGUMENT_NAME}")
+
+    add_executable(${TESTS_PROJECT_NAME})
+
+    target_sources(
         ${TESTS_PROJECT_NAME}
         PRIVATE
-            /W4 /WX
+            ${PARSED_ARGUMENT_SOURCES}
+            ${PROJECT_SOURCE_DIR}/Tests/Assertions.hpp
+            ${PROJECT_SOURCE_DIR}/Tests/Main.cpp
     )
-endif()
 
-target_include_directories(
-    ${TESTS_PROJECT_NAME}
-    PRIVATE
-        ${CMAKE_BINARY_DIR}/googletest-src/googletest/include
-        ${PROJECT_SOURCE_DIR}/Tests
-)
+    if(MSVC)
+        target_compile_options(
+            ${TESTS_PROJECT_NAME}
+            PRIVATE
+                /W4 /WX
+        )
+    endif()
 
-target_link_libraries(
-    ${TESTS_PROJECT_NAME}
-    ${PROJECT_NAME}
-    gtest
-    gtest_main
-)
+    target_include_directories(
+        ${TESTS_PROJECT_NAME}
+        PRIVATE
+            ${CMAKE_BINARY_DIR}/googletest-src/googletest/include
+            ${PROJECT_SOURCE_DIR}/Tests
+    )
 
-add_test(${TESTS_PROJECT_NAME}, ${TESTS_PROJECT_NAME})
+    target_link_libraries(
+        ${TESTS_PROJECT_NAME}
+        PRIVATE
+            ${PROJECT_NAME}
+            gtest
+            gtest_main
+    )
+
+    add_test(${TESTS_PROJECT_NAME}, ${TESTS_PROJECT_NAME})
+endfunction()
+
+add_subdirectory(Aggregate)
+add_subdirectory(All)
+add_subdirectory(Any)
+add_subdirectory(Append)
+add_subdirectory(Average)
+add_subdirectory(Chunk)
+add_subdirectory(Concatenate)
+add_subdirectory(Contains)
+add_subdirectory(Count)
+add_subdirectory(DefaultIfEmpty)
+add_subdirectory(Distinct)
+add_subdirectory(DistinctBy)
+add_subdirectory(ElementAt)
+add_subdirectory(ElementAtOptional)
+add_subdirectory(ElementAtOrDefault)
+add_subdirectory(Except)
+add_subdirectory(ExceptBy)
+add_subdirectory(First)
+add_subdirectory(FirstOptional)
+add_subdirectory(FirstOrDefault)
+add_subdirectory(ForEach)
+add_subdirectory(InnerJoin)
+add_subdirectory(Intersect)
+add_subdirectory(IntersectBy)
+add_subdirectory(Last)
+add_subdirectory(LastOptional)
+add_subdirectory(LastOrDefault)
+add_subdirectory(Maximum)
+add_subdirectory(MaximumBy)
+add_subdirectory(Minimum)
+add_subdirectory(MinimumBy)
+add_subdirectory(OrderBy)
+add_subdirectory(Prepend)
+add_subdirectory(Reverse)
+add_subdirectory(Select)
+add_subdirectory(SelectMany)
+add_subdirectory(SequenceEqual)
+add_subdirectory(Single)
+add_subdirectory(SingleOptional)
+add_subdirectory(SingleOrDefault)
+add_subdirectory(Skip)
+add_subdirectory(SkipLast)
+add_subdirectory(SkipLastWhile)
+add_subdirectory(SkipWhile)
+add_subdirectory(StaticCast)
+add_subdirectory(Sum)
+add_subdirectory(Take)
+add_subdirectory(TakeLast)
+add_subdirectory(TakeLastWhile)
+add_subdirectory(TakeWhile)
+add_subdirectory(ToVector)
+add_subdirectory(Union)
+add_subdirectory(UnionBy)
+add_subdirectory(Where)
+add_subdirectory(Zip)
