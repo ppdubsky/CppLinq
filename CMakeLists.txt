@@ -70,6 +70,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/IteratorEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/LeftJoinEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/LeftJoinEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/LeftJoinEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.inl
@@ -185,6 +188,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LastOptionalMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LastOrDefaultMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LastOrDefaultMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LeftJoinMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/LeftJoinMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MaximumByMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MaximumByMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MaximumMixin.hpp

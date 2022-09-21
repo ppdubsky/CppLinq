@@ -32,6 +32,7 @@
 #include "Details/Mixins/LastMixin.hpp"
 #include "Details/Mixins/LastOptionalMixin.hpp"
 #include "Details/Mixins/LastOrDefaultMixin.hpp"
+#include "Details/Mixins/LeftJoinMixin.hpp"
 #include "Details/Mixins/MaximumByMixin.hpp"
 #include "Details/Mixins/MaximumMixin.hpp"
 #include "Details/Mixins/MinimumByMixin.hpp"
@@ -96,6 +97,7 @@ namespace CppLinq::Details
             Mixins::LastMixin,
             Mixins::LastOptionalMixin,
             Mixins::LastOrDefaultMixin,
+            Mixins::LeftJoinMixin,
             Mixins::MaximumByMixin,
             Mixins::MaximumMixin,
             Mixins::MinimumByMixin,
