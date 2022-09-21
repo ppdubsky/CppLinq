@@ -4,5 +4,5 @@ add_unit_test(
     SOURCES
         ${PROJECT_SOURCE_DIR}/Tests/MinimumBy/Human.cpp
         ${PROJECT_SOURCE_DIR}/Tests/MinimumBy/Human.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/MinimumBy/MinimumByTests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/MinimumBy/Tests.cpp
 )

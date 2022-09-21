@@ -4,5 +4,5 @@ add_unit_test(
     SOURCES
         ${PROJECT_SOURCE_DIR}/Tests/MaximumBy/Human.cpp
         ${PROJECT_SOURCE_DIR}/Tests/MaximumBy/Human.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/MaximumBy/MaximumByTests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/MaximumBy/Tests.cpp
 )

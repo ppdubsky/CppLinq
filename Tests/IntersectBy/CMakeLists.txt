@@ -6,5 +6,5 @@ add_unit_test(
         ${PROJECT_SOURCE_DIR}/Tests/IntersectBy/Customer.hpp
         ${PROJECT_SOURCE_DIR}/Tests/IntersectBy/Equatable.cpp
         ${PROJECT_SOURCE_DIR}/Tests/IntersectBy/Equatable.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/IntersectBy/IntersectByTests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/IntersectBy/Tests.cpp
 )

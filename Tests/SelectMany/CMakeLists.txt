@@ -3,5 +3,5 @@ add_unit_test(
         SelectMany
     SOURCES
         ${PROJECT_SOURCE_DIR}/Tests/SelectMany/Order.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/SelectMany/SelectManyTests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/SelectMany/Tests.cpp
 )

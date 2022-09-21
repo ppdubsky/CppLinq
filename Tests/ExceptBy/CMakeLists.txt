@@ -6,5 +6,5 @@ add_unit_test(
         ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Customer.hpp
         ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Equatable.cpp
         ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Equatable.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/ExceptByTests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Tests.cpp
 )
