@@ -1,0 +1,10 @@
+add_unit_test(
+    NAME
+        OuterJoin
+    SOURCES
+        ${PROJECT_SOURCE_DIR}/Tests/OuterJoin/Person.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/OuterJoin/Person.hpp
+        ${PROJECT_SOURCE_DIR}/Tests/OuterJoin/Pet.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/OuterJoin/Pet.hpp
+        ${PROJECT_SOURCE_DIR}/Tests/OuterJoin/Tests.cpp
+)

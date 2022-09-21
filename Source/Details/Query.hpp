@@ -37,6 +37,7 @@
 #include "Details/Mixins/MinimumByMixin.hpp"
 #include "Details/Mixins/MinimumMixin.hpp"
 #include "Details/Mixins/OrderByMixin.hpp"
+#include "Details/Mixins/OuterJoinMixin.hpp"
 #include "Details/Mixins/PrependMixin.hpp"
 #include "Details/Mixins/QueryMixins.hpp"
 #include "Details/Mixins/ReverseMixin.hpp"
@@ -100,6 +101,7 @@ namespace CppLinq::Details
             Mixins::MinimumByMixin,
             Mixins::MinimumMixin,
             Mixins::OrderByMixin,
+            Mixins::OuterJoinMixin,
             Mixins::PrependMixin,
             Mixins::ReverseMixin,
             Mixins::SelectManyMixin,

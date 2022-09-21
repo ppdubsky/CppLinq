@@ -73,6 +73,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OrderEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OuterJoinEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OuterJoinEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/OuterJoinEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/PrependEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/PrependEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/PrependEnumerator.inl
@@ -192,6 +195,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MinimumMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MixinUtilities.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/MixinUtilities.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/OuterJoinMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/OuterJoinMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/OrderByMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/OrderByMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/PrependMixin.hpp
@@ -248,6 +253,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Query.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Selectors/SelfSelector.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Selectors/SelfSelector.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Storage/IndexedValue.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Storage/UsableValue.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/EnumeratorTypeProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/ValueTypeProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/ArgumentOutOfRangeException.hpp
