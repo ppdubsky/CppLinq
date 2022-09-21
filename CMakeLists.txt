@@ -87,6 +87,9 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ReverseEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ReverseEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/ReverseEnumerator.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/RightJoinEnumerator.Forward.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/RightJoinEnumerator.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/RightJoinEnumerator.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SelectEnumerator.Forward.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SelectEnumerator.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Enumerators/SelectEnumerator.inl
@@ -209,6 +212,8 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/QueryMixins.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ReverseMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/ReverseMixin.inl
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/RightJoinMixin.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/RightJoinMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SelectManyMixin.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SelectManyMixin.inl
         ${PROJECT_SOURCE_DIR}/Source/Details/Mixins/SelectMixin.hpp

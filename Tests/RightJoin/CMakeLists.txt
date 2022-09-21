@@ -1,0 +1,10 @@
+add_unit_test(
+    NAME
+        RightJoin
+    SOURCES
+        ${PROJECT_SOURCE_DIR}/Tests/RightJoin/Person.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/RightJoin/Person.hpp
+        ${PROJECT_SOURCE_DIR}/Tests/RightJoin/Pet.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/RightJoin/Pet.hpp
+        ${PROJECT_SOURCE_DIR}/Tests/RightJoin/Tests.cpp
+)
