@@ -26,6 +26,7 @@
 #include "Details/Mixins/FirstOptionalMixin.hpp"
 #include "Details/Mixins/FirstOrDefaultMixin.hpp"
 #include "Details/Mixins/ForEachMixin.hpp"
+#include "Details/Mixins/GroupByMixin.hpp"
 #include "Details/Mixins/InnerJoinMixin.hpp"
 #include "Details/Mixins/IntersectByMixin.hpp"
 #include "Details/Mixins/IntersectMixin.hpp"
@@ -92,6 +93,7 @@ namespace CppLinq::Details
             Mixins::FirstOptionalMixin,
             Mixins::FirstOrDefaultMixin,
             Mixins::ForEachMixin,
+            Mixins::GroupByMixin,
             Mixins::InnerJoinMixin,
             Mixins::IntersectByMixin,
             Mixins::IntersectMixin,
