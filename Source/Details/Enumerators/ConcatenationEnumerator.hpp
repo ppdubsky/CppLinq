@@ -11,7 +11,7 @@ namespace CppLinq::Details::Enumerators
     {
         using Base = EnumeratorWrapper<TFirstEnumerator>;
 
-        ConcatenationEnumerator(const TFirstEnumerator firstEnumerator, const TSecondEnumerator& secondEnumerator);
+        ConcatenationEnumerator(const TFirstEnumerator firstEnumerator, const TSecondEnumerator secondEnumerator);
 
         auto GetCurrent() -> Base::ValueType;
         auto HasCurrent() -> bool;

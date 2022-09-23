@@ -5,7 +5,7 @@
 namespace CppLinq::Details::Enumerators
 {
     template <typename TFirstEnumerator, typename TSecondEnumerator>
-    ConcatenationEnumerator<TFirstEnumerator, TSecondEnumerator>::ConcatenationEnumerator(const TFirstEnumerator firstEnumerator, const TSecondEnumerator& secondEnumerator) :
+    ConcatenationEnumerator<TFirstEnumerator, TSecondEnumerator>::ConcatenationEnumerator(const TFirstEnumerator firstEnumerator, const TSecondEnumerator secondEnumerator) :
         Base(firstEnumerator),
         secondEnumerator(secondEnumerator)
     {
