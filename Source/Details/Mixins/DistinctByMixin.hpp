@@ -20,7 +20,7 @@ namespace CppLinq::Details::Mixins
 
         template <typename TKeySelector>
         auto DistinctBy(const TKeySelector keySelector) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;
-        template <typename TKeySelector, typename TComparer>
-        auto DistinctBy(const TKeySelector keySelector, const TComparer comparer) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TKeySelector, TComparer>>;
+        template <typename TKeySelector, typename TKeyComparer>
+        auto DistinctBy(const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TKeySelector, TKeyComparer>>;
     };
 }

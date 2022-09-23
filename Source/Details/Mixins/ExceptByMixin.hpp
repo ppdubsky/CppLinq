@@ -20,7 +20,7 @@ namespace CppLinq::Details::Mixins
 
         template <typename TExceptEnumerator, typename TKeySelector>
         auto ExceptBy(const Query<TExceptEnumerator>& exceptQuery, const TKeySelector keySelector) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;
-        template <typename TExceptEnumerator, typename TKeySelector, typename TComparer>
-        auto ExceptBy(const Query<TExceptEnumerator>& exceptQuery, const TKeySelector keySelector, const TComparer comparer) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, TKeySelector, TComparer>>;
+        template <typename TExceptEnumerator, typename TKeySelector, typename TKeyComparer>
+        auto ExceptBy(const Query<TExceptEnumerator>& exceptQuery, const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, TKeySelector, TKeyComparer>>;
     };
 }

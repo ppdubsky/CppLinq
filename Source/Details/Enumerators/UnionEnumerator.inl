@@ -4,17 +4,17 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TComparer>
-    UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TComparer>::UnionEnumerator(const TEnumerator enumerator, const TUnionEnumerator unionEnumerator, const TKeySelector keySelector, const TComparer comparer) :
+    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TKeyComparer>
+    UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TKeyComparer>::UnionEnumerator(const TEnumerator enumerator, const TUnionEnumerator unionEnumerator, const TKeySelector keySelector, const TKeyComparer keyComparer) :
         Base(enumerator),
-        container(bucketCount, HasherType(), comparer),
+        container(bucketCount, HasherType(), keyComparer),
         keySelector(keySelector),
         unionEnumerator(unionEnumerator)
     {
     }
 
-    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TComparer>
-    void UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TComparer>::EnsureEnumeratorIsReady()
+    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TKeyComparer>
+    void UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TKeyComparer>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
@@ -55,24 +55,24 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TComparer>
-    auto UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TComparer>::GetCurrent() -> Base::ValueType
+    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TKeyComparer>
+    auto UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TKeyComparer>::GetCurrent() -> Base::ValueType
     {
         EnsureEnumeratorIsReady();
 
         return Base::HasCurrent() ? Base::GetCurrent() : unionEnumerator.GetCurrent();
     }
 
-    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TComparer>
-    auto UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TComparer>::HasCurrent() -> bool
+    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TKeyComparer>
+    auto UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TKeyComparer>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
         return Base::HasCurrent() || unionEnumerator.HasCurrent();
     }
 
-    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TComparer>
-    void UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TComparer>::MoveNext()
+    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TKeyComparer>
+    void UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TKeyComparer>::MoveNext()
     {
         if (Base::HasCurrent())
         {

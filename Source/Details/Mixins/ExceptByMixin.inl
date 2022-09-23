@@ -17,9 +17,9 @@ namespace CppLinq::Details::Mixins
     }
 
     template <typename TQuery>
-    template <typename TExceptEnumerator, typename TKeySelector, typename TComparer>
-    auto ExceptByMixin<TQuery>::ExceptBy(const Query<TExceptEnumerator>& exceptQuery, const TKeySelector keySelector, const TComparer comparer) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, TKeySelector, TComparer>>
+    template <typename TExceptEnumerator, typename TKeySelector, typename TKeyComparer>
+    auto ExceptByMixin<TQuery>::ExceptBy(const Query<TExceptEnumerator>& exceptQuery, const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, TKeySelector, TKeyComparer>>
     {
-        return { { MixinUtilities::GetEnumerator<TQuery>(*this), exceptQuery.GetEnumerator(), keySelector, comparer } };
+        return { { MixinUtilities::GetEnumerator<TQuery>(*this), exceptQuery.GetEnumerator(), keySelector, keyComparer } };
     }
 }

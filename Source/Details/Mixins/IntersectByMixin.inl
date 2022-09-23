@@ -17,9 +17,9 @@ namespace CppLinq::Details::Mixins
     }
 
     template <typename TQuery>
-    template <typename TIntersectEnumerator, typename TKeySelector, typename TComparer>
-    auto IntersectByMixin<TQuery>::IntersectBy(const Query<TIntersectEnumerator>& intersectQuery, const TKeySelector keySelector, const TComparer comparer) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, TKeySelector, TComparer>>
+    template <typename TIntersectEnumerator, typename TKeySelector, typename TKeyComparer>
+    auto IntersectByMixin<TQuery>::IntersectBy(const Query<TIntersectEnumerator>& intersectQuery, const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, TKeySelector, TKeyComparer>>
     {
-        return { { MixinUtilities::GetEnumerator<TQuery>(*this), intersectQuery.GetEnumerator(), keySelector, comparer } };
+        return { { MixinUtilities::GetEnumerator<TQuery>(*this), intersectQuery.GetEnumerator(), keySelector, keyComparer } };
     }
 }

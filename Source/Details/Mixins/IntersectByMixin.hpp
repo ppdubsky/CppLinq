@@ -20,7 +20,7 @@ namespace CppLinq::Details::Mixins
 
         template <typename TIntersectEnumerator, typename TKeySelector>
         auto IntersectBy(const Query<TIntersectEnumerator>& intersectQuery, const TKeySelector keySelector) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;
-        template <typename TIntersectEnumerator, typename TKeySelector, typename TComparer>
-        auto IntersectBy(const Query<TIntersectEnumerator>& intersectQuery, const TKeySelector keySelector, const TComparer comparer) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, TKeySelector, TComparer>>;
+        template <typename TIntersectEnumerator, typename TKeySelector, typename TKeyComparer>
+        auto IntersectBy(const Query<TIntersectEnumerator>& intersectQuery, const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, TKeySelector, TKeyComparer>>;
     };
 }

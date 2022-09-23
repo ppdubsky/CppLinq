@@ -6,16 +6,16 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TKeySelector, typename TComparer>
-    DistinctEnumerator<TEnumerator, TKeySelector, TComparer>::DistinctEnumerator(const TEnumerator enumerator, const TKeySelector keySelector, const TComparer comparer) :
+    template <typename TEnumerator, typename TKeySelector, typename TKeyComparer>
+    DistinctEnumerator<TEnumerator, TKeySelector, TKeyComparer>::DistinctEnumerator(const TEnumerator enumerator, const TKeySelector keySelector, const TKeyComparer keyComparer) :
         Base(enumerator),
-        container(bucketCount, HasherType(), comparer),
+        container(bucketCount, HasherType(), keyComparer),
         keySelector(keySelector)
     {
     }
 
-    template <typename TEnumerator, typename TKeySelector, typename TComparer>
-    void DistinctEnumerator<TEnumerator, TKeySelector, TComparer>::EnsureEnumeratorIsReady()
+    template <typename TEnumerator, typename TKeySelector, typename TKeyComparer>
+    void DistinctEnumerator<TEnumerator, TKeySelector, TKeyComparer>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
@@ -36,16 +36,16 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TKeySelector, typename TComparer>
-    auto DistinctEnumerator<TEnumerator, TKeySelector, TComparer>::GetCurrent() -> Base::ValueType
+    template <typename TEnumerator, typename TKeySelector, typename TKeyComparer>
+    auto DistinctEnumerator<TEnumerator, TKeySelector, TKeyComparer>::GetCurrent() -> Base::ValueType
     {
         EnsureEnumeratorIsReady();
 
         return Base::GetCurrent();
     }
 
-    template <typename TEnumerator, typename TKeySelector, typename TComparer>
-    void DistinctEnumerator<TEnumerator, TKeySelector, TComparer>::MoveNext()
+    template <typename TEnumerator, typename TKeySelector, typename TKeyComparer>
+    void DistinctEnumerator<TEnumerator, TKeySelector, TKeyComparer>::MoveNext()
     {
         Base::MoveNext();
 

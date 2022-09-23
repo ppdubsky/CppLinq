@@ -12,17 +12,17 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TComparer>
+    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
     struct InnerJoinEnumerator final : EnumeratorWrapper<TEnumerator>
     {
         using Base = EnumeratorWrapper<TEnumerator>;
         using KeyType = decltype(std::declval<TLeftKeySelector>()(std::declval<Base::ValueType>()));
         using HasherType = Containers::DoNothingHasher<KeyType>;
-        using ContainerType = std::unordered_multimap<KeyType, typename TOtherEnumerator::ValueType, HasherType, TComparer>;
+        using ContainerType = std::unordered_multimap<KeyType, typename TOtherEnumerator::ValueType, HasherType, TKeyComparer>;
         using ValueType = decltype(std::declval<TResultSelector>()(std::declval<Base::ValueType>(), std::declval<typename TOtherEnumerator::ValueType>()));
         using QueueType = std::queue<ValueType>;
 
-        InnerJoinEnumerator(const TEnumerator enumerator, const TOtherEnumerator otherEnumerator, const TLeftKeySelector leftKeySelector, const TRightKeySelector rightKeySelector, const TResultSelector resultSelector, const TComparer comparer);
+        InnerJoinEnumerator(const TEnumerator enumerator, const TOtherEnumerator otherEnumerator, const TLeftKeySelector leftKeySelector, const TRightKeySelector rightKeySelector, const TResultSelector resultSelector, const TKeyComparer keyComparer);
 
         auto GetCurrent() -> ValueType;
         auto HasCurrent() -> bool;
