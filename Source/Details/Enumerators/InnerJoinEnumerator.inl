@@ -74,7 +74,7 @@ namespace CppLinq::Details::Enumerators
             throw Exceptions::FinishedEnumeratorException();
         }
 
-        return queue.front();;
+        return queue.front();
     }
 
     template <typename TLeftEnumerator, typename TRightEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
