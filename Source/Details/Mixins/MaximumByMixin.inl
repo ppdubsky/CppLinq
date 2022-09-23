@@ -8,8 +8,8 @@
 namespace CppLinq::Details::Mixins
 {
     template <typename TQuery>
-    template <typename TSelector>
-    auto MaximumByMixin<TQuery>::MaximumBy(const TSelector selector) const -> ValueType
+    template <typename TKeySelector>
+    auto MaximumByMixin<TQuery>::MaximumBy(const TKeySelector keySelector) const -> ValueType
     {
         EnumeratorType enumerator = MixinUtilities::GetEnumerator<TQuery>(*this);
         if (!enumerator.HasCurrent())
@@ -24,7 +24,7 @@ namespace CppLinq::Details::Mixins
         while (enumerator.HasCurrent())
         {
             const ValueType current = enumerator.GetCurrent();
-            if (selector(current) > selector(bound))
+            if (keySelector(current) > keySelector(bound))
             {
                 bound = current;
             }

@@ -16,18 +16,18 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TOtherEnumerator, typename TSelector, typename TOtherSelector, typename TResultSelector, typename TComparer>
+    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TComparer>
     struct OuterJoinEnumerator final : EnumeratorWrapper<TEnumerator>
     {
         using Base = EnumeratorWrapper<TEnumerator>;
-        using KeyType = decltype(std::declval<TSelector>()(std::declval<Base::ValueType>()));
+        using KeyType = decltype(std::declval<TLeftKeySelector>()(std::declval<Base::ValueType>()));
         using HasherType = Containers::DoNothingHasher<KeyType>;
         using ContainerType = std::unordered_multimap<KeyType, Storage::IndexedValue<typename TOtherEnumerator::ValueType>, HasherType, TComparer>;
         using ValueType = decltype(std::declval<TResultSelector>()(std::declval<std::optional<Base::ValueType>>(), std::declval<std::optional<typename TOtherEnumerator::ValueType>>()));
         using QueueType = std::queue<ValueType>;
         using VectorType = std::vector<Storage::UsableValue<typename TOtherEnumerator::ValueType>>;
 
-        OuterJoinEnumerator(const TEnumerator enumerator, const TOtherEnumerator otherEnumerator, const TSelector selector, const TOtherSelector otherSelector, const TResultSelector resultSelector, const TComparer comparer);
+        OuterJoinEnumerator(const TEnumerator enumerator, const TOtherEnumerator otherEnumerator, const TLeftKeySelector leftKeySelector, const TRightKeySelector rightKeySelector, const TResultSelector resultSelector, const TComparer comparer);
 
         auto GetCurrent() -> ValueType;
         auto HasCurrent() -> bool;
@@ -42,11 +42,11 @@ namespace CppLinq::Details::Enumerators
         ContainerType container;
         bool isContainerReady{ false };
         bool isReady{ false };
+        TLeftKeySelector leftKeySelector;
         TOtherEnumerator otherEnumerator;
-        TOtherSelector otherSelector;
         QueueType queue;
         TResultSelector resultSelector;
-        TSelector selector;
+        TRightKeySelector rightKeySelector;
         VectorType usedValues;
     };
 }

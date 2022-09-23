@@ -10,16 +10,16 @@
 namespace CppLinq::Details::Mixins
 {
     template <typename TQuery>
-    template <typename TSelector>
-    auto DistinctByMixin<TQuery>::DistinctBy(const TSelector selector) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TSelector, Comparers::DefaultEqualityComparer<KeyType<TSelector>>>>
+    template <typename TKeySelector>
+    auto DistinctByMixin<TQuery>::DistinctBy(const TKeySelector keySelector) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>
     {
-        return DistinctBy(selector, Comparers::DefaultEqualityComparer<KeyType<TSelector>>());
+        return DistinctBy(keySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>());
     }
 
     template <typename TQuery>
-    template <typename TSelector, typename TComparer>
-    auto DistinctByMixin<TQuery>::DistinctBy(const TSelector selector, const TComparer comparer) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TSelector, TComparer>>
+    template <typename TKeySelector, typename TComparer>
+    auto DistinctByMixin<TQuery>::DistinctBy(const TKeySelector keySelector, const TComparer comparer) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TKeySelector, TComparer>>
     {
-        return { { MixinUtilities::GetEnumerator<TQuery>(*this), selector, comparer } };
+        return { { MixinUtilities::GetEnumerator<TQuery>(*this), keySelector, comparer } };
     }
 }

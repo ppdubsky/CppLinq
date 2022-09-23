@@ -15,12 +15,12 @@ namespace CppLinq::Details::Mixins
     {
         using EnumeratorType = typename TypeTraits::EnumeratorTypeProvider<TQuery>::EnumeratorType;
         using ValueType = typename EnumeratorType::ValueType;
-        template <typename TSelector>
-        using KeyType = decltype(std::declval<TSelector>()(std::declval<ValueType>()));
+        template <typename TKeySelector>
+        using KeyType = decltype(std::declval<TKeySelector>()(std::declval<ValueType>()));
 
-        template <typename TSelector>
-        auto DistinctBy(const TSelector selector) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TSelector, Comparers::DefaultEqualityComparer<KeyType<TSelector>>>>;
-        template <typename TSelector, typename TComparer>
-        auto DistinctBy(const TSelector selector, const TComparer comparer) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TSelector, TComparer>>;
+        template <typename TKeySelector>
+        auto DistinctBy(const TKeySelector keySelector) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;
+        template <typename TKeySelector, typename TComparer>
+        auto DistinctBy(const TKeySelector keySelector, const TComparer comparer) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TKeySelector, TComparer>>;
     };
 }

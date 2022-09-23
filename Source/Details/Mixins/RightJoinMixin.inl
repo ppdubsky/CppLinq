@@ -9,16 +9,16 @@
 namespace CppLinq::Details::Mixins
 {
     template <typename TQuery>
-    template <typename TOtherEnumerator, typename TSelector, typename TOtherSelector, typename TResultSelector>
-    auto RightJoinMixin<TQuery>::RightJoin(const Query<TOtherEnumerator>& otherQuery, const TSelector selector, const TOtherSelector otherSelector, const TResultSelector resultSelector) const -> Query<Enumerators::RightJoinEnumerator<EnumeratorType, TOtherEnumerator, TSelector, TOtherSelector, TResultSelector, Comparers::DefaultEqualityComparer<KeyType<TSelector>>>>
+    template <typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector>
+    auto RightJoinMixin<TQuery>::RightJoin(const Query<TOtherEnumerator>& otherQuery, const TLeftKeySelector leftKeySelector, const TRightKeySelector rightKeySelector, const TResultSelector resultSelector) const -> Query<Enumerators::RightJoinEnumerator<EnumeratorType, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, Comparers::DefaultEqualityComparer<KeyType<TLeftKeySelector>>>>
     {
-        return RightJoin(otherQuery, selector, otherSelector, resultSelector, Comparers::DefaultEqualityComparer<KeyType<TSelector>>());
+        return RightJoin(otherQuery, leftKeySelector, rightKeySelector, resultSelector, Comparers::DefaultEqualityComparer<KeyType<TLeftKeySelector>>());
     }
 
     template <typename TQuery>
-    template <typename TOtherEnumerator, typename TSelector, typename TOtherSelector, typename TResultSelector, typename TComparer>
-    auto RightJoinMixin<TQuery>::RightJoin(const Query<TOtherEnumerator>& otherQuery, const TSelector selector, const TOtherSelector otherSelector, const TResultSelector resultSelector, const TComparer comparer) const -> Query<Enumerators::RightJoinEnumerator<EnumeratorType, TOtherEnumerator, TSelector, TOtherSelector, TResultSelector, TComparer>>
+    template <typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TComparer>
+    auto RightJoinMixin<TQuery>::RightJoin(const Query<TOtherEnumerator>& otherQuery, const TLeftKeySelector leftKeySelector, const TRightKeySelector rightKeySelector, const TResultSelector resultSelector, const TComparer comparer) const -> Query<Enumerators::RightJoinEnumerator<EnumeratorType, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TComparer>>
     {
-        return { { MixinUtilities::GetEnumerator<TQuery>(*this), otherQuery.GetEnumerator(), selector, otherSelector, resultSelector, comparer } };
+        return { { MixinUtilities::GetEnumerator<TQuery>(*this), otherQuery.GetEnumerator(), leftKeySelector, rightKeySelector, resultSelector, comparer } };
     }
 }

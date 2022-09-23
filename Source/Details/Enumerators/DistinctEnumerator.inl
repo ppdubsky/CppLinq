@@ -6,22 +6,22 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TSelector, typename TComparer>
-    DistinctEnumerator<TEnumerator, TSelector, TComparer>::DistinctEnumerator(const TEnumerator enumerator, const TSelector selector, const TComparer comparer) :
+    template <typename TEnumerator, typename TKeySelector, typename TComparer>
+    DistinctEnumerator<TEnumerator, TKeySelector, TComparer>::DistinctEnumerator(const TEnumerator enumerator, const TKeySelector keySelector, const TComparer comparer) :
         Base(enumerator),
         container(bucketCount, HasherType(), comparer),
-        selector(selector)
+        keySelector(keySelector)
     {
     }
 
-    template <typename TEnumerator, typename TSelector, typename TComparer>
-    void DistinctEnumerator<TEnumerator, TSelector, TComparer>::EnsureEnumeratorIsReady()
+    template <typename TEnumerator, typename TKeySelector, typename TComparer>
+    void DistinctEnumerator<TEnumerator, TKeySelector, TComparer>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
             while (Base::HasCurrent())
             {
-                const KeyType currentKey = selector(Base::GetCurrent());
+                const KeyType currentKey = keySelector(Base::GetCurrent());
 
                 const auto result = container.insert(currentKey);
                 if (result.second)
@@ -36,16 +36,16 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TSelector, typename TComparer>
-    auto DistinctEnumerator<TEnumerator, TSelector, TComparer>::GetCurrent() -> Base::ValueType
+    template <typename TEnumerator, typename TKeySelector, typename TComparer>
+    auto DistinctEnumerator<TEnumerator, TKeySelector, TComparer>::GetCurrent() -> Base::ValueType
     {
         EnsureEnumeratorIsReady();
 
         return Base::GetCurrent();
     }
 
-    template <typename TEnumerator, typename TSelector, typename TComparer>
-    void DistinctEnumerator<TEnumerator, TSelector, TComparer>::MoveNext()
+    template <typename TEnumerator, typename TKeySelector, typename TComparer>
+    void DistinctEnumerator<TEnumerator, TKeySelector, TComparer>::MoveNext()
     {
         Base::MoveNext();
 

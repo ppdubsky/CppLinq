@@ -4,17 +4,17 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TIntersectEnumerator, typename TSelector, typename TComparer>
-    IntersectEnumerator<TEnumerator, TIntersectEnumerator, TSelector, TComparer>::IntersectEnumerator(const TEnumerator enumerator, const TIntersectEnumerator intersectEnumerator, const TSelector selector, const TComparer comparer) :
+    template <typename TEnumerator, typename TIntersectEnumerator, typename TKeySelector, typename TComparer>
+    IntersectEnumerator<TEnumerator, TIntersectEnumerator, TKeySelector, TComparer>::IntersectEnumerator(const TEnumerator enumerator, const TIntersectEnumerator intersectEnumerator, const TKeySelector keySelector, const TComparer comparer) :
         Base(enumerator),
         container(bucketCount, HasherType(), comparer),
         intersectEnumerator(intersectEnumerator),
-        selector(selector)
+        keySelector(keySelector)
     {
     }
 
-    template <typename TEnumerator, typename TIntersectEnumerator, typename TSelector, typename TComparer>
-    void IntersectEnumerator<TEnumerator, TIntersectEnumerator, TSelector, TComparer>::EnsureContainerIsReady()
+    template <typename TEnumerator, typename TIntersectEnumerator, typename TKeySelector, typename TComparer>
+    void IntersectEnumerator<TEnumerator, TIntersectEnumerator, TKeySelector, TComparer>::EnsureContainerIsReady()
     {
         if (!isContainerReady)
         {
@@ -29,8 +29,8 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TIntersectEnumerator, typename TSelector, typename TComparer>
-    void IntersectEnumerator<TEnumerator, TIntersectEnumerator, TSelector, TComparer>::EnsureEnumeratorIsReady()
+    template <typename TEnumerator, typename TIntersectEnumerator, typename TKeySelector, typename TComparer>
+    void IntersectEnumerator<TEnumerator, TIntersectEnumerator, TKeySelector, TComparer>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
@@ -38,7 +38,7 @@ namespace CppLinq::Details::Enumerators
 
             while (Base::HasCurrent())
             {
-                const KeyType currentKey = selector(Base::GetCurrent());
+                const KeyType currentKey = keySelector(Base::GetCurrent());
 
                 const auto result = container.insert(currentKey);
                 if (!result.second)
@@ -53,24 +53,24 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TIntersectEnumerator, typename TSelector, typename TComparer>
-    auto IntersectEnumerator<TEnumerator, TIntersectEnumerator, TSelector, TComparer>::GetCurrent() -> Base::ValueType
+    template <typename TEnumerator, typename TIntersectEnumerator, typename TKeySelector, typename TComparer>
+    auto IntersectEnumerator<TEnumerator, TIntersectEnumerator, TKeySelector, TComparer>::GetCurrent() -> Base::ValueType
     {
         EnsureEnumeratorIsReady();
 
         return Base::GetCurrent();
     }
 
-    template <typename TEnumerator, typename TIntersectEnumerator, typename TSelector, typename TComparer>
-    auto IntersectEnumerator<TEnumerator, TIntersectEnumerator, TSelector, TComparer>::HasCurrent() -> bool
+    template <typename TEnumerator, typename TIntersectEnumerator, typename TKeySelector, typename TComparer>
+    auto IntersectEnumerator<TEnumerator, TIntersectEnumerator, TKeySelector, TComparer>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
         return Base::HasCurrent();
     }
 
-    template <typename TEnumerator, typename TIntersectEnumerator, typename TSelector, typename TComparer>
-    void IntersectEnumerator<TEnumerator, TIntersectEnumerator, TSelector, TComparer>::MoveNext()
+    template <typename TEnumerator, typename TIntersectEnumerator, typename TKeySelector, typename TComparer>
+    void IntersectEnumerator<TEnumerator, TIntersectEnumerator, TKeySelector, TComparer>::MoveNext()
     {
         Base::MoveNext();
 

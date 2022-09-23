@@ -2,6 +2,6 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TSelector>
+    template <typename TEnumerator, typename TResultSelector>
     struct SelectManyEnumerator;
 }

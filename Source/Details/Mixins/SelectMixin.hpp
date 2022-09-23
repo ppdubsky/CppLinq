@@ -12,7 +12,7 @@ namespace CppLinq::Details::Mixins
     {
         using EnumeratorType = typename TypeTraits::EnumeratorTypeProvider<TQuery>::EnumeratorType;
 
-        template <typename TSelector>
-        auto Select(const TSelector selector) const -> Query<Enumerators::SelectEnumerator<EnumeratorType, TSelector>>;
+        template <typename TResultSelector>
+        auto Select(const TResultSelector resultSelector) const -> Query<Enumerators::SelectEnumerator<EnumeratorType, TResultSelector>>;
     };
 }

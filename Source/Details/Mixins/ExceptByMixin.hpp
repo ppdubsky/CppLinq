@@ -15,12 +15,12 @@ namespace CppLinq::Details::Mixins
     {
         using EnumeratorType = typename TypeTraits::EnumeratorTypeProvider<TQuery>::EnumeratorType;
         using ValueType = typename EnumeratorType::ValueType;
-        template <typename TSelector>
-        using KeyType = decltype(std::declval<TSelector>()(std::declval<ValueType>()));
+        template <typename TKeySelector>
+        using KeyType = decltype(std::declval<TKeySelector>()(std::declval<ValueType>()));
 
-        template <typename TExceptEnumerator, typename TSelector>
-        auto ExceptBy(const Query<TExceptEnumerator>& exceptQuery, const TSelector selector) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, TSelector, Comparers::DefaultEqualityComparer<KeyType<TSelector>>>>;
-        template <typename TExceptEnumerator, typename TSelector, typename TComparer>
-        auto ExceptBy(const Query<TExceptEnumerator>& exceptQuery, const TSelector selector, const TComparer comparer) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, TSelector, TComparer>>;
+        template <typename TExceptEnumerator, typename TKeySelector>
+        auto ExceptBy(const Query<TExceptEnumerator>& exceptQuery, const TKeySelector keySelector) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;
+        template <typename TExceptEnumerator, typename TKeySelector, typename TComparer>
+        auto ExceptBy(const Query<TExceptEnumerator>& exceptQuery, const TKeySelector keySelector, const TComparer comparer) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, TKeySelector, TComparer>>;
     };
 }

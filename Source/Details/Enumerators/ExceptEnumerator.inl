@@ -4,17 +4,17 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TExceptEnumerator, typename TSelector, typename TComparer>
-    ExceptEnumerator<TEnumerator, TExceptEnumerator, TSelector, TComparer>::ExceptEnumerator(const TEnumerator enumerator, const TExceptEnumerator exceptEnumerator, const TSelector selector, const TComparer comparer) :
+    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TComparer>
+    ExceptEnumerator<TEnumerator, TExceptEnumerator, TKeySelector, TComparer>::ExceptEnumerator(const TEnumerator enumerator, const TExceptEnumerator exceptEnumerator, const TKeySelector keySelector, const TComparer comparer) :
         Base(enumerator),
         container(bucketCount, HasherType(), comparer),
         exceptEnumerator(exceptEnumerator),
-        selector(selector)
+        keySelector(keySelector)
     {
     }
 
-    template <typename TEnumerator, typename TExceptEnumerator, typename TSelector, typename TComparer>
-    void ExceptEnumerator<TEnumerator, TExceptEnumerator, TSelector, TComparer>::EnsureContainerIsReady()
+    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TComparer>
+    void ExceptEnumerator<TEnumerator, TExceptEnumerator, TKeySelector, TComparer>::EnsureContainerIsReady()
     {
         if (!isContainerReady)
         {
@@ -29,8 +29,8 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TExceptEnumerator, typename TSelector, typename TComparer>
-    void ExceptEnumerator<TEnumerator, TExceptEnumerator, TSelector, TComparer>::EnsureEnumeratorIsReady()
+    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TComparer>
+    void ExceptEnumerator<TEnumerator, TExceptEnumerator, TKeySelector, TComparer>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
@@ -38,7 +38,7 @@ namespace CppLinq::Details::Enumerators
 
             while (Base::HasCurrent())
             {
-                const KeyType currentKey = selector(Base::GetCurrent());
+                const KeyType currentKey = keySelector(Base::GetCurrent());
 
                 const auto result = container.insert(currentKey);
                 if (result.second)
@@ -53,24 +53,24 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TExceptEnumerator, typename TSelector, typename TComparer>
-    auto ExceptEnumerator<TEnumerator, TExceptEnumerator, TSelector, TComparer>::GetCurrent() -> Base::ValueType
+    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TComparer>
+    auto ExceptEnumerator<TEnumerator, TExceptEnumerator, TKeySelector, TComparer>::GetCurrent() -> Base::ValueType
     {
         EnsureEnumeratorIsReady();
 
         return Base::GetCurrent();
     }
 
-    template <typename TEnumerator, typename TExceptEnumerator, typename TSelector, typename TComparer>
-    auto ExceptEnumerator<TEnumerator, TExceptEnumerator, TSelector, TComparer>::HasCurrent() -> bool
+    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TComparer>
+    auto ExceptEnumerator<TEnumerator, TExceptEnumerator, TKeySelector, TComparer>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
         return Base::HasCurrent();
     }
 
-    template <typename TEnumerator, typename TExceptEnumerator, typename TSelector, typename TComparer>
-    void ExceptEnumerator<TEnumerator, TExceptEnumerator, TSelector, TComparer>::MoveNext()
+    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TComparer>
+    void ExceptEnumerator<TEnumerator, TExceptEnumerator, TKeySelector, TComparer>::MoveNext()
     {
         Base::MoveNext();
 

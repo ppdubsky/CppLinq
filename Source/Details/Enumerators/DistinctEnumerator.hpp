@@ -11,15 +11,15 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TSelector, typename TComparer>
+    template <typename TEnumerator, typename TKeySelector, typename TComparer>
     struct DistinctEnumerator final : EnumeratorWrapper<TEnumerator>
     {
         using Base = EnumeratorWrapper<TEnumerator>;
-        using KeyType = decltype(std::declval<TSelector>()(std::declval<Base::ValueType>()));
+        using KeyType = decltype(std::declval<TKeySelector>()(std::declval<Base::ValueType>()));
         using HasherType = Containers::DoNothingHasher<KeyType>;
         using ContainerType = std::unordered_set<KeyType, HasherType, TComparer>;
 
-        DistinctEnumerator(const TEnumerator enumerator, const TSelector selector, const TComparer comparer);
+        DistinctEnumerator(const TEnumerator enumerator, const TKeySelector keySelector, const TComparer comparer);
 
         auto GetCurrent() -> Base::ValueType;
         void MoveNext();
@@ -31,6 +31,6 @@ namespace CppLinq::Details::Enumerators
 
         ContainerType container;
         bool isReady{ false };
-        TSelector selector;
+        TKeySelector keySelector;
     };
 }

@@ -8,26 +8,26 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TOtherEnumerator, typename TSelector, typename TOtherSelector, typename TResultSelector, typename TComparer>
-    RightJoinEnumerator<TEnumerator, TOtherEnumerator, TSelector, TOtherSelector, TResultSelector, TComparer>::RightJoinEnumerator(const TEnumerator enumerator, const TOtherEnumerator otherEnumerator, const TSelector selector, const TOtherSelector otherSelector, const TResultSelector resultSelector, const TComparer comparer) :
+    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TComparer>
+    RightJoinEnumerator<TEnumerator, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TComparer>::RightJoinEnumerator(const TEnumerator enumerator, const TOtherEnumerator otherEnumerator, const TLeftKeySelector leftKeySelector, const TRightKeySelector rightKeySelector, const TResultSelector resultSelector, const TComparer comparer) :
         Base(enumerator),
         container(bucketCount, HasherType(), comparer),
+        leftKeySelector(leftKeySelector),
         otherEnumerator(otherEnumerator),
-        otherSelector(otherSelector),
         resultSelector(resultSelector),
-        selector(selector)
+        rightKeySelector(rightKeySelector)
     {
     }
 
-    template <typename TEnumerator, typename TOtherEnumerator, typename TSelector, typename TOtherSelector, typename TResultSelector, typename TComparer>
-    void RightJoinEnumerator<TEnumerator, TOtherEnumerator, TSelector, TOtherSelector, TResultSelector, TComparer>::EnsureContainerIsReady()
+    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TComparer>
+    void RightJoinEnumerator<TEnumerator, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TComparer>::EnsureContainerIsReady()
     {
         if (!isContainerReady)
         {
             while (otherEnumerator.HasCurrent())
             {
                 const auto current = otherEnumerator.GetCurrent();
-                const auto key = otherSelector(current);
+                const auto key = rightKeySelector(current);
 
                 container.insert({ key, { static_cast<std::int32_t>(usedValues.size()), current } });
                 usedValues.push_back({ false, current });
@@ -39,8 +39,8 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TOtherEnumerator, typename TSelector, typename TOtherSelector, typename TResultSelector, typename TComparer>
-    void RightJoinEnumerator<TEnumerator, TOtherEnumerator, TSelector, TOtherSelector, TResultSelector, TComparer>::EnsureEnumeratorIsReady()
+    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TComparer>
+    void RightJoinEnumerator<TEnumerator, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TComparer>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
@@ -52,7 +52,7 @@ namespace CppLinq::Details::Enumerators
             while (queue.empty() && Base::HasCurrent())
             {
                 const auto current = Base::GetCurrent();
-                const auto key = selector(current);
+                const auto key = leftKeySelector(current);
 
                 const auto range = container.equal_range(key);
                 for (auto iterator = range.first; iterator != range.second; ++iterator)
@@ -76,8 +76,8 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TOtherEnumerator, typename TSelector, typename TOtherSelector, typename TResultSelector, typename TComparer>
-    auto RightJoinEnumerator<TEnumerator, TOtherEnumerator, TSelector, TOtherSelector, TResultSelector, TComparer>::GetCurrent() -> ValueType
+    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TComparer>
+    auto RightJoinEnumerator<TEnumerator, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TComparer>::GetCurrent() -> ValueType
     {
         EnsureEnumeratorIsReady();
 
@@ -89,16 +89,16 @@ namespace CppLinq::Details::Enumerators
         return queue.empty() ? resultSelector(std::nullopt, usedValues.front().value) : queue.front();
     }
 
-    template <typename TEnumerator, typename TOtherEnumerator, typename TSelector, typename TOtherSelector, typename TResultSelector, typename TComparer>
-    auto RightJoinEnumerator<TEnumerator, TOtherEnumerator, TSelector, TOtherSelector, TResultSelector, TComparer>::HasCurrent() -> bool
+    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TComparer>
+    auto RightJoinEnumerator<TEnumerator, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TComparer>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
         return !queue.empty() || !usedValues.empty();
     }
 
-    template <typename TEnumerator, typename TOtherEnumerator, typename TSelector, typename TOtherSelector, typename TResultSelector, typename TComparer>
-    void RightJoinEnumerator<TEnumerator, TOtherEnumerator, TSelector, TOtherSelector, TResultSelector, TComparer>::MoveNext()
+    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TComparer>
+    void RightJoinEnumerator<TEnumerator, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TComparer>::MoveNext()
     {
         if (queue.empty() && usedValues.empty())
         {

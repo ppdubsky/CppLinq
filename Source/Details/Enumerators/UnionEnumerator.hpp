@@ -11,15 +11,15 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TUnionEnumerator, typename TSelector, typename TComparer>
+    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TComparer>
     struct UnionEnumerator final : EnumeratorWrapper<TEnumerator>
     {
         using Base = EnumeratorWrapper<TEnumerator>;
-        using KeyType = decltype(std::declval<TSelector>()(std::declval<Base::ValueType>()));
+        using KeyType = decltype(std::declval<TKeySelector>()(std::declval<Base::ValueType>()));
         using HasherType = Containers::DoNothingHasher<KeyType>;
         using ContainerType = std::unordered_set<KeyType, HasherType, TComparer>;
 
-        UnionEnumerator(const TEnumerator enumerator, const TUnionEnumerator unionEnumerator, const TSelector selector, const TComparer comparer);
+        UnionEnumerator(const TEnumerator enumerator, const TUnionEnumerator unionEnumerator, const TKeySelector keySelector, const TComparer comparer);
 
         auto GetCurrent() -> Base::ValueType;
         auto HasCurrent() -> bool;
@@ -32,7 +32,7 @@ namespace CppLinq::Details::Enumerators
 
         ContainerType container;
         bool isReady{ false };
-        TSelector selector;
+        TKeySelector keySelector;
         TUnionEnumerator unionEnumerator;
     };
 }

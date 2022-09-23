@@ -2,6 +2,6 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TUnionEnumerator, typename TSelector, typename TComparer>
+    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TComparer>
     struct UnionEnumerator;
 }

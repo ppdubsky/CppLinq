@@ -15,12 +15,12 @@ namespace CppLinq::Details::Mixins
     {
         using EnumeratorType = typename TypeTraits::EnumeratorTypeProvider<TQuery>::EnumeratorType;
         using ValueType = typename EnumeratorType::ValueType;
-        template <typename TSelector>
-        using KeyType = decltype(std::declval<TSelector>()(std::declval<ValueType>()));
+        template <typename TKeySelector>
+        using KeyType = decltype(std::declval<TKeySelector>()(std::declval<ValueType>()));
 
-        template <typename TUnionEnumerator, typename TSelector>
-        auto UnionBy(const Query<TUnionEnumerator>& unionQuery, const TSelector selector) const -> Query<Enumerators::UnionEnumerator<EnumeratorType, TUnionEnumerator, TSelector, Comparers::DefaultEqualityComparer<KeyType<TSelector>>>>;
-        template <typename TUnionEnumerator, typename TSelector, typename TComparer>
-        auto UnionBy(const Query<TUnionEnumerator>& unionQuery, const TSelector selector, const TComparer comparer) const -> Query<Enumerators::UnionEnumerator<EnumeratorType, TUnionEnumerator, TSelector, TComparer>>;
+        template <typename TUnionEnumerator, typename TKeySelector>
+        auto UnionBy(const Query<TUnionEnumerator>& unionQuery, const TKeySelector keySelector) const -> Query<Enumerators::UnionEnumerator<EnumeratorType, TUnionEnumerator, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;
+        template <typename TUnionEnumerator, typename TKeySelector, typename TComparer>
+        auto UnionBy(const Query<TUnionEnumerator>& unionQuery, const TKeySelector keySelector, const TComparer comparer) const -> Query<Enumerators::UnionEnumerator<EnumeratorType, TUnionEnumerator, TKeySelector, TComparer>>;
     };
 }

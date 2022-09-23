@@ -4,17 +4,17 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TUnionEnumerator, typename TSelector, typename TComparer>
-    UnionEnumerator<TEnumerator, TUnionEnumerator, TSelector, TComparer>::UnionEnumerator(const TEnumerator enumerator, const TUnionEnumerator unionEnumerator, const TSelector selector, const TComparer comparer) :
+    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TComparer>
+    UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TComparer>::UnionEnumerator(const TEnumerator enumerator, const TUnionEnumerator unionEnumerator, const TKeySelector keySelector, const TComparer comparer) :
         Base(enumerator),
         container(bucketCount, HasherType(), comparer),
-        selector(selector),
+        keySelector(keySelector),
         unionEnumerator(unionEnumerator)
     {
     }
 
-    template <typename TEnumerator, typename TUnionEnumerator, typename TSelector, typename TComparer>
-    void UnionEnumerator<TEnumerator, TUnionEnumerator, TSelector, TComparer>::EnsureEnumeratorIsReady()
+    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TComparer>
+    void UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TComparer>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
@@ -22,7 +22,7 @@ namespace CppLinq::Details::Enumerators
 
             while (Base::HasCurrent())
             {
-                const KeyType currentKey = selector(Base::GetCurrent());
+                const KeyType currentKey = keySelector(Base::GetCurrent());
 
                 const auto result = container.insert(currentKey);
                 if (result.second)
@@ -38,7 +38,7 @@ namespace CppLinq::Details::Enumerators
             {
                 while (unionEnumerator.HasCurrent())
                 {
-                    const KeyType currentKey = selector(unionEnumerator.GetCurrent());
+                    const KeyType currentKey = keySelector(unionEnumerator.GetCurrent());
 
                     const auto result = container.insert(currentKey);
                     if (result.second)
@@ -55,24 +55,24 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TUnionEnumerator, typename TSelector, typename TComparer>
-    auto UnionEnumerator<TEnumerator, TUnionEnumerator, TSelector, TComparer>::GetCurrent() -> Base::ValueType
+    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TComparer>
+    auto UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TComparer>::GetCurrent() -> Base::ValueType
     {
         EnsureEnumeratorIsReady();
 
         return Base::HasCurrent() ? Base::GetCurrent() : unionEnumerator.GetCurrent();
     }
 
-    template <typename TEnumerator, typename TUnionEnumerator, typename TSelector, typename TComparer>
-    auto UnionEnumerator<TEnumerator, TUnionEnumerator, TSelector, TComparer>::HasCurrent() -> bool
+    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TComparer>
+    auto UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TComparer>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
         return Base::HasCurrent() || unionEnumerator.HasCurrent();
     }
 
-    template <typename TEnumerator, typename TUnionEnumerator, typename TSelector, typename TComparer>
-    void UnionEnumerator<TEnumerator, TUnionEnumerator, TSelector, TComparer>::MoveNext()
+    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TComparer>
+    void UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TComparer>::MoveNext()
     {
         if (Base::HasCurrent())
         {

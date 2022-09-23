@@ -6,15 +6,15 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TSelector>
-    SelectManyEnumerator<TEnumerator, TSelector>::SelectManyEnumerator(const TEnumerator enumerator, const TSelector selector) :
+    template <typename TEnumerator, typename TResultSelector>
+    SelectManyEnumerator<TEnumerator, TResultSelector>::SelectManyEnumerator(const TEnumerator enumerator, const TResultSelector resultSelector) :
         Base(enumerator),
-        selector(selector)
+        resultSelector(resultSelector)
     {
     }
 
-    template <typename TEnumerator, typename TSelector>
-    void SelectManyEnumerator<TEnumerator, TSelector>::EnsureEnumeratorIsReady()
+    template <typename TEnumerator, typename TResultSelector>
+    void SelectManyEnumerator<TEnumerator, TResultSelector>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
@@ -23,7 +23,7 @@ namespace CppLinq::Details::Enumerators
 
             while (Base::HasCurrent())
             {
-                container = selector(Base::GetCurrent());
+                container = resultSelector(Base::GetCurrent());
                 if (container.empty())
                 {
                     Base::MoveNext();
@@ -39,8 +39,8 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TSelector>
-    auto SelectManyEnumerator<TEnumerator, TSelector>::GetCurrent() -> ValueType
+    template <typename TEnumerator, typename TResultSelector>
+    auto SelectManyEnumerator<TEnumerator, TResultSelector>::GetCurrent() -> ValueType
     {
         EnsureEnumeratorIsReady();
 
@@ -52,16 +52,16 @@ namespace CppLinq::Details::Enumerators
         return *iterator;
     }
 
-    template <typename TEnumerator, typename TSelector>
-    auto SelectManyEnumerator<TEnumerator, TSelector>::HasCurrent() -> bool
+    template <typename TEnumerator, typename TResultSelector>
+    auto SelectManyEnumerator<TEnumerator, TResultSelector>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
         return Base::HasCurrent();
     }
 
-    template <typename TEnumerator, typename TSelector>
-    void SelectManyEnumerator<TEnumerator, TSelector>::MoveNext()
+    template <typename TEnumerator, typename TResultSelector>
+    void SelectManyEnumerator<TEnumerator, TResultSelector>::MoveNext()
     {
         EnsureEnumeratorIsReady();
 

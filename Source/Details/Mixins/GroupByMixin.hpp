@@ -15,8 +15,8 @@ namespace CppLinq::Details::Mixins
     {
         using EnumeratorType = typename TypeTraits::EnumeratorTypeProvider<TQuery>::EnumeratorType;
         using ValueType = typename EnumeratorType::ValueType;
-        template <typename TSelector>
-        using KeyType = decltype(std::declval<TSelector>()(std::declval<ValueType>()));
+        template <typename TKeySelector>
+        using KeyType = decltype(std::declval<TKeySelector>()(std::declval<ValueType>()));
 
         template <typename TKeySelector, typename TElementSelector, typename TResultSelector>
         auto GroupBy(const TKeySelector keySelector, const TElementSelector elementSelector, const TResultSelector resultSelector) -> Query<Enumerators::GroupEnumerator<EnumeratorType, TKeySelector, TElementSelector, TResultSelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;

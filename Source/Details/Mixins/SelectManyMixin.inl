@@ -9,9 +9,9 @@
 namespace CppLinq::Details::Mixins
 {
     template <typename TQuery>
-    template <typename TSelector>
-    auto SelectManyMixin<TQuery>::SelectMany(const TSelector selector) const -> Query<Enumerators::SelectManyEnumerator<EnumeratorType, TSelector>>
+    template <typename TResultSelector>
+    auto SelectManyMixin<TQuery>::SelectMany(const TResultSelector resultSelector) const -> Query<Enumerators::SelectManyEnumerator<EnumeratorType, TResultSelector>>
     {
-        return { { MixinUtilities::GetEnumerator<TQuery>(*this), selector } };
+        return { { MixinUtilities::GetEnumerator<TQuery>(*this), resultSelector } };
     }
 }

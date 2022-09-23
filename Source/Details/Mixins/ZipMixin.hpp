@@ -12,7 +12,7 @@ namespace CppLinq::Details::Mixins
     {
         using EnumeratorType = typename TypeTraits::EnumeratorTypeProvider<TQuery>::EnumeratorType;
 
-        template <typename TZipEnumerator, typename TSelector>
-        auto Zip(const Query<TZipEnumerator>& zipQuery, const TSelector selector) const -> Query<Enumerators::ZipEnumerator<EnumeratorType, TZipEnumerator, TSelector>>;
+        template <typename TZipEnumerator, typename TResultSelector>
+        auto Zip(const Query<TZipEnumerator>& zipQuery, const TResultSelector resultSelector) const -> Query<Enumerators::ZipEnumerator<EnumeratorType, TZipEnumerator, TResultSelector>>;
     };
 }

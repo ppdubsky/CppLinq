@@ -12,7 +12,7 @@ namespace CppLinq::Details::Mixins
         using EnumeratorType = typename TypeTraits::EnumeratorTypeProvider<TQuery>::EnumeratorType;
         using ValueType = typename EnumeratorType::ValueType;
 
-        template <typename TSelector>
-        auto MinimumBy(const TSelector selector) const -> ValueType;
+        template <typename TKeySelector>
+        auto MinimumBy(const TKeySelector keySelector) const -> ValueType;
     };
 }

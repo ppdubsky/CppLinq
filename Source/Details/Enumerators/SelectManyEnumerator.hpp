@@ -15,15 +15,15 @@ struct Foo<std::vector<T>>
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TSelector>
+    template <typename TEnumerator, typename TResultSelector>
     struct SelectManyEnumerator final : EnumeratorWrapper<TEnumerator>
     {
         using Base = EnumeratorWrapper<TEnumerator>;
-        using ContainerType = decltype(std::declval<TSelector>()(std::declval<typename Base::ValueType>()));
+        using ContainerType = decltype(std::declval<TResultSelector>()(std::declval<typename Base::ValueType>()));
         using IteratorType = ContainerType::const_iterator;
         using ValueType = Foo<ContainerType>::Type;
 
-        SelectManyEnumerator(const TEnumerator enumerator, const TSelector selector);
+        SelectManyEnumerator(const TEnumerator enumerator, const TResultSelector resultSelector);
 
         auto GetCurrent() -> ValueType;
         auto HasCurrent() -> bool;
@@ -35,6 +35,6 @@ namespace CppLinq::Details::Enumerators
         ContainerType container;
         bool isReady{ false };
         IteratorType iterator;
-        TSelector selector;
+        TResultSelector resultSelector;
     };
 }

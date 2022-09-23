@@ -11,15 +11,15 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TExceptEnumerator, typename TSelector, typename TComparer>
+    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TComparer>
     struct ExceptEnumerator final : EnumeratorWrapper<TEnumerator>
     {
         using Base = EnumeratorWrapper<TEnumerator>;
-        using KeyType = decltype(std::declval<TSelector>()(std::declval<Base::ValueType>()));
+        using KeyType = decltype(std::declval<TKeySelector>()(std::declval<Base::ValueType>()));
         using HasherType = Containers::DoNothingHasher<KeyType>;
         using ContainerType = std::unordered_set<KeyType, HasherType, TComparer>;
 
-        ExceptEnumerator(const TEnumerator enumerator, const TExceptEnumerator exceptEnumerator, const TSelector selector, const TComparer comparer);
+        ExceptEnumerator(const TEnumerator enumerator, const TExceptEnumerator exceptEnumerator, const TKeySelector keySelector, const TComparer comparer);
 
         auto GetCurrent() -> Base::ValueType;
         auto HasCurrent() -> bool;
@@ -35,6 +35,6 @@ namespace CppLinq::Details::Enumerators
         TExceptEnumerator exceptEnumerator;
         bool isContainerReady{ false };
         bool isReady{ false };
-        TSelector selector;
+        TKeySelector keySelector;
     };
 }

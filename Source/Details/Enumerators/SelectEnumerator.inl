@@ -4,16 +4,16 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TSelector>
-    SelectEnumerator<TEnumerator, TSelector>::SelectEnumerator(const TEnumerator enumerator, const TSelector selector) :
+    template <typename TEnumerator, typename TResultSelector>
+    SelectEnumerator<TEnumerator, TResultSelector>::SelectEnumerator(const TEnumerator enumerator, const TResultSelector resultSelector) :
         Base(enumerator),
-        selector(selector)
+        resultSelector(resultSelector)
     {
     }
 
-    template <typename TEnumerator, typename TSelector>
-    auto SelectEnumerator<TEnumerator, TSelector>::GetCurrent() -> ValueType
+    template <typename TEnumerator, typename TResultSelector>
+    auto SelectEnumerator<TEnumerator, TResultSelector>::GetCurrent() -> ValueType
     {
-        return selector(Base::GetCurrent());
+        return resultSelector(Base::GetCurrent());
     }
 }
