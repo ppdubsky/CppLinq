@@ -272,6 +272,7 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/Source/Details/Storage/UsableValue.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/ElementTypeProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/EnumeratorTypeProvider.hpp
+        ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/FunctionReturnTypeProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Details/TypeTraits/ValueTypeProvider.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/ArgumentOutOfRangeException.hpp
         ${PROJECT_SOURCE_DIR}/Source/Exceptions/EmptyContainerException.hpp

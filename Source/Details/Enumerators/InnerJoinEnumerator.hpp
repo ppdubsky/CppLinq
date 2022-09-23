@@ -4,11 +4,11 @@
 
 #include <cstdint>
 #include <queue>
-#include <type_traits>
 #include <unordered_map>
 
 #include "Details/Containers/DoNothingHasher.hpp"
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
+#include "Details/TypeTraits/FunctionReturnTypeProvider.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
@@ -16,10 +16,10 @@ namespace CppLinq::Details::Enumerators
     struct InnerJoinEnumerator final : EnumeratorWrapper<TLeftEnumerator>
     {
         using Base = EnumeratorWrapper<TLeftEnumerator>;
-        using KeyType = decltype(std::declval<TLeftKeySelector>()(std::declval<Base::ValueType>()));
+        using KeyType = TypeTraits::FunctionReturnTypeProvider<TLeftKeySelector, typename Base::ValueType>::ReturnType;
         using HasherType = Containers::DoNothingHasher<KeyType>;
         using ContainerType = std::unordered_multimap<KeyType, typename TRightEnumerator::ValueType, HasherType, TKeyComparer>;
-        using ValueType = decltype(std::declval<TResultSelector>()(std::declval<Base::ValueType>(), std::declval<typename TRightEnumerator::ValueType>()));
+        using ValueType = TypeTraits::FunctionReturnTypeProvider<TResultSelector, typename Base::ValueType, typename TRightEnumerator::ValueType>::ReturnType;
         using QueueType = std::queue<ValueType>;
 
         InnerJoinEnumerator(const TLeftEnumerator leftEnumerator, const TRightEnumerator rightEnumerator, const TLeftKeySelector leftKeySelector, const TRightKeySelector rightKeySelector, const TResultSelector resultSelector, const TKeyComparer keyComparer);

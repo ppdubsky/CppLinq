@@ -3,11 +3,11 @@
 #include "Details/Enumerators/ExceptEnumerator.Forward.hpp"
 
 #include <cstdint>
-#include <type_traits>
 #include <unordered_set>
 
 #include "Details/Containers/DoNothingHasher.hpp"
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
+#include "Details/TypeTraits/FunctionReturnTypeProvider.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
@@ -15,7 +15,7 @@ namespace CppLinq::Details::Enumerators
     struct ExceptEnumerator final : EnumeratorWrapper<TFirstEnumerator>
     {
         using Base = EnumeratorWrapper<TFirstEnumerator>;
-        using KeyType = decltype(std::declval<TKeySelector>()(std::declval<Base::ValueType>()));
+        using KeyType = TypeTraits::FunctionReturnTypeProvider<TKeySelector, typename Base::ValueType>::ReturnType;
         using HasherType = Containers::DoNothingHasher<KeyType>;
         using ContainerType = std::unordered_set<KeyType, HasherType, TKeyComparer>;
 

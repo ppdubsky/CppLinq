@@ -5,7 +5,6 @@
 #include <cstdint>
 #include <optional>
 #include <queue>
-#include <type_traits>
 #include <unordered_map>
 #include <vector>
 
@@ -13,6 +12,7 @@
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
 #include "Details/Storage/IndexedValue.hpp"
 #include "Details/Storage/UsableValue.hpp"
+#include "Details/TypeTraits/FunctionReturnTypeProvider.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
@@ -20,10 +20,10 @@ namespace CppLinq::Details::Enumerators
     struct OuterJoinEnumerator final : EnumeratorWrapper<TLeftEnumerator>
     {
         using Base = EnumeratorWrapper<TLeftEnumerator>;
-        using KeyType = decltype(std::declval<TLeftKeySelector>()(std::declval<Base::ValueType>()));
+        using KeyType = TypeTraits::FunctionReturnTypeProvider<TLeftKeySelector, typename Base::ValueType>::ReturnType;
         using HasherType = Containers::DoNothingHasher<KeyType>;
         using ContainerType = std::unordered_multimap<KeyType, Storage::IndexedValue<typename TRightEnumerator::ValueType>, HasherType, TKeyComparer>;
-        using ValueType = decltype(std::declval<TResultSelector>()(std::declval<std::optional<Base::ValueType>>(), std::declval<std::optional<typename TRightEnumerator::ValueType>>()));
+        using ValueType = TypeTraits::FunctionReturnTypeProvider<TResultSelector, std::optional<typename Base::ValueType>, std::optional<typename TRightEnumerator::ValueType>>::ReturnType;
         using QueueType = std::queue<ValueType>;
         using VectorType = std::vector<Storage::UsableValue<typename TRightEnumerator::ValueType>>;
 

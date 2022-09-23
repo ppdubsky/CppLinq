@@ -4,9 +4,8 @@
 #include "Details/Enumerators/DistinctEnumerator.Forward.hpp"
 #include "Details/Query.Forward.hpp"
 
-#include <type_traits>
-
 #include "Details/TypeTraits/EnumeratorTypeProvider.hpp"
+#include "Details/TypeTraits/FunctionReturnTypeProvider.hpp"
 
 namespace CppLinq::Details::Mixins
 {
@@ -16,7 +15,7 @@ namespace CppLinq::Details::Mixins
         using EnumeratorType = typename TypeTraits::EnumeratorTypeProvider<TQuery>::EnumeratorType;
         using ValueType = typename EnumeratorType::ValueType;
         template <typename TKeySelector>
-        using KeyType = decltype(std::declval<TKeySelector>()(std::declval<ValueType>()));
+        using KeyType = TypeTraits::FunctionReturnTypeProvider<TKeySelector, ValueType>::ReturnType;
 
         template <typename TKeySelector>
         auto DistinctBy(const TKeySelector keySelector) const -> Query<Enumerators::DistinctEnumerator<EnumeratorType, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;

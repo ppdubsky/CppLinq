@@ -4,6 +4,7 @@
 
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
 #include "Details/TypeTraits/ElementTypeProvider.hpp"
+#include "Details/TypeTraits/FunctionReturnTypeProvider.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
@@ -11,7 +12,7 @@ namespace CppLinq::Details::Enumerators
     struct SelectManyEnumerator final : EnumeratorWrapper<TEnumerator>
     {
         using Base = EnumeratorWrapper<TEnumerator>;
-        using ContainerType = decltype(std::declval<TResultSelector>()(std::declval<typename Base::ValueType>()));
+        using ContainerType = TypeTraits::FunctionReturnTypeProvider<TResultSelector, typename Base::ValueType>::ReturnType;
         using IteratorType = ContainerType::const_iterator;
         using ValueType = TypeTraits::ElementTypeProvider<ContainerType>::ElementType;
 

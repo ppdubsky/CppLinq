@@ -2,9 +2,8 @@
 
 #include "Details/Enumerators/SelectEnumerator.Forward.hpp"
 
-#include <type_traits>
-
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
+#include "Details/TypeTraits/FunctionReturnTypeProvider.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
@@ -12,7 +11,7 @@ namespace CppLinq::Details::Enumerators
     struct SelectEnumerator final : EnumeratorWrapper<TEnumerator>
     {
         using Base = EnumeratorWrapper<TEnumerator>;
-        using ValueType = decltype(std::declval<TResultSelector>()(std::declval<typename TEnumerator::ValueType>()));
+        using ValueType = TypeTraits::FunctionReturnTypeProvider<TResultSelector, typename Base::ValueType>::ReturnType;
 
         SelectEnumerator(const TEnumerator enumerator, const TResultSelector resultSelector);
 

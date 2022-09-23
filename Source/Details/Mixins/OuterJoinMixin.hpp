@@ -4,9 +4,8 @@
 #include "Details/Enumerators/OuterJoinEnumerator.Forward.hpp"
 #include "Details/Query.Forward.hpp"
 
-#include <type_traits>
-
 #include "Details/TypeTraits/EnumeratorTypeProvider.hpp"
+#include "Details/TypeTraits/FunctionReturnTypeProvider.hpp"
 
 namespace CppLinq::Details::Mixins
 {
@@ -16,7 +15,7 @@ namespace CppLinq::Details::Mixins
         using EnumeratorType = typename TypeTraits::EnumeratorTypeProvider<TQuery>::EnumeratorType;
         using ValueType = typename EnumeratorType::ValueType;
         template <typename TKeySelector>
-        using KeyType = decltype(std::declval<TKeySelector>()(std::declval<ValueType>()));
+        using KeyType = TypeTraits::FunctionReturnTypeProvider<TKeySelector, ValueType>::ReturnType;
 
         template <typename TRightEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector>
         auto OuterJoin(const Query<TRightEnumerator>& rightQuery, const TLeftKeySelector leftKeySelector, const TRightKeySelector rightKeySelector, const TResultSelector resultSelector) const -> Query<Enumerators::OuterJoinEnumerator<EnumeratorType, TRightEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, Comparers::DefaultEqualityComparer<KeyType<TLeftKeySelector>>>>;

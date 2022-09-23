@@ -3,12 +3,12 @@
 #include "Details/Enumerators/GroupEnumerator.Forward.hpp"
 
 #include <queue>
-#include <type_traits>
 #include <unordered_map>
 #include <vector>
 
 #include "Details/Containers/DoNothingHasher.hpp"
 #include "Details/Enumerators/EnumeratorWrapper.hpp"
+#include "Details/TypeTraits/FunctionReturnTypeProvider.hpp"
 
 namespace CppLinq::Details::Enumerators
 {
@@ -16,10 +16,10 @@ namespace CppLinq::Details::Enumerators
     struct GroupEnumerator final : EnumeratorWrapper<TEnumerator>
     {
         using Base = EnumeratorWrapper<TEnumerator>;
-        using KeyType = decltype(std::declval<TKeySelector>()(std::declval<Base::ValueType>()));
-        using ElementType = decltype(std::declval<TElementSelector>()(std::declval<Base::ValueType>()));
+        using KeyType = TypeTraits::FunctionReturnTypeProvider<TKeySelector, typename Base::ValueType>::ReturnType;
+        using ElementType = TypeTraits::FunctionReturnTypeProvider<TElementSelector, typename Base::ValueType>::ReturnType;
         using ElementContainer = std::vector<ElementType>;
-        using ValueType = decltype(std::declval<TResultSelector>()(std::declval<KeyType>(), std::declval<ElementContainer>()));
+        using ValueType = TypeTraits::FunctionReturnTypeProvider<TResultSelector, KeyType, ElementContainer>::ReturnType;
         using KeyContainer = std::vector<KeyType>;
         using HasherType = Containers::DoNothingHasher<KeyType>;
         using GroupContainer = std::unordered_multimap<KeyType, Base::ValueType, HasherType, TKeyComparer>;
