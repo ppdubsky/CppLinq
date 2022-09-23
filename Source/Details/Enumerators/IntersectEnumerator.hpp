@@ -11,15 +11,15 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TIntersectEnumerator, typename TKeySelector, typename TKeyComparer>
-    struct IntersectEnumerator final : EnumeratorWrapper<TEnumerator>
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    struct IntersectEnumerator final : EnumeratorWrapper<TFirstEnumerator>
     {
-        using Base = EnumeratorWrapper<TEnumerator>;
+        using Base = EnumeratorWrapper<TFirstEnumerator>;
         using KeyType = decltype(std::declval<TKeySelector>()(std::declval<Base::ValueType>()));
         using HasherType = Containers::DoNothingHasher<KeyType>;
         using ContainerType = std::unordered_set<KeyType, HasherType, TKeyComparer>;
 
-        IntersectEnumerator(const TEnumerator enumerator, const TIntersectEnumerator intersectEnumerator, const TKeySelector keySelector, const TKeyComparer keyComparer);
+        IntersectEnumerator(const TFirstEnumerator firstEnumerator, const TSecondEnumerator secondEnumerator, const TKeySelector keySelector, const TKeyComparer keyComparer);
 
         auto GetCurrent() -> Base::ValueType;
         auto HasCurrent() -> bool;
@@ -32,9 +32,9 @@ namespace CppLinq::Details::Enumerators
         static constexpr std::uint32_t bucketCount = 1U;
 
         ContainerType container;
-        TIntersectEnumerator intersectEnumerator;
         bool isContainerReady{ false };
         bool isReady{ false };
         TKeySelector keySelector;
+        TSecondEnumerator secondEnumerator;
     };
 }

@@ -15,9 +15,9 @@ namespace CppLinq::Details::Mixins
         using EnumeratorType = typename TypeTraits::EnumeratorTypeProvider<TQuery>::EnumeratorType;
         using ValueType = typename EnumeratorType::ValueType;
 
-        template <typename TIntersectEnumerator>
-        auto Intersect(const Query<TIntersectEnumerator>& intersectQuery) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, Selectors::SelfSelector<ValueType>, Comparers::DefaultEqualityComparer<ValueType>>>;
-        template <typename TIntersectEnumerator, typename TComparer>
-        auto Intersect(const Query<TIntersectEnumerator>& intersectQuery, const TComparer comparer) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, Selectors::SelfSelector<ValueType>, TComparer>>;
+        template <typename TSecondEnumerator>
+        auto Intersect(const Query<TSecondEnumerator>& secondQuery) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TSecondEnumerator, Selectors::SelfSelector<ValueType>, Comparers::DefaultEqualityComparer<ValueType>>>;
+        template <typename TSecondEnumerator, typename TComparer>
+        auto Intersect(const Query<TSecondEnumerator>& secondQuery, const TComparer comparer) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TSecondEnumerator, Selectors::SelfSelector<ValueType>, TComparer>>;
     };
 }

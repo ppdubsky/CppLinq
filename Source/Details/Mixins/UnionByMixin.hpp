@@ -18,9 +18,9 @@ namespace CppLinq::Details::Mixins
         template <typename TKeySelector>
         using KeyType = decltype(std::declval<TKeySelector>()(std::declval<ValueType>()));
 
-        template <typename TUnionEnumerator, typename TKeySelector>
-        auto UnionBy(const Query<TUnionEnumerator>& unionQuery, const TKeySelector keySelector) const -> Query<Enumerators::UnionEnumerator<EnumeratorType, TUnionEnumerator, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;
-        template <typename TUnionEnumerator, typename TKeySelector, typename TKeyComparer>
-        auto UnionBy(const Query<TUnionEnumerator>& unionQuery, const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::UnionEnumerator<EnumeratorType, TUnionEnumerator, TKeySelector, TKeyComparer>>;
+        template <typename TSecondEnumerator, typename TKeySelector>
+        auto UnionBy(const Query<TSecondEnumerator>& secondQuery, const TKeySelector keySelector) const -> Query<Enumerators::UnionEnumerator<EnumeratorType, TSecondEnumerator, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;
+        template <typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+        auto UnionBy(const Query<TSecondEnumerator>& secondQuery, const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::UnionEnumerator<EnumeratorType, TSecondEnumerator, TKeySelector, TKeyComparer>>;
     };
 }

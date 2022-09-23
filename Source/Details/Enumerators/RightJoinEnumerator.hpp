@@ -16,18 +16,18 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
-    struct RightJoinEnumerator final : EnumeratorWrapper<TEnumerator>
+    template <typename TLeftEnumerator, typename TRightEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
+    struct RightJoinEnumerator final : EnumeratorWrapper<TLeftEnumerator>
     {
-        using Base = EnumeratorWrapper<TEnumerator>;
+        using Base = EnumeratorWrapper<TLeftEnumerator>;
         using KeyType = decltype(std::declval<TLeftKeySelector>()(std::declval<Base::ValueType>()));
         using HasherType = Containers::DoNothingHasher<KeyType>;
-        using ContainerType = std::unordered_multimap<KeyType, Storage::IndexedValue<typename TOtherEnumerator::ValueType>, HasherType, TKeyComparer>;
-        using ValueType = decltype(std::declval<TResultSelector>()(std::declval<std::optional<Base::ValueType>>(), std::declval<typename TOtherEnumerator::ValueType>()));
+        using ContainerType = std::unordered_multimap<KeyType, Storage::IndexedValue<typename TRightEnumerator::ValueType>, HasherType, TKeyComparer>;
+        using ValueType = decltype(std::declval<TResultSelector>()(std::declval<std::optional<Base::ValueType>>(), std::declval<typename TRightEnumerator::ValueType>()));
         using QueueType = std::queue<ValueType>;
-        using VectorType = std::vector<Storage::UsableValue<typename TOtherEnumerator::ValueType>>;
+        using VectorType = std::vector<Storage::UsableValue<typename TRightEnumerator::ValueType>>;
 
-        RightJoinEnumerator(const TEnumerator enumerator, const TOtherEnumerator otherEnumerator, const TLeftKeySelector leftKeySelector, const TRightKeySelector rightKeySelector, const TResultSelector resultSelector, const TKeyComparer keyComparer);
+        RightJoinEnumerator(const TLeftEnumerator leftEnumerator, const TRightEnumerator rightEnumerator, const TLeftKeySelector leftKeySelector, const TRightKeySelector rightKeySelector, const TResultSelector resultSelector, const TKeyComparer keyComparer);
 
         auto GetCurrent() -> ValueType;
         auto HasCurrent() -> bool;
@@ -43,9 +43,9 @@ namespace CppLinq::Details::Enumerators
         bool isContainerReady{ false };
         bool isReady{ false };
         TLeftKeySelector leftKeySelector;
-        TOtherEnumerator otherEnumerator;
         QueueType queue;
         TResultSelector resultSelector;
+        TRightEnumerator rightEnumerator;
         TRightKeySelector rightKeySelector;
         VectorType usedValues;
     };

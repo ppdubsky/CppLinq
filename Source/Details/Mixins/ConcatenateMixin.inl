@@ -9,9 +9,9 @@
 namespace CppLinq::Details::Mixins
 {
     template <typename TQuery>
-    template <typename TNextEnumerator>
-    auto ConcatenateMixin<TQuery>::Concatenate(const Query<TNextEnumerator>& nextQuery) const -> Query<Enumerators::ConcatenationEnumerator<EnumeratorType, TNextEnumerator>>
+    template <typename TSecondEnumerator>
+    auto ConcatenateMixin<TQuery>::Concatenate(const Query<TSecondEnumerator>& secondQuery) const -> Query<Enumerators::ConcatenationEnumerator<EnumeratorType, TSecondEnumerator>>
     {
-        return { { MixinUtilities::GetEnumerator<TQuery>(*this), nextQuery.GetEnumerator() } };
+        return { { MixinUtilities::GetEnumerator<TQuery>(*this), secondQuery.GetEnumerator() } };
     }
 }

@@ -4,33 +4,33 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TKeyComparer>
-    ExceptEnumerator<TEnumerator, TExceptEnumerator, TKeySelector, TKeyComparer>::ExceptEnumerator(const TEnumerator enumerator, const TExceptEnumerator exceptEnumerator, const TKeySelector keySelector, const TKeyComparer keyComparer) :
-        Base(enumerator),
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    ExceptEnumerator<TFirstEnumerator, TSecondEnumerator, TKeySelector, TKeyComparer>::ExceptEnumerator(const TFirstEnumerator firstEnumerator, const TSecondEnumerator secondEnumerator, const TKeySelector keySelector, const TKeyComparer keyComparer) :
+        Base(firstEnumerator),
         container(bucketCount, HasherType(), keyComparer),
-        exceptEnumerator(exceptEnumerator),
-        keySelector(keySelector)
+        keySelector(keySelector),
+        secondEnumerator(secondEnumerator)
     {
     }
 
-    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TKeyComparer>
-    void ExceptEnumerator<TEnumerator, TExceptEnumerator, TKeySelector, TKeyComparer>::EnsureContainerIsReady()
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    void ExceptEnumerator<TFirstEnumerator, TSecondEnumerator, TKeySelector, TKeyComparer>::EnsureContainerIsReady()
     {
         if (!isContainerReady)
         {
-            while (exceptEnumerator.HasCurrent())
+            while (secondEnumerator.HasCurrent())
             {
-                container.insert(exceptEnumerator.GetCurrent());
+                container.insert(secondEnumerator.GetCurrent());
 
-                exceptEnumerator.MoveNext();
+                secondEnumerator.MoveNext();
             }
 
             isContainerReady = true;
         }
     }
 
-    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TKeyComparer>
-    void ExceptEnumerator<TEnumerator, TExceptEnumerator, TKeySelector, TKeyComparer>::EnsureEnumeratorIsReady()
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    void ExceptEnumerator<TFirstEnumerator, TSecondEnumerator, TKeySelector, TKeyComparer>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
@@ -53,24 +53,24 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TKeyComparer>
-    auto ExceptEnumerator<TEnumerator, TExceptEnumerator, TKeySelector, TKeyComparer>::GetCurrent() -> Base::ValueType
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    auto ExceptEnumerator<TFirstEnumerator, TSecondEnumerator, TKeySelector, TKeyComparer>::GetCurrent() -> Base::ValueType
     {
         EnsureEnumeratorIsReady();
 
         return Base::GetCurrent();
     }
 
-    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TKeyComparer>
-    auto ExceptEnumerator<TEnumerator, TExceptEnumerator, TKeySelector, TKeyComparer>::HasCurrent() -> bool
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    auto ExceptEnumerator<TFirstEnumerator, TSecondEnumerator, TKeySelector, TKeyComparer>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
         return Base::HasCurrent();
     }
 
-    template <typename TEnumerator, typename TExceptEnumerator, typename TKeySelector, typename TKeyComparer>
-    void ExceptEnumerator<TEnumerator, TExceptEnumerator, TKeySelector, TKeyComparer>::MoveNext()
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    void ExceptEnumerator<TFirstEnumerator, TSecondEnumerator, TKeySelector, TKeyComparer>::MoveNext()
     {
         Base::MoveNext();
 

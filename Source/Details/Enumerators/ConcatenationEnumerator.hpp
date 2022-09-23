@@ -6,18 +6,18 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TNextEnumerator>
-    struct ConcatenationEnumerator final : EnumeratorWrapper<TEnumerator>
+    template <typename TFirstEnumerator, typename TSecondEnumerator>
+    struct ConcatenationEnumerator final : EnumeratorWrapper<TFirstEnumerator>
     {
-        using Base = EnumeratorWrapper<TEnumerator>;
+        using Base = EnumeratorWrapper<TFirstEnumerator>;
 
-        ConcatenationEnumerator(const TEnumerator enumerator, const TNextEnumerator& nextEnumerator);
+        ConcatenationEnumerator(const TFirstEnumerator firstEnumerator, const TSecondEnumerator& secondEnumerator);
 
         auto GetCurrent() -> Base::ValueType;
         auto HasCurrent() -> bool;
         void MoveNext();
 
     private:
-        TNextEnumerator nextEnumerator;
+        TSecondEnumerator secondEnumerator;
     };
 }

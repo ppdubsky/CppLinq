@@ -18,9 +18,9 @@ namespace CppLinq::Details::Mixins
         template <typename TKeySelector>
         using KeyType = decltype(std::declval<TKeySelector>()(std::declval<ValueType>()));
 
-        template <typename TExceptEnumerator, typename TKeySelector>
-        auto ExceptBy(const Query<TExceptEnumerator>& exceptQuery, const TKeySelector keySelector) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;
-        template <typename TExceptEnumerator, typename TKeySelector, typename TKeyComparer>
-        auto ExceptBy(const Query<TExceptEnumerator>& exceptQuery, const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, TKeySelector, TKeyComparer>>;
+        template <typename TSecondEnumerator, typename TKeySelector>
+        auto ExceptBy(const Query<TSecondEnumerator>& secondQuery, const TKeySelector keySelector) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TSecondEnumerator, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;
+        template <typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+        auto ExceptBy(const Query<TSecondEnumerator>& secondQuery, const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TSecondEnumerator, TKeySelector, TKeyComparer>>;
     };
 }

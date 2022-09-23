@@ -4,30 +4,30 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TZipEnumerator, typename TResultSelector>
-    ZipEnumerator<TEnumerator, TZipEnumerator, TResultSelector>::ZipEnumerator(const TEnumerator enumerator, const TZipEnumerator zipEnumerator, const TResultSelector resultSelector) :
-        Base(enumerator),
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TResultSelector>
+    ZipEnumerator<TFirstEnumerator, TSecondEnumerator, TResultSelector>::ZipEnumerator(const TFirstEnumerator firstEnumerator, const TSecondEnumerator secondEnumerator, const TResultSelector resultSelector) :
+        Base(firstEnumerator),
         resultSelector(resultSelector),
-        zipEnumerator(zipEnumerator)
+        secondEnumerator(secondEnumerator)
     {
     }
 
-    template <typename TEnumerator, typename TZipEnumerator, typename TResultSelector>
-    auto ZipEnumerator<TEnumerator, TZipEnumerator, TResultSelector>::GetCurrent() -> ValueType
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TResultSelector>
+    auto ZipEnumerator<TFirstEnumerator, TSecondEnumerator, TResultSelector>::GetCurrent() -> ValueType
     {
-        return resultSelector(Base::GetCurrent(), zipEnumerator.GetCurrent());
+        return resultSelector(Base::GetCurrent(), secondEnumerator.GetCurrent());
     }
     
-    template <typename TEnumerator, typename TZipEnumerator, typename TResultSelector>
-    auto ZipEnumerator<TEnumerator, TZipEnumerator, TResultSelector>::HasCurrent() -> bool
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TResultSelector>
+    auto ZipEnumerator<TFirstEnumerator, TSecondEnumerator, TResultSelector>::HasCurrent() -> bool
     {
-        return Base::HasCurrent() && zipEnumerator.HasCurrent();
+        return Base::HasCurrent() && secondEnumerator.HasCurrent();
     }
 
-    template <typename TEnumerator, typename TZipEnumerator, typename TResultSelector>
-    void ZipEnumerator<TEnumerator, TZipEnumerator, TResultSelector>::MoveNext()
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TResultSelector>
+    void ZipEnumerator<TFirstEnumerator, TSecondEnumerator, TResultSelector>::MoveNext()
     {
         Base::MoveNext();
-        zipEnumerator.MoveNext();
+        secondEnumerator.MoveNext();
     }
 }

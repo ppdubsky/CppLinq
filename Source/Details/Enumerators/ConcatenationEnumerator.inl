@@ -4,27 +4,27 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TNextEnumerator>
-    ConcatenationEnumerator<TEnumerator, TNextEnumerator>::ConcatenationEnumerator(const TEnumerator enumerator, const TNextEnumerator& nextEnumerator) :
-        Base(enumerator),
-        nextEnumerator(nextEnumerator)
+    template <typename TFirstEnumerator, typename TSecondEnumerator>
+    ConcatenationEnumerator<TFirstEnumerator, TSecondEnumerator>::ConcatenationEnumerator(const TFirstEnumerator firstEnumerator, const TSecondEnumerator& secondEnumerator) :
+        Base(firstEnumerator),
+        secondEnumerator(secondEnumerator)
     {
     }
 
-    template <typename TEnumerator, typename TNextEnumerator>
-    auto ConcatenationEnumerator<TEnumerator, TNextEnumerator>::GetCurrent() -> Base::ValueType
+    template <typename TFirstEnumerator, typename TSecondEnumerator>
+    auto ConcatenationEnumerator<TFirstEnumerator, TSecondEnumerator>::GetCurrent() -> Base::ValueType
     {
-        return Base::HasCurrent() ? Base::GetCurrent() : nextEnumerator.GetCurrent();
+        return Base::HasCurrent() ? Base::GetCurrent() : secondEnumerator.GetCurrent();
     }
 
-    template <typename TEnumerator, typename TNextEnumerator>
-    auto ConcatenationEnumerator<TEnumerator, TNextEnumerator>::HasCurrent() -> bool
+    template <typename TFirstEnumerator, typename TSecondEnumerator>
+    auto ConcatenationEnumerator<TFirstEnumerator, TSecondEnumerator>::HasCurrent() -> bool
     {
-        return Base::HasCurrent() || nextEnumerator.HasCurrent();
+        return Base::HasCurrent() || secondEnumerator.HasCurrent();
     }
 
-    template <typename TEnumerator, typename TNextEnumerator>
-    void ConcatenationEnumerator<TEnumerator, TNextEnumerator>::MoveNext()
+    template <typename TFirstEnumerator, typename TSecondEnumerator>
+    void ConcatenationEnumerator<TFirstEnumerator, TSecondEnumerator>::MoveNext()
     {
         if (Base::HasCurrent())
         {
@@ -32,7 +32,7 @@ namespace CppLinq::Details::Enumerators
         }
         else
         {
-            nextEnumerator.MoveNext();
+            secondEnumerator.MoveNext();
         }
     }
 }

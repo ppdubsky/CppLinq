@@ -8,39 +8,39 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
-    OuterJoinEnumerator<TEnumerator, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TKeyComparer>::OuterJoinEnumerator(const TEnumerator enumerator, const TOtherEnumerator otherEnumerator, const TLeftKeySelector leftKeySelector, const TRightKeySelector rightKeySelector, const TResultSelector resultSelector, const TKeyComparer keyComparer) :
-        Base(enumerator),
+    template <typename TLeftEnumerator, typename TRightEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
+    OuterJoinEnumerator<TLeftEnumerator, TRightEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TKeyComparer>::OuterJoinEnumerator(const TLeftEnumerator leftEnumerator, const TRightEnumerator rightEnumerator, const TLeftKeySelector leftKeySelector, const TRightKeySelector rightKeySelector, const TResultSelector resultSelector, const TKeyComparer keyComparer) :
+        Base(leftEnumerator),
         container(bucketCount, HasherType(), keyComparer),
         leftKeySelector(leftKeySelector),
-        otherEnumerator(otherEnumerator),
         resultSelector(resultSelector),
+        rightEnumerator(rightEnumerator),
         rightKeySelector(rightKeySelector)
     {
     }
 
-    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
-    void OuterJoinEnumerator<TEnumerator, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TKeyComparer>::EnsureContainerIsReady()
+    template <typename TLeftEnumerator, typename TRightEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
+    void OuterJoinEnumerator<TLeftEnumerator, TRightEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TKeyComparer>::EnsureContainerIsReady()
     {
         if (!isContainerReady)
         {
-            while (otherEnumerator.HasCurrent())
+            while (rightEnumerator.HasCurrent())
             {
-                const auto current = otherEnumerator.GetCurrent();
+                const auto current = rightEnumerator.GetCurrent();
                 const auto key = rightKeySelector(current);
 
                 container.insert({ key, { static_cast<std::int32_t>(usedValues.size()), current } });
                 usedValues.push_back({ false, current });
 
-                otherEnumerator.MoveNext();
+                rightEnumerator.MoveNext();
             }
 
             isContainerReady = true;
         }
     }
 
-    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
-    void OuterJoinEnumerator<TEnumerator, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TKeyComparer>::EnsureEnumeratorIsReady()
+    template <typename TLeftEnumerator, typename TRightEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
+    void OuterJoinEnumerator<TLeftEnumerator, TRightEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TKeyComparer>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
@@ -83,8 +83,8 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
-    auto OuterJoinEnumerator<TEnumerator, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TKeyComparer>::GetCurrent() -> ValueType
+    template <typename TLeftEnumerator, typename TRightEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
+    auto OuterJoinEnumerator<TLeftEnumerator, TRightEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TKeyComparer>::GetCurrent() -> ValueType
     {
         EnsureEnumeratorIsReady();
 
@@ -96,16 +96,16 @@ namespace CppLinq::Details::Enumerators
         return queue.empty() ? resultSelector(std::nullopt, { usedValues.front().value }) : queue.front();
     }
 
-    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
-    auto OuterJoinEnumerator<TEnumerator, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TKeyComparer>::HasCurrent() -> bool
+    template <typename TLeftEnumerator, typename TRightEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
+    auto OuterJoinEnumerator<TLeftEnumerator, TRightEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TKeyComparer>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
         return !queue.empty() || !usedValues.empty();
     }
 
-    template <typename TEnumerator, typename TOtherEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
-    void OuterJoinEnumerator<TEnumerator, TOtherEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TKeyComparer>::MoveNext()
+    template <typename TLeftEnumerator, typename TRightEnumerator, typename TLeftKeySelector, typename TRightKeySelector, typename TResultSelector, typename TKeyComparer>
+    void OuterJoinEnumerator<TLeftEnumerator, TRightEnumerator, TLeftKeySelector, TRightKeySelector, TResultSelector, TKeyComparer>::MoveNext()
     {
         if (queue.empty() && usedValues.empty())
         {

@@ -11,16 +11,16 @@
 namespace CppLinq::Details::Mixins
 {
     template <typename TQuery>
-    template <typename TExceptEnumerator>
-    auto ExceptMixin<TQuery>::Except(const Query<TExceptEnumerator>& exceptQuery) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, Selectors::SelfSelector<ValueType>, Comparers::DefaultEqualityComparer<ValueType>>>
+    template <typename TSecondEnumerator>
+    auto ExceptMixin<TQuery>::Except(const Query<TSecondEnumerator>& secondQuery) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TSecondEnumerator, Selectors::SelfSelector<ValueType>, Comparers::DefaultEqualityComparer<ValueType>>>
     {
-        return Except(exceptQuery, Comparers::DefaultEqualityComparer<ValueType>());
+        return Except(secondQuery, Comparers::DefaultEqualityComparer<ValueType>());
     }
 
     template <typename TQuery>
-    template <typename TExceptEnumerator, typename TComparer>
-    auto ExceptMixin<TQuery>::Except(const Query<TExceptEnumerator>& exceptQuery, const TComparer comparer) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, Selectors::SelfSelector<ValueType>, TComparer>>
+    template <typename TSecondEnumerator, typename TComparer>
+    auto ExceptMixin<TQuery>::Except(const Query<TSecondEnumerator>& secondQuery, const TComparer comparer) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TSecondEnumerator, Selectors::SelfSelector<ValueType>, TComparer>>
     {
-        return MixinUtilities::GetQuery<TQuery>(*this).ExceptBy(exceptQuery, Selectors::SelfSelector<ValueType>(), comparer);
+        return MixinUtilities::GetQuery<TQuery>(*this).ExceptBy(secondQuery, Selectors::SelfSelector<ValueType>(), comparer);
     }
 }

@@ -8,13 +8,13 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TZipEnumerator, typename TResultSelector>
-    struct ZipEnumerator final : EnumeratorWrapper<TEnumerator>
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TResultSelector>
+    struct ZipEnumerator final : EnumeratorWrapper<TFirstEnumerator>
     {
-        using Base = EnumeratorWrapper<TEnumerator>;
-        using ValueType = decltype(std::declval<TResultSelector>()(std::declval<Base::ValueType>(), std::declval<typename TZipEnumerator::ValueType>()));
+        using Base = EnumeratorWrapper<TFirstEnumerator>;
+        using ValueType = decltype(std::declval<TResultSelector>()(std::declval<Base::ValueType>(), std::declval<typename TSecondEnumerator::ValueType>()));
 
-        ZipEnumerator(const TEnumerator enumerator, const TZipEnumerator zipEnumerator, const TResultSelector resultSelector);
+        ZipEnumerator(const TFirstEnumerator firstEnumerator, const TSecondEnumerator secondEnumerator, const TResultSelector resultSelector);
 
         auto GetCurrent() -> ValueType;
         auto HasCurrent() -> bool;
@@ -22,6 +22,6 @@ namespace CppLinq::Details::Enumerators
 
     private:
         TResultSelector resultSelector;
-        TZipEnumerator zipEnumerator;
+        TSecondEnumerator secondEnumerator;
     };
 }

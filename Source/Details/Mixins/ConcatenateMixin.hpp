@@ -12,7 +12,7 @@ namespace CppLinq::Details::Mixins
     {
         using EnumeratorType = typename TypeTraits::EnumeratorTypeProvider<TQuery>::EnumeratorType;
 
-        template <typename TNextEnumerator>
-        auto Concatenate(const Query<TNextEnumerator>& nextQuery) const -> Query<Enumerators::ConcatenationEnumerator<EnumeratorType, TNextEnumerator>>;
+        template <typename TSecondEnumerator>
+        auto Concatenate(const Query<TSecondEnumerator>& secondQuery) const -> Query<Enumerators::ConcatenationEnumerator<EnumeratorType, TSecondEnumerator>>;
     };
 }

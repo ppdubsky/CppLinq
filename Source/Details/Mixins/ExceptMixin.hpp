@@ -15,9 +15,9 @@ namespace CppLinq::Details::Mixins
         using EnumeratorType = typename TypeTraits::EnumeratorTypeProvider<TQuery>::EnumeratorType;
         using ValueType = typename EnumeratorType::ValueType;
 
-        template <typename TExceptEnumerator>
-        auto Except(const Query<TExceptEnumerator>& exceptQuery) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, Selectors::SelfSelector<ValueType>, Comparers::DefaultEqualityComparer<ValueType>>>;
-        template <typename TExceptEnumerator, typename TComparer>
-        auto Except(const Query<TExceptEnumerator>& exceptQuery, const TComparer comparer) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TExceptEnumerator, Selectors::SelfSelector<ValueType>, TComparer>>;
+        template <typename TSecondEnumerator>
+        auto Except(const Query<TSecondEnumerator>& secondQuery) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TSecondEnumerator, Selectors::SelfSelector<ValueType>, Comparers::DefaultEqualityComparer<ValueType>>>;
+        template <typename TSecondEnumerator, typename TComparer>
+        auto Except(const Query<TSecondEnumerator>& secondQuery, const TComparer comparer) const -> Query<Enumerators::ExceptEnumerator<EnumeratorType, TSecondEnumerator, Selectors::SelfSelector<ValueType>, TComparer>>;
     };
 }

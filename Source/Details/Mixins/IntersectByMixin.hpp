@@ -18,9 +18,9 @@ namespace CppLinq::Details::Mixins
         template <typename TKeySelector>
         using KeyType = decltype(std::declval<TKeySelector>()(std::declval<ValueType>()));
 
-        template <typename TIntersectEnumerator, typename TKeySelector>
-        auto IntersectBy(const Query<TIntersectEnumerator>& intersectQuery, const TKeySelector keySelector) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;
-        template <typename TIntersectEnumerator, typename TKeySelector, typename TKeyComparer>
-        auto IntersectBy(const Query<TIntersectEnumerator>& intersectQuery, const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, TKeySelector, TKeyComparer>>;
+        template <typename TSecondEnumerator, typename TKeySelector>
+        auto IntersectBy(const Query<TSecondEnumerator>& secondQuery, const TKeySelector keySelector) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TSecondEnumerator, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>;
+        template <typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+        auto IntersectBy(const Query<TSecondEnumerator>& secondQuery, const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TSecondEnumerator, TKeySelector, TKeyComparer>>;
     };
 }

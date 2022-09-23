@@ -11,16 +11,16 @@
 namespace CppLinq::Details::Mixins
 {
     template <typename TQuery>
-    template <typename TIntersectEnumerator>
-    auto IntersectMixin<TQuery>::Intersect(const Query<TIntersectEnumerator>& intersectQuery) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, Selectors::SelfSelector<ValueType>, Comparers::DefaultEqualityComparer<ValueType>>>
+    template <typename TSecondEnumerator>
+    auto IntersectMixin<TQuery>::Intersect(const Query<TSecondEnumerator>& secondQuery) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TSecondEnumerator, Selectors::SelfSelector<ValueType>, Comparers::DefaultEqualityComparer<ValueType>>>
     {
-        return Intersect(intersectQuery, Comparers::DefaultEqualityComparer<ValueType>());
+        return Intersect(secondQuery, Comparers::DefaultEqualityComparer<ValueType>());
     }
 
     template <typename TQuery>
-    template <typename TIntersectEnumerator, typename TComparer>
-    auto IntersectMixin<TQuery>::Intersect(const Query<TIntersectEnumerator>& intersectQuery, const TComparer comparer) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, Selectors::SelfSelector<ValueType>, TComparer>>
+    template <typename TSecondEnumerator, typename TComparer>
+    auto IntersectMixin<TQuery>::Intersect(const Query<TSecondEnumerator>& secondQuery, const TComparer comparer) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TSecondEnumerator, Selectors::SelfSelector<ValueType>, TComparer>>
     {
-        return MixinUtilities::GetQuery<TQuery>(*this).IntersectBy(intersectQuery, Selectors::SelfSelector<ValueType>(), comparer);
+        return MixinUtilities::GetQuery<TQuery>(*this).IntersectBy(secondQuery, Selectors::SelfSelector<ValueType>(), comparer);
     }
 }

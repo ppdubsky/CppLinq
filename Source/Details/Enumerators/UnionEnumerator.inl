@@ -4,17 +4,17 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TKeyComparer>
-    UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TKeyComparer>::UnionEnumerator(const TEnumerator enumerator, const TUnionEnumerator unionEnumerator, const TKeySelector keySelector, const TKeyComparer keyComparer) :
-        Base(enumerator),
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    UnionEnumerator<TFirstEnumerator, TSecondEnumerator, TKeySelector, TKeyComparer>::UnionEnumerator(const TFirstEnumerator firstEnumerator, const TSecondEnumerator secondEnumerator, const TKeySelector keySelector, const TKeyComparer keyComparer) :
+        Base(firstEnumerator),
         container(bucketCount, HasherType(), keyComparer),
         keySelector(keySelector),
-        unionEnumerator(unionEnumerator)
+        secondEnumerator(secondEnumerator)
     {
     }
 
-    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TKeyComparer>
-    void UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TKeyComparer>::EnsureEnumeratorIsReady()
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    void UnionEnumerator<TFirstEnumerator, TSecondEnumerator, TKeySelector, TKeyComparer>::EnsureEnumeratorIsReady()
     {
         if (!isReady)
         {
@@ -36,9 +36,9 @@ namespace CppLinq::Details::Enumerators
 
             if (!isFound)
             {
-                while (unionEnumerator.HasCurrent())
+                while (secondEnumerator.HasCurrent())
                 {
-                    const KeyType currentKey = keySelector(unionEnumerator.GetCurrent());
+                    const KeyType currentKey = keySelector(secondEnumerator.GetCurrent());
 
                     const auto result = container.insert(currentKey);
                     if (result.second)
@@ -47,7 +47,7 @@ namespace CppLinq::Details::Enumerators
                         break;
                     }
 
-                    unionEnumerator.MoveNext();
+                    secondEnumerator.MoveNext();
                 }
             }
 
@@ -55,24 +55,24 @@ namespace CppLinq::Details::Enumerators
         }
     }
 
-    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TKeyComparer>
-    auto UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TKeyComparer>::GetCurrent() -> Base::ValueType
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    auto UnionEnumerator<TFirstEnumerator, TSecondEnumerator, TKeySelector, TKeyComparer>::GetCurrent() -> Base::ValueType
     {
         EnsureEnumeratorIsReady();
 
-        return Base::HasCurrent() ? Base::GetCurrent() : unionEnumerator.GetCurrent();
+        return Base::HasCurrent() ? Base::GetCurrent() : secondEnumerator.GetCurrent();
     }
 
-    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TKeyComparer>
-    auto UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TKeyComparer>::HasCurrent() -> bool
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    auto UnionEnumerator<TFirstEnumerator, TSecondEnumerator, TKeySelector, TKeyComparer>::HasCurrent() -> bool
     {
         EnsureEnumeratorIsReady();
 
-        return Base::HasCurrent() || unionEnumerator.HasCurrent();
+        return Base::HasCurrent() || secondEnumerator.HasCurrent();
     }
 
-    template <typename TEnumerator, typename TUnionEnumerator, typename TKeySelector, typename TKeyComparer>
-    void UnionEnumerator<TEnumerator, TUnionEnumerator, TKeySelector, TKeyComparer>::MoveNext()
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    void UnionEnumerator<TFirstEnumerator, TSecondEnumerator, TKeySelector, TKeyComparer>::MoveNext()
     {
         if (Base::HasCurrent())
         {
@@ -80,7 +80,7 @@ namespace CppLinq::Details::Enumerators
         }
         else
         {
-            unionEnumerator.MoveNext();
+            secondEnumerator.MoveNext();
         }
 
         isReady = false;

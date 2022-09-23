@@ -10,16 +10,16 @@
 namespace CppLinq::Details::Mixins
 {
     template <typename TQuery>
-    template <typename TIntersectEnumerator, typename TKeySelector>
-    auto IntersectByMixin<TQuery>::IntersectBy(const Query<TIntersectEnumerator>& intersectQuery, const TKeySelector keySelector) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>
+    template <typename TSecondEnumerator, typename TKeySelector>
+    auto IntersectByMixin<TQuery>::IntersectBy(const Query<TSecondEnumerator>& secondQuery, const TKeySelector keySelector) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TSecondEnumerator, TKeySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>>>
     {
-        return IntersectBy(intersectQuery, keySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>());
+        return IntersectBy(secondQuery, keySelector, Comparers::DefaultEqualityComparer<KeyType<TKeySelector>>());
     }
 
     template <typename TQuery>
-    template <typename TIntersectEnumerator, typename TKeySelector, typename TKeyComparer>
-    auto IntersectByMixin<TQuery>::IntersectBy(const Query<TIntersectEnumerator>& intersectQuery, const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TIntersectEnumerator, TKeySelector, TKeyComparer>>
+    template <typename TSecondEnumerator, typename TKeySelector, typename TKeyComparer>
+    auto IntersectByMixin<TQuery>::IntersectBy(const Query<TSecondEnumerator>& secondQuery, const TKeySelector keySelector, const TKeyComparer keyComparer) const -> Query<Enumerators::IntersectEnumerator<EnumeratorType, TSecondEnumerator, TKeySelector, TKeyComparer>>
     {
-        return { { MixinUtilities::GetEnumerator<TQuery>(*this), intersectQuery.GetEnumerator(), keySelector, keyComparer } };
+        return { { MixinUtilities::GetEnumerator<TQuery>(*this), secondQuery.GetEnumerator(), keySelector, keyComparer } };
     }
 }

@@ -2,6 +2,6 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TNextEnumerator>
+    template <typename TFirstEnumerator, typename TSecondEnumerator>
     struct ConcatenationEnumerator;
 }

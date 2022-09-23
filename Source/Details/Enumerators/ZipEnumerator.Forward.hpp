@@ -2,6 +2,6 @@
 
 namespace CppLinq::Details::Enumerators
 {
-    template <typename TEnumerator, typename TZipEnumerator, typename TResultSelector>
+    template <typename TFirstEnumerator, typename TSecondEnumerator, typename TResultSelector>
     struct ZipEnumerator;
 }
