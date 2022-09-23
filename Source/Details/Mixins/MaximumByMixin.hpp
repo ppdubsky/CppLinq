@@ -1,7 +1,5 @@
 #pragma once
 
-#include <type_traits>
-
 #include "Details/TypeTraits/EnumeratorTypeProvider.hpp"
 
 namespace CppLinq::Details::Mixins
