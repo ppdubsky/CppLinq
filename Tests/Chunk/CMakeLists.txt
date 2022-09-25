@@ -2,5 +2,9 @@ add_unit_test(
     NAME
         Chunk
     SOURCES
-        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Tests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Chunk_enumerator.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Chunk_size_is_equal.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Chunk_size_is_greater.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Chunk_size_is_less.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Chunk_size_is_zero.cpp
 )
