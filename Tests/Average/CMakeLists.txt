@@ -2,5 +2,5 @@ add_unit_test(
     NAME
         Average
     SOURCES
-        ${PROJECT_SOURCE_DIR}/Tests/Average/Tests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Average/Average.cpp
 )
