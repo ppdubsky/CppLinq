@@ -59,7 +59,7 @@ namespace CppLinq::Tests::Append
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Append, Returns_the_same_results)
+    TEST(Append, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5 };

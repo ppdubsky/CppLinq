@@ -33,7 +33,7 @@ namespace CppLinq::Tests::Distinct
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Return_distinct_elements_using_comparer, Returns_the_same_results)
+    TEST(Return_distinct_elements_using_comparer, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 'a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E' };
