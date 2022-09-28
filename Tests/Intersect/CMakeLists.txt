@@ -2,7 +2,8 @@ add_unit_test(
     NAME
         Intersect
     SOURCES
-        ${PROJECT_SOURCE_DIR}/Tests/Intersect/Customer.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/Intersect/Customer.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/Intersect/Tests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Intersect/Enumerator_is_inaccessible_after_it_is_finished.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Intersect/Enumerator_is_inaccessible_after_it_is_finished_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Intersect/Produce_set_intersection_of_two_sequences.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Intersect/Produce_set_intersection_of_two_sequences_using_comparer.cpp
 )
