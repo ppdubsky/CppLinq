@@ -2,7 +2,12 @@ add_unit_test(
     NAME
         GroupBy
     SOURCES
-        ${PROJECT_SOURCE_DIR}/Tests/GroupBy/Human.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/GroupBy/Human.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/GroupBy/Tests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/GroupBy/Enumerator_is_inaccessible_after_it_is_finished.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/GroupBy/Enumerator_is_inaccessible_after_it_is_finished_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/GroupBy/Group_elements.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/GroupBy/Group_elements_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/GroupBy/Stubs/Human.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/GroupBy/Stubs/Human.hpp
+        ${PROJECT_SOURCE_DIR}/Tests/GroupBy/Stubs/Join.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/GroupBy/Stubs/Join.hpp
 )

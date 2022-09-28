@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 
-namespace CppLinq::Tests::GroupBy
+namespace CppLinq::Tests::GroupBy::Stubs
 {
     struct Human
     {
