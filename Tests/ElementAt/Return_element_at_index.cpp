@@ -20,7 +20,7 @@ namespace CppLinq::Tests::ElementAt
         EXPECT_THROW(query.ElementAt(0U), EmptyContainerException);
     }
 
-    TEST(Return_element_at_index, Returns_first_element_if_index_is_valid)
+    TEST(Return_element_at_index, Returns_element_if_index_is_valid)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5 };
