@@ -2,7 +2,12 @@ add_unit_test(
     NAME
         Distinct
     SOURCES
+        ${PROJECT_SOURCE_DIR}/Tests/Distinct/Distinct_deferred_execution_with_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Distinct/Distinct_deferred_execution_without_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Distinct/Distinct_enumerator_with_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Distinct/Distinct_enumerator_without_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Distinct/Distinct_with_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Distinct/Distinct_without_comparer.cpp
         ${PROJECT_SOURCE_DIR}/Tests/Distinct/Equatable.cpp
         ${PROJECT_SOURCE_DIR}/Tests/Distinct/Equatable.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/Distinct/Tests.cpp
 )
