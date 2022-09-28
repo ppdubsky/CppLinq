@@ -1,6 +1,6 @@
-#include "LeftJoin/Pet.hpp"
+#include "LeftJoin/Stubs/Pet.hpp"
 
-namespace CppLinq::Tests::LeftJoin
+namespace CppLinq::Tests::LeftJoin::Stubs
 {
     auto Pet::operator==(const Pet& right) const -> bool
     {

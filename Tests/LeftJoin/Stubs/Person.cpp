@@ -1,6 +1,6 @@
-#include "LeftJoin/Person.hpp"
+#include "LeftJoin/Stubs/Person.hpp"
 
-namespace CppLinq::Tests::LeftJoin
+namespace CppLinq::Tests::LeftJoin::Stubs
 {
     auto Person::operator==(const Person& right) const -> bool
     {

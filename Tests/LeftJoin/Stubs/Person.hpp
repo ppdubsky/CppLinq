@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace CppLinq::Tests::LeftJoin
+namespace CppLinq::Tests::LeftJoin::Stubs
 {
     struct Person final
     {

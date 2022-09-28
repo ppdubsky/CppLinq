@@ -2,9 +2,12 @@ add_unit_test(
     NAME
         LeftJoin
     SOURCES
-        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Person.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Person.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Pet.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Pet.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Tests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Enumerator_is_inaccessible_after_it_is_finished.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Enumerator_is_inaccessible_after_it_is_finished_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Left_join_two_sequences.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Left_join_two_sequences_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Stubs/Person.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Stubs/Person.hpp
+        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Stubs/Pet.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/LeftJoin/Stubs/Pet.hpp
 )
