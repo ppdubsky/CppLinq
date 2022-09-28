@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 
-namespace CppLinq::Tests::ExceptBy
+namespace CppLinq::Tests::ExceptBy::Stubs
 {
     struct Customer final
     {

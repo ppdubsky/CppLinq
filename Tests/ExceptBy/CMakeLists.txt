@@ -2,7 +2,10 @@ add_unit_test(
     NAME
         ExceptBy
     SOURCES
-        ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Customer.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Customer.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Tests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Enumerator_is_inaccessible_after_it_is_finished.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Enumerator_is_inaccessible_after_it_is_finished_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Produce_set_difference_of_two_sequences_by_key.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Produce_set_difference_of_two_sequences_by_key_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Stubs/Customer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/ExceptBy/Stubs/Customer.hpp
 )
