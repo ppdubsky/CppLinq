@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 
-namespace CppLinq::Tests::MinimumBy
+namespace CppLinq::Tests::MinimumBy::Stubs
 {
     struct Human
     {

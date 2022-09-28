@@ -1,6 +1,6 @@
-#include "MinimumBy/Human.hpp"
+#include "MinimumBy/Stubs/Human.hpp"
 
-namespace CppLinq::Tests::MinimumBy
+namespace CppLinq::Tests::MinimumBy::Stubs
 {
     auto Human::operator==(const Human& right) const -> bool
     {
