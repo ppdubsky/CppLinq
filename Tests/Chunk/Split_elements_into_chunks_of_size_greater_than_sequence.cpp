@@ -7,7 +7,7 @@ using namespace std;
 
 namespace CppLinq::Tests::Chunk
 {
-    TEST(Split_elements_into_chunks_of_size_greater_than_sequence, Returns_expected_sequence_if_source_is_empty)
+    TEST(Split_elements_into_chunks_of_size_greater_than_sequence, Returns_empty_sequence_if_source_is_empty)
     {
         // Arrange.
         const vector<int> source;
