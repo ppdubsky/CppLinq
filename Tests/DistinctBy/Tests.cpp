@@ -4,41 +4,12 @@
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
 #include "DistinctBy/Customer.hpp"
-#include "DistinctBy/Equatable.hpp"
 
 using namespace CppLinq::Exceptions;
 using namespace std;
 
 namespace CppLinq::Tests::DistinctBy
 {
-    TEST(DistinctBy, ExecutionIsDeferred_DefaultComparer)
-    {
-        // Arrange.
-        Equatable::equalityCount = 0U;
-
-        const Equatable source[]{ 'a', 'b', 'c', 'd', 'e' };
-
-        // Act.
-        const auto actual = From(source).DistinctBy([](const Equatable value){ return value; });
-
-        // Assert.
-        EXPECT_EQ(Equatable::equalityCount, 0U);
-    }
-
-    TEST(DistinctBy, ExecutionIsDeferred_CustomComparer)
-    {
-        // Arrange.
-        Equatable::equalityCount = 0U;
-
-        const Equatable source[]{ 'a', 'b', 'c', 'd', 'e' };
-
-        // Act.
-        const auto actual = From(source).DistinctBy([](const Equatable value){ return value; }, [](const Equatable value1, const Equatable value2){ return value1.EqualTo(value2); });
-
-        // Assert.
-        EXPECT_EQ(Equatable::equalityCount, 0U);
-    }
-
     TEST(DistinctBy, ReturnsExpectedValues_DefaultComparer_SourceContainsDistinctElements)
     {
         // Arrange.

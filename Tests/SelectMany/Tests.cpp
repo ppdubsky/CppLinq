@@ -1,5 +1,4 @@
 #include <cstdint>
-#include <functional>
 #include <string>
 #include <vector>
 
@@ -12,20 +11,6 @@ using namespace std;
 
 namespace CppLinq::Tests::SelectMany
 {
-    TEST(SelectMany, ExecutionIsDeferred)
-    {
-        // Arrange.
-        const vector<Order> source;
-
-        auto isFunctionCalled = false;
-
-        // Act.
-        const auto actual = From(source).SelectMany([&isFunctionCalled](const Order& order){ isFunctionCalled = true; return order.items; });
-
-        // Assert.
-        EXPECT_FALSE(isFunctionCalled);
-    }
-
     TEST(SelectMany, ReturnsExpectedValues_SourceIsNotEmpty)
     {
         // Arrange.

@@ -4,43 +4,12 @@
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
 #include "IntersectBy/Customer.hpp"
-#include "IntersectBy/Equatable.hpp"
 
 using namespace CppLinq::Exceptions;
 using namespace std;
 
 namespace CppLinq::Tests::IntersectBy
 {
-    TEST(IntersectBy, ExecutionIsDeferred_DefaultComparer)
-    {
-        // Arrange.
-        Equatable::equalityCount = 0U;
-
-        const Equatable source[]{ 'a', 'b', 'c', 'd', 'e' };
-        const Equatable intersect[]{ 'b', 'd', 'e', 'f', 'g' };
-
-        // Act.
-        const auto actual = From(source).IntersectBy(From(intersect), [](const Equatable value){ return value; });
-
-        // Assert.
-        EXPECT_EQ(Equatable::equalityCount, 0U);
-    }
-
-    TEST(IntersectBy, ExecutionIsDeferred_CustomComparer)
-    {
-        // Arrange.
-        Equatable::equalityCount = 0U;
-
-        const Equatable source[]{ 'a', 'b', 'c', 'd', 'e' };
-        const Equatable intersect[]{ 'b', 'd', 'e', 'f', 'g' };
-
-        // Act.
-        const auto actual = From(source).IntersectBy(From(intersect), [](const Equatable value){ return value; }, [](const Equatable value1, const Equatable value2){ return value1.EqualTo(value2); });
-
-        // Assert.
-        EXPECT_EQ(Equatable::equalityCount, 0U);
-    }
-
     TEST(IntersectBy, ReturnsExpectedValues_DefaultComparer)
     {
         // Arrange.

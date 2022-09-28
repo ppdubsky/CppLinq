@@ -1,29 +1,10 @@
-#include <cstdint>
-#include <functional>
-
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
-#include "StaticCast/ConvertibleToInt.hpp"
 
 using namespace CppLinq::Exceptions;
-using namespace std;
 
 namespace CppLinq::Tests::StaticCast
 {
-    TEST(StaticCast, ExecutionIsDeferred)
-    {
-        // Arrange.
-        ConvertibleToInt::castCount = 0U;
-
-        const ConvertibleToInt source[] { {} };
-
-        // Act.
-        const auto actual = From(source).StaticCast<int>();
-
-        // Assert.
-        EXPECT_EQ(ConvertibleToInt::castCount, 0U);
-    }
-
     TEST(StaticCast, ReturnsExpectedValues_DoubleToInt)
     {
         // Arrange.

@@ -2,39 +2,12 @@
 
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
-#include "OrderBy/Sortable.hpp"
 
 using namespace CppLinq::Exceptions;
 using namespace std;
 
 namespace CppLinq::Tests::OrderBy
 {
-    TEST(OrderBy, ExecutionIsDeferred)
-    {
-        // Arrange.
-        Sortable::comparisonCount = 0U;
-
-        const Sortable source[]{ 1, 3, 5, 7, 9, 10, 8, 6, 4, 2 };
-
-        // Act.
-        const auto actual = From(source).OrderBy();
-
-        // Assert.
-        EXPECT_EQ(Sortable::comparisonCount, 0U);
-    }
-
-    TEST(OrderBy, ReturnsExpectedValues_SourceIsEmpty)
-    {
-        // Arrange.
-        const vector<int> source;
-
-        // Act.
-        const auto actual = From(source).OrderBy();
-
-        // Assert.
-        ExpectSequenceIsEmpty(actual);
-    }
-
     TEST(OrderBy, ReturnsExpectedValues_SourceIsNotEmpty)
     {
         // Arrange.

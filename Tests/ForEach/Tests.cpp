@@ -1,27 +1,10 @@
-#include <functional>
-
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
 
 using namespace CppLinq::Exceptions;
-using namespace std;
 
 namespace CppLinq::Tests::ForEach
 {
-    TEST(ForEach, ExecutionIsDeferred)
-    {
-        // Arrange.
-        const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-        auto isFunctionCalled = false;
-
-        // Act.
-        const auto actual = From(source).ForEach([&isFunctionCalled](const int /*value*/) { isFunctionCalled = true; });
-
-        // Assert.
-        EXPECT_FALSE(isFunctionCalled);
-    }
-
     TEST(ForEach, ReturnsExpectedValues)
     {
         // Arrange.

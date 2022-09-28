@@ -4,10 +4,6 @@ add_unit_test(
     SOURCES
         ${PROJECT_SOURCE_DIR}/Tests/Distinct/Enumerator_is_inaccessible_after_it_is_finished.cpp
         ${PROJECT_SOURCE_DIR}/Tests/Distinct/Enumerator_is_inaccessible_after_it_is_finished_using_comparer.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/Distinct/Enumerator_is_not_accessed.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/Distinct/Enumerator_is_not_accessed_using_comparer.cpp
         ${PROJECT_SOURCE_DIR}/Tests/Distinct/Return_distinct_elements.cpp
         ${PROJECT_SOURCE_DIR}/Tests/Distinct/Return_distinct_elements_using_comparer.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/Distinct/Stubs/Equatable.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/Distinct/Stubs/Equatable.hpp
 )

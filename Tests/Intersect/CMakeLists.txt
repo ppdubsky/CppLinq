@@ -4,7 +4,5 @@ add_unit_test(
     SOURCES
         ${PROJECT_SOURCE_DIR}/Tests/Intersect/Customer.cpp
         ${PROJECT_SOURCE_DIR}/Tests/Intersect/Customer.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/Intersect/Equatable.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/Intersect/Equatable.hpp
         ${PROJECT_SOURCE_DIR}/Tests/Intersect/Tests.cpp
 )

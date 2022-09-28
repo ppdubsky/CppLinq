@@ -5,20 +5,6 @@ using namespace CppLinq::Exceptions;
 
 namespace CppLinq::Tests::TakeWhile
 {
-    TEST(TakeWhile, ExecutionIsDeferred)
-    {
-        // Arrange.
-        const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-        auto isFunctionCalled = false;
-
-        // Act.
-        const auto actual = From(source).TakeWhile([&isFunctionCalled](const int /*value*/) { isFunctionCalled = true; return true; });
-
-        // Assert.
-        EXPECT_FALSE(isFunctionCalled);
-    }
-
     TEST(TakeWhile, ReturnsExpectedValues_PredicateIsTrueForAll)
     {
         // Arrange.

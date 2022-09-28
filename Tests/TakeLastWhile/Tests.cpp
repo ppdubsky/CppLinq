@@ -5,20 +5,6 @@ using namespace CppLinq::Exceptions;
 
 namespace CppLinq::Tests::TakeLastWhile
 {
-    TEST(TakeLastWhile, ExecutionIsDeferred)
-    {
-        // Arrange.
-        const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-        auto isFunctionCalled = false;
-
-        // Act.
-        const auto actual = From(source).TakeLastWhile([&isFunctionCalled](const int /*value*/) { isFunctionCalled = true; return true; });
-
-        // Assert.
-        EXPECT_FALSE(isFunctionCalled);
-    }
-
     TEST(TakeLastWhile, ReturnsExpectedValues_PredicateIsTrueForAll)
     {
         // Arrange.

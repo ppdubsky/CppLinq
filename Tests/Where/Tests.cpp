@@ -1,30 +1,10 @@
-#include <functional>
-
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
 
 using namespace CppLinq::Exceptions;
-using namespace std;
 
 namespace CppLinq::Tests::Where
 {
-    TEST(Where, ExecutionIsDeferred)
-    {
-        // Arrange.
-        auto isActionCalled = false;
-
-        const function<void()> source[]
-        {
-            [&isActionCalled]() { isActionCalled = true; }
-        };
-
-        // Act.
-        const auto actual = From(source).Where([](const function<void()> action) { action(); return true; });
-
-        // Assert.
-        EXPECT_FALSE(isActionCalled);
-    }
-
     TEST(Where, ReturnsExpectedValues_PredicateIsTrueForAll)
     {
         // Arrange.

@@ -1,5 +1,4 @@
 #include <cstdint>
-#include <functional>
 #include <string>
 #include <vector>
 
@@ -12,23 +11,6 @@ using namespace std;
 
 namespace CppLinq::Tests::Select
 {
-    TEST(Select, ExecutionIsDeferred)
-    {
-        // Arrange.
-        auto isActionCalled = false;
-
-        const function<void()> source[]
-        {
-            [&isActionCalled]() { isActionCalled = true; }
-        };
-
-        // Act.
-        const auto actual = From(source).Select([](const function<void()> action) { action(); return action; });
-
-        // Assert.
-        EXPECT_FALSE(isActionCalled);
-    }
-
     TEST(Select, ReturnsExpectedValues_SelectTheSameValue)
     {
         // Arrange.

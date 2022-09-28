@@ -4,43 +4,12 @@
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
 #include "ExceptBy/Customer.hpp"
-#include "ExceptBy/Equatable.hpp"
 
 using namespace CppLinq::Exceptions;
 using namespace std;
 
 namespace CppLinq::Tests::ExceptBy
 {
-    TEST(ExceptBy, ExecutionIsDeferred_DefaultComparer)
-    {
-        // Arrange.
-        Equatable::equalityCount = 0U;
-
-        const Equatable source[]{ 'a', 'b', 'c', 'd', 'e' };
-        const Equatable except[]{ 'b', 'd', 'e', 'f', 'g' };
-
-        // Act.
-        const auto actual = From(source).ExceptBy(From(except), [](const Equatable value){ return value; });
-
-        // Assert.
-        EXPECT_EQ(Equatable::equalityCount, 0U);
-    }
-
-    TEST(ExceptBy, ExecutionIsDeferred_CustomComparer)
-    {
-        // Arrange.
-        Equatable::equalityCount = 0U;
-
-        const Equatable source[]{ 'a', 'b', 'c', 'd', 'e' };
-        const Equatable except[]{ 'b', 'd', 'e', 'f', 'g' };
-
-        // Act.
-        const auto actual = From(source).ExceptBy(From(except), [](const Equatable value){ return value; }, [](const Equatable value1, const Equatable value2){ return value1.EqualTo(value2); });
-
-        // Assert.
-        EXPECT_EQ(Equatable::equalityCount, 0U);
-    }
-
     TEST(ExceptBy, ReturnsExpectedValues_DefaultComparer)
     {
         // Arrange.
