@@ -4,12 +4,11 @@
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
 
-using namespace CppLinq::Exceptions;
 using namespace std;
 
 namespace CppLinq::Tests::ElementAtOptional
 {
-    TEST(ElementAtOptional, ReturnsEmpty_SourceIsEmpty)
+    TEST(Return_element_at_index_or_uninitialized, Returns_uninitialized_if_source_is_empty)
     {
         // Arrange.
         const vector<int> source;
@@ -22,10 +21,10 @@ namespace CppLinq::Tests::ElementAtOptional
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(ElementAtOptional, ReturnsElement_SourceIsNotEmpty_IndexIsValid)
+    TEST(Return_element_at_index_or_uninitialized, Returns_element_if_index_is_valid)
     {
         // Arrange.
-        const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        const int source[]{ 1, 2, 3, 4, 5 };
         const auto expected = 4;
 
         // Act.
@@ -35,10 +34,10 @@ namespace CppLinq::Tests::ElementAtOptional
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(ElementAtOptional, ReturnsElement_SourceIsNotEmpty_IndexIsNotValid)
+    TEST(Return_element_at_index_or_uninitialized, Returns_uninitialized_if_index_is_valid)
     {
         // Arrange.
-        const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        const int source[]{ 1, 2, 3, 4, 5 };
         const optional<int> expected;
 
         // Act.
@@ -48,10 +47,10 @@ namespace CppLinq::Tests::ElementAtOptional
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(ElementAtOptional, ReturnsSameResults)
+    TEST(Return_element_at_index_or_uninitialized, Returns_the_same_result_on_every_call)
     {
         // Arrange.
-        const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        const int source[]{ 1, 2, 3, 4, 5 };
 
         const auto query = From(source);
 
