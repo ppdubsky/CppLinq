@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 
-namespace CppLinq::Tests::MaximumBy
+namespace CppLinq::Tests::MaximumBy::Stubs
 {
     struct Human
     {

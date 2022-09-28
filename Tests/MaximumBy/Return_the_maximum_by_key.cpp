@@ -1,17 +1,30 @@
-#include <cstdint>
-#include <string>
 #include <vector>
 
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
-#include "MaximumBy/Human.hpp"
+#include "MaximumBy/Stubs/Human.hpp"
 
 using namespace CppLinq::Exceptions;
+using namespace CppLinq::Tests::MaximumBy::Stubs;
 using namespace std;
 
 namespace CppLinq::Tests::MaximumBy
 {
-    TEST(MaximumBy, ReturnsMaximum_SourceIsNotEmpty)
+    TEST(Return_the_maximum_by_key, Throws_if_source_is_empty)
+    {
+        // Arrange.
+        const vector<Human> source;
+
+        const auto query = From(source);
+
+        // Act.
+        const auto action = [&query](){ query.MaximumBy([](const Human& human){ return human.age; }); };
+
+        // Assert.
+        EXPECT_THROW(action(), EmptyContainerException);
+    }
+
+    TEST(Return_the_maximum_by_key, Returns_maximum_value_if_source_is_not_empty)
     {
         // Arrange.
         const Human source[]
@@ -32,7 +45,7 @@ namespace CppLinq::Tests::MaximumBy
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(MaximumBy, ReturnsSameResults)
+    TEST(Return_the_maximum_by_key, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const Human source[]
@@ -53,17 +66,5 @@ namespace CppLinq::Tests::MaximumBy
 
         // Assert.
         EXPECT_EQ(actual1, actual2);
-    }
-
-    TEST(MaximumBy, ThrowsOnMaximum_SourceIsEmpty)
-    {
-        // Arrange.
-        const vector<Human> source;
-
-        const auto query = From(source);
-
-        // Act.
-        // Assert.
-        EXPECT_THROW(query.MaximumBy([](const Human& human){ return human.age; }), EmptyContainerException);
     }
 }

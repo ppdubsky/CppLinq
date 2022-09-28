@@ -1,6 +1,6 @@
-#include "MaximumBy/Human.hpp"
+#include "MaximumBy/Stubs/Human.hpp"
 
-namespace CppLinq::Tests::MaximumBy
+namespace CppLinq::Tests::MaximumBy::Stubs
 {
     auto Human::operator==(const Human& right) const -> bool
     {
