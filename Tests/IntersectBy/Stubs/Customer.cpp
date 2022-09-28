@@ -1,6 +1,6 @@
-#include "IntersectBy/Customer.hpp"
+#include "IntersectBy/Stubs/Customer.hpp"
 
-namespace CppLinq::Tests::IntersectBy
+namespace CppLinq::Tests::IntersectBy::Stubs
 {
     auto Customer::operator==(const Customer& right) const -> bool
     {

@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 
-namespace CppLinq::Tests::IntersectBy
+namespace CppLinq::Tests::IntersectBy::Stubs
 {
     struct Customer final
     {
