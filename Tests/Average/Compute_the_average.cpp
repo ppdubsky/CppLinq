@@ -8,7 +8,7 @@ using namespace std;
 
 namespace CppLinq::Tests::Average
 {
-    TEST(Average, Throws_if_source_is_empty)
+    TEST(Compute_the_average, Throws_if_source_is_empty)
     {
         // Arrange.
         const vector<double> source;
@@ -22,7 +22,7 @@ namespace CppLinq::Tests::Average
         EXPECT_THROW(action(), EmptyContainerException);
     }
 
-    TEST(Average, Returns_average_value_if_source_contains_one_element)
+    TEST(Compute_the_average, Returns_first_element_if_source_contains_one_element)
     {
         // Arrange.
         const double source[]{ 1.0 };
@@ -35,7 +35,7 @@ namespace CppLinq::Tests::Average
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(Average, Returns_average_value_if_source_contains_two_elements)
+    TEST(Compute_the_average, Returns_average_value_if_source_contains_two_elements)
     {
         // Arrange.
         const double source[]{ 1.0, 2.0 };
@@ -48,7 +48,7 @@ namespace CppLinq::Tests::Average
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(Average, Returns_average_value_if_source_contains_three_elements)
+    TEST(Compute_the_average, Returns_average_value_if_source_contains_three_elements)
     {
         // Arrange.
         const double source[]{ 1.0, 2.0, 3.0 };
@@ -61,7 +61,7 @@ namespace CppLinq::Tests::Average
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(Average, Returns_the_same_results)
+    TEST(Compute_the_average, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const double source[]{ 1.0, 2.0, 3.0, 4.0, 5.0 };

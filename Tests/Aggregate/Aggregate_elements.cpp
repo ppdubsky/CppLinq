@@ -8,7 +8,7 @@ using namespace std;
 
 namespace CppLinq::Tests::Aggregate
 {
-    TEST(Aggregate_without_seed, Throws_if_source_is_empty)
+    TEST(Aggregate_elements, Throws_if_source_is_empty)
     {
         // Arrange.
         const vector<int> source;
@@ -22,7 +22,7 @@ namespace CppLinq::Tests::Aggregate
         EXPECT_THROW(action(), EmptyContainerException);
     }
 
-    TEST(Aggregate_without_seed, Returns_aggregated_value_if_source_contains_one_element)
+    TEST(Aggregate_elements, Returns_first_element_if_source_contains_one_element)
     {
         // Arrange.
         const int source[]{ 1 };
@@ -35,7 +35,7 @@ namespace CppLinq::Tests::Aggregate
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(Aggregate_without_seed, Returns_aggregated_value_if_source_contains_two_elements)
+    TEST(Aggregate_elements, Returns_aggregated_value_if_source_contains_two_elements)
     {
         // Arrange.
         const int source[]{ 1, 2 };
@@ -48,7 +48,7 @@ namespace CppLinq::Tests::Aggregate
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(Aggregate_without_seed, Returns_aggregated_value_if_source_contains_three_elements)
+    TEST(Aggregate_elements, Returns_aggregated_value_if_source_contains_three_elements)
     {
         // Arrange.
         const int source[]{ 1, 2, 3 };
@@ -61,7 +61,7 @@ namespace CppLinq::Tests::Aggregate
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(Aggregate_without_seed, Returns_the_same_results)
+    TEST(Aggregate_elements, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5 };

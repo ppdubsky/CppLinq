@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace CppLinq::Tests::Distinct
+namespace CppLinq::Tests::Distinct::Stubs
 {
     struct Equatable final
     {

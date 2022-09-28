@@ -8,7 +8,7 @@ using namespace std;
 
 namespace CppLinq::Tests::Any
 {
-    TEST(Any, Returns_false_if_source_is_empty)
+    TEST(Determine_whether_any_element_satisfies_a_condition, Returns_false_if_source_is_empty)
     {
         // Arrange.
         const vector<int> source;
@@ -20,7 +20,7 @@ namespace CppLinq::Tests::Any
         EXPECT_FALSE(actual);
     }
 
-    TEST(Any, Returns_true_if_source_contains_only_valid_elements)
+    TEST(Determine_whether_any_element_satisfies_a_condition, Returns_true_if_source_contains_only_elements_that_satisfy_a_condition)
     {
         // Arrange.
         const int source[]{ 2, 4, 6, 8, 10 };
@@ -32,7 +32,7 @@ namespace CppLinq::Tests::Any
         EXPECT_TRUE(actual);
     }
 
-    TEST(Any, Returns_false_if_source_contains_only_invalid_elements)
+    TEST(Determine_whether_any_element_satisfies_a_condition, Returns_false_if_source_contains_only_elements_that_do_not_satisfy_a_condition)
     {
         // Arrange.
         const int source[]{ 1, 3, 5, 7, 9 };
@@ -44,7 +44,7 @@ namespace CppLinq::Tests::Any
         EXPECT_FALSE(actual);
     }
 
-    TEST(Any, Returns_true_if_source_contains_valid_and_invalid_elements)
+    TEST(Determine_whether_any_element_satisfies_a_condition, Returns_true_if_source_contains_both_elements_that_satisfy_a_condition_and_the_ones_that_do_not)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -56,7 +56,7 @@ namespace CppLinq::Tests::Any
         EXPECT_TRUE(actual);
     }
 
-    TEST(Any, Returns_the_same_results)
+    TEST(Determine_whether_any_element_satisfies_a_condition, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };

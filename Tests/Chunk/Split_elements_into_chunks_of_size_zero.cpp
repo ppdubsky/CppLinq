@@ -8,7 +8,7 @@ using namespace std;
 
 namespace CppLinq::Tests::Chunk
 {
-    TEST(Chunk_size_is_zero, Throws_if_source_is_empty)
+    TEST(Split_elements_into_chunks_of_size_zero, Throws_if_source_is_empty)
     {
         // Arrange.
         const vector<int> source;
@@ -22,7 +22,7 @@ namespace CppLinq::Tests::Chunk
         EXPECT_THROW(action(), ArgumentOutOfRangeException);
     }
 
-    TEST(Chunk_size_is_zero, Throws_if_source_contains_one_element)
+    TEST(Split_elements_into_chunks_of_size_zero, Throws_if_source_contains_one_element)
     {
         // Arrange.
         const int source[]{ 1 };
@@ -36,7 +36,7 @@ namespace CppLinq::Tests::Chunk
         EXPECT_THROW(action(), ArgumentOutOfRangeException);
     }
 
-    TEST(Chunk_size_is_zero, Throws_if_source_contains_two_elements)
+    TEST(Split_elements_into_chunks_of_size_zero, Throws_if_source_contains_two_elements)
     {
         // Arrange.
         const int source[]{ 1, 2 };
@@ -50,7 +50,7 @@ namespace CppLinq::Tests::Chunk
         EXPECT_THROW(action(), ArgumentOutOfRangeException);
     }
 
-    TEST(Chunk_size_is_zero, Throws_if_source_contains_thress_elements)
+    TEST(Split_elements_into_chunks_of_size_zero, Throws_if_source_contains_thress_elements)
     {
         // Arrange.
         const int source[]{ 1, 2, 3 };

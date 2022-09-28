@@ -7,7 +7,7 @@ using namespace std;
 
 namespace CppLinq::Tests::Chunk
 {
-    TEST(Chunk_size_is_greater, Returns_expected_sequence_if_source_is_empty)
+    TEST(Split_elements_into_chunks_of_size_greater_than_sequence, Returns_expected_sequence_if_source_is_empty)
     {
         // Arrange.
         const vector<int> source;
@@ -20,7 +20,7 @@ namespace CppLinq::Tests::Chunk
         ExpectSequenceIsEmpty(actual);
     }
 
-    TEST(Chunk_size_is_greater, Returns_expected_sequence_if_source_contains_one_element)
+    TEST(Split_elements_into_chunks_of_size_greater_than_sequence, Returns_expected_sequence_if_source_contains_one_element)
     {
         // Arrange.
         const int source[]{ 1 };
@@ -36,7 +36,7 @@ namespace CppLinq::Tests::Chunk
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Chunk_size_is_greater, Returns_expected_sequence_if_source_contains_two_elements)
+    TEST(Split_elements_into_chunks_of_size_greater_than_sequence, Returns_expected_sequence_if_source_contains_two_elements)
     {
         // Arrange.
         const int source[]{ 1, 2 };
@@ -52,7 +52,7 @@ namespace CppLinq::Tests::Chunk
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Chunk_size_is_greater, Returns_the_same_results)
+    TEST(Split_elements_into_chunks_of_size_greater_than_sequence, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 1 };

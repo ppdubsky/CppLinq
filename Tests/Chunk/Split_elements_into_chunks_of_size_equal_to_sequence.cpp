@@ -7,7 +7,7 @@ using namespace std;
 
 namespace CppLinq::Tests::Chunk
 {
-    TEST(Chunk_size_is_equal, Returns_expected_sequence_if_source_contains_three_elements)
+    TEST(Split_elements_into_chunks_of_size_equal_to_sequence, Returns_expected_sequence_if_source_contains_three_elements)
     {
         // Arrange.
         const int source[]{ 1, 2, 3 };
@@ -23,7 +23,7 @@ namespace CppLinq::Tests::Chunk
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Chunk_size_is_equal, Returns_the_same_results)
+    TEST(Split_elements_into_chunks_of_size_equal_to_sequence, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 1, 2, 3 };

@@ -7,7 +7,7 @@ using namespace std;
 
 namespace CppLinq::Tests::Chunk
 {
-    TEST(Chunk_size_is_less, Returns_expected_sequence_if_source_contains_four_elements)
+    TEST(Split_elements_into_chunks_of_size_less_than_sequence, Returns_expected_sequence_if_source_contains_four_elements)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4 };
@@ -24,7 +24,7 @@ namespace CppLinq::Tests::Chunk
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Chunk_size_is_less, Returns_expected_sequence_if_source_contains_five_elements)
+    TEST(Split_elements_into_chunks_of_size_less_than_sequence, Returns_expected_sequence_if_source_contains_five_elements)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5 };
@@ -41,7 +41,7 @@ namespace CppLinq::Tests::Chunk
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Chunk_size_is_less, Returns_expected_sequence_if_source_contains_six_elements)
+    TEST(Split_elements_into_chunks_of_size_less_than_sequence, Returns_expected_sequence_if_source_contains_six_elements)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6 };
@@ -58,7 +58,7 @@ namespace CppLinq::Tests::Chunk
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Chunk_size_is_less, Returns_expected_sequence_if_source_contains_seven_elements)
+    TEST(Split_elements_into_chunks_of_size_less_than_sequence, Returns_expected_sequence_if_source_contains_seven_elements)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7 };
@@ -76,7 +76,7 @@ namespace CppLinq::Tests::Chunk
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Chunk_size_is_less, Returns_the_same_results)
+    TEST(Split_elements_into_chunks_of_size_less_than_sequence, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5 };

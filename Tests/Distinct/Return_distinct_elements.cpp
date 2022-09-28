@@ -3,7 +3,7 @@
 
 namespace CppLinq::Tests::Distinct
 {
-    TEST(Distinct_without_comparer, Returns_expected_sequence_if_source_contains_distinct_elements)
+    TEST(Return_distinct_elements, Returns_expected_sequence_if_source_contains_distinct_elements)
     {
         // Arrange.
         const int source[]{ 'a', 'b', 'c', 'd', 'e' };
@@ -16,7 +16,7 @@ namespace CppLinq::Tests::Distinct
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Distinct_without_comparer, Returns_expected_sequence_if_source_contains_duplicate_elements)
+    TEST(Return_distinct_elements, Returns_expected_sequence_if_source_contains_duplicate_elements)
     {
         // Arrange.
         const int source[]{ 'a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e' };
@@ -29,7 +29,7 @@ namespace CppLinq::Tests::Distinct
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Distinct_without_comparer, Returns_the_same_results)
+    TEST(Return_distinct_elements, Returns_the_same_results)
     {
         // Arrange.
         const int source[]{ 'a', 'b', 'c', 'd', 'e' };

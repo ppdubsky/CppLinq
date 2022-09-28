@@ -8,7 +8,7 @@ using namespace std;
 
 namespace CppLinq::Tests::Contains
 {
-    TEST(Contains_without_comparer, Returns_false_if_source_is_empty)
+    TEST(Determine_whether_sequence_contains_element, Returns_false_if_source_is_empty)
     {
         // Arrange.
         const vector<int> source;
@@ -20,7 +20,7 @@ namespace CppLinq::Tests::Contains
         EXPECT_FALSE(actual);
     }
 
-    TEST(Contains_without_comparer, Returns_true_if_source_contains_valid_element)
+    TEST(Determine_whether_sequence_contains_element, Returns_true_if_source_contains_an_element)
     {
         // Arrange.
         const int source[]{ 'a', 'b', 'c', 'd', 'e' };
@@ -32,7 +32,7 @@ namespace CppLinq::Tests::Contains
         EXPECT_TRUE(actual);
     }
 
-    TEST(Contains_without_comparer, Returns_false_if_source_does_not_contain_valid_element)
+    TEST(Determine_whether_sequence_contains_element, Returns_false_if_source_does_not_contain_an_element)
     {
         // Arrange.
         const int source[]{ 'a', 'b', 'c', 'd', 'e' };
@@ -44,7 +44,7 @@ namespace CppLinq::Tests::Contains
         EXPECT_FALSE(actual);
     }
 
-    TEST(Contains_without_comparer, Returns_the_same_results)
+    TEST(Determine_whether_sequence_contains_element, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 'a', 'b', 'c', 'd', 'e' };

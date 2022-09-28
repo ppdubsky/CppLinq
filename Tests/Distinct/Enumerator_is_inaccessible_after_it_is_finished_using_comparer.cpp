@@ -8,7 +8,7 @@ using namespace std;
 
 namespace CppLinq::Tests::Distinct
 {
-    TEST(Distinct_enumerator_with_comparer, Throws_on_move_next_if_enumerator_is_finished)
+    TEST(Enumerator_is_inaccessible_after_it_is_finished_using_comparer, Throws_on_move_next)
     {
         // Arrange.
         const int source[]{ 'a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E' };
@@ -28,7 +28,7 @@ namespace CppLinq::Tests::Distinct
         EXPECT_THROW(action(), FinishedEnumeratorException);
     }
 
-    TEST(Distinct_enumerator_with_comparer, Throws_on_get_current_if_enumerator_is_finished)
+    TEST(Enumerator_is_inaccessible_after_it_is_finished_using_comparer, Throws_on_get_current)
     {
         // Arrange.
         const int source[]{ 'a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E' };

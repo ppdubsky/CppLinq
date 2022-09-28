@@ -8,7 +8,7 @@ using namespace std;
 
 namespace CppLinq::Tests::Count
 {
-    TEST(Count_with_predicate, Returns_count_if_source_is_empty)
+    TEST(Count_elements_using_predicate, Returns_zero_if_source_is_empty)
     {
         // Arrange.
         const vector<int> source;
@@ -21,7 +21,7 @@ namespace CppLinq::Tests::Count
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(Count_with_predicate, Returns_count_if_source_contains_valid_element)
+    TEST(Count_elements_using_predicate, Returns_size_of_sequence_if_source_contains_only_elements_that_satisfy_a_condition)
     {
         // Arrange.
         const int source[]{ 2, 4, 6, 8, 10 };
@@ -34,7 +34,7 @@ namespace CppLinq::Tests::Count
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(Count_with_predicate, Returns_count_if_source_does_not_contain_valid_element)
+    TEST(Count_elements_using_predicate, Returns_zero_if_source_contains_only_elements_that_do_not_satisfy_a_condition)
     {
         // Arrange.
         const int source[]{ 1, 3, 5, 7, 9 };
@@ -47,7 +47,7 @@ namespace CppLinq::Tests::Count
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(Count_with_predicate, Returns_count_if_source_contains_valid_and_invalid_elements)
+    TEST(Count_elements_using_predicate, Returns_count_if_source_contains_both_elements_that_satisfy_a_condition_and_the_ones_that_do_not)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -60,7 +60,7 @@ namespace CppLinq::Tests::Count
         EXPECT_EQ(actual, expected);
     }
 
-    TEST(Count_with_predicate, Returns_the_same_results)
+    TEST(Count_elements_using_predicate, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5 };

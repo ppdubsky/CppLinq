@@ -7,7 +7,7 @@ using namespace std;
 
 namespace CppLinq::Tests::Concatenate
 {
-    TEST(Concatenate, Returns_expected_sequence_if_both_sources_are_empty)
+    TEST(Concatenate_two_sequences, Returns_empty_sequence_if_both_sources_are_empty)
     {
         // Arrange.
         const vector<int> source1;
@@ -20,7 +20,7 @@ namespace CppLinq::Tests::Concatenate
         ExpectSequenceIsEmpty(actual);
     }
 
-    TEST(Concatenate, Returns_expected_sequence_if_both_sources_are_not_empty)
+    TEST(Concatenate_two_sequences, Returns_expected_sequence_if_both_sources_are_not_empty)
     {
         // Arrange.
         const int source1[]{ 1, 2, 3, 4, 5 };
@@ -34,7 +34,7 @@ namespace CppLinq::Tests::Concatenate
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Concatenate, Returns_expected_sequence_if_only_first_source_is_empty)
+    TEST(Concatenate_two_sequences, Returns_second_sequence_if_only_first_source_is_empty)
     {
         // Arrange.
         const vector<int> source1;
@@ -48,7 +48,7 @@ namespace CppLinq::Tests::Concatenate
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Concatenate, Returns_expected_sequence_if_only_second_source_is_empty)
+    TEST(Concatenate_two_sequences, Returns_first_sequence_if_only_second_source_is_empty)
     {
         // Arrange.
         const int source1[]{ 1, 2, 3, 4, 5 };
@@ -62,7 +62,7 @@ namespace CppLinq::Tests::Concatenate
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Concatenate, Returns_the_same_results)
+    TEST(Concatenate_two_sequences, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source1[]{ 1, 2, 3, 4, 5 };

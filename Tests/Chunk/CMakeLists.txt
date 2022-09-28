@@ -2,9 +2,9 @@ add_unit_test(
     NAME
         Chunk
     SOURCES
-        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Chunk_enumerator.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Chunk_size_is_equal.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Chunk_size_is_greater.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Chunk_size_is_less.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Chunk_size_is_zero.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Enumerator_is_inaccessible_after_it_is_finished.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Split_elements_into_chunks_of_size_equal_to_sequence.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Split_elements_into_chunks_of_size_greater_than_sequence.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Split_elements_into_chunks_of_size_less_than_sequence.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Chunk/Split_elements_into_chunks_of_size_zero.cpp
 )

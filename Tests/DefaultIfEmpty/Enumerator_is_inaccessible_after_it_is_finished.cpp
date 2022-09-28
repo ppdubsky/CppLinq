@@ -3,14 +3,14 @@
 
 using namespace CppLinq::Exceptions;
 
-namespace CppLinq::Tests::Distinct
+namespace CppLinq::Tests::DefaultIfEmpty
 {
-    TEST(Distinct_enumerator_without_comparer, Throws_on_move_next_if_enumerator_is_finished)
+    TEST(Enumerator_is_inaccessible_after_it_is_finished, Throws_on_move_next)
     {
         // Arrange.
-        const int source[]{ 'a', 'b', 'c', 'd', 'e' };
+        const int source[]{ 1, 2, 3, 4, 5 };
 
-        const auto query = From(source).Distinct();
+        const auto query = From(source).DefaultIfEmpty(7);
 
         auto enumerator = query.GetEnumerator();
         while (enumerator.HasCurrent())
@@ -25,12 +25,12 @@ namespace CppLinq::Tests::Distinct
         EXPECT_THROW(action(), FinishedEnumeratorException);
     }
 
-    TEST(Distinct_enumerator_without_comparer, Throws_on_get_current_if_enumerator_is_finished)
+    TEST(Enumerator_is_inaccessible_after_it_is_finished, Throws_on_get_current)
     {
         // Arrange.
-        const int source[]{ 'a', 'b', 'c', 'd', 'e' };
+        const int source[]{ 1, 2, 3, 4, 5 };
 
-        const auto query = From(source).Distinct();
+        const auto query = From(source).DefaultIfEmpty(7);
 
         auto enumerator = query.GetEnumerator();
         while (enumerator.HasCurrent())

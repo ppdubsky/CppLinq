@@ -3,15 +3,14 @@
 
 using namespace CppLinq::Exceptions;
 
-namespace CppLinq::Tests::Concatenate
+namespace CppLinq::Tests::Distinct
 {
-    TEST(Concatenate_enumerator, Throws_on_move_next_if_enumerator_is_finished)
+    TEST(Enumerator_is_inaccessible_after_it_is_finished, Throws_on_move_next)
     {
         // Arrange.
-        const int source1[]{ 1, 2, 3, 4, 5 };
-        const int source2[]{ 6, 7, 8, 9, 10 };
+        const int source[]{ 'a', 'b', 'c', 'd', 'e' };
 
-        const auto query = From(source1).Concatenate(From(source2));
+        const auto query = From(source).Distinct();
 
         auto enumerator = query.GetEnumerator();
         while (enumerator.HasCurrent())
@@ -26,13 +25,12 @@ namespace CppLinq::Tests::Concatenate
         EXPECT_THROW(action(), FinishedEnumeratorException);
     }
 
-    TEST(Concatenate_enumerator, Throws_on_get_current_if_enumerator_is_finished)
+    TEST(Enumerator_is_inaccessible_after_it_is_finished, Throws_on_get_current)
     {
         // Arrange.
-        const int source1[]{ 1, 2, 3, 4, 5 };
-        const int source2[]{ 6, 7, 8, 9, 10 };
+        const int source[]{ 'a', 'b', 'c', 'd', 'e' };
 
-        const auto query = From(source1).Concatenate(From(source2));
+        const auto query = From(source).Distinct();
 
         auto enumerator = query.GetEnumerator();
         while (enumerator.HasCurrent())

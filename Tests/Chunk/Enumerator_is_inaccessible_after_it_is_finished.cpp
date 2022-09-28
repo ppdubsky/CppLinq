@@ -5,7 +5,7 @@ using namespace CppLinq::Exceptions;
 
 namespace CppLinq::Tests::Chunk
 {
-    TEST(Chunk_enumerator, Throws_on_move_next_if_enumerator_is_finished)
+    TEST(Enumerator_is_inaccessible_after_it_is_finished, Throws_on_move_next)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5 };
@@ -25,7 +25,7 @@ namespace CppLinq::Tests::Chunk
         EXPECT_THROW(action(), FinishedEnumeratorException);
     }
 
-    TEST(Chunk_enumerator, Throws_on_get_current_if_enumerator_is_finished)
+    TEST(Enumerator_is_inaccessible_after_it_is_finished, Throws_on_get_current)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5 };
