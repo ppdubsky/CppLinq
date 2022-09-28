@@ -2,9 +2,9 @@
 
 #include <string>
 
-#include "InnerJoin/Person.hpp"
+#include "InnerJoin/Stubs/Person.hpp"
 
-namespace CppLinq::Tests::InnerJoin
+namespace CppLinq::Tests::InnerJoin::Stubs
 {
     struct Pet final
     {

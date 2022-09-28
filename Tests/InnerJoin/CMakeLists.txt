@@ -2,9 +2,12 @@ add_unit_test(
     NAME
         InnerJoin
     SOURCES
-        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Person.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Person.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Pet.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Pet.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Tests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Enumerator_is_inaccessible_after_it_is_finished.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Enumerator_is_inaccessible_after_it_is_finished_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Inner_join_two_sequences.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Inner_join_two_sequences_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Stubs/Person.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Stubs/Person.hpp
+        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Stubs/Pet.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/InnerJoin/Stubs/Pet.hpp
 )

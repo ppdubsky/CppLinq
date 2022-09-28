@@ -1,6 +1,6 @@
-#include "InnerJoin/Person.hpp"
+#include "InnerJoin/Stubs/Person.hpp"
 
-namespace CppLinq::Tests::InnerJoin
+namespace CppLinq::Tests::InnerJoin::Stubs
 {
     auto Person::operator==(const Person& right) const -> bool
     {

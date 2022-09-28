@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace CppLinq::Tests::InnerJoin
+namespace CppLinq::Tests::InnerJoin::Stubs
 {
     struct Person final
     {

@@ -1,6 +1,6 @@
-#include "InnerJoin/Pet.hpp"
+#include "InnerJoin/Stubs/Pet.hpp"
 
-namespace CppLinq::Tests::InnerJoin
+namespace CppLinq::Tests::InnerJoin::Stubs
 {
     auto Pet::operator==(const Pet& right) const -> bool
     {
