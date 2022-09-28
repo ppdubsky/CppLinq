@@ -1,6 +1,6 @@
-#include "Except/Customer.hpp"
+#include "Except/Stubs/Customer.hpp"
 
-namespace CppLinq::Tests::Except
+namespace CppLinq::Tests::Except::Stubs
 {
     auto Customer::operator==(const Customer& right) const -> bool
     {
