@@ -2,7 +2,10 @@ add_unit_test(
     NAME
         DistinctBy
     SOURCES
-        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Customer.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Customer.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Tests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Enumerator_is_inaccessible_after_it_is_finished.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Enumerator_is_inaccessible_after_it_is_finished_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Return_distinct_elements_by_key.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Return_distinct_elements_by_key_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Stubs/Customer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/DistinctBy/Stubs/Customer.hpp
 )

@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 
-namespace CppLinq::Tests::DistinctBy
+namespace CppLinq::Tests::DistinctBy::Stubs
 {
     struct Customer final
     {

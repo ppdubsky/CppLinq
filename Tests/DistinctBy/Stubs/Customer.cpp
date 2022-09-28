@@ -1,6 +1,6 @@
-#include "DistinctBy/Customer.hpp"
+#include "DistinctBy/Stubs/Customer.hpp"
 
-namespace CppLinq::Tests::DistinctBy
+namespace CppLinq::Tests::DistinctBy::Stubs
 {
     auto Customer::operator==(const Customer& right) const -> bool
     {
