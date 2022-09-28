@@ -5,7 +5,7 @@
 #include <optional>
 
 #include "Details/Mixins/MixinUtilities.hpp"
-#include "Exceptions/EmptyContainerException.hpp"
+#include "Exceptions/ArgumentOutOfRangeException.hpp"
 
 namespace CppLinq::Details::Mixins
 {
@@ -15,7 +15,7 @@ namespace CppLinq::Details::Mixins
         const std::optional<ValueType> value = MixinUtilities::GetQuery<TQuery>(*this).ElementAtOptional(index);
         if (!value)
         {
-            throw Exceptions::EmptyContainerException();
+            throw Exceptions::ArgumentOutOfRangeException();
         }
 
         return *value;

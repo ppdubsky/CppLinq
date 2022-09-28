@@ -17,7 +17,7 @@ namespace CppLinq::Tests::ElementAt
 
         // Act.
         // Assert.
-        EXPECT_THROW(query.ElementAt(0U), EmptyContainerException);
+        EXPECT_THROW(query.ElementAt(0U), ArgumentOutOfRangeException);
     }
 
     TEST(Return_element_at_index, Returns_element_if_index_is_valid)
@@ -42,7 +42,7 @@ namespace CppLinq::Tests::ElementAt
 
         // Act.
         // Assert.
-        EXPECT_THROW(query.ElementAt(10U), EmptyContainerException);
+        EXPECT_THROW(query.ElementAt(10U), ArgumentOutOfRangeException);
     }
 
     TEST(Return_element_at_index, Returns_the_same_result_on_every_call)
