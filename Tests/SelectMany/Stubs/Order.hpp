@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <vector>
 
-namespace CppLinq::Tests::SelectMany
+namespace CppLinq::Tests::SelectMany::Stubs
 {
     struct Order final
     {
