@@ -1,11 +1,9 @@
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
 
-using namespace CppLinq::Exceptions;
-
 namespace CppLinq::Tests::Take
 {
-    TEST(Take, ReturnsExpectedValues_CountIsZero)
+    TEST(Return_number_of_elements_from_start, Returns_empty_sequence_if_count_is_zero)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -17,11 +15,11 @@ namespace CppLinq::Tests::Take
         ExpectSequenceIsEmpty(actual);
     }
 
-    TEST(Take, ReturnsExpectedValues_CountIsLessThanSourceLength)
+    TEST(Return_number_of_elements_from_start, Returns_first_elements_if_count_is_less_than_source)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        const int expected[]{ 1, 2, 3 , 4, 5 };
+        const int expected[]{ 1, 2, 3, 4, 5 };
 
         // Act.
         const auto actual = From(source).Take(5U);
@@ -30,7 +28,7 @@ namespace CppLinq::Tests::Take
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Take, ReturnsExpectedValues_CountIsEqualToSourceLength)
+    TEST(Return_number_of_elements_from_start, Returns_the_same_sequence_if_count_is_equal_to_source)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -43,7 +41,7 @@ namespace CppLinq::Tests::Take
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Take, ReturnsExpectedValues_CountIsGreaterThanSourceLength)
+    TEST(Return_number_of_elements_from_start, Returns_the_same_sequence_if_count_is_greater_than_source)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -56,7 +54,7 @@ namespace CppLinq::Tests::Take
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Take, ReturnsSameResults)
+    TEST(Return_number_of_elements_from_start, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -69,41 +67,5 @@ namespace CppLinq::Tests::Take
 
         // Assert.
         ExpectSequencesAreEquivalent(actual1, actual2);
-    }
-
-    TEST(Take, SourceThrowsOnMoveNext)
-    {
-        // Arrange.
-        const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-        const auto query = From(source).Take(5U);
-
-        auto enumerator = query.GetEnumerator();
-        while (enumerator.HasCurrent())
-        {
-            enumerator.MoveNext();
-        }
-
-        // Act.
-        // Assert.
-        EXPECT_THROW(enumerator.MoveNext(), FinishedEnumeratorException);
-    }
-
-    TEST(Take, SourceThrowsOnGetCurrent)
-    {
-        // Arrange.
-        const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-        const auto query = From(source).Take(5U);
-
-        auto enumerator = query.GetEnumerator();
-        while (enumerator.HasCurrent())
-        {
-            enumerator.MoveNext();
-        }
-
-        // Act.
-        // Assert.
-        EXPECT_THROW(enumerator.GetCurrent(), FinishedEnumeratorException);
     }
 }
