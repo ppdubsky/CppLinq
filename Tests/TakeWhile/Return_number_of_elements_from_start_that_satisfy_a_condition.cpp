@@ -1,11 +1,9 @@
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
 
-using namespace CppLinq::Exceptions;
-
 namespace CppLinq::Tests::TakeWhile
 {
-    TEST(TakeWhile, ReturnsExpectedValues_PredicateIsTrueForAll)
+    TEST(Return_number_of_elements_from_start_that_satisfy_a_condition, Returns_the_same_sequence_if_all_elements_satisfy_a_condition)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -18,7 +16,7 @@ namespace CppLinq::Tests::TakeWhile
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(TakeWhile, ReturnsExpectedValues_PredicateIsFalseForAll)
+    TEST(Return_number_of_elements_from_start_that_satisfy_a_condition, Returns_empty_sequence_if_all_elements_do_not_satisfy_a_condition)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -30,7 +28,7 @@ namespace CppLinq::Tests::TakeWhile
         ExpectSequenceIsEmpty(actual);
     }
 
-    TEST(TakeWhile, ReturnsExpectedValues_PredicateIsTrueForValuesLessThanFive)
+    TEST(Return_number_of_elements_from_start_that_satisfy_a_condition, Returns_first_elements_if_only_some_elements_satisfy_a_condition)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -43,7 +41,7 @@ namespace CppLinq::Tests::TakeWhile
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(TakeWhile, ReturnsSameResults)
+    TEST(Return_number_of_elements_from_start_that_satisfy_a_condition, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -56,41 +54,5 @@ namespace CppLinq::Tests::TakeWhile
 
         // Assert.
         ExpectSequencesAreEquivalent(actual1, actual2);
-    }
-
-    TEST(TakeWhile, SourceThrowsOnMoveNext)
-    {
-        // Arrange.
-        const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-        const auto query = From(source).TakeWhile([](const int value){ return value < 5; });
-
-        auto enumerator = query.GetEnumerator();
-        while (enumerator.HasCurrent())
-        {
-            enumerator.MoveNext();
-        }
-
-        // Act.
-        // Assert.
-        EXPECT_THROW(enumerator.MoveNext(), FinishedEnumeratorException);
-    }
-
-    TEST(TakeWhile, SourceThrowsOnGetCurrent)
-    {
-        // Arrange.
-        const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-        const auto query = From(source).TakeWhile([](const int value){ return value < 5; });
-
-        auto enumerator = query.GetEnumerator();
-        while (enumerator.HasCurrent())
-        {
-            enumerator.MoveNext();
-        }
-
-        // Act.
-        // Assert.
-        EXPECT_THROW(enumerator.GetCurrent(), FinishedEnumeratorException);
     }
 }
