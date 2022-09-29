@@ -1,6 +1,6 @@
-#include "RightJoin/Person.hpp"
+#include "RightJoin/Stubs/Person.hpp"
 
-namespace CppLinq::Tests::RightJoin
+namespace CppLinq::Tests::RightJoin::Stubs
 {
     auto Person::operator==(const Person& right) const -> bool
     {

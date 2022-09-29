@@ -2,9 +2,9 @@
 
 #include <string>
 
-#include "RightJoin/Person.hpp"
+#include "RightJoin/Stubs/Person.hpp"
 
-namespace CppLinq::Tests::RightJoin
+namespace CppLinq::Tests::RightJoin::Stubs
 {
     struct Pet final
     {
