@@ -5,7 +5,7 @@ using namespace CppLinq::Exceptions;
 
 namespace CppLinq::Tests::Where
 {
-    TEST(Where, ReturnsExpectedValues_PredicateIsTrueForAll)
+    TEST(Return_elements_that_satisfy_a_condition, Returns_the_same_sequence_if_all_elements_satisfy_a_condition)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -18,7 +18,7 @@ namespace CppLinq::Tests::Where
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Where, ReturnsExpectedValues_PredicateIsFalseForAll)
+    TEST(Return_elements_that_satisfy_a_condition, Returns_empty_sequence_if_all_elements_do_not_satisfy_a_condition)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -30,7 +30,7 @@ namespace CppLinq::Tests::Where
         ExpectSequenceIsEmpty(actual);
     }
 
-    TEST(Where, ReturnsExpectedValues_PredicateIsTrueForEven)
+    TEST(Return_elements_that_satisfy_a_condition, Returns_elements_if_only_some_elements_satisfy_a_condition)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -43,7 +43,7 @@ namespace CppLinq::Tests::Where
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(Where, ReturnsSameResults)
+    TEST(Return_elements_that_satisfy_a_condition, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -56,41 +56,5 @@ namespace CppLinq::Tests::Where
 
         // Assert.
         ExpectSequencesAreEquivalent(actual1, actual2);
-    }
-
-    TEST(Where, SourceThrowsOnMoveNext)
-    {
-        // Arrange.
-        const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-        const auto query = From(source).Where([](const int value){ return value % 2 == 0; });
-
-        auto enumerator = query.GetEnumerator();
-        while (enumerator.HasCurrent())
-        {
-            enumerator.MoveNext();
-        }
-
-        // Act.
-        // Assert.
-        EXPECT_THROW(enumerator.MoveNext(), FinishedEnumeratorException);
-    }
-
-    TEST(Where, SourceThrowsOnGetCurrent)
-    {
-        // Arrange.
-        const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-        const auto query = From(source).Where([](const int value){ return value % 2 == 0; });
-
-        auto enumerator = query.GetEnumerator();
-        while (enumerator.HasCurrent())
-        {
-            enumerator.MoveNext();
-        }
-
-        // Act.
-        // Assert.
-        EXPECT_THROW(enumerator.GetCurrent(), FinishedEnumeratorException);
     }
 }
