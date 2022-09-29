@@ -1,8 +1,6 @@
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
 
-using namespace CppLinq::Exceptions;
-
 namespace CppLinq::Tests::SkipLast
 {
     TEST(Omit_number_of_elements_from_the_end, Returns_the_same_sequence_if_count_is_zero)

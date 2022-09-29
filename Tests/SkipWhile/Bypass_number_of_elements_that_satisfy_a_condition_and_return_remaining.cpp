@@ -1,8 +1,6 @@
 #include "Assertions.hpp"
 #include "CppLinq.hpp"
 
-using namespace CppLinq::Exceptions;
-
 namespace CppLinq::Tests::SkipWhile
 {
     TEST(Bypass_number_of_elements_that_satisfy_a_condition_and_return_remaining, Returns_empty_sequence_if_all_elements_satisfy_a_condition)
