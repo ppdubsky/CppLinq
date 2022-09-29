@@ -2,7 +2,10 @@ add_unit_test(
     NAME
         UnionBy
     SOURCES
-        ${PROJECT_SOURCE_DIR}/Tests/UnionBy/Customer.cpp
-        ${PROJECT_SOURCE_DIR}/Tests/UnionBy/Customer.hpp
-        ${PROJECT_SOURCE_DIR}/Tests/UnionBy/Tests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/UnionBy/Enumerator_is_inaccessible_after_it_is_finished.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/UnionBy/Enumerator_is_inaccessible_after_it_is_finished_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/UnionBy/Produce_set_union_of_two_sequences_by_key.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/UnionBy/Produce_set_union_of_two_sequences_by_key_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/UnionBy/Stubs/Customer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/UnionBy/Stubs/Customer.hpp
 )

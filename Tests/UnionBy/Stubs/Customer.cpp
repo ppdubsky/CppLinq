@@ -1,6 +1,6 @@
-#include "UnionBy/Customer.hpp"
+#include "UnionBy/Stubs/Customer.hpp"
 
-namespace CppLinq::Tests::UnionBy
+namespace CppLinq::Tests::UnionBy::Stubs
 {
     auto Customer::operator==(const Customer& right) const -> bool
     {

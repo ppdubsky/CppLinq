@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 
-namespace CppLinq::Tests::UnionBy
+namespace CppLinq::Tests::UnionBy::Stubs
 {
     struct Customer final
     {
