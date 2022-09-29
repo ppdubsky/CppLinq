@@ -2,5 +2,8 @@ add_unit_test(
     NAME
         Union
     SOURCES
-        ${PROJECT_SOURCE_DIR}/Tests/Union/Tests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Union/Enumerator_is_inaccessible_after_it_is_finished.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Union/Enumerator_is_inaccessible_after_it_is_finished_using_comparer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Union/Produce_set_union_of_two_sequences.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Union/Produce_set_union_of_two_sequences_using_comparer.cpp
 )
