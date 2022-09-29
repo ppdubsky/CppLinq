@@ -3,7 +3,7 @@
 
 namespace CppLinq::Tests::ToVector
 {
-    TEST(ToVector, ReturnsExpectedValues)
+    TEST(Create_vector, Returns_expected_container)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -18,7 +18,7 @@ namespace CppLinq::Tests::ToVector
         ExpectSequencesAreEquivalent(actual, expected);
     }
 
-    TEST(ToVector, ReturnsSameResults)
+    TEST(Create_vector, Returns_the_same_result_on_every_call)
     {
         // Arrange.
         const int source[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
