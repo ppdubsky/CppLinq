@@ -2,5 +2,8 @@ add_unit_test(
     NAME
         Zip
     SOURCES
-        ${PROJECT_SOURCE_DIR}/Tests/Zip/Tests.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Zip/Enumerator_is_inaccessible_after_it_is_finished.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Zip/Zip_two_sequences_of_the_same_length.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Zip/Zip_two_sequences_when_first_one_is_longer.cpp
+        ${PROJECT_SOURCE_DIR}/Tests/Zip/Zip_two_sequences_when_second_one_is_longer.cpp
 )
