@@ -14,7 +14,7 @@ namespace CppLinq::Details::Enumerators
     template <typename TEnumerator, typename TFunction>
     auto ForEachEnumerator<TEnumerator, TFunction>::GetCurrent() -> Base::ValueType
     {
-        const Base::ValueType value = Base::GetCurrent();
+        const typename Base::ValueType value = Base::GetCurrent();
 
         function(value);
 

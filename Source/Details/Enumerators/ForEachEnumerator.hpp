@@ -13,7 +13,7 @@ namespace CppLinq::Details::Enumerators
 
         ForEachEnumerator(const TEnumerator enumerator, const TFunction function);
 
-        auto GetCurrent() -> Base::ValueType;
+        auto GetCurrent() -> typename Base::ValueType;
 
     private:
         TFunction function;

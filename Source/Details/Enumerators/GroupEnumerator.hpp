@@ -22,7 +22,7 @@ namespace CppLinq::Details::Enumerators
         using ValueType = TypeTraits::FunctionReturnTypeProvider<TResultSelector, KeyType, ElementContainer>::ReturnType;
         using KeyContainer = std::vector<KeyType>;
         using HasherType = Containers::DoNothingHasher<KeyType>;
-        using GroupContainer = std::unordered_multimap<KeyType, Base::ValueType, HasherType, TKeyComparer>;
+        using GroupContainer = std::unordered_multimap<KeyType, typename Base::ValueType, HasherType, TKeyComparer>;
 
         GroupEnumerator(const TEnumerator enumerator, const TKeySelector keySelector, const TElementSelector elementSelector, const TResultSelector resultSelector, const TKeyComparer keyComparer);
 

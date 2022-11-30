@@ -13,7 +13,7 @@ namespace CppLinq::Details::Enumerators
     struct ChunkEnumerator final : EnumeratorWrapper<TEnumerator>
     {
         using Base = EnumeratorWrapper<TEnumerator>;
-        using ValueType = std::vector<Base::ValueType>;
+        using ValueType = std::vector<typename Base::ValueType>;
 
         ChunkEnumerator(const TEnumerator enumerator, const std::uint32_t size);
 
